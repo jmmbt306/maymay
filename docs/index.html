@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>米国株 EPS コンセンサス予想</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; }
+    header { background: #1a1a2e; color: #fff; padding: 1.2rem 2rem; }
+    header h1 { font-size: 1.4rem; }
+    header p  { font-size: 0.8rem; opacity: 0.7; margin-top: 0.3rem; }
+    main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+
+    .card { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08); margin-bottom: 2rem; overflow: hidden; }
+    .card-header { padding: 1rem 1.5rem; border-bottom: 1px solid #eee; }
+    .card-header h2 { font-size: 1.1rem; }
+    .card-header span { font-size: 0.85rem; color: #666; margin-left: 0.5rem; }
+
+    .tabs { display: flex; gap: 0; border-bottom: 1px solid #eee; padding: 0 1.5rem; }
+    .tab-btn { padding: 0.7rem 1.2rem; border: none; background: none; cursor: pointer; font-size: 0.85rem; color: #666; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+    .tab-btn.active { color: #1a1a2e; border-bottom-color: #1a1a2e; font-weight: 600; }
+
+    .tab-content { display: none; padding: 1.2rem 1.5rem; }
+    .tab-content.active { display: block; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th { text-align: left; padding: 0.5rem 0.8rem; background: #f8f8f8; font-weight: 600; color: #444; border-bottom: 1px solid #e0e0e0; }
+    td { padding: 0.5rem 0.8rem; border-bottom: 1px solid #f0f0f0; }
+    tr:last-child td { border-bottom: none; }
+    td:not(:first-child), th:not(:first-child) { text-align: right; }
+
+    .no-data { color: #999; font-size: 0.85rem; padding: 0.5rem 0; }
+    .error { color: #c0392b; font-size: 0.85rem; }
+
+    #loading { text-align: center; padding: 3rem; color: #666; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>米国株 EPS コンセンサス予想</h1>
+  <p id="updated">読み込み中...</p>
+</header>
+<main id="main">
+  <div id="loading">データを読み込んでいます...</div>
+</main>
+
+<script>
+const ROW_LABELS = {
+  // earnings_estimate
+  numberOfAnalysts: "アナリスト数",
+  avg:              "平均 EPS",
+  low:              "低値",
+  high:             "高値",
+  yearAgoEps:       "前年同期 EPS",
+  growth:           "成長率",
+  // eps_trend
+  current:          "現在",
+  "7daysAgo":       "7日前",
+  "30daysAgo":      "30日前",
+  "60daysAgo":      "60日前",
+  "90daysAgo":      "90日前",
+  // eps_revisions
+  upLast7days:      "上方修正（7日）",
+  upLast30days:     "上方修正（30日）",
+  downLast7days:    "下方修正（7日）",
+  downLast30days:   "下方修正（30日）",
+};
+
+function fmt(v) {
+  if (v === null || v === undefined) return "-";
+  if (typeof v === "number") return v.toLocaleString("ja-JP", { maximumFractionDigits: 2 });
+  return v;
+}
+
+function buildTable(data, colFilter) {
+  if (!data) return '<p class="no-data">データがありません</p>';
+
+  const allRows = Object.keys(data);
+  const allCols = Object.keys(data[allRows[0]] || {});
+  const cols = colFilter ? allCols.filter(colFilter) : allCols;
+  if (!cols.length) return '<p class="no-data">該当する期間のデータがありません</p>';
+
+  let html = "<table><thead><tr><th>項目</th>";
+  cols.forEach(c => { html += `<th>${c}</th>`; });
+  html += "</tr></thead><tbody>";
+  allRows.forEach(row => {
+    html += `<tr><td>${ROW_LABELS[row] || row}</td>`;
+    cols.forEach(c => { html += `<td>${fmt(data[row][c])}</td>`; });
+    html += "</tr>";
+  });
+  html += "</tbody></table>";
+  return html;
+}
+
+function buildCard(symbol, info) {
+  if (info.error) {
+    return `<div class="card"><div class="card-header"><h2>${symbol} <span class="error">取得エラー: ${info.error}</span></h2></div></div>`;
+  }
+
+  const tabs = [
+    { id: "annual",   label: "年次 EPS 予想",  html: buildTable(info.earnings_estimate, c => c.startsWith("0y") || c.endsWith("y") || /^\+\dy$/.test(c) || /^[+-]?\d[Yy]/.test(c)) },
+    { id: "quarter",  label: "四半期 EPS 予想", html: buildTable(info.earnings_estimate, c => /q/i.test(c)) },
+    { id: "trend",    label: "EPS トレンド",    html: buildTable(info.eps_trend, null) },
+    { id: "revision", label: "EPS 修正",        html: buildTable(info.eps_revisions, null) },
+  ];
+
+  // fallback: show all columns if filter returns empty
+  tabs[0].html = tabs[0].html.includes("該当") ? buildTable(info.earnings_estimate, null) : tabs[0].html;
+
+  const uid = symbol.replace(/[^A-Z]/g, "");
+  let btnHtml = "", contentHtml = "";
+  tabs.forEach((t, i) => {
+    btnHtml    += `<button class="tab-btn${i===0?" active":""}" onclick="switchTab('${uid}','${t.id}')" id="btn-${uid}-${t.id}">${t.label}</button>`;
+    contentHtml += `<div class="tab-content${i===0?" active":""}" id="tab-${uid}-${t.id}">${t.html}</div>`;
+  });
+
+  return `
+<div class="card">
+  <div class="card-header"><h2>${symbol}<span>${info.name}</span></h2></div>
+  <div class="tabs">${btnHtml}</div>
+  ${contentHtml}
+</div>`;
+}
+
+function switchTab(uid, tabId) {
+  document.querySelectorAll(`[id^="tab-${uid}-"]`).forEach(el => el.classList.remove("active"));
+  document.querySelectorAll(`[id^="btn-${uid}-"]`).forEach(el => el.classList.remove("active"));
+  document.getElementById(`tab-${uid}-${tabId}`).classList.add("active");
+  document.getElementById(`btn-${uid}-${tabId}`).classList.add("active");
+}
+
+fetch("data/data.json")
+  .then(r => r.json())
+  .then(({ updated, tickers }) => {
+    document.getElementById("updated").textContent =
+      "最終更新: " + new Date(updated).toLocaleString("ja-JP");
+    const main = document.getElementById("main");
+    main.innerHTML = Object.entries(tickers)
+      .map(([sym, info]) => buildCard(sym, info))
+      .join("");
+  })
+  .catch(() => {
+    document.getElementById("main").innerHTML =
+      '<p class="error" style="padding:2rem">data.json の読み込みに失敗しました。GitHub Actions でデータを取得してから再度アクセスしてください。</p>';
+  });
+</script>
+</body>
+</html>
