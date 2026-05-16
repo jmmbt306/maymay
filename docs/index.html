@@ -14,7 +14,15 @@
     main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
 
     .card { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08); margin-bottom: 2rem; padding: 1.5rem; }
-    .card h2 { font-size: 1.05rem; margin-bottom: 1rem; }
+    .card-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .card-header h2 { font-size: 1.05rem; }
+    .earnings-badge {
+      font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 999px;
+      background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;
+    }
+    .earnings-badge.soon {
+      background: #fef3c7; color: #92400e; border-color: #fcd34d;
+    }
 
     .chart-wrap { position: relative; height: 280px; }
 
@@ -39,6 +47,24 @@
 const PERIOD_LABELS = { "0q": "今四半期", "+1q": "来四半期", "0y": "今年度", "+1y": "来年度" };
 const COLORS = ["#2563eb", "#16a34a", "#dc2626", "#d97706", "#7c3aed", "#0891b2"];
 
+function daysUntil(dateStr) {
+  const diff = new Date(dateStr) - new Date();
+  return Math.ceil(diff / (1000 * 60 * 60 * 24));
+}
+
+function earningsBadge(symbol, earningsDates) {
+  const d = earningsDates[symbol];
+  if (!d) return "";
+  const days = daysUntil(d);
+  const label = days < 0
+    ? `決算済 ${d}`
+    : days === 0
+    ? `本日決算 ${d}`
+    : `次回決算 ${d}（${days}日後）`;
+  const cls = days >= 0 && days <= 14 ? "earnings-badge soon" : "earnings-badge";
+  return `<span class="${cls}">${label}</span>`;
+}
+
 function buildChart(canvasId, dates, periodData) {
   const datasets = Object.entries(periodData).map(([period, values], i) => ({
     label: PERIOD_LABELS[period] || period,
@@ -61,7 +87,7 @@ function buildChart(canvasId, dates, periodData) {
         legend: { display: false },
         tooltip: {
           callbacks: {
-            label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y ?? "-"}`,
+            label: ctx => `${ctx.dataset.label}: $${ctx.parsed.y?.toFixed(2) ?? "-"}`,
           },
         },
       },
@@ -76,7 +102,7 @@ function buildChart(canvasId, dates, periodData) {
   });
 }
 
-function buildCard(symbol, dates, periodData) {
+function buildCard(symbol, dates, periodData, earningsDates) {
   const canvasId = `chart-${symbol}`;
   const card = document.createElement("div");
   card.className = "card";
@@ -89,59 +115,61 @@ function buildCard(symbol, dates, periodData) {
     </span>`).join("");
 
   card.innerHTML = `
-    <h2>${symbol}</h2>
+    <div class="card-header">
+      <h2>${symbol}</h2>
+      ${earningsBadge(symbol, earningsDates)}
+    </div>
     <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
     <div class="legend">${legendHtml}</div>`;
   return card;
 }
 
-fetch("data/history.json")
-  .then(r => r.json())
-  .then(history => {
-    if (!history.length) throw new Error("データがありません");
+Promise.all([
+  fetch("data/history.json").then(r => r.json()),
+  fetch("data/earnings_dates.json").then(r => r.json()).catch(() => ({ dates: {} })),
+]).then(([history, edData]) => {
+  if (!history.length) throw new Error("データがありません");
 
-    const dates = history.map(e => e.date);
-    const lastEntry = history[history.length - 1];
-    const symbols = Object.keys(lastEntry).filter(k => k !== "date");
+  const earningsDates = edData.dates || {};
+  const dates = history.map(e => e.date);
+  const lastEntry = history[history.length - 1];
+  const symbols = Object.keys(lastEntry).filter(k => k !== "date");
 
-    document.getElementById("subtitle").textContent =
-      `最終更新: ${lastEntry.date}　全${history.length}日分のデータ`;
+  document.getElementById("subtitle").textContent =
+    `最終更新: ${lastEntry.date}　全${history.length}日分のデータ`;
 
-    const main = document.getElementById("main");
-    main.innerHTML = "";
+  const main = document.getElementById("main");
+  main.innerHTML = "";
 
-    symbols.forEach(symbol => {
-      // 期間ごとに日付順の値を集める
-      const periods = {};
-      history.forEach(entry => {
-        if (!entry[symbol]) return;
-        Object.entries(entry[symbol]).forEach(([period, val]) => {
-          if (!periods[period]) periods[period] = Array(history.length).fill(null);
-          periods[period][history.indexOf(entry)] = val;
-        });
-      });
-
-      const card = buildCard(symbol, dates, periods);
-      main.appendChild(card);
-      buildChart(`chart-${symbol}`, dates, periods);
-    });
-
-    // 凡例クリックでラインの表示/非表示を切り替え
-    document.querySelectorAll(".legend-item").forEach(item => {
-      item.addEventListener("click", () => {
-        const chart = Chart.getChart(item.dataset.canvas);
-        const idx = parseInt(item.dataset.idx);
-        const meta = chart.getDatasetMeta(idx);
-        meta.hidden = !meta.hidden;
-        item.style.opacity = meta.hidden ? "0.4" : "1";
-        chart.update();
+  symbols.forEach(symbol => {
+    const periods = {};
+    history.forEach((entry, i) => {
+      if (!entry[symbol]) return;
+      Object.entries(entry[symbol]).forEach(([period, val]) => {
+        if (!periods[period]) periods[period] = Array(history.length).fill(null);
+        periods[period][i] = val;
       });
     });
-  })
-  .catch(e => {
-    document.getElementById("main").innerHTML =
-      `<p class="error">読み込みに失敗しました: ${e.message}<br>GitHub Actions でデータを取得してから再度アクセスしてください。</p>`;
+
+    const card = buildCard(symbol, dates, periods, earningsDates);
+    main.appendChild(card);
+    buildChart(`chart-${symbol}`, dates, periods);
   });
+
+  document.querySelectorAll(".legend-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const chart = Chart.getChart(item.dataset.canvas);
+      const idx = parseInt(item.dataset.idx);
+      const meta = chart.getDatasetMeta(idx);
+      meta.hidden = !meta.hidden;
+      item.style.opacity = meta.hidden ? "0.4" : "1";
+      chart.update();
+    });
+  });
+}).catch(e => {
+  document.getElementById("main").innerHTML =
+    `<p class="error">読み込みに失敗しました: ${e.message}<br>GitHub Actions でデータを取得してから再度アクセスしてください。</p>`;
+});
 </script>
 </body>
 </html>
