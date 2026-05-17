@@ -46,7 +46,6 @@
 <script>
 const PERIOD_LABELS = { "0q": "今四半期", "+1q": "来四半期", "0y": "今年度", "+1y": "来年度" };
 const COLORS = ["#2563eb", "#16a34a", "#dc2626", "#d97706", "#7c3aed", "#0891b2"];
-const PER_COLOR = "#9333ea";
 
 function daysUntil(dateStr) {
   const diff = new Date(dateStr) - new Date();
@@ -67,31 +66,15 @@ function earningsBadge(symbol, earningsDates) {
 }
 
 function buildChart(canvasId, dates, periodData) {
-  const epsPeriods = Object.keys(periodData).filter(p => p !== "per_ttm");
-  const datasets = epsPeriods.map((period, i) => ({
+  const datasets = Object.entries(periodData).map(([period, values], i) => ({
     label: PERIOD_LABELS[period] || period,
-    data: periodData[period],
+    data: values,
     borderColor: COLORS[i % COLORS.length],
     backgroundColor: COLORS[i % COLORS.length] + "22",
     tension: 0.3,
     pointRadius: 4,
     pointHoverRadius: 6,
-    yAxisID: "y",
   }));
-
-  if (periodData["per_ttm"]) {
-    datasets.push({
-      label: "PER (TTM)",
-      data: periodData["per_ttm"],
-      borderColor: PER_COLOR,
-      backgroundColor: PER_COLOR + "22",
-      borderDash: [5, 4],
-      tension: 0.3,
-      pointRadius: 4,
-      pointHoverRadius: 6,
-      yAxisID: "y2",
-    });
-  }
 
   return new Chart(document.getElementById(canvasId), {
     type: "line",
@@ -104,24 +87,15 @@ function buildChart(canvasId, dates, periodData) {
         legend: { display: false },
         tooltip: {
           callbacks: {
-            label: ctx => ctx.dataset.yAxisID === "y2"
-              ? `${ctx.dataset.label}: ${ctx.parsed.y?.toFixed(1) ?? "-"}x`
-              : `${ctx.dataset.label}: $${ctx.parsed.y?.toFixed(2) ?? "-"}`,
+            label: ctx => `${ctx.dataset.label}: $${ctx.parsed.y?.toFixed(2) ?? "-"}`,
           },
         },
       },
       scales: {
         x: { ticks: { maxTicksLimit: 12 } },
         y: {
-          position: "left",
           title: { display: true, text: "EPS ($)" },
           ticks: { callback: v => "$" + v.toFixed(2) },
-        },
-        y2: {
-          position: "right",
-          title: { display: true, text: "PER (倍)" },
-          ticks: { callback: v => v.toFixed(0) + "x" },
-          grid: { drawOnChartArea: false },
         },
       },
     },
@@ -133,18 +107,12 @@ function buildCard(symbol, dates, periodData, earningsDates) {
   const card = document.createElement("div");
   card.className = "card";
 
-  const epsPeriods = Object.keys(periodData).filter(p => p !== "per_ttm");
-  const allPeriods = [...epsPeriods, ...(periodData["per_ttm"] ? ["per_ttm"] : [])];
-  const legendHtml = allPeriods.map((p, i) => {
-    const color = p === "per_ttm" ? PER_COLOR : COLORS[epsPeriods.indexOf(p) % COLORS.length];
-    const dotStyle = p === "per_ttm"
-      ? `background:repeating-linear-gradient(90deg,${color} 0 5px,transparent 5px 9px)`
-      : `background:${color}`;
-    return `<span class="legend-item" data-canvas="${canvasId}" data-idx="${i}">
-      <span class="legend-dot" style="${dotStyle}"></span>
-      ${p === "per_ttm" ? "PER (TTM)" : (PERIOD_LABELS[p] || p)}
-    </span>`;
-  }).join("");
+  const periods = Object.keys(periodData);
+  const legendHtml = periods.map((p, i) => `
+    <span class="legend-item" data-canvas="${canvasId}" data-idx="${i}">
+      <span class="legend-dot" style="background:${COLORS[i % COLORS.length]}"></span>
+      ${PERIOD_LABELS[p] || p}
+    </span>`).join("");
 
   card.innerHTML = `
     <div class="card-header">
