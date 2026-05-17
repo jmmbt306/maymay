@@ -8,5 +8,35 @@
     "AMZN": "2026-07-30",
     "META": "2026-07-29",
     "TSLA": "2026-07-22"
+  },
+  "per": {
+    "AAPL": {
+      "trailing": 36.3,
+      "forward": 31.3
+    },
+    "MSFT": {
+      "trailing": 25.1,
+      "forward": 21.8
+    },
+    "NVDA": {
+      "trailing": 46.1,
+      "forward": 19.7
+    },
+    "GOOGL": {
+      "trailing": 30.3,
+      "forward": 27.5
+    },
+    "AMZN": {
+      "trailing": 31.6,
+      "forward": 26.8
+    },
+    "META": {
+      "trailing": 22.3,
+      "forward": 17.0
+    },
+    "TSLA": {
+      "trailing": 383.9,
+      "forward": 168.0
+    }
   }
 }

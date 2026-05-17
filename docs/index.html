@@ -16,13 +16,12 @@
     .card { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08); margin-bottom: 2rem; padding: 1.5rem; }
     .card-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
     .card-header h2 { font-size: 1.05rem; }
-    .earnings-badge {
+    .badge {
       font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 999px;
       background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;
     }
-    .earnings-badge.soon {
-      background: #fef3c7; color: #92400e; border-color: #fcd34d;
-    }
+    .badge.soon { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
+    .badge.per  { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
 
     .chart-wrap { position: relative; height: 280px; }
 
@@ -62,8 +61,17 @@ function earningsBadge(symbol, earningsDates) {
     : days === 0
     ? `本日決算 ${d}`
     : `次回決算 ${d}（${days}日後）`;
-  const cls = days >= 0 && days <= 14 ? "earnings-badge soon" : "earnings-badge";
+  const cls = days >= 0 && days <= 14 ? "badge soon" : "badge";
   return `<span class="${cls}">${label}</span>`;
+}
+
+function perBadges(symbol, perData) {
+  const p = (perData || {})[symbol];
+  if (!p) return "";
+  let html = "";
+  if (p.trailing != null) html += `<span class="badge per">PER (LTM) ${p.trailing}x</span>`;
+  if (p.forward  != null) html += `<span class="badge per">Forward PER ${p.forward}x</span>`;
+  return html;
 }
 
 function buildChart(canvasId, dates, periodData) {
@@ -128,7 +136,7 @@ function buildChart(canvasId, dates, periodData) {
   });
 }
 
-function buildCard(symbol, dates, periodData, earningsDates) {
+function buildCard(symbol, dates, periodData, earningsDates, perData) {
   const canvasId = `chart-${symbol}`;
   const card = document.createElement("div");
   card.className = "card";
@@ -150,6 +158,7 @@ function buildCard(symbol, dates, periodData, earningsDates) {
     <div class="card-header">
       <h2>${symbol}</h2>
       ${earningsBadge(symbol, earningsDates)}
+      ${perBadges(symbol, perData)}
     </div>
     <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
     <div class="legend">${legendHtml}</div>`;
@@ -163,6 +172,7 @@ Promise.all([
   if (!history.length) throw new Error("データがありません");
 
   const earningsDates = edData.dates || {};
+  const perData = edData.per || {};
   const dates = history.map(e => e.date);
   const lastEntry = history[history.length - 1];
   const symbols = Object.keys(lastEntry).filter(k => k !== "date");
@@ -183,7 +193,7 @@ Promise.all([
       });
     });
 
-    const card = buildCard(symbol, dates, periods, earningsDates);
+    const card = buildCard(symbol, dates, periods, earningsDates, perData);
     main.appendChild(card);
     buildChart(`chart-${symbol}`, dates, periods);
   });
