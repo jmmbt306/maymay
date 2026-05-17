@@ -71,6 +71,7 @@ function perBadges(symbol, perData) {
   let html = "";
   if (p.trailing != null) html += `<span class="badge per">PER (LTM) ${p.trailing}x</span>`;
   if (p.forward  != null) html += `<span class="badge per">Forward PER ${p.forward}x</span>`;
+  if (p.analysts != null) html += `<span class="badge per">アナリスト ${p.analysts}人</span>`;
   return html;
 }
 

@@ -12,31 +12,38 @@
   "per": {
     "AAPL": {
       "trailing": 36.3,
-      "forward": 31.3
+      "forward": 31.3,
+      "analysts": 43
     },
     "MSFT": {
       "trailing": 25.1,
-      "forward": 21.8
+      "forward": 21.8,
+      "analysts": 54
     },
     "NVDA": {
       "trailing": 46.1,
-      "forward": 19.7
+      "forward": 19.8,
+      "analysts": 57
     },
     "GOOGL": {
       "trailing": 30.3,
-      "forward": 27.5
+      "forward": 27.5,
+      "analysts": 52
     },
     "AMZN": {
       "trailing": 31.6,
-      "forward": 26.8
+      "forward": 26.8,
+      "analysts": 62
     },
     "META": {
       "trailing": 22.3,
-      "forward": 17.0
+      "forward": 17.0,
+      "analysts": 58
     },
     "TSLA": {
       "trailing": 383.9,
-      "forward": 168.0
+      "forward": 168.0,
+      "analysts": 41
     }
   }
 }
