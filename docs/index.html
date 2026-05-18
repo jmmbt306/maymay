@@ -53,16 +53,21 @@ function daysUntil(dateStr) {
 }
 
 function earningsBadge(symbol, earningsDates) {
-  const d = earningsDates[symbol];
-  if (!d) return "";
-  const days = daysUntil(d);
-  const label = days < 0
-    ? `決算済 ${d}`
-    : days === 0
-    ? `本日決算 ${d}`
-    : `次回決算 ${d}（${days}日後）`;
-  const cls = days >= 0 && days <= 14 ? "badge soon" : "badge";
-  return `<span class="${cls}">${label}</span>`;
+  const e = earningsDates[symbol];
+  if (!e) return "";
+  let html = "";
+  if (e.prev) html += `<span class="badge">前回決算 ${e.prev}</span>`;
+  if (e.next) {
+    const days = daysUntil(e.next);
+    const label = days < 0
+      ? `決算済 ${e.next}`
+      : days === 0
+      ? `本日決算 ${e.next}`
+      : `次回決算 ${e.next}（${days}日後）`;
+    const cls = days >= 0 && days <= 14 ? "badge soon" : "badge";
+    html += `<span class="${cls}">${label}</span>`;
+  }
+  return html;
 }
 
 function perBadges(symbol, perData) {
@@ -71,8 +76,13 @@ function perBadges(symbol, perData) {
   let html = "";
   if (p.trailing != null) html += `<span class="badge per">PER (LTM) ${p.trailing}x</span>`;
   if (p.forward  != null) html += `<span class="badge per">Forward PER ${p.forward}x</span>`;
-  if (p.analysts != null) html += `<span class="badge">アナリスト ${p.analysts}人</span>`;
   return html;
+}
+
+function analystBadge(symbol, perData) {
+  const p = (perData || {})[symbol];
+  if (!p || p.analysts == null) return "";
+  return `<span class="badge">アナリスト ${p.analysts}人</span>`;
 }
 
 function buildChart(canvasId, dates, periodData) {
@@ -158,6 +168,7 @@ function buildCard(symbol, dates, periodData, earningsDates, perData) {
   card.innerHTML = `
     <div class="card-header">
       <h2>${symbol}</h2>
+      ${analystBadge(symbol, perData)}
       ${earningsBadge(symbol, earningsDates)}
       ${perBadges(symbol, perData)}
     </div>
