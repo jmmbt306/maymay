@@ -26,6 +26,7 @@
     .badge.per  { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
 
     .chart-wrap { position: relative; height: 300px; }
+    .chart-wrap canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
     .legend { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
     .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; cursor: pointer; }
@@ -51,66 +52,62 @@ const CANDLE_UP   = "#16a34a";
 const CANDLE_DOWN = "#dc2626";
 const OHLC_KEYS   = new Set(["o", "h", "l", "c", "prev_close"]);
 
-// 蝋燭足を Canvas に直接描画するカスタムプラグイン
-const candlestickPlugin = {
-  id: "candlestick",
-  afterRender(chart) {
-    const ohlcData = chart.options.plugins?.candlestick?.ohlcData;
-    if (!ohlcData || !ohlcData.length) return;
-    const { ctx, chartArea, scales } = chart;
-    const x  = scales["x"];
-    const y2 = scales["y2"];
-    if (!x || !y2) return;
+function drawCandlesticks(chart, overlayCanvas, ohlcData) {
+  if (!ohlcData || !ohlcData.length) return;
+  const { chartArea, scales } = chart;
+  const x  = scales["x"];
+  const y2 = scales["y2"];
+  if (!x || !y2 || !chartArea) return;
 
-    // チャートエリア内のみに描画を制限
-    ctx.save();
+  const dpr = window.devicePixelRatio || 1;
+  overlayCanvas.width  = chart.canvas.width;
+  overlayCanvas.height = chart.canvas.height;
+  const ctx = overlayCanvas.getContext("2d");
+  ctx.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height);
+  ctx.scale(dpr, dpr);
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+  ctx.clip();
+
+  const allX = ohlcData.map(d => x.getPixelForValue(d.x));
+  let candleHalf = 6;
+  if (allX.length >= 2) {
+    const minGap = Math.min(...allX.slice(1).map((v, i) => Math.abs(v - allX[i])));
+    candleHalf = Math.min(Math.floor(minGap * 0.35), 10);
+  }
+
+  ohlcData.forEach((d, i) => {
+    const xPx = allX[i];
+    const oPx = y2.getPixelForValue(d.o);
+    const hPx = y2.getPixelForValue(d.h);
+    const lPx = y2.getPixelForValue(d.l);
+    const cPx = y2.getPixelForValue(d.c);
+    const isUp  = d.c >= d.o;
+    const color = isUp ? CANDLE_UP : CANDLE_DOWN;
+    const top   = isUp ? cPx : oPx;
+    const bot   = isUp ? oPx : cPx;
+
+    ctx.strokeStyle = color;
+    ctx.fillStyle   = color;
+    ctx.lineWidth   = 1;
+
     ctx.beginPath();
-    ctx.rect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
-    ctx.clip();
+    ctx.moveTo(xPx, hPx);
+    ctx.lineTo(xPx, lPx);
+    ctx.stroke();
 
-    // 蝋燭の幅：x 軸の全データ点から最小間隔を算出（最大 10px）
-    const allX = ohlcData.map(d => x.getPixelForValue(d.x));
-    let candleHalf = 6;
-    if (allX.length >= 2) {
-      const minGap = Math.min(...allX.slice(1).map((v, i) => Math.abs(v - allX[i])));
-      candleHalf = Math.min(Math.floor(minGap * 0.35), 10);
+    const bodyH = Math.max(bot - top, 1);
+    if (isUp) {
+      ctx.fillRect(xPx - candleHalf, top, candleHalf * 2, bodyH);
+    } else {
+      ctx.strokeRect(xPx - candleHalf, top, candleHalf * 2, bodyH);
     }
+  });
+  ctx.restore();
+}
 
-    ohlcData.forEach((d, i) => {
-      const xPx = allX[i];
-      const oPx = y2.getPixelForValue(d.o);
-      const hPx = y2.getPixelForValue(d.h);
-      const lPx = y2.getPixelForValue(d.l);
-      const cPx = y2.getPixelForValue(d.c);
-      const isUp  = d.c >= d.o;
-      const color = isUp ? CANDLE_UP : CANDLE_DOWN;
-      const top   = isUp ? cPx : oPx;
-      const bot   = isUp ? oPx : cPx;
-
-      ctx.strokeStyle = color;
-      ctx.fillStyle   = color;
-      ctx.lineWidth   = 1;
-
-      // ヒゲ
-      ctx.beginPath();
-      ctx.moveTo(xPx, hPx);
-      ctx.lineTo(xPx, lPx);
-      ctx.stroke();
-
-      // ボディ
-      const bodyH = Math.max(bot - top, 1);
-      if (isUp) {
-        ctx.fillRect(xPx - candleHalf, top, candleHalf * 2, bodyH);
-      } else {
-        ctx.strokeRect(xPx - candleHalf, top, candleHalf * 2, bodyH);
-      }
-    });
-
-    ctx.restore(); // クリッピング解除
-  },
-};
-
-Chart.register(candlestickPlugin);
 
 function daysUntil(dateStr) {
   return Math.ceil((new Date(dateStr) - new Date()) / 86400000);
@@ -144,7 +141,7 @@ function analystBadge(symbol, perData) {
   return `<span class="badge">アナリスト ${p.analysts}人</span>`;
 }
 
-function buildChart(canvasId, history, symbol) {
+function buildChart(canvasId, overlayId, history, symbol) {
   const periodArrays = {};
   const ohlcData = [];
 
@@ -187,6 +184,8 @@ function buildChart(canvasId, history, symbol) {
     });
   }
 
+  const overlayCanvas = document.getElementById(overlayId);
+
   const chart = new Chart(document.getElementById(canvasId), {
     type: "line",
     data: { datasets },
@@ -194,9 +193,12 @@ function buildChart(canvasId, history, symbol) {
       responsive: true,
       maintainAspectRatio: false,
       interaction: { mode: "index", intersect: false },
+      animation: {
+        onComplete: () => drawCandlesticks(chart, overlayCanvas, ohlcData),
+      },
+      onResize: (ch) => drawCandlesticks(ch, overlayCanvas, ohlcData),
       plugins: {
         legend: { display: false },
-        candlestick: { ohlcData },
         tooltip: {
           filter: item => item.dataset.label !== "_ohlc_range",
           callbacks: {
@@ -259,7 +261,7 @@ function buildCard(symbol, history, earningsDates, perData) {
       ${earningsBadge(symbol, earningsDates)}
       ${perBadges(symbol, perData)}
     </div>
-    <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
+    <div class="chart-wrap"><canvas id="${canvasId}"></canvas><canvas id="candle-${symbol}" style="pointer-events:none"></canvas></div>
     <div class="legend">${legendHtml}</div>`;
   return card;
 }
@@ -284,7 +286,7 @@ Promise.all([
   symbols.forEach(symbol => {
     const card = buildCard(symbol, history, earningsDates, perData);
     main.appendChild(card);
-    buildChart(`chart-${symbol}`, history, symbol);
+    buildChart(`chart-${symbol}`, `candle-${symbol}`, history, symbol);
   });
 
   document.querySelectorAll(".legend-item[data-idx]").forEach(item => {
