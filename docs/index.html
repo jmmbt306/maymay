@@ -55,7 +55,7 @@ const OHLC_KEYS   = new Set(["o", "h", "l", "c", "prev_close"]);
 const candlestickPlugin = {
   id: "candlestick",
   afterDatasetsDraw(chart) {
-    const ohlcData = chart._ohlcData;
+    const ohlcData = chart.options.plugins?.candlestick?.ohlcData;
     if (!ohlcData || !ohlcData.length) return;
     const { ctx, chartArea, scales: { x, y2 } } = chart;
     if (!y2) return;
@@ -195,6 +195,7 @@ function buildChart(canvasId, history, symbol) {
       interaction: { mode: "index", intersect: false },
       plugins: {
         legend: { display: false },
+        candlestick: { ohlcData },
         tooltip: {
           filter: item => item.dataset.label !== "_ohlc_range",
           callbacks: {
@@ -223,8 +224,6 @@ function buildChart(canvasId, history, symbol) {
     },
   });
 
-  // プラグインが参照できるよう OHLC データをチャートに付与
-  chart._ohlcData = ohlcData;
   return chart;
 }
 
