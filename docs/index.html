@@ -36,10 +36,15 @@
       font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 999px;
       background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;
     }
+    .badge.analyst { background: #fdf2f8; color: #9d174d; border-color: #f9a8d4; }
     .badge.soon { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
     .badge.per  { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
 
     .chart-wrap { height: 300px; }
+
+    .tv-section { margin-top: 1.5rem; border-top: 1px solid #e5e7eb; padding-top: 1.2rem; }
+    .tv-section h3 { font-size: 0.85rem; color: #666; margin-bottom: 0.8rem; }
+    .tv-widget-container { height: 400px; }
 
     .legend { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
     .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; cursor: pointer; }
@@ -92,7 +97,40 @@ function perBadges(symbol, perData) {
 function analystBadge(symbol, perData) {
   const p = (perData || {})[symbol];
   if (!p || p.analysts == null) return "";
-  return `<span class="badge">アナリスト ${p.analysts}人</span>`;
+  return `<span class="badge analyst">アナリスト ${p.analysts}人</span>`;
+}
+
+function buildTradingViewWidget(symbol) {
+  const section = document.createElement("div");
+  section.className = "tv-section";
+  section.innerHTML = `<h3>株価チャート (TradingView)</h3>`;
+
+  const container = document.createElement("div");
+  container.className = "tradingview-widget-container tv-widget-container";
+
+  const widgetDiv = document.createElement("div");
+  widgetDiv.className = "tradingview-widget-container__widget";
+  widgetDiv.style.height = "100%";
+  container.appendChild(widgetDiv);
+
+  const script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+  script.async = true;
+  script.textContent = JSON.stringify({
+    autosize: true,
+    symbol: symbol,
+    interval: "D",
+    timezone: "America/New_York",
+    theme: "light",
+    style: "1",
+    locale: "ja",
+    allow_symbol_change: false,
+    calendar: false,
+  });
+  container.appendChild(script);
+  section.appendChild(container);
+  return section;
 }
 
 function buildChart(canvasId, history, symbol) {
@@ -181,6 +219,7 @@ function buildCard(symbol, history, earningsDates, perData) {
     </div>
     <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
     <div class="legend">${legendHtml}</div>`;
+  card.appendChild(buildTradingViewWidget(symbol));
   return card;
 }
 
