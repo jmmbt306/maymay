@@ -57,8 +57,14 @@ const candlestickPlugin = {
   afterDatasetsDraw(chart) {
     const ohlcData = chart._ohlcData;
     if (!ohlcData || !ohlcData.length) return;
-    const { ctx, scales: { x, y2 } } = chart;
+    const { ctx, chartArea, scales: { x, y2 } } = chart;
     if (!y2) return;
+
+    // チャートエリア内のみに描画を制限
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+    ctx.clip();
 
     // 蝋燭の幅をデータ点の間隔から算出（最大 12px）
     const allX = ohlcData.map(d => x.getPixelForValue(new Date(d.x).getTime()));
@@ -80,7 +86,6 @@ const candlestickPlugin = {
       const top   = isUp ? cPx : oPx;
       const bot   = isUp ? oPx : cPx;
 
-      ctx.save();
       ctx.strokeStyle = color;
       ctx.fillStyle   = color;
       ctx.lineWidth   = 1;
@@ -91,15 +96,16 @@ const candlestickPlugin = {
       ctx.lineTo(xPx, lPx);
       ctx.stroke();
 
-      // ボディ（中空: 陽線=塗りつぶし、陰線=輪郭のみ も選択可）
+      // ボディ
       const bodyH = Math.max(bot - top, 1);
       if (isUp) {
         ctx.fillRect(xPx - candleHalf, top, candleHalf * 2, bodyH);
       } else {
         ctx.strokeRect(xPx - candleHalf, top, candleHalf * 2, bodyH);
       }
-      ctx.restore();
     });
+
+    ctx.restore(); // クリッピング解除
   },
 };
 
