@@ -54,8 +54,8 @@ const OHLC_KEYS   = new Set(["o", "h", "l", "c", "prev_close"]);
 // 蝋燭足を Canvas に直接描画するカスタムプラグイン
 const candlestickPlugin = {
   id: "candlestick",
-  afterDatasetsDraw(chart) {
-    const ohlcData = chart.options.plugins?.candlestick?.ohlcData;
+  afterDatasetsDraw(chart, args, options) {
+    const ohlcData = options?.ohlcData;
     if (!ohlcData || !ohlcData.length) return;
     const { ctx, chartArea, scales: { x, y2 } } = chart;
     if (!y2) return;
