@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fetch EPS Data</title>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1/dist/chartjs-adapter-luxon.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial@0.2.1/dist/chartjs-chart-financial.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; }
@@ -14,8 +17,8 @@
     main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
 
     .card { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08); margin-bottom: 2rem; padding: 1.5rem; }
-    .card-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
-    .card-header h2 { font-size: 1.05rem; }
+    .card-header { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .card-header h2 { font-size: 1.05rem; margin-right: 0.4rem; }
     .badge {
       font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 999px;
       background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;
@@ -23,11 +26,12 @@
     .badge.soon { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
     .badge.per  { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
 
-    .chart-wrap { position: relative; height: 280px; }
+    .chart-wrap { position: relative; height: 300px; }
 
     .legend { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
     .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; cursor: pointer; }
     .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .legend-candle { width: 10px; height: 14px; border-radius: 1px; flex-shrink: 0; position: relative; }
 
     #loading { text-align: center; padding: 3rem; color: #666; }
     .error { color: #c0392b; padding: 2rem; }
@@ -45,11 +49,12 @@
 <script>
 const PERIOD_LABELS = { "0q": "今四半期", "+1q": "来四半期", "0y": "今年度", "+1y": "来年度" };
 const COLORS = ["#2563eb", "#16a34a", "#dc2626", "#d97706", "#7c3aed", "#0891b2"];
-const PRICE_COLOR = "#f59e0b";
+const CANDLE_UP   = "#16a34a";
+const CANDLE_DOWN = "#dc2626";
+const OHLC_KEYS   = new Set(["o", "h", "l", "c"]);
 
 function daysUntil(dateStr) {
-  const diff = new Date(dateStr) - new Date();
-  return Math.ceil(diff / (1000 * 60 * 60 * 24));
+  return Math.ceil((new Date(dateStr) - new Date()) / 86400000);
 }
 
 function earningsBadge(symbol, earningsDates) {
@@ -59,13 +64,8 @@ function earningsBadge(symbol, earningsDates) {
   if (e.prev) html += `<span class="badge">前回決算 ${e.prev}</span>`;
   if (e.next) {
     const days = daysUntil(e.next);
-    const label = days < 0
-      ? `決算済 ${e.next}`
-      : days === 0
-      ? `本日決算 ${e.next}`
-      : `次回決算 ${e.next}（${days}日後）`;
-    const cls = days >= 0 && days <= 14 ? "badge soon" : "badge";
-    html += `<span class="${cls}">${label}</span>`;
+    const label = days < 0 ? `決算済 ${e.next}` : days === 0 ? `本日決算 ${e.next}` : `次回決算 ${e.next}（${days}日後）`;
+    html += `<span class="${days >= 0 && days <= 14 ? "badge soon" : "badge"}">${label}</span>`;
   }
   return html;
 }
@@ -85,11 +85,31 @@ function analystBadge(symbol, perData) {
   return `<span class="badge">アナリスト ${p.analysts}人</span>`;
 }
 
-function buildChart(canvasId, dates, periodData) {
-  const epsPeriods = Object.keys(periodData).filter(p => p !== "prev_close");
-  const datasets = epsPeriods.map((period, i) => ({
+function buildChart(canvasId, history, symbol) {
+  const epsPeriods = new Set();
+  const ohlcData = [];
+
+  // 期間ごとに EPS データを集める
+  const periodArrays = {};
+  history.forEach(entry => {
+    const d = entry[symbol];
+    const dateStr = entry.date;
+    if (!d) return;
+    Object.entries(d).forEach(([k, v]) => {
+      if (OHLC_KEYS.has(k)) return;
+      epsPeriods.add(k);
+      if (!periodArrays[k]) periodArrays[k] = [];
+      if (v !== null) periodArrays[k].push({ x: dateStr, y: v });
+    });
+    if (d.o != null && d.h != null && d.l != null && d.c != null) {
+      ohlcData.push({ x: dateStr, o: d.o, h: d.h, l: d.l, c: d.c });
+    }
+  });
+
+  const datasets = [...epsPeriods].map((period, i) => ({
+    type: "line",
     label: PERIOD_LABELS[period] || period,
-    data: periodData[period],
+    data: periodArrays[period] || [],
     borderColor: COLORS[i % COLORS.length],
     backgroundColor: COLORS[i % COLORS.length] + "22",
     tension: 0.3,
@@ -98,22 +118,19 @@ function buildChart(canvasId, dates, periodData) {
     yAxisID: "y",
   }));
 
-  if (periodData["prev_close"]) {
+  if (ohlcData.length > 0) {
     datasets.push({
-      type: "bar",
-      label: "前日終値",
-      data: periodData["prev_close"],
-      backgroundColor: PRICE_COLOR + "99",
-      borderColor: PRICE_COLOR,
-      borderWidth: 1,
-      borderRadius: 2,
+      type: "candlestick",
+      label: "株価",
+      data: ohlcData,
+      color: { up: CANDLE_UP, down: CANDLE_DOWN, unchanged: "#888" },
       yAxisID: "y2",
     });
   }
 
   return new Chart(document.getElementById(canvasId), {
     type: "line",
-    data: { labels: dates, datasets },
+    data: { datasets },
     options: {
       responsive: true,
       maintainAspectRatio: false,
@@ -122,14 +139,22 @@ function buildChart(canvasId, dates, periodData) {
         legend: { display: false },
         tooltip: {
           callbacks: {
-            label: ctx => ctx.dataset.yAxisID === "y2"
-              ? `${ctx.dataset.label}: $${ctx.parsed.y?.toFixed(2) ?? "-"}`
-              : `${ctx.dataset.label}: $${ctx.parsed.y?.toFixed(2) ?? "-"}`,
+            label: ctx => {
+              if (ctx.dataset.type === "candlestick") {
+                const d = ctx.raw;
+                return `株価  始${d.o}  高${d.h}  安${d.l}  終${d.c}`;
+              }
+              return `${ctx.dataset.label}: $${ctx.parsed.y?.toFixed(2) ?? "-"}`;
+            },
           },
         },
       },
       scales: {
-        x: { ticks: { maxTicksLimit: 12 } },
+        x: {
+          type: "time",
+          time: { unit: "day", tooltipFormat: "yyyy-MM-dd", displayFormats: { day: "MM/dd" } },
+          ticks: { maxTicksLimit: 12 },
+        },
         y: {
           position: "left",
           title: { display: true, text: "EPS ($)" },
@@ -146,23 +171,27 @@ function buildChart(canvasId, dates, periodData) {
   });
 }
 
-function buildCard(symbol, dates, periodData, earningsDates, perData) {
+function buildCard(symbol, history, earningsDates, perData) {
   const canvasId = `chart-${symbol}`;
   const card = document.createElement("div");
   card.className = "card";
 
-  const epsPeriods = Object.keys(periodData).filter(p => p !== "prev_close");
-  const allPeriods = [...epsPeriods, ...(periodData["prev_close"] ? ["prev_close"] : [])];
-  const legendHtml = allPeriods.map((p, i) => {
-    const color = p === "prev_close" ? PRICE_COLOR : COLORS[epsPeriods.indexOf(p) % COLORS.length];
-    const dotStyle = p === "prev_close"
-      ? `background:repeating-linear-gradient(90deg,${color} 0 5px,transparent 5px 9px)`
-      : `background:${color}`;
-    return `<span class="legend-item" data-canvas="${canvasId}" data-idx="${i}">
-      <span class="legend-dot" style="${dotStyle}"></span>
-      ${p === "prev_close" ? "前日終値" : (PERIOD_LABELS[p] || p)}
-    </span>`;
-  }).join("");
+  const lastEntry = history[history.length - 1][symbol] || {};
+  const epsPeriods = Object.keys(lastEntry).filter(k => !OHLC_KEYS.has(k));
+  const hasCandle = lastEntry.o != null;
+
+  const legendHtml = [
+    ...epsPeriods.map((p, i) => `
+      <span class="legend-item" data-canvas="${canvasId}" data-idx="${i}">
+        <span class="legend-dot" style="background:${COLORS[i % COLORS.length]}"></span>
+        ${PERIOD_LABELS[p] || p}
+      </span>`),
+    hasCandle ? `
+      <span class="legend-item" data-canvas="${canvasId}" data-idx="${epsPeriods.length}">
+        <span class="legend-candle" style="background:${CANDLE_UP};border:1px solid #888"></span>
+        株価
+      </span>` : "",
+  ].join("");
 
   card.innerHTML = `
     <div class="card-header">
@@ -178,13 +207,12 @@ function buildCard(symbol, dates, periodData, earningsDates, perData) {
 
 Promise.all([
   fetch("data/history.json").then(r => r.json()),
-  fetch("data/earnings_dates.json").then(r => r.json()).catch(() => ({ dates: {} })),
+  fetch("data/earnings_dates.json").then(r => r.json()).catch(() => ({ dates: {}, per: {} })),
 ]).then(([history, edData]) => {
   if (!history.length) throw new Error("データがありません");
 
   const earningsDates = edData.dates || {};
   const perData = edData.per || {};
-  const dates = history.map(e => e.date);
   const lastEntry = history[history.length - 1];
   const symbols = Object.keys(lastEntry).filter(k => k !== "date");
 
@@ -195,18 +223,9 @@ Promise.all([
   main.innerHTML = "";
 
   symbols.forEach(symbol => {
-    const periods = {};
-    history.forEach((entry, i) => {
-      if (!entry[symbol]) return;
-      Object.entries(entry[symbol]).forEach(([period, val]) => {
-        if (!periods[period]) periods[period] = Array(history.length).fill(null);
-        periods[period][i] = val;
-      });
-    });
-
-    const card = buildCard(symbol, dates, periods, earningsDates, perData);
+    const card = buildCard(symbol, history, earningsDates, perData);
     main.appendChild(card);
-    buildChart(`chart-${symbol}`, dates, periods);
+    buildChart(`chart-${symbol}`, history, symbol);
   });
 
   document.querySelectorAll(".legend-item").forEach(item => {
