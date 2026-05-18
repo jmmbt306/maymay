@@ -49,7 +49,7 @@ const PERIOD_LABELS = { "0q": "今四半期", "+1q": "来四半期", "0y": "今�
 const COLORS = ["#2563eb", "#16a34a", "#dc2626", "#d97706", "#7c3aed", "#0891b2"];
 const CANDLE_UP   = "#16a34a";
 const CANDLE_DOWN = "#dc2626";
-const OHLC_KEYS   = new Set(["o", "h", "l", "c"]);
+const OHLC_KEYS   = new Set(["o", "h", "l", "c", "prev_close"]);
 
 // 蝋燭足を Canvas に直接描画するカスタムプラグイン
 const candlestickPlugin = {
