@@ -54,11 +54,13 @@ const OHLC_KEYS   = new Set(["o", "h", "l", "c", "prev_close"]);
 // 蝋燭足を Canvas に直接描画するカスタムプラグイン
 const candlestickPlugin = {
   id: "candlestick",
-  afterDatasetsDraw(chart, args, options) {
-    const ohlcData = options?.ohlcData;
+  afterRender(chart) {
+    const ohlcData = chart.options.plugins?.candlestick?.ohlcData;
     if (!ohlcData || !ohlcData.length) return;
-    const { ctx, chartArea, scales: { x, y2 } } = chart;
-    if (!y2) return;
+    const { ctx, chartArea, scales } = chart;
+    const x  = scales["x"];
+    const y2 = scales["y2"];
+    if (!x || !y2) return;
 
     // チャートエリア内のみに描画を制限
     ctx.save();
@@ -66,12 +68,11 @@ const candlestickPlugin = {
     ctx.rect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
     ctx.clip();
 
-    // 蝋燭の幅をデータ点の間隔から算出（最大 12px）
-    const allX = ohlcData.map(d => x.getPixelForValue(new Date(d.x).getTime()));
+    // 蝋燭の幅：x 軸の全データ点から最小間隔を算出（最大 10px）
+    const allX = ohlcData.map(d => x.getPixelForValue(d.x));
     let candleHalf = 6;
     if (allX.length >= 2) {
-      const gaps = allX.slice(1).map((v, i) => Math.abs(v - allX[i]));
-      const minGap = Math.min(...gaps);
+      const minGap = Math.min(...allX.slice(1).map((v, i) => Math.abs(v - allX[i])));
       candleHalf = Math.min(Math.floor(minGap * 0.35), 10);
     }
 
@@ -90,7 +91,7 @@ const candlestickPlugin = {
       ctx.fillStyle   = color;
       ctx.lineWidth   = 1;
 
-      // ヒゲ（上下）
+      // ヒゲ
       ctx.beginPath();
       ctx.moveTo(xPx, hPx);
       ctx.lineTo(xPx, lPx);
