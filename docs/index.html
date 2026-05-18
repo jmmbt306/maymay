@@ -7,7 +7,6 @@
   <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1/dist/chartjs-adapter-luxon.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial@0.2.1/dist/chartjs-chart-financial.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; }
@@ -31,7 +30,6 @@
     .legend { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
     .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; cursor: pointer; }
     .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-    .legend-candle { width: 10px; height: 14px; border-radius: 1px; flex-shrink: 0; position: relative; }
 
     #loading { text-align: center; padding: 3rem; color: #666; }
     .error { color: #c0392b; padding: 2rem; }
@@ -52,6 +50,60 @@ const COLORS = ["#2563eb", "#16a34a", "#dc2626", "#d97706", "#7c3aed", "#0891b2"
 const CANDLE_UP   = "#16a34a";
 const CANDLE_DOWN = "#dc2626";
 const OHLC_KEYS   = new Set(["o", "h", "l", "c"]);
+
+// 蝋燭足を Canvas に直接描画するカスタムプラグイン
+const candlestickPlugin = {
+  id: "candlestick",
+  afterDatasetsDraw(chart) {
+    const ohlcData = chart._ohlcData;
+    if (!ohlcData || !ohlcData.length) return;
+    const { ctx, scales: { x, y2 } } = chart;
+    if (!y2) return;
+
+    // 蝋燭の幅をデータ点の間隔から算出（最大 12px）
+    const allX = ohlcData.map(d => x.getPixelForValue(new Date(d.x).getTime()));
+    let candleHalf = 6;
+    if (allX.length >= 2) {
+      const gaps = allX.slice(1).map((v, i) => Math.abs(v - allX[i]));
+      const minGap = Math.min(...gaps);
+      candleHalf = Math.min(Math.floor(minGap * 0.35), 10);
+    }
+
+    ohlcData.forEach((d, i) => {
+      const xPx = allX[i];
+      const oPx = y2.getPixelForValue(d.o);
+      const hPx = y2.getPixelForValue(d.h);
+      const lPx = y2.getPixelForValue(d.l);
+      const cPx = y2.getPixelForValue(d.c);
+      const isUp  = d.c >= d.o;
+      const color = isUp ? CANDLE_UP : CANDLE_DOWN;
+      const top   = isUp ? cPx : oPx;
+      const bot   = isUp ? oPx : cPx;
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.fillStyle   = color;
+      ctx.lineWidth   = 1;
+
+      // ヒゲ（上下）
+      ctx.beginPath();
+      ctx.moveTo(xPx, hPx);
+      ctx.lineTo(xPx, lPx);
+      ctx.stroke();
+
+      // ボディ（中空: 陽線=塗りつぶし、陰線=輪郭のみ も選択可）
+      const bodyH = Math.max(bot - top, 1);
+      if (isUp) {
+        ctx.fillRect(xPx - candleHalf, top, candleHalf * 2, bodyH);
+      } else {
+        ctx.strokeRect(xPx - candleHalf, top, candleHalf * 2, bodyH);
+      }
+      ctx.restore();
+    });
+  },
+};
+
+Chart.register(candlestickPlugin);
 
 function daysUntil(dateStr) {
   return Math.ceil((new Date(dateStr) - new Date()) / 86400000);
@@ -86,30 +138,27 @@ function analystBadge(symbol, perData) {
 }
 
 function buildChart(canvasId, history, symbol) {
-  const epsPeriods = new Set();
+  const periodArrays = {};
   const ohlcData = [];
 
-  // 期間ごとに EPS データを集める
-  const periodArrays = {};
   history.forEach(entry => {
     const d = entry[symbol];
-    const dateStr = entry.date;
     if (!d) return;
     Object.entries(d).forEach(([k, v]) => {
       if (OHLC_KEYS.has(k)) return;
-      epsPeriods.add(k);
       if (!periodArrays[k]) periodArrays[k] = [];
-      if (v !== null) periodArrays[k].push({ x: dateStr, y: v });
+      if (v !== null) periodArrays[k].push({ x: entry.date, y: v });
     });
     if (d.o != null && d.h != null && d.l != null && d.c != null) {
-      ohlcData.push({ x: dateStr, o: d.o, h: d.h, l: d.l, c: d.c });
+      ohlcData.push({ x: entry.date, o: d.o, h: d.h, l: d.l, c: d.c });
     }
   });
 
-  const datasets = [...epsPeriods].map((period, i) => ({
+  // EPS 折れ線データセット
+  const datasets = Object.entries(periodArrays).map(([period, data], i) => ({
     type: "line",
     label: PERIOD_LABELS[period] || period,
-    data: periodArrays[period] || [],
+    data,
     borderColor: COLORS[i % COLORS.length],
     backgroundColor: COLORS[i % COLORS.length] + "22",
     tension: 0.3,
@@ -118,17 +167,20 @@ function buildChart(canvasId, history, symbol) {
     yAxisID: "y",
   }));
 
+  // y2 スケール確定用に高値・安値を透明データセットとして追加
   if (ohlcData.length > 0) {
     datasets.push({
-      type: "candlestick",
-      label: "株価",
-      data: ohlcData,
-      color: { up: CANDLE_UP, down: CANDLE_DOWN, unchanged: "#888" },
+      type: "scatter",
+      label: "_ohlc_range",
+      data: ohlcData.flatMap(d => [{ x: d.x, y: d.h }, { x: d.x, y: d.l }]),
+      pointRadius: 0,
+      borderColor: "transparent",
+      backgroundColor: "transparent",
       yAxisID: "y2",
     });
   }
 
-  return new Chart(document.getElementById(canvasId), {
+  const chart = new Chart(document.getElementById(canvasId), {
     type: "line",
     data: { datasets },
     options: {
@@ -138,14 +190,9 @@ function buildChart(canvasId, history, symbol) {
       plugins: {
         legend: { display: false },
         tooltip: {
+          filter: item => item.dataset.label !== "_ohlc_range",
           callbacks: {
-            label: ctx => {
-              if (ctx.dataset.type === "candlestick") {
-                const d = ctx.raw;
-                return `株価  始${d.o}  高${d.h}  安${d.l}  終${d.c}`;
-              }
-              return `${ctx.dataset.label}: $${ctx.parsed.y?.toFixed(2) ?? "-"}`;
-            },
+            label: ctx => `${ctx.dataset.label}: $${ctx.parsed.y?.toFixed(2) ?? "-"}`,
           },
         },
       },
@@ -169,6 +216,10 @@ function buildChart(canvasId, history, symbol) {
       },
     },
   });
+
+  // プラグインが参照できるよう OHLC データをチャートに付与
+  chart._ohlcData = ohlcData;
+  return chart;
 }
 
 function buildCard(symbol, history, earningsDates, perData) {
@@ -178,7 +229,7 @@ function buildCard(symbol, history, earningsDates, perData) {
 
   const lastEntry = history[history.length - 1][symbol] || {};
   const epsPeriods = Object.keys(lastEntry).filter(k => !OHLC_KEYS.has(k));
-  const hasCandle = lastEntry.o != null;
+  const hasCandle  = lastEntry.o != null;
 
   const legendHtml = [
     ...epsPeriods.map((p, i) => `
@@ -187,9 +238,11 @@ function buildCard(symbol, history, earningsDates, perData) {
         ${PERIOD_LABELS[p] || p}
       </span>`),
     hasCandle ? `
-      <span class="legend-item" data-canvas="${canvasId}" data-idx="${epsPeriods.length}">
-        <span class="legend-candle" style="background:${CANDLE_UP};border:1px solid #888"></span>
-        株価
+      <span class="legend-item">
+        <span class="legend-dot" style="background:${CANDLE_UP}"></span>株価（上昇）
+      </span>
+      <span class="legend-item">
+        <span class="legend-dot" style="background:${CANDLE_DOWN}"></span>株価（下落）
       </span>` : "",
   ].join("");
 
@@ -228,7 +281,7 @@ Promise.all([
     buildChart(`chart-${symbol}`, history, symbol);
   });
 
-  document.querySelectorAll(".legend-item").forEach(item => {
+  document.querySelectorAll(".legend-item[data-idx]").forEach(item => {
     item.addEventListener("click", () => {
       const chart = Chart.getChart(item.dataset.canvas);
       const idx = parseInt(item.dataset.idx);
