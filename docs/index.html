@@ -100,14 +100,13 @@ function buildChart(canvasId, dates, periodData) {
 
   if (periodData["prev_close"]) {
     datasets.push({
+      type: "bar",
       label: "前日終値",
       data: periodData["prev_close"],
+      backgroundColor: PRICE_COLOR + "99",
       borderColor: PRICE_COLOR,
-      backgroundColor: PRICE_COLOR + "22",
-      borderDash: [5, 4],
-      tension: 0.3,
-      pointRadius: 4,
-      pointHoverRadius: 6,
+      borderWidth: 1,
+      borderRadius: 2,
       yAxisID: "y2",
     });
   }
