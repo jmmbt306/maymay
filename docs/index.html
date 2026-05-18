@@ -15,7 +15,21 @@
     header p  { font-size: 0.8rem; opacity: 0.7; margin-top: 0.3rem; }
     main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
 
-    .card { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08); margin-bottom: 2rem; padding: 1.5rem; }
+    .tab-bar {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem;
+    }
+    .tab-btn {
+      padding: 0.45rem 1.1rem; border-radius: 999px; border: 1.5px solid #bfdbfe;
+      background: #fff; color: #1d4ed8; font-size: 0.9rem; cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .tab-btn.active {
+      background: #1d4ed8; color: #fff; border-color: #1d4ed8;
+    }
+    .tab-btn:hover:not(.active) { background: #eff6ff; }
+
+    .card { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08); margin-bottom: 2rem; padding: 1.5rem; display: none; }
+    .card.active { display: block; }
     .card-header { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 1rem; flex-wrap: wrap; }
     .card-header h2 { font-size: 1.05rem; margin-right: 0.4rem; }
     .badge {
@@ -234,6 +248,7 @@ function buildCard(symbol, history, earningsDates, perData) {
   const canvasId = `chart-${symbol}`;
   const card = document.createElement("div");
   card.className = "card";
+  card.dataset.symbol = symbol;
 
   const lastEntry = history[history.length - 1][symbol] || {};
   const epsPeriods = Object.keys(lastEntry).filter(k => !OHLC_KEYS.has(k));
@@ -283,10 +298,36 @@ Promise.all([
   const main = document.getElementById("main");
   main.innerHTML = "";
 
-  symbols.forEach(symbol => {
+  // タブバー
+  const tabBar = document.createElement("div");
+  tabBar.className = "tab-bar";
+  symbols.forEach((symbol, i) => {
+    const btn = document.createElement("button");
+    btn.className = "tab-btn" + (i === 0 ? " active" : "");
+    btn.textContent = symbol;
+    btn.dataset.symbol = symbol;
+    tabBar.appendChild(btn);
+  });
+  main.appendChild(tabBar);
+
+  // カードを生成（最初の1枚だけ active）
+  symbols.forEach((symbol, i) => {
     const card = buildCard(symbol, history, earningsDates, perData);
+    if (i === 0) card.classList.add("active");
     main.appendChild(card);
     buildChart(`chart-${symbol}`, `candle-${symbol}`, history, symbol);
+  });
+
+  // タブ切り替え
+  tabBar.addEventListener("click", e => {
+    const btn = e.target.closest(".tab-btn");
+    if (!btn) return;
+    const target = btn.dataset.symbol;
+    tabBar.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.symbol === target));
+    main.querySelectorAll(".card").forEach(c => c.classList.toggle("active", c.dataset.symbol === target));
+    // タブ切り替え後にチャートをリサイズ（非表示→表示の際にサイズがずれるため）
+    const chart = Chart.getChart(`chart-${target}`);
+    if (chart) chart.resize();
   });
 
   document.querySelectorAll(".legend-item[data-idx]").forEach(item => {
