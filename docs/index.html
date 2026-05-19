@@ -15,19 +15,31 @@
     header p  { font-size: 0.8rem; opacity: 0.7; margin-top: 0.3rem; }
     main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
 
-    .tab-bar {
-      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem;
+    /* サマリーテーブル */
+    .summary-card {
+      background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      margin-bottom: 1.5rem; overflow: hidden;
     }
-    .tab-btn {
-      padding: 0.45rem 1.1rem; border-radius: 999px; border: 1.5px solid #bfdbfe;
-      background: #fff; color: #1d4ed8; font-size: 0.9rem; cursor: pointer;
-      transition: background 0.15s, color 0.15s;
+    .summary-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .summary-table th {
+      background: #1a1a2e; color: #fff; padding: 0.6rem 1rem;
+      text-align: right; font-weight: 500; white-space: nowrap;
     }
-    .tab-btn.active {
-      background: #1d4ed8; color: #fff; border-color: #1d4ed8;
+    .summary-table th:first-child { text-align: left; }
+    .summary-table td {
+      padding: 0.65rem 1rem; border-bottom: 1px solid #f0f0f0;
+      text-align: right; white-space: nowrap;
     }
-    .tab-btn:hover:not(.active) { background: #eff6ff; }
+    .summary-table td:first-child { text-align: left; font-weight: 600; }
+    .summary-table tr { cursor: pointer; transition: background 0.12s; }
+    .summary-table tr:last-child td { border-bottom: none; }
+    .summary-table tr:hover td { background: #eff6ff; }
+    .summary-table tr.active td { background: #dbeafe; }
+    .up   { color: #16a34a; font-weight: 600; }
+    .down { color: #dc2626; font-weight: 600; }
+    .diff { font-size: 0.75rem; margin-left: 0.3rem; opacity: 0.85; }
 
+    /* チャートカード */
     .card { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08); margin-bottom: 2rem; padding: 1.5rem; display: none; }
     .card.active { display: block; }
     .card-header { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 1rem; flex-wrap: wrap; }
@@ -65,6 +77,7 @@
 
 <script>
 const PERIOD_LABELS = { "0q": "今四半期", "+1q": "来四半期", "0y": "今年度", "+1y": "来年度" };
+const PERIODS = ["0q", "+1q", "0y", "+1y"];
 const COLORS = ["#2563eb", "#16a34a", "#dc2626", "#d97706", "#7c3aed", "#0891b2"];
 const OHLC_KEYS = new Set(["o", "h", "l", "c", "prev_close"]);
 
@@ -98,6 +111,63 @@ function analystBadge(symbol, perData) {
   const p = (perData || {})[symbol];
   if (!p || p.analysts == null) return "";
   return `<span class="badge analyst">アナリスト ${p.analysts}人</span>`;
+}
+
+function buildSummaryTable(symbols, history) {
+  const last = history[history.length - 1];
+  const prev = history.length >= 2 ? history[history.length - 2] : null;
+
+  const wrap = document.createElement("div");
+  wrap.className = "summary-card";
+
+  const table = document.createElement("table");
+  table.className = "summary-table";
+
+  // ヘッダー
+  const thead = document.createElement("thead");
+  thead.innerHTML = `<tr>
+    <th>銘柄</th>
+    ${PERIODS.map(p => `<th>${PERIOD_LABELS[p] || p}</th>`).join("")}
+  </tr>`;
+  table.appendChild(thead);
+
+  const tbody = document.createElement("tbody");
+  symbols.forEach((symbol, i) => {
+    const cur = last[symbol] || {};
+    const pre = prev ? (prev[symbol] || {}) : {};
+    const tr = document.createElement("tr");
+    if (i === 0) tr.classList.add("active");
+    tr.dataset.symbol = symbol;
+
+    const tdSymbol = document.createElement("td");
+    tdSymbol.textContent = symbol;
+    tr.appendChild(tdSymbol);
+
+    PERIODS.forEach(period => {
+      const td = document.createElement("td");
+      const val = cur[period];
+      const preVal = pre[period];
+      if (val == null) {
+        td.textContent = "—";
+      } else {
+        const formatted = `$${val.toFixed(2)}`;
+        if (preVal != null && val !== preVal) {
+          const diff = val - preVal;
+          const sign = diff > 0 ? "+" : "";
+          td.className = diff > 0 ? "up" : "down";
+          td.innerHTML = `${formatted}<span class="diff">(${sign}${diff.toFixed(2)})</span>`;
+        } else {
+          td.textContent = formatted;
+        }
+      }
+      tr.appendChild(td);
+    });
+
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  wrap.appendChild(table);
+  return { wrap, tbody };
 }
 
 function buildTradingViewWidget(symbol) {
@@ -240,17 +310,11 @@ Promise.all([
   const main = document.getElementById("main");
   main.innerHTML = "";
 
-  const tabBar = document.createElement("div");
-  tabBar.className = "tab-bar";
-  symbols.forEach((symbol, i) => {
-    const btn = document.createElement("button");
-    btn.className = "tab-btn" + (i === 0 ? " active" : "");
-    btn.textContent = symbol;
-    btn.dataset.symbol = symbol;
-    tabBar.appendChild(btn);
-  });
-  main.appendChild(tabBar);
+  // サマリーテーブル
+  const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history);
+  main.appendChild(tableWrap);
 
+  // チャートカード
   symbols.forEach((symbol, i) => {
     const card = buildCard(symbol, history, earningsDates, perData);
     if (i === 0) card.classList.add("active");
@@ -258,11 +322,12 @@ Promise.all([
     buildChart(`chart-${symbol}`, history, symbol);
   });
 
-  tabBar.addEventListener("click", e => {
-    const btn = e.target.closest(".tab-btn");
-    if (!btn) return;
-    const target = btn.dataset.symbol;
-    tabBar.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.symbol === target));
+  // テーブル行クリックで切り替え
+  tbody.addEventListener("click", e => {
+    const tr = e.target.closest("tr");
+    if (!tr) return;
+    const target = tr.dataset.symbol;
+    tbody.querySelectorAll("tr").forEach(r => r.classList.toggle("active", r.dataset.symbol === target));
     main.querySelectorAll(".card").forEach(c => c.classList.toggle("active", c.dataset.symbol === target));
     const chart = Chart.getChart(`chart-${target}`);
     if (chart) chart.resize();
