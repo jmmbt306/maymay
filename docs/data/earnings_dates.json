@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-18",
+  "updated": "2026-05-19",
   "dates": {
     "AAPL": {
       "next": "2026-07-30",
@@ -37,23 +37,23 @@
       "analysts": 43
     },
     "MSFT": {
-      "trailing": 25.0,
-      "forward": 21.7,
+      "trailing": 25.3,
+      "forward": 21.9,
       "analysts": 54
     },
     "NVDA": {
-      "trailing": 45.3,
+      "trailing": 45.5,
       "forward": 19.5,
       "analysts": 57
     },
     "GOOGL": {
-      "trailing": 30.8,
-      "forward": 27.9,
+      "trailing": 30.3,
+      "forward": 27.5,
       "analysts": 52
     },
     "AMZN": {
-      "trailing": 32.1,
-      "forward": 27.3,
+      "trailing": 31.6,
+      "forward": 27.0,
       "analysts": 62
     },
     "META": {
@@ -63,7 +63,7 @@
     },
     "TSLA": {
       "trailing": 372.7,
-      "forward": 163.1,
+      "forward": 163.4,
       "analysts": 41
     }
   }
