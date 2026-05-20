@@ -57,6 +57,12 @@
     .tv-section { margin-top: 1.5rem; border-top: 1px solid #e5e7eb; padding-top: 1.2rem; }
     .tv-section h3 { font-size: 0.85rem; color: #666; margin-bottom: 0.8rem; }
     .tv-widget-container { height: 400px; }
+    .tv-load-btn {
+      display: inline-block; padding: 0.4rem 1rem; border-radius: 6px;
+      border: 1.5px solid #bfdbfe; background: #fff; color: #1d4ed8;
+      font-size: 0.85rem; cursor: pointer;
+    }
+    .tv-load-btn:hover { background: #eff6ff; }
 
     .legend { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
     .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; cursor: pointer; }
@@ -170,36 +176,34 @@ function buildSummaryTable(symbols, history, earningsDates) {
   return { wrap, tbody };
 }
 
-function buildTradingViewWidget(symbol) {
+function buildTradingViewSection(symbol) {
   const section = document.createElement("div");
   section.className = "tv-section";
-  section.innerHTML = `<h3>株価チャート (TradingView)</h3>`;
 
-  const container = document.createElement("div");
-  container.className = "tradingview-widget-container tv-widget-container";
-
-  const widgetDiv = document.createElement("div");
-  widgetDiv.className = "tradingview-widget-container__widget";
-  widgetDiv.style.height = "100%";
-  container.appendChild(widgetDiv);
-
-  const script = document.createElement("script");
-  script.type = "text/javascript";
-  script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
-  script.async = true;
-  script.textContent = JSON.stringify({
-    autosize: true,
-    symbol: symbol,
-    interval: "D",
-    timezone: "America/New_York",
-    theme: "light",
-    style: "1",
-    locale: "ja",
-    allow_symbol_change: false,
-    calendar: false,
+  const btn = document.createElement("button");
+  btn.className = "tv-load-btn";
+  btn.textContent = "TradingView で株価チャートを表示";
+  btn.addEventListener("click", () => {
+    btn.remove();
+    const container = document.createElement("div");
+    container.className = "tradingview-widget-container tv-widget-container";
+    const widgetDiv = document.createElement("div");
+    widgetDiv.className = "tradingview-widget-container__widget";
+    widgetDiv.style.height = "100%";
+    container.appendChild(widgetDiv);
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    script.async = true;
+    script.textContent = JSON.stringify({
+      autosize: true, symbol, interval: "D",
+      timezone: "America/New_York", theme: "light",
+      style: "1", locale: "ja", allow_symbol_change: false, calendar: false,
+    });
+    container.appendChild(script);
+    section.appendChild(container);
   });
-  container.appendChild(script);
-  section.appendChild(container);
+  section.appendChild(btn);
   return section;
 }
 
@@ -288,22 +292,9 @@ function buildCard(symbol, history, earningsDates, perData) {
       ${perBadges(symbol, perData)}
     </div>
     <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
-    <div class="legend">${legendHtml}</div>
-    <div class="tv-placeholder"></div>`;
+    <div class="legend">${legendHtml}</div>`;
+  card.appendChild(buildTradingViewSection(symbol));
   return card;
-}
-
-function activateCard(symbol, history) {
-  const card = document.querySelector(`.card[data-symbol="${symbol}"]`);
-  if (!card || card.dataset.initialized) return;
-  card.dataset.initialized = "1";
-
-  buildChart(`chart-${symbol}`, history, symbol);
-
-  const placeholder = card.querySelector(".tv-placeholder");
-  if (placeholder) {
-    placeholder.replaceWith(buildTradingViewWidget(symbol));
-  }
 }
 
 Promise.all([
@@ -337,24 +328,21 @@ Promise.all([
   const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates);
   main.appendChild(tableWrap);
 
-  // チャートカード（プレースホルダのみ）
+  // チャートカードを全件生成・チャート描画
   symbols.forEach((symbol, i) => {
     const card = buildCard(symbol, history, earningsDates, perData);
     if (i === 0) card.classList.add("active");
     main.appendChild(card);
+    buildChart(`chart-${symbol}`, history, symbol);
   });
 
-  // 最初の銘柄だけ即座に初期化
-  if (symbols.length > 0) activateCard(symbols[0], history);
-
-  // テーブル行クリックで切り替え（初回は遅延初期化）
+  // テーブル行クリックで切り替え
   tbody.addEventListener("click", e => {
     const tr = e.target.closest("tr");
     if (!tr) return;
     const target = tr.dataset.symbol;
     tbody.querySelectorAll("tr").forEach(r => r.classList.toggle("active", r.dataset.symbol === target));
     main.querySelectorAll(".card").forEach(c => c.classList.toggle("active", c.dataset.symbol === target));
-    activateCard(target, history);
     const chart = Chart.getChart(`chart-${target}`);
     if (chart) chart.resize();
   });
