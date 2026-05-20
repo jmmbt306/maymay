@@ -121,7 +121,14 @@ function analystBadge(symbol, perData) {
 
 function buildSummaryTable(symbols, history, earningsDates) {
   const last = history[history.length - 1];
-  const prev = history.length >= 2 ? history[history.length - 2] : null;
+
+  // 各銘柄ごとに、直近のデータがある1つ前のエントリを探す
+  function getPrevEntry(symbol) {
+    for (let i = history.length - 2; i >= 0; i--) {
+      if (history[i][symbol]) return history[i][symbol];
+    }
+    return null;
+  }
 
   const wrap = document.createElement("div");
   wrap.className = "summary-card";
@@ -140,7 +147,7 @@ function buildSummaryTable(symbols, history, earningsDates) {
   const tbody = document.createElement("tbody");
   symbols.forEach((symbol, i) => {
     const cur = last[symbol] || {};
-    const pre = prev ? (prev[symbol] || {}) : {};
+    const pre = getPrevEntry(symbol) || {};
     const tr = document.createElement("tr");
     if (i === 0) tr.classList.add("active");
     tr.dataset.symbol = symbol;
