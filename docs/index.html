@@ -288,9 +288,22 @@ function buildCard(symbol, history, earningsDates, perData) {
       ${perBadges(symbol, perData)}
     </div>
     <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
-    <div class="legend">${legendHtml}</div>`;
-  card.appendChild(buildTradingViewWidget(symbol));
+    <div class="legend">${legendHtml}</div>
+    <div class="tv-placeholder"></div>`;
   return card;
+}
+
+function activateCard(symbol, history) {
+  const card = document.querySelector(`.card[data-symbol="${symbol}"]`);
+  if (!card || card.dataset.initialized) return;
+  card.dataset.initialized = "1";
+
+  buildChart(`chart-${symbol}`, history, symbol);
+
+  const placeholder = card.querySelector(".tv-placeholder");
+  if (placeholder) {
+    placeholder.replaceWith(buildTradingViewWidget(symbol));
+  }
 }
 
 Promise.all([
@@ -324,34 +337,39 @@ Promise.all([
   const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates);
   main.appendChild(tableWrap);
 
-  // チャートカード
+  // チャートカード（プレースホルダのみ）
   symbols.forEach((symbol, i) => {
     const card = buildCard(symbol, history, earningsDates, perData);
     if (i === 0) card.classList.add("active");
     main.appendChild(card);
-    buildChart(`chart-${symbol}`, history, symbol);
   });
 
-  // テーブル行クリックで切り替え
+  // 最初の銘柄だけ即座に初期化
+  if (symbols.length > 0) activateCard(symbols[0], history);
+
+  // テーブル行クリックで切り替え（初回は遅延初期化）
   tbody.addEventListener("click", e => {
     const tr = e.target.closest("tr");
     if (!tr) return;
     const target = tr.dataset.symbol;
     tbody.querySelectorAll("tr").forEach(r => r.classList.toggle("active", r.dataset.symbol === target));
     main.querySelectorAll(".card").forEach(c => c.classList.toggle("active", c.dataset.symbol === target));
+    activateCard(target, history);
     const chart = Chart.getChart(`chart-${target}`);
     if (chart) chart.resize();
   });
 
-  document.querySelectorAll(".legend-item[data-idx]").forEach(item => {
-    item.addEventListener("click", () => {
-      const chart = Chart.getChart(item.dataset.canvas);
-      const idx = parseInt(item.dataset.idx);
-      const meta = chart.getDatasetMeta(idx);
-      meta.hidden = !meta.hidden;
-      item.style.opacity = meta.hidden ? "0.4" : "1";
-      chart.update();
-    });
+  // 凡例クリック（イベント委譲：遅延生成された要素にも対応）
+  main.addEventListener("click", e => {
+    const item = e.target.closest(".legend-item[data-idx]");
+    if (!item) return;
+    const chart = Chart.getChart(item.dataset.canvas);
+    if (!chart) return;
+    const idx = parseInt(item.dataset.idx);
+    const meta = chart.getDatasetMeta(idx);
+    meta.hidden = !meta.hidden;
+    item.style.opacity = meta.hidden ? "0.4" : "1";
+    chart.update();
   });
 }).catch(e => {
   document.getElementById("main").innerHTML =
