@@ -114,14 +114,6 @@ function analystBadge(symbol, perData) {
 }
 
 function buildSummaryTable(symbols, history, earningsDates) {
-  symbols = [...symbols].sort((a, b) => {
-    const da = earningsDates[a]?.next;
-    const db = earningsDates[b]?.next;
-    if (da && db) return da < db ? -1 : da > db ? 1 : 0;
-    if (da) return -1;
-    if (db) return 1;
-    return 0;
-  });
   const last = history[history.length - 1];
   const prev = history.length >= 2 ? history[history.length - 2] : null;
 
@@ -319,6 +311,16 @@ Promise.all([
   main.innerHTML = "";
 
   // サマリーテーブル
+  // 次回決算日が近い順に並び替え（未設定は末尾）
+  symbols.sort((a, b) => {
+    const da = earningsDates[a]?.next;
+    const db = earningsDates[b]?.next;
+    if (da && db) return da < db ? -1 : da > db ? 1 : 0;
+    if (da) return -1;
+    if (db) return 1;
+    return 0;
+  });
+
   const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates);
   main.appendChild(tableWrap);
 
