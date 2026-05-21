@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TARIKI</title>
+  <title>EPS FETCH</title>
   <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1/dist/chartjs-adapter-luxon.umd.min.js"></script>
@@ -74,7 +74,7 @@
 </head>
 <body>
 <header>
-  <h1>TARIKI</h1>
+  <h1>EPS FETCH</h1>
   <p id="subtitle">読み込み中...</p>
 </header>
 <main id="main">
@@ -125,7 +125,7 @@ function buildSummaryTable(symbols, history, earningsDates) {
   // 各銘柄ごとに、直近のデータがある1つ前のエントリを探す
   function getPrevEntry(symbol) {
     for (let i = history.length - 2; i >= 0; i--) {
-      if (history[i][symbol]) return history[i][symbol];
+      if (history[i][symbol]) return history[i];
     }
     return null;
   }
@@ -147,7 +147,9 @@ function buildSummaryTable(symbols, history, earningsDates) {
   const tbody = document.createElement("tbody");
   symbols.forEach((symbol, i) => {
     const cur = last[symbol] || {};
-    const pre = getPrevEntry(symbol) || {};
+    const prevEntry = getPrevEntry(symbol);
+    const pre = prevEntry ? (prevEntry[symbol] || {}) : {};
+    const prevDate = prevEntry ? prevEntry.date : null;
     const tr = document.createElement("tr");
     if (i === 0) tr.classList.add("active");
     tr.dataset.symbol = symbol;
@@ -164,7 +166,9 @@ function buildSummaryTable(symbols, history, earningsDates) {
         td.textContent = "—";
       } else {
         const formatted = `$${val.toFixed(2)}`;
-        if (preVal != null && val !== preVal) {
+        const titleBase = prevDate ? `前回(${prevDate}): ${preVal != null ? "$" + preVal.toFixed(2) : "なし"}` : "比較データなし";
+        td.title = titleBase;
+        if (preVal != null && Math.abs(val - preVal) >= 0.001) {
           const diff = val - preVal;
           const sign = diff > 0 ? "+" : "";
           td.className = diff > 0 ? "up" : "down";
@@ -179,7 +183,20 @@ function buildSummaryTable(symbols, history, earningsDates) {
     tbody.appendChild(tr);
   });
   table.appendChild(tbody);
+
+  // 診断: 比較基準日を表示
+  const firstSymbol = symbols[0];
+  const diagEntry = getPrevEntry(firstSymbol);
+  const info = document.createElement("p");
+  info.style.cssText = "font-size:0.75rem;color:#888;padding:0.5rem 1rem;";
+  if (diagEntry) {
+    info.textContent = `前回比較: ${diagEntry.date} → ${last.date}（全 ${history.length} 日分）`;
+  } else {
+    info.textContent = `比較データなし（全 ${history.length} 日分 / データが1日分のみ）`;
+  }
+
   wrap.appendChild(table);
+  wrap.appendChild(info);
   return { wrap, tbody };
 }
 
