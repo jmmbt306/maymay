@@ -258,13 +258,14 @@ function buildChart(canvasId, history, symbol, earningsDates) {
     yAxisID: QUARTERLY.has(period) ? "yQ" : "yA",
   }));
 
-  // 決算日アノテーション & X軸範囲拡張
+  // 決算日アノテーション（データ期間内のみ表示）
   const annotations = {};
   const ed = (earningsDates || {})[symbol];
-  let xMin = null, xMax = null;
-  if (ed) {
-    if (ed.prev) {
-      xMin = ed.prev;
+  const allDates = Object.values(periodArrays).flat().map(p => p.x);
+  const dataMin = allDates.length ? allDates.reduce((a, b) => a < b ? a : b) : null;
+  const dataMax = allDates.length ? allDates.reduce((a, b) => a > b ? a : b) : null;
+  if (ed && dataMin && dataMax) {
+    if (ed.prev && ed.prev >= dataMin && ed.prev <= dataMax) {
       annotations.prevEarnings = {
         type: "line",
         xMin: ed.prev, xMax: ed.prev,
@@ -274,8 +275,7 @@ function buildChart(canvasId, history, symbol, earningsDates) {
         label: { display: true, content: `前回決算 ${ed.prev}`, position: "start", backgroundColor: "#f59e0b", color: "#fff", font: { size: 10 }, padding: 3 },
       };
     }
-    if (ed.next) {
-      xMax = ed.next;
+    if (ed.next && ed.next >= dataMin && ed.next <= dataMax) {
       annotations.nextEarnings = {
         type: "line",
         xMin: ed.next, xMax: ed.next,
@@ -308,8 +308,6 @@ function buildChart(canvasId, history, symbol, earningsDates) {
           type: "time",
           time: { unit: "day", tooltipFormat: "yyyy-MM-dd", displayFormats: { day: "MM/dd" } },
           ticks: { maxTicksLimit: 12 },
-          ...(xMin ? { min: xMin } : {}),
-          ...(xMax ? { max: xMax } : {}),
         },
         yQ: {
           position: "left",
