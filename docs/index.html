@@ -7,6 +7,7 @@
   <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1/dist/chartjs-adapter-luxon.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3/dist/chartjs-plugin-annotation.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; }
@@ -232,7 +233,7 @@ function buildTradingViewSection(symbol) {
   return section;
 }
 
-function buildChart(canvasId, history, symbol) {
+function buildChart(canvasId, history, symbol, earningsDates) {
   const periodArrays = {};
 
   history.forEach(entry => {
@@ -257,6 +258,32 @@ function buildChart(canvasId, history, symbol) {
     yAxisID: QUARTERLY.has(period) ? "yQ" : "yA",
   }));
 
+  // 決算日アノテーション
+  const annotations = {};
+  const ed = (earningsDates || {})[symbol];
+  if (ed) {
+    if (ed.prev) {
+      annotations.prevEarnings = {
+        type: "line",
+        xMin: ed.prev, xMax: ed.prev,
+        borderColor: "#f59e0b",
+        borderWidth: 2,
+        borderDash: [4, 4],
+        label: { display: true, content: `決算 ${ed.prev}`, position: "start", backgroundColor: "#f59e0b", color: "#fff", font: { size: 10 }, padding: 3 },
+      };
+    }
+    if (ed.next) {
+      annotations.nextEarnings = {
+        type: "line",
+        xMin: ed.next, xMax: ed.next,
+        borderColor: "#6366f1",
+        borderWidth: 2,
+        borderDash: [4, 4],
+        label: { display: true, content: `次回決算 ${ed.next}`, position: "start", backgroundColor: "#6366f1", color: "#fff", font: { size: 10 }, padding: 3 },
+      };
+    }
+  }
+
   return new Chart(document.getElementById(canvasId), {
     type: "line",
     data: { datasets },
@@ -271,6 +298,7 @@ function buildChart(canvasId, history, symbol) {
             label: ctx => `${ctx.dataset.label}: $${ctx.parsed.y?.toFixed(2) ?? "-"}`,
           },
         },
+        annotation: { annotations },
       },
       scales: {
         x: {
@@ -352,15 +380,16 @@ Promise.all([
   });
 
   const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates);
-  main.appendChild(tableWrap);
 
   // チャートカードを全件生成・チャート描画
   symbols.forEach((symbol, i) => {
     const card = buildCard(symbol, history, earningsDates, perData);
     if (i === 0) card.classList.add("active");
     main.appendChild(card);
-    buildChart(`chart-${symbol}`, history, symbol);
+    buildChart(`chart-${symbol}`, history, symbol, earningsDates);
   });
+
+  main.appendChild(tableWrap);
 
   // テーブル行クリックで切り替え
   tbody.addEventListener("click", e => {
