@@ -121,7 +121,7 @@ function analystBadge(symbol, perData) {
   return `<span class="badge analyst">アナリスト ${p.analysts}人</span>`;
 }
 
-function buildSummaryTable(symbols, history, earningsDates) {
+function buildSummaryTable(symbols, history, earningsDates, perData) {
   const last = history[history.length - 1];
 
   // 各銘柄ごとに、直近のデータがある1つ前のエントリを探す
@@ -143,6 +143,11 @@ function buildSummaryTable(symbols, history, earningsDates) {
   thead.innerHTML = `<tr>
     <th>銘柄</th>
     ${PERIODS.map(p => `<th>${PERIOD_LABELS[p] || p}</th>`).join("")}
+    <th>PER(LTM)</th>
+    <th>Forward PER</th>
+    <th>アナリスト</th>
+    <th>前回決算</th>
+    <th>次回決算</th>
   </tr>`;
   table.appendChild(thead);
 
@@ -181,6 +186,54 @@ function buildSummaryTable(symbols, history, earningsDates) {
       }
       tr.appendChild(td);
     });
+
+    // PER (history 最新エントリ優先、なければ earnings_dates)
+    const per = (perData || {})[symbol] || {};
+    const trailing = cur.trailing_pe ?? per.trailing ?? null;
+    const forward  = cur.forward_pe  ?? per.forward  ?? null;
+    const prevCur  = pre;
+    [
+      { val: trailing, prev: prevCur.trailing_pe, label: "PER(LTM)" },
+      { val: forward,  prev: prevCur.forward_pe,  label: "Forward PER" },
+    ].forEach(({ val, prev, label }) => {
+      const td = document.createElement("td");
+      if (val == null) {
+        td.textContent = "—";
+      } else {
+        const fmt = `${val.toFixed(1)}x`;
+        if (prev != null && Math.abs(val - prev) >= 0.1) {
+          const diff = val - prev;
+          const sign = diff > 0 ? "+" : "";
+          td.className = diff > 0 ? "up" : "down";
+          td.innerHTML = `${fmt}<span class="diff">(${sign}${diff.toFixed(1)})</span>`;
+        } else {
+          td.textContent = fmt;
+        }
+      }
+      tr.appendChild(td);
+    });
+
+    // アナリスト人数
+    const tdAnalyst = document.createElement("td");
+    const analysts = per.analysts ?? null;
+    tdAnalyst.textContent = analysts != null ? `${analysts}人` : "—";
+    tr.appendChild(tdAnalyst);
+
+    // 前回決算日 / 次回決算日
+    const ed = (earningsDates || {})[symbol] || {};
+    const tdPrev = document.createElement("td");
+    tdPrev.textContent = ed.prev || "—";
+    tr.appendChild(tdPrev);
+
+    const tdNext = document.createElement("td");
+    if (ed.next) {
+      const days = daysUntil(ed.next);
+      tdNext.textContent = days < 0 ? `${ed.next}` : `${ed.next}（${days}日後）`;
+      if (days >= 0 && days <= 14) tdNext.style.color = "#dc2626";
+    } else {
+      tdNext.textContent = "—";
+    }
+    tr.appendChild(tdNext);
 
     tbody.appendChild(tr);
   });
@@ -382,7 +435,7 @@ Promise.all([
     return 0;
   });
 
-  const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates);
+  const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData);
 
   // チャートカードを全件生成・チャート描画
   symbols.forEach((symbol, i) => {
