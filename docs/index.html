@@ -104,12 +104,13 @@ function earningsBadge(symbol, earningsDates) {
   return html;
 }
 
-function perBadges(symbol, perData) {
-  const p = (perData || {})[symbol];
-  if (!p) return "";
+function perBadges(symbol, latestEntry, perData) {
+  const entry = latestEntry[symbol] || {};
+  const trailing = entry.trailing_pe ?? (perData[symbol] || {}).trailing ?? null;
+  const forward  = entry.forward_pe  ?? (perData[symbol] || {}).forward  ?? null;
   let html = "";
-  if (p.trailing != null) html += `<span class="badge per">PER (LTM) ${p.trailing}x</span>`;
-  if (p.forward  != null) html += `<span class="badge per">Forward PER ${p.forward}x</span>`;
+  if (trailing != null) html += `<span class="badge per">PER (LTM) ${trailing}x</span>`;
+  if (forward  != null) html += `<span class="badge per">Forward PER ${forward}x</span>`;
   return html;
 }
 
@@ -299,8 +300,9 @@ function buildCard(symbol, history, earningsDates, perData) {
   card.className = "card";
   card.dataset.symbol = symbol;
 
-  const lastEntry = history[history.length - 1][symbol] || {};
-  const epsPeriods = Object.keys(lastEntry).filter(k => !OHLC_KEYS.has(k));
+  const latestEntry = history[history.length - 1];
+  const lastSymbolEntry = latestEntry[symbol] || {};
+  const epsPeriods = Object.keys(lastSymbolEntry).filter(k => !OHLC_KEYS.has(k));
 
   const legendHtml = epsPeriods.map((p, i) => `
     <span class="legend-item" data-canvas="${canvasId}" data-idx="${i}">
@@ -313,7 +315,7 @@ function buildCard(symbol, history, earningsDates, perData) {
       <h2>${symbol}</h2>
       ${analystBadge(symbol, perData)}
       ${earningsBadge(symbol, earningsDates)}
-      ${perBadges(symbol, perData)}
+      ${perBadges(symbol, latestEntry, perData)}
     </div>
     <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
     <div class="legend">${legendHtml}</div>`;
