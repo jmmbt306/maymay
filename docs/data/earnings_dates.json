@@ -54,7 +54,7 @@
       "prev": "2026-05-21"
     },
     "BJ": {
-      "next": "2026-05-22",
+      "next": "2026-08-20",
       "prev": "2026-05-22"
     },
     "CEG": {
@@ -90,8 +90,7 @@
       "prev": "2026-05-14"
     },
     "AMAT": {
-      "next": "2026-08-13",
-      "prev": "2026-05-14"
+      "next": "2026-08-13"
     },
     "BRK-B": {
       "next": "2026-08-01",
@@ -232,7 +231,7 @@
     "NVDA": {
       "trailing": 33.0,
       "forward": 17.0,
-      "analysts": 57
+      "analysts": 58
     },
     "GOOGL": {
       "trailing": 29.2,
@@ -266,7 +265,7 @@
     },
     "TGT": {
       "trailing": 16.6,
-      "forward": 14.2,
+      "forward": 14.1,
       "analysts": 33
     },
     "LOW": {
@@ -280,7 +279,7 @@
       "analysts": 42
     },
     "WDAY": {
-      "trailing": 49.3,
+      "trailing": 39.8,
       "forward": 10.2,
       "analysts": 38
     },
@@ -295,7 +294,7 @@
       "analysts": 20
     },
     "Q": {
-      "trailing": 50.6,
+      "trailing": 50.5,
       "forward": 33.0,
       "analysts": 8
     },
@@ -330,7 +329,7 @@
       "analysts": 8
     },
     "AMAT": {
-      "trailing": 40.6,
+      "trailing": 40.7,
       "forward": 26.8,
       "analysts": 35
     },
@@ -465,7 +464,7 @@
       "analysts": 29
     },
     "CAT": {
-      "trailing": 43.8,
+      "trailing": 43.9,
       "forward": 29.5,
       "analysts": 26
     },
