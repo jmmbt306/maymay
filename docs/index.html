@@ -294,6 +294,26 @@ function buildChart(canvasId, history, symbol, earningsDates) {
     _mode: "per",
   }));
 
+  // S&P 500 PER 参照ライン
+  const sp500Datasets = ["trailing_pe", "forward_pe"].map(k => {
+    const data = history
+      .filter(e => e["_SP500"]?.[k] != null)
+      .map(e => ({ x: e.date, y: e["_SP500"][k] }));
+    return {
+      label: k === "trailing_pe" ? "S&P500 PER(LTM)" : "S&P500 Forward PER",
+      data,
+      borderColor: PER_COLORS[k],
+      borderDash: [6, 3],
+      borderWidth: 1.5,
+      backgroundColor: "transparent",
+      pointRadius: 0,
+      tension: 0.3,
+      yAxisID: "yPER",
+      hidden: true,
+      _mode: "per",
+    };
+  });
+
   // 決算日アノテーション（データ期間内のみ表示）
   const annotations = {};
   const ed = (earningsDates || {})[symbol];
@@ -319,7 +339,7 @@ function buildChart(canvasId, history, symbol, earningsDates) {
 
   return new Chart(document.getElementById(canvasId), {
     type: "line",
-    data: { datasets: [...epsDatasets, ...perDatasets] },
+    data: { datasets: [...epsDatasets, ...perDatasets, ...sp500Datasets] },
     options: {
       responsive: true,
       maintainAspectRatio: false,
@@ -396,11 +416,19 @@ function buildCard(symbol, history, earningsDates, perData) {
       ${PERIOD_LABELS[p] || p}
     </span>`).join("");
 
-  const perLegendHtml = Object.entries(PER_LABELS).map(([k, label], i) => `
-    <span class="legend-item" data-canvas="${canvasId}" data-idx="${epsPeriods.length + i}">
-      <span class="legend-dot" style="background:${PER_COLORS[k]}"></span>
-      ${label}
-    </span>`).join("");
+  const PER_COLORS_CARD = { trailing_pe: "#7c3aed", forward_pe: "#0891b2" };
+  const perLegendHtml = [
+    ...Object.entries(PER_LABELS).map(([k, label], i) => `
+      <span class="legend-item" data-canvas="${canvasId}" data-idx="${epsPeriods.length + i}">
+        <span class="legend-dot" style="background:${PER_COLORS_CARD[k]}"></span>
+        ${label}
+      </span>`),
+    ...Object.entries(PER_LABELS).map(([k, label], i) => `
+      <span class="legend-item" data-canvas="${canvasId}" data-idx="${epsPeriods.length + 2 + i}">
+        <span class="legend-dot" style="background:${PER_COLORS_CARD[k]};opacity:0.5"></span>
+        S&P500 ${label}
+      </span>`),
+  ].join("");
 
   card.innerHTML = `
     <div class="card-header">
