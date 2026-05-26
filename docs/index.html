@@ -469,7 +469,7 @@ Promise.all([
   const earningsDates = edData.dates || {};
   const perData = edData.per || {};
   const lastEntry = history[history.length - 1];
-  const symbols = Object.keys(lastEntry).filter(k => k !== "date");
+  const symbols = Object.keys(lastEntry).filter(k => k !== "date" && !k.startsWith("_"));
 
   document.getElementById("subtitle").textContent =
     `最終更新: ${lastEntry.date}　全${history.length}日分のデータ`;
