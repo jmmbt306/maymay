@@ -1103,262 +1103,262 @@
       "+1q": 2.0107,
       "0y": 8.7532,
       "+1y": 9.651,
-      "trailing_pe": 37.43,
-      "forward_pe": 32.16
+      "trailing_pe": 37.47,
+      "forward_pe": 32.18
     },
     "MSFT": {
       "0q": 4.2364,
       "+1q": 4.6157,
       "0y": 16.8124,
       "+1y": 19.3377,
-      "trailing_pe": 24.94,
-      "forward_pe": 21.65
+      "trailing_pe": 24.65,
+      "forward_pe": 21.39
     },
     "NVDA": {
       "0q": 2.0907,
       "+1q": 2.3544,
       "0y": 8.9352,
       "+1y": 12.6457,
-      "trailing_pe": 33.03,
-      "forward_pe": 17.03
+      "trailing_pe": 32.77,
+      "forward_pe": 16.89
     },
     "GOOGL": {
       "0q": 2.8752,
       "+1q": 3.0063,
       "0y": 14.2363,
       "+1y": 14.4591,
-      "trailing_pe": 29.23,
-      "forward_pe": 26.42
+      "trailing_pe": 29.47,
+      "forward_pe": 26.67
     },
     "AMZN": {
       "0q": 1.8159,
       "+1q": 1.91,
       "0y": 8.6462,
       "+1y": 9.8591,
-      "trailing_pe": 31.63,
-      "forward_pe": 27.01
+      "trailing_pe": 31.14,
+      "forward_pe": 26.6
     },
     "META": {
       "0q": 7.2007,
       "+1q": 7.0426,
       "0y": 32.8646,
       "+1y": 34.7544,
-      "trailing_pe": 22.18,
-      "forward_pe": 16.95
+      "trailing_pe": 22.13,
+      "forward_pe": 16.92
     },
     "TSLA": {
       "0q": 0.454,
       "+1q": 0.5393,
       "0y": 2.0484,
       "+1y": 2.5097,
-      "trailing_pe": 383.79,
-      "forward_pe": 169.75
+      "trailing_pe": 389.25,
+      "forward_pe": 172.16
     },
     "HD": {
       "0q": 4.7296,
       "+1q": 3.9567,
       "0y": 14.9659,
       "+1y": 16.1062,
-      "trailing_pe": 22.22,
-      "forward_pe": 19.44
+      "trailing_pe": 21.96,
+      "forward_pe": 19.21
     },
     "TOL": {
       "0q": 2.9132,
       "+1q": 5.0074,
       "0y": 12.7963,
       "+1y": 14.1374,
-      "trailing_pe": 10.21,
-      "forward_pe": 9.5
+      "trailing_pe": 10.35,
+      "forward_pe": 9.64
     },
     "TGT": {
       "0q": 2.243,
       "+1q": 1.9011,
       "0y": 8.329,
       "+1y": 8.8878,
-      "trailing_pe": 16.59,
-      "forward_pe": 14.13
+      "trailing_pe": 16.41,
+      "forward_pe": 13.98
     },
     "LOW": {
       "0q": 4.2499,
       "+1q": 3.1499,
       "0y": 12.5017,
       "+1y": 13.4733,
-      "trailing_pe": 18.18,
-      "forward_pe": 15.96
+      "trailing_pe": 17.88,
+      "forward_pe": 15.7
     },
     "WMT": {
       "0q": 0.7431,
       "+1q": 0.6834,
       "0y": 2.9081,
       "+1y": 3.2855,
-      "trailing_pe": 42.35,
-      "forward_pe": 36.57
+      "trailing_pe": 41.59,
+      "forward_pe": 35.91
     },
     "WDAY": {
       "0q": 2.614,
       "+1q": 2.6396,
       "0y": 10.7245,
       "+1y": 12.5981,
-      "trailing_pe": 39.8,
-      "forward_pe": 10.17
+      "trailing_pe": 38.67,
+      "forward_pe": 9.89
     },
     "BJ": {
       "0q": 1.1672,
       "+1q": 1.2372,
       "0y": 4.5104,
       "+1y": 4.8824,
-      "trailing_pe": 19.78,
-      "forward_pe": 17.8
+      "trailing_pe": 19.19,
+      "forward_pe": 17.28
     },
     "CEG": {
       "0q": 2.5672,
       "+1q": 3.6609,
       "0y": 11.7206,
       "+1y": 13.5912,
-      "trailing_pe": 25.57,
-      "forward_pe": 21.64
+      "trailing_pe": 26.4,
+      "forward_pe": 22.33
     },
     "Q": {
       "0q": 1.054,
       "+1q": 1.044,
       "0y": 4.083,
       "+1y": 4.7574,
-      "trailing_pe": 50.46,
-      "forward_pe": 32.99
+      "trailing_pe": 52.43,
+      "forward_pe": 34.27
     },
     "VG": {
       "0q": 0.455,
       "+1q": 0.5088,
       "0y": 1.4574,
       "+1y": 0.8344,
-      "trailing_pe": 14.41,
-      "forward_pe": 16.57
+      "trailing_pe": 13.57,
+      "forward_pe": 15.61
     },
     "ONON": {
       "0q": 0.3351,
       "+1q": 0.3974,
       "0y": 1.4079,
       "+1y": 1.7129,
-      "trailing_pe": 41.91,
-      "forward_pe": 18.25
+      "trailing_pe": 41.95,
+      "forward_pe": 18.2
     },
     "NBIS": {
       "0q": -0.7475,
       "+1q": -1.1233,
       "0y": -1.7,
       "+1y": -2.4733,
-      "trailing_pe": 82.6,
-      "forward_pe": 594.57
+      "trailing_pe": 80.66,
+      "forward_pe": 580.55
     },
     "CSCO": {
       "0q": 1.1706,
       "+1q": 1.1494,
       "0y": 4.2777,
       "+1y": 4.7683,
-      "trailing_pe": 40.14,
-      "forward_pe": 25.25
+      "trailing_pe": 39.14,
+      "forward_pe": 24.63
     },
     "FIG": {
       "0q": 0.04,
       "+1q": 0.0639,
       "0y": 0.2749,
       "+1y": 0.3372,
-      "forward_pe": 67.34
+      "forward_pe": 65.74
     },
     "AMAT": {
       "0q": 3.3832,
       "+1q": 3.5877,
       "0y": 12.2565,
       "+1y": 16.1255,
-      "trailing_pe": 40.65,
-      "forward_pe": 26.8
+      "trailing_pe": 42.6,
+      "forward_pe": 28.08
     },
     "BRK-B": {
       "0q": 5.0066,
       "+1q": 5.2987,
       "0y": 20.3857,
       "+1y": 21.307,
-      "trailing_pe": 14.47,
-      "forward_pe": 22.83
+      "trailing_pe": 14.39,
+      "forward_pe": 22.69
     },
     "PLTR": {
       "0q": 0.3449,
       "+1q": 0.3699,
       "0y": 1.4636,
       "+1y": 2.0743,
-      "trailing_pe": 153.8,
-      "forward_pe": 65.99
+      "trailing_pe": 154.67,
+      "forward_pe": 66.37
     },
     "ON": {
       "0q": 0.7143,
       "+1q": 0.8315,
       "0y": 3.0896,
       "+1y": 4.251,
-      "trailing_pe": 85.44,
-      "forward_pe": 27.33
+      "trailing_pe": 93.14,
+      "forward_pe": 29.8
     },
     "ETN": {
       "0q": 3.0743,
       "+1q": 3.5065,
       "0y": 13.3398,
       "+1y": 15.6957,
-      "trailing_pe": 38.33,
-      "forward_pe": 24.89
+      "trailing_pe": 39.74,
+      "forward_pe": 25.81
     },
     "SHOP": {
       "0q": 0.3965,
       "+1q": 0.4377,
       "0y": 1.8373,
       "+1y": 2.3324,
-      "trailing_pe": 100.98,
-      "forward_pe": 44.16
+      "trailing_pe": 101.94,
+      "forward_pe": 44.58
     },
     "PFE": {
       "0q": 0.6803,
       "+1q": 0.8479,
       "0y": 2.9621,
       "+1y": 2.8375,
-      "trailing_pe": 19.77,
-      "forward_pe": 9.13
+      "trailing_pe": 19.63,
+      "forward_pe": 9.06
     },
     "AMD": {
       "0q": 1.6054,
       "+1q": 1.8054,
       "0y": 7.3657,
       "+1y": 12.9595,
-      "trailing_pe": 156.36,
-      "forward_pe": 36.07
+      "trailing_pe": 166.43,
+      "forward_pe": 38.4
     },
     "LITE": {
       "0q": 2.9618,
       "+1q": 3.6091,
       "0y": 8.2548,
       "+1y": 18.1007,
-      "trailing_pe": 166.71,
-      "forward_pe": 52.31
+      "trailing_pe": 161.44,
+      "forward_pe": 50.66
     },
     "ANET": {
       "0q": 0.8833,
       "+1q": 0.913,
       "0y": 3.6294,
       "+1y": 4.4495,
-      "trailing_pe": 52.93,
-      "forward_pe": 34.62
+      "trailing_pe": 54.71,
+      "forward_pe": 35.78
     },
     "ALAB": {
       "0q": 0.6906,
       "+1q": 0.7855,
       "0y": 3.0037,
       "+1y": 4.2067,
-      "trailing_pe": 208.76,
-      "forward_pe": 72.95
+      "trailing_pe": 215.37,
+      "forward_pe": 75.26
     },
     "MSTR": {
       "0q": 26.195,
       "+1q": 15.26,
       "0y": 53.05,
       "+1y": 14.266,
-      "forward_pe": 35.83
+      "forward_pe": 36.08
     },
     "DIS": {
       "0q": 1.8685,
@@ -1373,152 +1373,152 @@
       "+1q": 0.4312,
       "0y": 2.1673,
       "+1y": 3.0552,
-      "trailing_pe": 356.41,
-      "forward_pe": 100.33
+      "trailing_pe": 368.19,
+      "forward_pe": 103.64
     },
     "BROS": {
       "0q": 0.2979,
       "+1q": 0.2507,
       "0y": 0.9386,
       "+1y": 1.2439,
-      "trailing_pe": 81.44,
-      "forward_pe": 41.9
+      "trailing_pe": 82.72,
+      "forward_pe": 42.56
     },
     "MCD": {
       "0q": 3.3433,
       "+1q": 3.4548,
       "0y": 12.9869,
       "+1y": 14.2194,
-      "trailing_pe": 23.25,
-      "forward_pe": 19.85
+      "trailing_pe": 22.99,
+      "forward_pe": 19.63
     },
     "CRWV": {
       "0q": -1.2374,
       "+1q": -1.0661,
       "0y": -4.498,
       "+1y": -3.4221,
-      "forward_pe": -168.24
+      "forward_pe": -170.73
     },
     "NET": {
       "0q": 0.2696,
       "+1q": 0.3216,
       "0y": 1.195,
       "+1y": 1.5251,
-      "forward_pe": 141.74
+      "forward_pe": 144.66
     },
     "VZ": {
       "0q": 1.273,
       "+1q": 1.2926,
       "0y": 4.9718,
       "+1y": 5.2738,
-      "trailing_pe": 11.79,
-      "forward_pe": 9.17
+      "trailing_pe": 11.85,
+      "forward_pe": 9.21
     },
     "NUE": {
       "0q": 4.1551,
       "+1q": 4.1105,
       "0y": 14.6085,
       "+1y": 15.7846,
-      "trailing_pe": 23.04,
-      "forward_pe": 14.53
+      "trailing_pe": 23.84,
+      "forward_pe": 15.04
     },
     "GLW": {
       "0q": 0.7572,
       "+1q": 0.8545,
       "0y": 3.1954,
       "+1y": 4.2236,
-      "trailing_pe": 93.29,
-      "forward_pe": 45.94
+      "trailing_pe": 95.28,
+      "forward_pe": 46.92
     },
     "KO": {
       "0q": 0.9325,
       "+1q": 0.8787,
       "0y": 3.266,
       "+1y": 3.4836,
-      "trailing_pe": 25.62,
-      "forward_pe": 23.39
+      "trailing_pe": 25.26,
+      "forward_pe": 23.05
     },
     "HOOD": {
       "0q": 0.4012,
       "+1q": 0.454,
       "0y": 1.8803,
       "+1y": 2.4985,
-      "trailing_pe": 35.75,
-      "forward_pe": 26.94
+      "trailing_pe": 35.9,
+      "forward_pe": 27.05
     },
     "BE": {
       "0q": 0.3861,
       "+1q": 0.5061,
       "0y": 2.1267,
       "+1y": 4.3227,
-      "forward_pe": 69.98
+      "forward_pe": 71.46
     },
     "SBUX": {
       "0q": 0.6509,
       "+1q": 0.6799,
       "0y": 2.3908,
       "+1y": 3.0267,
-      "trailing_pe": 78.71,
-      "forward_pe": 34.07
+      "trailing_pe": 77.1,
+      "forward_pe": 33.37
     },
     "CMG": {
       "0q": 0.3178,
       "+1q": 0.2897,
       "0y": 1.1336,
       "+1y": 1.3574,
-      "trailing_pe": 30.17,
-      "forward_pe": 24.23
+      "trailing_pe": 29.44,
+      "forward_pe": 23.64
     },
     "LLY": {
       "0q": 8.8051,
       "+1q": 9.396,
       "0y": 36.1857,
       "+1y": 44.4353,
-      "trailing_pe": 37.87,
-      "forward_pe": 23.97
+      "trailing_pe": 38.36,
+      "forward_pe": 24.26
     },
     "CAT": {
       "0q": 6.1279,
       "+1q": 6.369,
       "0y": 24.3752,
       "+1y": 29.8129,
-      "trailing_pe": 43.86,
-      "forward_pe": 29.51
+      "trailing_pe": 45.19,
+      "forward_pe": 30.41
     },
     "SNDK": {
       "0q": 33.2788,
       "+1q": 40.3548,
       "0y": 65.0149,
       "+1y": 175.3757,
-      "trailing_pe": 50.5,
-      "forward_pe": 8.43
+      "trailing_pe": 54.91,
+      "forward_pe": 9.17
     },
     "WDC": {
       "0q": 3.2723,
       "+1q": 3.5917,
       "0y": 9.926,
       "+1y": 17.4205,
-      "trailing_pe": 28.98,
-      "forward_pe": 27.8
+      "trailing_pe": 31.7,
+      "forward_pe": 30.41
     },
     "XOM": {
       "0q": 3.5643,
       "+1q": 3.2477,
       "0y": 10.8482,
       "+1y": 10.4218,
-      "trailing_pe": 26.12,
-      "forward_pe": 14.86
+      "trailing_pe": 25.4,
+      "forward_pe": 14.34
     },
     "CVX": {
       "0q": 4.9874,
       "+1q": 4.1963,
       "0y": 14.0417,
       "+1y": 12.1922,
-      "trailing_pe": 33.35,
-      "forward_pe": 15.7
+      "trailing_pe": 32.43,
+      "forward_pe": 15.27
     },
     "_SP500": {
-      "trailing_pe": 28.01
+      "trailing_pe": 28.13
     }
   }
 ]
