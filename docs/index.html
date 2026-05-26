@@ -337,6 +337,17 @@ function buildChart(canvasId, history, symbol, earningsDates) {
     }
   }
 
+  // yPER の表示範囲を銘柄 + S&P500 全データから計算
+  const allPerValues = [
+    ...Object.values(perArrays).flat().map(p => p.y),
+    ...["trailing_pe", "forward_pe"].flatMap(k =>
+      history.filter(e => e["_SP500"]?.[k] != null).map(e => e["_SP500"][k])
+    ),
+  ].filter(v => v != null);
+  const perMin = allPerValues.length ? Math.min(...allPerValues) : 0;
+  const perMax = allPerValues.length ? Math.max(...allPerValues) : 100;
+  const perPad = (perMax - perMin) * 0.1 || 5;
+
   return new Chart(document.getElementById(canvasId), {
     type: "line",
     data: { datasets: [...epsDatasets, ...perDatasets, ...sp500Datasets] },
@@ -376,17 +387,6 @@ function buildChart(canvasId, history, symbol, earningsDates) {
           ticks: { callback: v => "$" + v.toFixed(2) },
           grid: { drawOnChartArea: false },
         },
-  // yPER の表示範囲を銘柄 + S&P500 全データから計算
-  const allPerValues = [
-    ...Object.values(perArrays).flat().map(p => p.y),
-    ...["trailing_pe", "forward_pe"].flatMap(k =>
-      history.filter(e => e["_SP500"]?.[k] != null).map(e => e["_SP500"][k])
-    ),
-  ].filter(v => v != null);
-  const perMin = allPerValues.length ? Math.min(...allPerValues) : 0;
-  const perMax = allPerValues.length ? Math.max(...allPerValues) : 100;
-  const perPad = (perMax - perMin) * 0.1 || 5;
-
         yPER: {
           position: "right",
           display: false,
