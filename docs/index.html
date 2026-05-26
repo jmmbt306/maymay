@@ -295,23 +295,44 @@ function buildChart(canvasId, history, symbol, earningsDates) {
     _mode: "per",
   }));
 
-  // S&P 500 PER 参照ライン（SPY は trailing のみ取得可能）
-  const sp500Datasets = [{
-    label: "S&P500 PER(LTM)",
-    data: history
-      .filter(e => e["_SP500"]?.trailing_pe != null)
-      .map(e => ({ x: e.date, y: e["_SP500"].trailing_pe })),
-    borderColor: PER_COLORS.trailing_pe,
-    borderDash: [6, 3],
-    borderWidth: 1.5,
-    backgroundColor: "transparent",
-    pointRadius: 3,
-    pointHoverRadius: 5,
-    tension: 0.3,
-    yAxisID: "yPER",
-    hidden: true,
-    _mode: "per",
-  }];
+  // S&P 500 PER 参照ライン（trailing + forward、取得できた分のみ表示）
+  const sp500Datasets = [];
+  if (history.some(e => e["_SP500"]?.trailing_pe != null)) {
+    sp500Datasets.push({
+      label: "S&P500 PER(LTM)",
+      data: history
+        .filter(e => e["_SP500"]?.trailing_pe != null)
+        .map(e => ({ x: e.date, y: e["_SP500"].trailing_pe })),
+      borderColor: PER_COLORS.trailing_pe,
+      borderDash: [6, 3],
+      borderWidth: 1.5,
+      backgroundColor: "transparent",
+      pointRadius: 3,
+      pointHoverRadius: 5,
+      tension: 0.3,
+      yAxisID: "yPER",
+      hidden: true,
+      _mode: "per",
+    });
+  }
+  if (history.some(e => e["_SP500"]?.forward_pe != null)) {
+    sp500Datasets.push({
+      label: "S&P500 PER(Fwd)",
+      data: history
+        .filter(e => e["_SP500"]?.forward_pe != null)
+        .map(e => ({ x: e.date, y: e["_SP500"].forward_pe })),
+      borderColor: PER_COLORS.forward_pe,
+      borderDash: [6, 3],
+      borderWidth: 1.5,
+      backgroundColor: "transparent",
+      pointRadius: 3,
+      pointHoverRadius: 5,
+      tension: 0.3,
+      yAxisID: "yPER",
+      hidden: true,
+      _mode: "per",
+    });
+  }
 
   // 決算日アノテーション（データ期間内のみ表示）
   const annotations = {};
@@ -429,16 +450,21 @@ function buildCard(symbol, history, earningsDates, perData, names) {
     </span>`).join("");
 
   const PER_COLORS_CARD = { trailing_pe: "#7c3aed", forward_pe: "#0891b2" };
+  const sp500LegendItems = [
+    { key: "trailing_pe", label: "S&P500 PER(LTM)" },
+    { key: "forward_pe",  label: "S&P500 PER(Fwd)" },
+  ].map(({ key, label }, j) => `
+    <span class="legend-item" data-canvas="${canvasId}" data-idx="${epsPeriods.length + 2 + j}">
+      <span class="legend-dot" style="background:${PER_COLORS_CARD[key]};opacity:0.5"></span>
+      ${label}
+    </span>`);
   const perLegendHtml = [
     ...Object.entries(PER_LABELS).map(([k, label], i) => `
       <span class="legend-item" data-canvas="${canvasId}" data-idx="${epsPeriods.length + i}">
         <span class="legend-dot" style="background:${PER_COLORS_CARD[k]}"></span>
         ${label}
       </span>`),
-    `<span class="legend-item" data-canvas="${canvasId}" data-idx="${epsPeriods.length + 2}">
-        <span class="legend-dot" style="background:${PER_COLORS_CARD.trailing_pe};opacity:0.5"></span>
-        S&P500 PER(LTM)
-      </span>`,
+    ...sp500LegendItems,
   ].join("");
 
   card.innerHTML = `
