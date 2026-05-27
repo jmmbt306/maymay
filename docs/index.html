@@ -230,6 +230,9 @@ function buildPriceChart(symbol, history, earningsDates) {
   const data = history
     .filter(e => e[symbol]?.price != null)
     .map(e => ({ x: e.date, y: e[symbol].price }));
+
+  const xMin = history[0]?.date;
+  const xMax = history[history.length - 1]?.date;
   if (!data.length) return;
 
   const dataMin = data[0].x;
@@ -272,6 +275,7 @@ function buildPriceChart(symbol, history, earningsDates) {
       scales: {
         x: {
           type: "time",
+          min: xMin, max: xMax,
           time: { unit: "day", tooltipFormat: "yyyy-MM-dd", displayFormats: { day: "MM/dd" } },
           ticks: { maxTicksLimit: 12 },
         },
