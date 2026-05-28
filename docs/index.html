@@ -233,7 +233,6 @@ function buildPriceChart(symbol, history, earningsDates) {
 
   const xMin = history[0]?.date;
   const xMax = history[history.length - 1]?.date;
-  if (!data.length) return;
 
   const dataMin = data[0].x;
   const dataMax = data[data.length - 1].x;
@@ -466,6 +465,24 @@ function switchChartMode(chart, mode) {
   chart.update();
 }
 
+function syncChartAreas(epsChart, priceChart) {
+  if (!epsChart || !priceChart) return;
+  requestAnimationFrame(() => {
+    const a1 = epsChart.chartArea;
+    const a2 = priceChart.chartArea;
+    if (!a1 || !a2) return;
+    const left  = Math.max(a1.left,  a2.left);
+    const right1 = epsChart.width   - a1.right;
+    const right2 = priceChart.width - a2.right;
+    const right  = Math.max(right1, right2);
+    const pad = c => { c.options.layout = c.options.layout || {}; c.options.layout.padding = c.options.layout.padding || {}; };
+    pad(epsChart);   epsChart.options.layout.padding.left   = left  - a1.left;  epsChart.options.layout.padding.right   = right - right1;
+    pad(priceChart); priceChart.options.layout.padding.left = left  - a2.left;  priceChart.options.layout.padding.right = right - right2;
+    epsChart.update("none");
+    priceChart.update("none");
+  });
+}
+
 function buildCard(symbol, history, earningsDates, perData, names) {
   const canvasId = `chart-${symbol}`;
   const card = document.createElement("div");
@@ -556,8 +573,9 @@ Promise.all([
     const card = buildCard(symbol, history, earningsDates, perData, names);
     if (i === 0) card.classList.add("active");
     main.appendChild(card);
-    buildChart(`chart-${symbol}`, history, symbol, earningsDates);
-    buildPriceChart(symbol, history, earningsDates);
+    const epsChart   = buildChart(`chart-${symbol}`, history, symbol, earningsDates);
+    const priceChart = buildPriceChart(symbol, history, earningsDates);
+    syncChartAreas(epsChart, priceChart);
   });
 
   main.appendChild(tableWrap);
@@ -583,6 +601,8 @@ Promise.all([
     if (!chart) return;
     btn.closest(".chart-toggle").querySelectorAll("button").forEach(b => b.classList.toggle("active", b === btn));
     switchChartMode(chart, mode);
+    const symbol = canvasId.replace(/^chart-/, "");
+    syncChartAreas(chart, Chart.getChart(`price-${symbol}`));
     const card = btn.closest(".card");
     card.querySelector(`[data-legend="eps-${canvasId}"]`).style.display = mode === "eps" ? "" : "none";
     card.querySelector(`[data-legend="per-${canvasId}"]`).style.display = mode === "per" ? "" : "none";
