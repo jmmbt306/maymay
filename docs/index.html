@@ -251,11 +251,7 @@ function buildPriceChart(symbol, history, earningsDates) {
 
   if (candleData.length) {
     series.setData(candleData);
-  }
-
-  // 日付範囲を history 全体に合わせる
-  if (history.length) {
-    chart.timeScale().setVisibleRange({ from: history[0].date, to: history[history.length - 1].date });
+    chart.timeScale().fitContent();
   }
 
   // 決算日マーカー
@@ -282,7 +278,7 @@ function buildChart(canvasId, history, symbol, earningsDates) {
     Object.entries(d).forEach(([k, v]) => {
       if (k === "trailing_pe" || k === "forward_pe") {
         if (v !== null) perArrays[k].push({ x: entry.date, y: v });
-      } else if (!OHLC_KEYS.has(k)) {
+      } else if (!OHLC_KEYS.has(k) && PERIOD_LABELS[k]) {
         if (!periodArrays[k]) periodArrays[k] = [];
         if (v !== null) periodArrays[k].push({ x: entry.date, y: v });
       }
@@ -476,7 +472,7 @@ function buildCard(symbol, history, earningsDates, perData, names) {
 
   const latestEntry = history[history.length - 1];
   const lastSymbolEntry = latestEntry[symbol] || {};
-  const epsPeriods = Object.keys(lastSymbolEntry).filter(k => !OHLC_KEYS.has(k));
+  const epsPeriods = Object.keys(lastSymbolEntry).filter(k => !OHLC_KEYS.has(k) && PERIOD_LABELS[k]);
   const PER_LABELS = { trailing_pe: "PER(LTM)", forward_pe: "Forward PER" };
   const PER_COLORS = { trailing_pe: "#7c3aed", forward_pe: "#0891b2" };
 
@@ -555,12 +551,14 @@ Promise.all([
   const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData);
 
   // チャートカードを全件生成・チャート描画
+  const priceCharts = {};
   symbols.forEach((symbol, i) => {
     const card = buildCard(symbol, history, earningsDates, perData, names);
     if (i === 0) card.classList.add("active");
     main.appendChild(card);
     const epsChart   = buildChart(`chart-${symbol}`, history, symbol, earningsDates);
     const priceChart = buildPriceChart(symbol, history, earningsDates);
+    if (priceChart) priceCharts[symbol] = priceChart;
     syncChartAreas(epsChart, priceChart);
   });
 
@@ -575,6 +573,12 @@ Promise.all([
     main.querySelectorAll(".card").forEach(c => c.classList.toggle("active", c.dataset.symbol === target));
     const chart = Chart.getChart(`chart-${target}`);
     if (chart) chart.resize();
+    const pc = priceCharts[target];
+    if (pc) requestAnimationFrame(() => {
+      const el = document.getElementById(`price-${target}`);
+      if (el) pc.resize(el.clientWidth, el.clientHeight);
+      pc.timeScale().fitContent();
+    });
   });
 
   // EPS/PER トグルボタン
