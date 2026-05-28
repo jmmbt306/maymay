@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1/dist/chartjs-adapter-luxon.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3/dist/chartjs-plugin-annotation.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial@0.2.1/dist/chartjs-chart-financial.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4/dist/lightweight-charts.standalone.production.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; }
@@ -65,7 +65,7 @@
 
     .price-section { margin-top: 1.5rem; border-top: 1px solid #e5e7eb; padding-top: 1.2rem; }
     .price-section h3 { font-size: 0.85rem; color: #666; margin-bottom: 0.8rem; }
-    .price-wrap { height: 260px; }
+    .price-wrap { height: 260px; position: relative; }
 
     .legend { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
     .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; cursor: pointer; }
@@ -223,80 +223,53 @@ function buildPriceSection(symbol) {
   section.className = "price-section";
   section.innerHTML = `
     <h3>株価推移</h3>
-    <div class="price-wrap"><canvas id="price-${symbol}"></canvas></div>`;
+    <div class="price-wrap" id="price-${symbol}"></div>`;
   return section;
 }
 
 function buildPriceChart(symbol, history, earningsDates) {
-  const data = history
+  const container = document.getElementById(`price-${symbol}`);
+  if (!container) return null;
+
+  const candleData = history
     .filter(e => e[symbol]?.o != null && e[symbol]?.c != null)
-    .map(e => ({ x: e.date, o: e[symbol].o, h: e[symbol].h, l: e[symbol].l, c: e[symbol].c }));
+    .map(e => ({ time: e.date, open: e[symbol].o, high: e[symbol].h, low: e[symbol].l, close: e[symbol].c }));
 
-  const xMin = history[0]?.date;
-  const xMax = history[history.length - 1]?.date;
+  const chart = LightweightCharts.createChart(container, {
+    autoSize: true,
+    layout: { background: { color: "#ffffff" }, textColor: "#374151" },
+    grid: { vertLines: { color: "#e5e7eb" }, horzLines: { color: "#e5e7eb" } },
+    rightPriceScale: { borderColor: "#e5e7eb" },
+    timeScale: { borderColor: "#e5e7eb", timeVisible: false },
+  });
 
-  const allDates = data.map(d => d.x);
-  const dataMin = allDates[0] ?? null;
-  const dataMax = allDates[allDates.length - 1] ?? null;
-  const annotations = {};
-  const ed = (earningsDates || {})[symbol];
-  if (ed && dataMin && dataMax) {
-    if (ed.prev && ed.prev >= dataMin && ed.prev <= dataMax) {
-      annotations.prevEarnings = {
-        type: "line", xMin: ed.prev, xMax: ed.prev,
-        borderColor: "#f59e0b", borderWidth: 2, borderDash: [4, 4],
-        label: { display: true, content: `前回決算 ${ed.prev}`, position: "start", backgroundColor: "#f59e0b", color: "#fff", font: { size: 10 }, padding: 3 },
-      };
-    }
-    if (ed.next && ed.next >= dataMin && ed.next <= dataMax) {
-      annotations.nextEarnings = {
-        type: "line", xMin: ed.next, xMax: ed.next,
-        borderColor: "#6366f1", borderWidth: 2, borderDash: [4, 4],
-        label: { display: true, content: `次回決算 ${ed.next}`, position: "end", backgroundColor: "#6366f1", color: "#fff", font: { size: 10 }, padding: 3 },
-      };
-    }
+  const series = chart.addCandlestickSeries({
+    upColor: "#16a34a", downColor: "#dc2626",
+    borderUpColor: "#16a34a", borderDownColor: "#dc2626",
+    wickUpColor: "#16a34a", wickDownColor: "#dc2626",
+  });
+
+  if (candleData.length) {
+    series.setData(candleData);
   }
 
-  return new Chart(document.getElementById(`price-${symbol}`), {
-    type: "candlestick",
-    data: { datasets: [{
-      label: "株価",
-      data,
-      color: { up: "#16a34a", down: "#dc2626", unchanged: "#6b7280" },
-    }] },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: "index", intersect: false },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: ctx => {
-              const r = ctx.raw;
-              if (!r) return null;
-              return [`始値: $${r.o?.toFixed(2)}`, `高値: $${r.h?.toFixed(2)}`, `安値: $${r.l?.toFixed(2)}`, `終値: $${r.c?.toFixed(2)}`];
-            },
-          },
-        },
-        annotation: { annotations },
-      },
-      scales: {
-        x: {
-          type: "time",
-          min: xMin, max: xMax,
-          time: { unit: "day", tooltipFormat: "yyyy-MM-dd", displayFormats: { day: "MM/dd" } },
-          ticks: { maxTicksLimit: 12 },
-          offset: true,
-        },
-        y: {
-          position: "left",
-          title: { display: true, text: "株価 ($)" },
-          ticks: { callback: v => "$" + v.toFixed(2) },
-        },
-      },
-    },
-  });
+  // 日付範囲を history 全体に合わせる
+  if (history.length) {
+    chart.timeScale().setVisibleRange({ from: history[0].date, to: history[history.length - 1].date });
+  }
+
+  // 決算日マーカー
+  const ed = (earningsDates || {})[symbol];
+  const markers = [];
+  if (ed?.prev && candleData.some(d => d.time === ed.prev)) {
+    markers.push({ time: ed.prev, position: "aboveBar", color: "#f59e0b", shape: "arrowDown", text: "前回決算" });
+  }
+  if (ed?.next && candleData.some(d => d.time === ed.next)) {
+    markers.push({ time: ed.next, position: "aboveBar", color: "#6366f1", shape: "arrowDown", text: "次回決算" });
+  }
+  if (markers.length) series.setMarkers(markers);
+
+  return chart;
 }
 
 function buildChart(canvasId, history, symbol, earningsDates) {
@@ -348,7 +321,7 @@ function buildChart(canvasId, history, symbol, earningsDates) {
       data: history
         .filter(e => e["_SP500"]?.trailing_pe != null)
         .map(e => ({ x: e.date, y: e["_SP500"].trailing_pe })),
-      borderColor: PER_COLORS.trailing_pe,
+      borderColor: "#d97706",
       borderDash: [6, 3],
       borderWidth: 1.5,
       backgroundColor: "transparent",
@@ -366,7 +339,7 @@ function buildChart(canvasId, history, symbol, earningsDates) {
       data: history
         .filter(e => e["_SP500"]?.forward_pe != null)
         .map(e => ({ x: e.date, y: e["_SP500"].forward_pe })),
-      borderColor: PER_COLORS.forward_pe,
+      borderColor: "#fbbf24",
       borderDash: [6, 3],
       borderWidth: 1.5,
       backgroundColor: "transparent",
@@ -477,7 +450,8 @@ function switchChartMode(chart, mode) {
 }
 
 function syncChartAreas(epsChart, priceChart) {
-  if (!epsChart || !priceChart) return;
+  // priceChart は Lightweight Charts インスタンスのため Chart.js 同期不要
+  if (!epsChart || !priceChart || !priceChart.chartArea) return;
   requestAnimationFrame(() => {
     const a1 = epsChart.chartArea;
     const a2 = priceChart.chartArea;
@@ -513,12 +487,13 @@ function buildCard(symbol, history, earningsDates, perData, names) {
     </span>`).join("");
 
   const PER_COLORS_CARD = { trailing_pe: "#7c3aed", forward_pe: "#0891b2" };
+  const SP500_COLORS = { trailing_pe: "#d97706", forward_pe: "#fbbf24" };
   const sp500LegendItems = [
     { key: "trailing_pe", label: "S&P500 PER(LTM)" },
     { key: "forward_pe",  label: "S&P500 PER(Fwd)" },
   ].map(({ key, label }, j) => `
     <span class="legend-item" data-canvas="${canvasId}" data-idx="${epsPeriods.length + 2 + j}">
-      <span class="legend-dot" style="background:${PER_COLORS_CARD[key]};opacity:0.5"></span>
+      <span class="legend-dot" style="background:${SP500_COLORS[key]}"></span>
       ${label}
     </span>`);
   const perLegendHtml = [
