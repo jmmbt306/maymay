@@ -561,6 +561,22 @@
     "AAL": "American Airlines Group, Inc.",
     "LMT": "Lockheed Martin Corporation",
     "INTC": "Intel Corporation",
-    "PG": "Procter & Gamble Company (The)"
+    "PG": "Procter & Gamble Company (The)",
+    "GS": "Goldman Sachs Group, Inc. (The)",
+    "JPM": "JP Morgan Chase & Co.",
+    "WFC": "Wells Fargo & Company",
+    "C": "Citigroup, Inc.",
+    "JNJ": "Johnson & Johnson",
+    "MS": "Morgan Stanley",
+    "JBHT": "J.B. Hunt Transport Services, I",
+    "PEP": "Pepsico, Inc.",
+    "ABT": "Abbott Laboratories",
+    "NFLX": "Netflix, Inc.",
+    "FITB": "Fifth Third Bancorp",
+    "RF": "Regions Financial Corporation",
+    "TFC": "Truist Financial Corporation",
+    "LEVI": "Levi Strauss & Co",
+    "DAL": "Delta Air Lines, Inc.",
+    "STZ": "Constellation Brands, Inc."
   }
 }
