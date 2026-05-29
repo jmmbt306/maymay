@@ -242,11 +242,7 @@ function buildPriceChart(symbol, history, earningsDates) {
     rightPriceScale: { borderColor: "#e5e7eb" },
     leftPriceScale: { visible: true, borderVisible: false },
     timeScale: {
-      borderColor: "#e5e7eb", timeVisible: true,
-      tickMarkFormatter: time => {
-        const d = LightweightCharts.isBusinessDay(time) ? new Date(time.year, time.month - 1, time.day) : new Date(time * 1000);
-        return (d.getMonth() + 1) + "/" + d.getDate();
-      },
+      borderColor: "#e5e7eb", timeVisible: false,
       fixLeftEdge: true, fixRightEdge: true, rightOffset: 0, lockVisibleTimeRangeOnResize: true,
     },
   });
