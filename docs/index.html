@@ -8,7 +8,6 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1/dist/chartjs-adapter-luxon.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3/dist/chartjs-plugin-annotation.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4/dist/lightweight-charts.standalone.production.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; }
@@ -223,54 +222,91 @@ function buildPriceSection(symbol) {
   section.className = "price-section";
   section.innerHTML = `
     <h3>株価推移</h3>
-    <div class="price-wrap" id="price-${symbol}"></div>`;
+    <div class="price-wrap"><canvas id="price-${symbol}"></canvas></div>`;
   return section;
 }
 
 function buildPriceChart(symbol, history, earningsDates) {
-  const container = document.getElementById(`price-${symbol}`);
-  if (!container) return null;
-
-  const candleData = history
+  const data = history
     .filter(e => e[symbol]?.o != null && e[symbol]?.c != null)
-    .map(e => ({ time: e.date, open: e[symbol].o, high: e[symbol].h, low: e[symbol].l, close: e[symbol].c }));
+    .map(e => ({
+      date: e.date,
+      o: e[symbol].o, h: e[symbol].h, l: e[symbol].l, c: e[symbol].c,
+      up: e[symbol].c >= e[symbol].o,
+    }));
 
-  const chart = LightweightCharts.createChart(container, {
-    autoSize: true,
-    layout: { background: { color: "#ffffff" }, textColor: "#374151" },
-    grid: { vertLines: { color: "#e5e7eb" }, horzLines: { color: "#e5e7eb" } },
-    rightPriceScale: { borderColor: "#e5e7eb" },
-    leftPriceScale: { visible: true, borderVisible: false },
-    timeScale: {
-      borderColor: "#e5e7eb", timeVisible: false,
-      fixLeftEdge: true, fixRightEdge: true, rightOffset: 0, lockVisibleTimeRangeOnResize: true,
+  const xMin = history[0]?.date;
+  const xMax = history[history.length - 1]?.date;
+
+  const annotations = {};
+  const ed = (earningsDates || {})[symbol];
+  const dates = data.map(d => d.date);
+  const dataMin = dates[0] ?? null;
+  const dataMax = dates[dates.length - 1] ?? null;
+  if (ed?.prev && dataMin && dataMax && ed.prev >= dataMin && ed.prev <= dataMax) {
+    annotations.prevEarnings = {
+      type: "line", xMin: ed.prev, xMax: ed.prev,
+      borderColor: "#f59e0b", borderWidth: 2, borderDash: [4, 4],
+      label: { display: true, content: `前回決算 ${ed.prev}`, position: "start", backgroundColor: "#f59e0b", color: "#fff", font: { size: 10 }, padding: 3 },
+    };
+  }
+
+  const UP = "#16a34a", DN = "#dc2626";
+  return new Chart(document.getElementById(`price-${symbol}`), {
+    type: "bar",
+    data: { datasets: [
+      {
+        label: "株価",
+        data: data.map(d => ({ x: d.date, y: [d.o, d.c] })),
+        backgroundColor: data.map(d => d.up ? "rgba(22,163,74,0.75)" : "rgba(220,38,38,0.75)"),
+        borderColor:      data.map(d => d.up ? UP : DN),
+        borderWidth: 1, borderSkipped: false,
+        barPercentage: 0.6, categoryPercentage: 1.0,
+      },
+      {
+        label: "_wick_h",
+        data: data.map(d => ({ x: d.date, y: [Math.max(d.o, d.c), d.h] })),
+        backgroundColor: data.map(d => d.up ? UP : DN),
+        borderWidth: 0, borderSkipped: false, barThickness: 1,
+      },
+      {
+        label: "_wick_l",
+        data: data.map(d => ({ x: d.date, y: [d.l, Math.min(d.o, d.c)] })),
+        backgroundColor: data.map(d => d.up ? UP : DN),
+        borderWidth: 0, borderSkipped: false, barThickness: 1,
+      },
+    ]},
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: "index", intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          filter: ctx => ctx.datasetIndex === 0,
+          callbacks: {
+            label: ctx => {
+              const d = data[ctx.dataIndex];
+              return d ? [`始値: $${d.o.toFixed(2)}`, `高値: $${d.h.toFixed(2)}`, `安値: $${d.l.toFixed(2)}`, `終値: $${d.c.toFixed(2)}`] : null;
+            },
+          },
+        },
+        annotation: { annotations },
+      },
+      scales: {
+        x: {
+          type: "time",
+          min: xMin, max: xMax,
+          time: { unit: "day", tooltipFormat: "yyyy-MM-dd", displayFormats: { day: "MM/dd" } },
+          ticks: { maxTicksLimit: 12 },
+        },
+        y: {
+          position: "left",
+          title: { display: true, text: "株価 ($)" },
+          ticks: { callback: v => "$" + v.toFixed(0) },
+        },
+      },
     },
   });
-
-  const series = chart.addCandlestickSeries({
-    upColor: "#16a34a", downColor: "#dc2626",
-    borderUpColor: "#16a34a", borderDownColor: "#dc2626",
-    wickUpColor: "#16a34a", wickDownColor: "#dc2626",
-  });
-
-  if (candleData.length) {
-    series.setData(candleData);
-  }
-
-  // 時間軸を EPS/PER チャートと同じ日付範囲に合わせる
-  if (history.length) {
-    chart.timeScale().setVisibleRange({ from: history[0].date, to: history[history.length - 1].date });
-  }
-
-  // 決算日マーカー
-  const ed = (earningsDates || {})[symbol];
-  const markers = [];
-  if (ed?.prev && candleData.some(d => d.time === ed.prev)) {
-    markers.push({ time: ed.prev, position: "aboveBar", color: "#f59e0b", shape: "arrowDown", text: "前回決算" });
-  }
-  if (markers.length) series.setMarkers(markers);
-
-  return chart;
 }
 
 function buildChart(canvasId, history, symbol, earningsDates) {
@@ -449,19 +485,19 @@ function switchChartMode(chart, mode) {
 }
 
 function syncChartAreas(epsChart, priceChart) {
-  // EPS/PER チャート（Chart.js）のプロット左右余白に株価チャート（LWC）を合わせる
   if (!epsChart || !priceChart) return;
   requestAnimationFrame(() => {
-    const a = epsChart.chartArea;
-    if (!a) return;
-    const leftW  = Math.round(a.left);
-    const rightW = Math.round(epsChart.width - a.right);
-    try {
-      priceChart.priceScale("left").applyOptions({ minimumWidth: leftW });
-      priceChart.priceScale("right").applyOptions({ minimumWidth: rightW });
-    } catch (e) {
-      /* 古い Lightweight Charts では minimumWidth 非対応 */
-    }
+    const a1 = epsChart.chartArea, a2 = priceChart.chartArea;
+    if (!a1 || !a2) return;
+    const left  = Math.max(a1.left, a2.left);
+    const right1 = epsChart.width   - a1.right;
+    const right2 = priceChart.width - a2.right;
+    const right  = Math.max(right1, right2);
+    const pad = c => { c.options.layout = c.options.layout || {}; c.options.layout.padding = c.options.layout.padding || {}; };
+    pad(epsChart);   epsChart.options.layout.padding.left   = left - a1.left;  epsChart.options.layout.padding.right   = right - right1;
+    pad(priceChart); priceChart.options.layout.padding.left = left - a2.left;  priceChart.options.layout.padding.right = right - right2;
+    epsChart.update("none");
+    priceChart.update("none");
   });
 }
 
@@ -552,14 +588,12 @@ Promise.all([
   const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData);
 
   // チャートカードを全件生成・チャート描画
-  const priceCharts = {};
   symbols.forEach((symbol, i) => {
     const card = buildCard(symbol, history, earningsDates, perData, names);
     if (i === 0) card.classList.add("active");
     main.appendChild(card);
     const epsChart   = buildChart(`chart-${symbol}`, history, symbol, earningsDates);
     const priceChart = buildPriceChart(symbol, history, earningsDates);
-    if (priceChart) priceCharts[symbol] = priceChart;
     syncChartAreas(epsChart, priceChart);
   });
 
@@ -572,15 +606,10 @@ Promise.all([
     const target = tr.dataset.symbol;
     tbody.querySelectorAll("tr").forEach(r => r.classList.toggle("active", r.dataset.symbol === target));
     main.querySelectorAll(".card").forEach(c => c.classList.toggle("active", c.dataset.symbol === target));
-    const chart = Chart.getChart(`chart-${target}`);
-    if (chart) chart.resize();
-    const pc = priceCharts[target];
-    if (pc) requestAnimationFrame(() => {
-      const el = document.getElementById(`price-${target}`);
-      if (el) pc.resize(el.clientWidth, el.clientHeight);
-      if (history.length) pc.timeScale().setVisibleRange({ from: history[0].date, to: history[history.length - 1].date });
-      syncChartAreas(chart, pc);
-    });
+    const epsChart   = Chart.getChart(`chart-${target}`);
+    const priceChart = Chart.getChart(`price-${target}`);
+    if (epsChart)   epsChart.resize();
+    if (priceChart) { priceChart.resize(); syncChartAreas(epsChart, priceChart); }
   });
 
   // EPS/PER トグルボタン
@@ -594,7 +623,7 @@ Promise.all([
     btn.closest(".chart-toggle").querySelectorAll("button").forEach(b => b.classList.toggle("active", b === btn));
     switchChartMode(chart, mode);
     const symbol = canvasId.replace(/^chart-/, "");
-    syncChartAreas(chart, priceCharts[symbol]);
+    syncChartAreas(chart, Chart.getChart(`price-${symbol}`));
     const card = btn.closest(".card");
     card.querySelector(`[data-legend="eps-${canvasId}"]`).style.display = mode === "eps" ? "" : "none";
     card.querySelector(`[data-legend="per-${canvasId}"]`).style.display = mode === "per" ? "" : "none";
