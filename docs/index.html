@@ -63,8 +63,8 @@
     }
     .chart-toggle button.active { background: #1d4ed8; color: #fff; border-color: #1d4ed8; }
 
-    .price-section { margin-top: 1.5rem; border-top: 1px solid #e5e7eb; padding-top: 1.2rem; }
-    .price-section h3 { font-size: 0.85rem; color: #666; margin-bottom: 0.8rem; }
+    .price-section { margin-top: 0.4rem; border-top: none; padding-top: 0; }
+    .price-section h3 { font-size: 0.85rem; color: #666; margin-bottom: 0.4rem; }
     .price-wrap { height: 260px; position: relative; }
 
     .legend { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
@@ -242,7 +242,11 @@ function buildPriceChart(symbol, history, earningsDates) {
     rightPriceScale: { borderColor: "#e5e7eb" },
     leftPriceScale: { visible: true, borderVisible: false },
     timeScale: {
-      borderColor: "#e5e7eb", timeVisible: false,
+      borderColor: "#e5e7eb", timeVisible: true,
+      tickMarkFormatter: time => {
+        const d = LightweightCharts.isBusinessDay(time) ? new Date(time.year, time.month - 1, time.day) : new Date(time * 1000);
+        return (d.getMonth() + 1) + "/" + d.getDate();
+      },
       fixLeftEdge: true, fixRightEdge: true, rightOffset: 0, lockVisibleTimeRangeOnResize: true,
     },
   });
@@ -410,7 +414,8 @@ function buildChart(canvasId, history, symbol, earningsDates) {
           type: "time",
           min: xMin, max: xMax,
           time: { unit: "day", tooltipFormat: "yyyy-MM-dd", displayFormats: { day: "MM/dd" } },
-          ticks: { maxTicksLimit: 12 },
+          ticks: { display: false },
+          border: { display: false },
         },
         yQ: {
           position: "left",
