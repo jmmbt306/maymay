@@ -70,19 +70,14 @@
     .badge.soon { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
     .badge.per  { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
 
-    /* EPS/PER と株価チャートを同一カラムトラックに並べて横幅を完全に一致させる */
-    .charts-grid { display: grid; grid-template-columns: minmax(0, 1fr); }
-    .chart-wrap { height: 260px; }
+    /* 株価ローソク足・出来高・EPS/PER を統合した単一チャート */
+    .chart-wrap { height: 440px; }
     .chart-toggle { display: flex; gap: 0.4rem; margin-bottom: 0.6rem; }
     .chart-toggle button {
       padding: 0.25rem 0.8rem; border-radius: 5px; border: 1.5px solid #d1d5db;
       background: #fff; color: #374151; font-size: 0.8rem; cursor: pointer;
     }
     .chart-toggle button.active { background: #1d4ed8; color: #fff; border-color: #1d4ed8; }
-
-    .price-section { margin-top: 0.4rem; border-top: none; padding-top: 0; }
-    .price-section h3 { font-size: 0.85rem; color: #666; margin-bottom: 0.4rem; }
-    .price-wrap { height: 200px; position: relative; }
 
     .legend { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.6rem 0; }
     .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; cursor: pointer; }
@@ -248,11 +243,17 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
 }
 
 
-function buildPriceChart(symbol, history, earningsDates) {
+// 株価ローソク足・出来高・EPS/PER を 1 つの Chart.js インスタンスに統合する。
+// X 軸を共有するため、プロットの整列ずれが原理的に発生しない。
+// ローソク足と出来高は常時表示、EPS 系統 / PER 系統のラインはトグルで切り替える。
+const PRICE_DATASET_COUNT = 4; // 先頭4つ（wick_h, wick_l, body, volume）は価格系
+
+function buildChart(canvasId, history, symbol, earningsDates) {
   const xLabels = windowLabels(history);
   const xMin = xLabels[0];
 
-  const data = history
+  // --- 株価（ローソク足）・出来高 ---
+  const priceData = history
     .filter(e => e[symbol]?.o != null && e[symbol]?.c != null && e.date >= xMin)
     .map(e => ({
       date: e.date,
@@ -261,119 +262,53 @@ function buildPriceChart(symbol, history, earningsDates) {
       up: e[symbol].c >= e[symbol].o,
     }));
 
-  // 株価軸は実データの高値・安値レンジに合わせる（0 始まりにしない）
-  const lows  = data.map(d => d.l).filter(v => v != null);
-  const highs = data.map(d => d.h).filter(v => v != null);
+  const lows  = priceData.map(d => d.l).filter(v => v != null);
+  const highs = priceData.map(d => d.h).filter(v => v != null);
   const priceLo = lows.length  ? Math.min(...lows)  : 0;
   const priceHi = highs.length ? Math.max(...highs) : 1;
   const pricePad = (priceHi - priceLo) * 0.1 || 1;
 
-  const annotations = {};
-  const ed = (earningsDates || {})[symbol];
-  const dates = data.map(d => d.date);
-  const dataMin = dates[0] ?? null;
-  const dataMax = dates[dates.length - 1] ?? null;
-  if (ed?.prev && dataMin && dataMax && ed.prev >= dataMin && ed.prev <= dataMax) {
-    annotations.prevEarnings = {
-      type: "line", xMin: ed.prev, xMax: ed.prev,
-      borderColor: "#f59e0b", borderWidth: 2, borderDash: [4, 4],
-      label: { display: true, content: `前回決算 ${ed.prev}`, position: "start", backgroundColor: "#f59e0b", color: "#fff", font: { size: 10 }, padding: 3 },
-    };
-  }
-
   const UP = "#16a34a", DN = "#dc2626";
-  return new Chart(document.getElementById(`price-${symbol}`), {
-    type: "bar",
-    data: { datasets: [
-      {
-        label: "_wick_h",
-        data: data.map(d => ({ x: d.date, y: [Math.max(d.o, d.c), d.h] })),
-        backgroundColor: data.map(d => d.up ? UP : DN),
-        borderWidth: 0, borderSkipped: false, barThickness: 1,
-        grouped: false, order: 1,
-      },
-      {
-        label: "_wick_l",
-        data: data.map(d => ({ x: d.date, y: [d.l, Math.min(d.o, d.c)] })),
-        backgroundColor: data.map(d => d.up ? UP : DN),
-        borderWidth: 0, borderSkipped: false, barThickness: 1,
-        grouped: false, order: 1,
-      },
-      {
-        label: "株価",
-        data: data.map(d => ({ x: d.date, y: [d.o, d.c] })),
-        backgroundColor: data.map(d => d.up ? "rgba(22,163,74,0.75)" : "rgba(220,38,38,0.75)"),
-        borderColor:      data.map(d => d.up ? UP : DN),
-        borderWidth: 1, borderSkipped: false,
-        barPercentage: 0.6, categoryPercentage: 1.0,
-        grouped: false, order: 0,
-      },
-      {
-        label: "出来高",
-        data: data.map(d => ({ x: d.date, y: d.v })),
-        backgroundColor: "rgba(245,158,11,0.35)",
-        borderWidth: 0,
-        barPercentage: 0.9, categoryPercentage: 1.0,
-        grouped: false, order: 2,
-        yAxisID: "yVol",
-      },
-    ]},
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      interaction: { mode: "index", intersect: false },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          filter: ctx => ctx.datasetIndex === 2 || ctx.datasetIndex === 3,
-          callbacks: {
-            label: ctx => {
-              if (ctx.datasetIndex === 3) {
-                const v = ctx.parsed.y;
-                return v != null ? `出来高: ${(v / 1e6).toFixed(2)}M` : null;
-              }
-              const d = data[ctx.dataIndex];
-              return d ? [`始値: $${d.o.toFixed(2)}`, `高値: $${d.h.toFixed(2)}`, `安値: $${d.l.toFixed(2)}`, `終値: $${d.c.toFixed(2)}`] : null;
-            },
-          },
-        },
-        annotation: { annotations },
-      },
-      scales: {
-        x: {
-          type: "category",
-          labels: xLabels,
-          offset: true,
-          // 上の EPS/PER チャートと横方向の余白（端ラベルのはみ出し分）を揃えるため、
-          // 同じ日付目盛りを確保しつつ文字だけ透明にして非表示にする
-          ticks: { maxTicksLimit: 12, color: "rgba(0,0,0,0)", callback: function (v) { return shortDate(this.getLabelForValue(v)); } },
-          grid: { drawTicks: false },
-          border: { display: false },
-        },
-        y: {
-          position: "left",
-          min: priceLo - pricePad,
-          max: priceHi + pricePad,
-          title: { display: true, text: "株価 ($)" },
-          ticks: { callback: v => "$" + v.toFixed(0) },
-        },
-        yVol: {
-          position: "right",
-          display: true,
-          grid: { drawOnChartArea: false },
-          max: (Math.max(0, ...data.map(d => d.v ?? 0)) || 1) * 4,
-          min: 0,
-          ticks: { callback: v => (v / 1e6).toFixed(0) + "M", maxTicksLimit: 4 },
-          title: { display: false },
-        },
-      },
+  const priceDatasets = [
+    {
+      label: "_wick_h",
+      data: priceData.map(d => ({ x: d.date, y: [Math.max(d.o, d.c), d.h] })),
+      backgroundColor: priceData.map(d => d.up ? UP : DN),
+      borderWidth: 0, borderSkipped: false, barThickness: 1,
+      grouped: false, order: 1, yAxisID: "yPrice",
     },
-  });
-}
+    {
+      label: "_wick_l",
+      data: priceData.map(d => ({ x: d.date, y: [d.l, Math.min(d.o, d.c)] })),
+      backgroundColor: priceData.map(d => d.up ? UP : DN),
+      borderWidth: 0, borderSkipped: false, barThickness: 1,
+      grouped: false, order: 1, yAxisID: "yPrice",
+    },
+    {
+      label: "株価",
+      type: "bar",
+      data: priceData.map(d => ({ x: d.date, y: [d.o, d.c] })),
+      backgroundColor: priceData.map(d => d.up ? "rgba(22,163,74,0.75)" : "rgba(220,38,38,0.75)"),
+      borderColor:      priceData.map(d => d.up ? UP : DN),
+      borderWidth: 1, borderSkipped: false,
+      barPercentage: 0.6, categoryPercentage: 1.0,
+      grouped: false, order: 0, yAxisID: "yPrice",
+    },
+    {
+      label: "出来高",
+      type: "bar",
+      data: priceData.map(d => ({ x: d.date, y: d.v })),
+      backgroundColor: "rgba(245,158,11,0.35)",
+      borderWidth: 0,
+      barPercentage: 0.9, categoryPercentage: 1.0,
+      grouped: false, order: 2, yAxisID: "yVol",
+    },
+  ];
+  const volMax = (Math.max(0, ...priceData.map(d => d.v ?? 0)) || 1) * 4;
 
-function buildChart(canvasId, history, symbol, earningsDates) {
+  // --- EPS / PER ライン ---
   const periodArrays = {};
   const perArrays = { trailing_pe: [], forward_pe: [] };
-
   history.forEach(entry => {
     const d = entry[symbol];
     if (!d) return;
@@ -390,10 +325,11 @@ function buildChart(canvasId, history, symbol, earningsDates) {
   const QUARTERLY = new Set(["0q", "+1q"]);
   const epsDatasets = Object.entries(periodArrays).map(([period, data], i) => ({
     label: PERIOD_LABELS[period] || period,
+    type: "line",
     data,
     borderColor: COLORS[i % COLORS.length],
     backgroundColor: COLORS[i % COLORS.length] + "22",
-    tension: 0.3, pointRadius: 4, pointHoverRadius: 6,
+    tension: 0.3, pointRadius: 3, pointHoverRadius: 6,
     yAxisID: QUARTERLY.has(period) ? "yQ" : "yA",
     _mode: "eps",
   }));
@@ -402,10 +338,11 @@ function buildChart(canvasId, history, symbol, earningsDates) {
   const PER_LABELS = { trailing_pe: "PER(LTM)", forward_pe: "Forward PER" };
   const perDatasets = Object.entries(perArrays).map(([k, data]) => ({
     label: PER_LABELS[k],
+    type: "line",
     data,
     borderColor: PER_COLORS[k],
     backgroundColor: PER_COLORS[k] + "22",
-    tension: 0.3, pointRadius: 4, pointHoverRadius: 6,
+    tension: 0.3, pointRadius: 3, pointHoverRadius: 6,
     yAxisID: "yPER",
     hidden: true,
     _mode: "per",
@@ -413,58 +350,21 @@ function buildChart(canvasId, history, symbol, earningsDates) {
 
   // S&P 500 PER 参照ライン（trailing + forward、取得できた分のみ表示）
   const sp500Datasets = [];
-  if (history.some(e => e["_SP500"]?.trailing_pe != null)) {
+  const SP500_SERIES = [
+    { key: "trailing_pe", label: "S&P500 PER(LTM)", color: "#d97706" },
+    { key: "forward_pe",  label: "S&P500 PER(Fwd)", color: "#fbbf24" },
+  ];
+  SP500_SERIES.forEach(({ key, label, color }) => {
+    if (!history.some(e => e["_SP500"]?.[key] != null)) return;
     sp500Datasets.push({
-      label: "S&P500 PER(LTM)",
-      data: history
-        .filter(e => e["_SP500"]?.trailing_pe != null)
-        .map(e => ({ x: e.date, y: e["_SP500"].trailing_pe })),
-      borderColor: "#d97706",
-      borderDash: [6, 3],
-      borderWidth: 1.5,
-      backgroundColor: "transparent",
-      pointRadius: 3,
-      pointHoverRadius: 5,
-      tension: 0.3,
-      yAxisID: "yPER",
-      hidden: true,
-      _mode: "per",
+      label,
+      type: "line",
+      data: history.filter(e => e["_SP500"]?.[key] != null).map(e => ({ x: e.date, y: e["_SP500"][key] })),
+      borderColor: color, borderDash: [6, 3], borderWidth: 1.5,
+      backgroundColor: "transparent", pointRadius: 3, pointHoverRadius: 5, tension: 0.3,
+      yAxisID: "yPER", hidden: true, _mode: "per",
     });
-  }
-  if (history.some(e => e["_SP500"]?.forward_pe != null)) {
-    sp500Datasets.push({
-      label: "S&P500 PER(Fwd)",
-      data: history
-        .filter(e => e["_SP500"]?.forward_pe != null)
-        .map(e => ({ x: e.date, y: e["_SP500"].forward_pe })),
-      borderColor: "#fbbf24",
-      borderDash: [6, 3],
-      borderWidth: 1.5,
-      backgroundColor: "transparent",
-      pointRadius: 3,
-      pointHoverRadius: 5,
-      tension: 0.3,
-      yAxisID: "yPER",
-      hidden: true,
-      _mode: "per",
-    });
-  }
-
-  // 決算日アノテーション（データ期間内のみ表示）
-  const annotations = {};
-  const ed = (earningsDates || {})[symbol];
-  const allDates = Object.values(periodArrays).flat().map(p => p.x);
-  const dataMin = allDates.length ? allDates.reduce((a, b) => a < b ? a : b) : null;
-  const dataMax = allDates.length ? allDates.reduce((a, b) => a > b ? a : b) : null;
-  if (ed && dataMin && dataMax) {
-    if (ed.prev && ed.prev >= dataMin && ed.prev <= dataMax) {
-      annotations.prevEarnings = {
-        type: "line", xMin: ed.prev, xMax: ed.prev,
-        borderColor: "#f59e0b", borderWidth: 2, borderDash: [4, 4],
-        label: { display: true, content: `前回決算 ${ed.prev}`, position: "start", backgroundColor: "#f59e0b", color: "#fff", font: { size: 10 }, padding: 3 },
-      };
-    }
-  }
+  });
 
   // yPER の表示範囲を銘柄 + S&P500 全データから計算
   const allPerValues = [
@@ -477,11 +377,20 @@ function buildChart(canvasId, history, symbol, earningsDates) {
   const perMax = allPerValues.length ? Math.max(...allPerValues) : 100;
   const perPad = (perMax - perMin) * 0.1 || 5;
 
-  const xLabels = windowLabels(history);
+  // 決算日アノテーション（データ期間内のみ表示）
+  const annotations = {};
+  const ed = (earningsDates || {})[symbol];
+  if (ed?.prev && xLabels.includes(ed.prev)) {
+    annotations.prevEarnings = {
+      type: "line", xMin: ed.prev, xMax: ed.prev,
+      borderColor: "#f59e0b", borderWidth: 2, borderDash: [4, 4],
+      label: { display: true, content: `前回決算 ${ed.prev}`, position: "start", backgroundColor: "#f59e0b", color: "#fff", font: { size: 10 }, padding: 3 },
+    };
+  }
 
   return new Chart(document.getElementById(canvasId), {
-    type: "line",
-    data: { datasets: [...epsDatasets, ...perDatasets, ...sp500Datasets] },
+    type: "bar",
+    data: { datasets: [...priceDatasets, ...epsDatasets, ...perDatasets, ...sp500Datasets] },
     options: {
       responsive: true,
       maintainAspectRatio: false,
@@ -489,13 +398,21 @@ function buildChart(canvasId, history, symbol, earningsDates) {
       plugins: {
         legend: { display: false },
         tooltip: {
+          filter: ctx => !ctx.dataset.label.startsWith("_wick"),
           callbacks: {
             label: ctx => {
+              const ds = ctx.dataset;
+              if (ds.label === "株価") {
+                const d = priceData[ctx.dataIndex];
+                return d ? [`始値: $${d.o.toFixed(2)}`, `高値: $${d.h.toFixed(2)}`, `安値: $${d.l.toFixed(2)}`, `終値: $${d.c.toFixed(2)}`] : null;
+              }
+              if (ds.label === "出来高") {
+                const v = ctx.parsed.y;
+                return v != null ? `出来高: ${(v / 1e6).toFixed(2)}M` : null;
+              }
               const v = ctx.parsed.y;
               if (v == null) return null;
-              return ctx.dataset._mode === "per"
-                ? `${ctx.dataset.label}: ${v.toFixed(1)}x`
-                : `${ctx.dataset.label}: $${v.toFixed(2)}`;
+              return ds._mode === "per" ? `${ds.label}: ${v.toFixed(1)}x` : `${ds.label}: $${v.toFixed(2)}`;
             },
           },
         },
@@ -508,10 +425,24 @@ function buildChart(canvasId, history, symbol, earningsDates) {
           offset: true,
           ticks: { maxTicksLimit: 12, callback: function (v) { return shortDate(this.getLabelForValue(v)); } },
         },
-        yQ: {
+        yPrice: {
           position: "left",
+          min: priceLo - pricePad,
+          max: priceHi + pricePad,
+          title: { display: true, text: "株価 ($)" },
+          ticks: { callback: v => "$" + v.toFixed(0) },
+        },
+        yVol: {
+          position: "right",
+          display: false,
+          min: 0, max: volMax,
+          grid: { drawOnChartArea: false },
+        },
+        yQ: {
+          position: "right",
           title: { display: true, text: "四半期 EPS ($)" },
           ticks: { callback: v => "$" + v.toFixed(2) },
+          grid: { drawOnChartArea: false },
         },
         yA: {
           position: "right",
@@ -534,47 +465,14 @@ function buildChart(canvasId, history, symbol, earningsDates) {
 }
 
 function switchChartMode(chart, mode) {
+  // _mode を持つライン系のみ切り替え、価格系（ローソク足・出来高）は常時表示
   chart.data.datasets.forEach(ds => {
-    ds.hidden = ds._mode !== mode;
+    if (ds._mode) ds.hidden = ds._mode !== mode;
   });
   chart.options.scales.yQ.display = mode === "eps";
   chart.options.scales.yA.display = mode === "eps";
   chart.options.scales.yPER.display = mode === "per";
   chart.update();
-}
-
-// EPS/PER チャートと株価チャートのプロットエリア（左右端）をピクセル単位で揃える。
-// 既存の padding を一旦ゼロに戻してから実測するので、モード切替で繰り返し呼んでも累積しない。
-function syncChartAreas(epsChart, priceChart) {
-  if (!epsChart || !priceChart) return;
-  const reset = c => {
-    c.options.layout = c.options.layout || {};
-    c.options.layout.padding = Object.assign({}, c.options.layout.padding, { left: 0, right: 0 });
-  };
-  reset(epsChart); reset(priceChart);
-  epsChart.update("none"); priceChart.update("none");
-
-  const a1 = epsChart.chartArea, a2 = priceChart.chartArea;
-  if (!a1 || !a2 || !a1.width || !a2.width) return;
-  const left   = Math.max(a1.left, a2.left);
-  const right1 = epsChart.width   - a1.right;
-  const right2 = priceChart.width - a2.right;
-  const right  = Math.max(right1, right2);
-
-  epsChart.options.layout.padding.left    = left - a1.left;
-  epsChart.options.layout.padding.right   = right - right1;
-  priceChart.options.layout.padding.left  = left - a2.left;
-  priceChart.options.layout.padding.right = right - right2;
-  epsChart.update("none"); priceChart.update("none");
-}
-
-// 指定銘柄の2チャートを再描画してプロットエリアを揃える（表示直後の実測が必要なため rAF）
-function alignCharts(symbol) {
-  const eps   = Chart.getChart(`chart-${symbol}`);
-  const price = Chart.getChart(`price-${symbol}`);
-  if (eps)   eps.resize();
-  if (price) price.resize();
-  requestAnimationFrame(() => syncChartAreas(eps, price));
 }
 
 function buildCard(symbol, history, earningsDates, perData, names) {
@@ -589,8 +487,10 @@ function buildCard(symbol, history, earningsDates, perData, names) {
   const PER_LABELS = { trailing_pe: "PER(LTM)", forward_pe: "Forward PER" };
   const PER_COLORS = { trailing_pe: "#7c3aed", forward_pe: "#0891b2" };
 
+  // データセット並び: [価格系 PRICE_DATASET_COUNT 個] + EPS + PER + S&P500
+  const base = PRICE_DATASET_COUNT;
   const epsLegendHtml = epsPeriods.map((p, i) => `
-    <span class="legend-item" data-canvas="${canvasId}" data-idx="${i}">
+    <span class="legend-item" data-canvas="${canvasId}" data-idx="${base + i}">
       <span class="legend-dot" style="background:${COLORS[i % COLORS.length]}"></span>
       ${PERIOD_LABELS[p] || p}
     </span>`).join("");
@@ -601,13 +501,13 @@ function buildCard(symbol, history, earningsDates, perData, names) {
     { key: "trailing_pe", label: "S&P500 PER(LTM)" },
     { key: "forward_pe",  label: "S&P500 PER(Fwd)" },
   ].map(({ key, label }, j) => `
-    <span class="legend-item" data-canvas="${canvasId}" data-idx="${epsPeriods.length + 2 + j}">
+    <span class="legend-item" data-canvas="${canvasId}" data-idx="${base + epsPeriods.length + 2 + j}">
       <span class="legend-dot" style="background:${SP500_COLORS[key]}"></span>
       ${label}
     </span>`);
   const perLegendHtml = [
     ...Object.entries(PER_LABELS).map(([k, label], i) => `
-      <span class="legend-item" data-canvas="${canvasId}" data-idx="${epsPeriods.length + i}">
+      <span class="legend-item" data-canvas="${canvasId}" data-idx="${base + epsPeriods.length + i}">
         <span class="legend-dot" style="background:${PER_COLORS_CARD[k]}"></span>
         ${label}
       </span>`),
@@ -627,13 +527,7 @@ function buildCard(symbol, history, earningsDates, perData, names) {
     </div>
     <div class="legend" data-legend="eps-${canvasId}">${epsLegendHtml}</div>
     <div class="legend" data-legend="per-${canvasId}" style="display:none">${perLegendHtml}</div>
-    <div class="charts-grid">
-      <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
-      <div class="price-section">
-        <h3>株価推移</h3>
-        <div class="price-wrap"><canvas id="price-${symbol}"></canvas></div>
-      </div>
-    </div>`;
+    <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>`;
   return card;
 }
 
@@ -684,7 +578,6 @@ Promise.all([
     if (i === 0) card.classList.add("active");
     chartCol.appendChild(card);
     buildChart(`chart-${symbol}`, history, symbol, earningsDates);
-    buildPriceChart(symbol, history, earningsDates);
   });
 
   tableCol.appendChild(tableWrap);
@@ -696,18 +589,7 @@ Promise.all([
     if (active) summaryCard.style.height = active.offsetHeight + "px";
   }
   requestAnimationFrame(syncTableHeight);
-
-  // 初期表示のアクティブ銘柄のプロットエリアを揃える
-  alignCharts(symbols[0]);
-
-  function activeSymbol() {
-    return chartCol.querySelector(".card.active")?.dataset.symbol;
-  }
-  window.addEventListener("resize", () => {
-    const s = activeSymbol();
-    if (s) alignCharts(s);
-    syncTableHeight();
-  });
+  window.addEventListener("resize", syncTableHeight);
 
   // テーブル行クリックで切り替え
   tbody.addEventListener("click", e => {
@@ -716,7 +598,7 @@ Promise.all([
     const target = tr.dataset.symbol;
     tbody.querySelectorAll("tr").forEach(r => r.classList.toggle("active", r.dataset.symbol === target));
     main.querySelectorAll(".card").forEach(c => c.classList.toggle("active", c.dataset.symbol === target));
-    alignCharts(target);
+    Chart.getChart(`chart-${target}`)?.resize();
     requestAnimationFrame(syncTableHeight);
   });
 
@@ -733,8 +615,6 @@ Promise.all([
     const card = btn.closest(".card");
     card.querySelector(`[data-legend="eps-${canvasId}"]`).style.display = mode === "eps" ? "" : "none";
     card.querySelector(`[data-legend="per-${canvasId}"]`).style.display = mode === "per" ? "" : "none";
-    // モード切替で左右軸（EPS↔PER）が変わるためプロットエリアを再整列
-    alignCharts(canvasId.replace(/^chart-/, ""));
     requestAnimationFrame(syncTableHeight);
   });
 
