@@ -111,6 +111,21 @@ function daysUntil(dateStr) {
   return Math.ceil((new Date(dateStr) - new Date()) / 86400000);
 }
 
+// 直近20日間（カレンダー）のうち、データのある日付（＝取引日）だけを返す。
+// 休業日（土日・祝）はエントリが存在しないため自動的に除外される。
+function windowLabels(history) {
+  const xMax = history[history.length - 1]?.date;
+  const xMin = xMax
+    ? new Date(new Date(xMax).getTime() - 20 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10)
+    : history[0]?.date;
+  return history.filter(e => e.date >= xMin && e.date <= xMax).map(e => e.date);
+}
+
+// "YYYY-MM-DD" → "MM/DD"（カテゴリ軸の目盛り表示用）
+function shortDate(d) {
+  return d ? d.slice(5).replace("-", "/") : d;
+}
+
 function earningsBadge(symbol, earningsDates) {
   const e = earningsDates[symbol];
   if (!e) return "";
@@ -242,10 +257,8 @@ function buildPriceSection(symbol) {
 }
 
 function buildPriceChart(symbol, history, earningsDates) {
-  const xMax = history[history.length - 1]?.date;
-  const xMin = xMax
-    ? new Date(new Date(xMax).getTime() - 20 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10)
-    : history[0]?.date;
+  const xLabels = windowLabels(history);
+  const xMin = xLabels[0];
 
   const data = history
     .filter(e => e[symbol]?.o != null && e[symbol]?.c != null && e.date >= xMin)
@@ -335,12 +348,11 @@ function buildPriceChart(symbol, history, earningsDates) {
       },
       scales: {
         x: {
-          type: "time",
-          min: xMin, max: xMax,
-          time: { unit: "day", tooltipFormat: "yyyy-MM-dd", displayFormats: { day: "MM/dd" } },
+          type: "category",
+          labels: xLabels,
           // 上の EPS/PER チャートと横方向の余白（端ラベルのはみ出し分）を揃えるため、
           // 同じ日付目盛りを確保しつつ文字だけ透明にして非表示にする
-          ticks: { maxTicksLimit: 12, color: "rgba(0,0,0,0)" },
+          ticks: { maxTicksLimit: 12, color: "rgba(0,0,0,0)", callback: function (v) { return shortDate(this.getLabelForValue(v)); } },
           grid: { drawTicks: false },
           border: { display: false },
         },
@@ -474,10 +486,7 @@ function buildChart(canvasId, history, symbol, earningsDates) {
   const perMax = allPerValues.length ? Math.max(...allPerValues) : 100;
   const perPad = (perMax - perMin) * 0.1 || 5;
 
-  const xMax = history[history.length - 1]?.date;
-  const xMin = xMax
-    ? new Date(new Date(xMax).getTime() - 20 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10)
-    : history[0]?.date;
+  const xLabels = windowLabels(history);
 
   return new Chart(document.getElementById(canvasId), {
     type: "line",
@@ -503,10 +512,9 @@ function buildChart(canvasId, history, symbol, earningsDates) {
       },
       scales: {
         x: {
-          type: "time",
-          min: xMin, max: xMax,
-          time: { unit: "day", tooltipFormat: "yyyy-MM-dd", displayFormats: { day: "MM/dd" } },
-          ticks: { maxTicksLimit: 12 },
+          type: "category",
+          labels: xLabels,
+          ticks: { maxTicksLimit: 12, callback: function (v) { return shortDate(this.getLabelForValue(v)); } },
         },
         yQ: {
           position: "left",
