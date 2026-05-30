@@ -70,6 +70,8 @@
     .badge.soon { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
     .badge.per  { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
 
+    /* EPS/PER と株価チャートを同一カラムトラックに並べて横幅を完全に一致させる */
+    .charts-grid { display: grid; grid-template-columns: minmax(0, 1fr); }
     .chart-wrap { height: 260px; }
     .chart-toggle { display: flex; gap: 0.4rem; margin-bottom: 0.6rem; }
     .chart-toggle button {
@@ -245,14 +247,6 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
   return { wrap, tbody };
 }
 
-function buildPriceSection(symbol) {
-  const section = document.createElement("div");
-  section.className = "price-section";
-  section.innerHTML = `
-    <h3>株価推移</h3>
-    <div class="price-wrap"><canvas id="price-${symbol}"></canvas></div>`;
-  return section;
-}
 
 function buildPriceChart(symbol, history, earningsDates) {
   const xLabels = windowLabels(history);
@@ -348,6 +342,7 @@ function buildPriceChart(symbol, history, earningsDates) {
         x: {
           type: "category",
           labels: xLabels,
+          offset: true,
           // 上の EPS/PER チャートと横方向の余白（端ラベルのはみ出し分）を揃えるため、
           // 同じ日付目盛りを確保しつつ文字だけ透明にして非表示にする
           ticks: { maxTicksLimit: 12, color: "rgba(0,0,0,0)", callback: function (v) { return shortDate(this.getLabelForValue(v)); } },
@@ -510,6 +505,7 @@ function buildChart(canvasId, history, symbol, earningsDates) {
         x: {
           type: "category",
           labels: xLabels,
+          offset: true,
           ticks: { maxTicksLimit: 12, callback: function (v) { return shortDate(this.getLabelForValue(v)); } },
         },
         yQ: {
@@ -631,8 +627,13 @@ function buildCard(symbol, history, earningsDates, perData, names) {
     </div>
     <div class="legend" data-legend="eps-${canvasId}">${epsLegendHtml}</div>
     <div class="legend" data-legend="per-${canvasId}" style="display:none">${perLegendHtml}</div>
-    <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>`;
-  card.appendChild(buildPriceSection(symbol));
+    <div class="charts-grid">
+      <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
+      <div class="price-section">
+        <h3>株価推移</h3>
+        <div class="price-wrap"><canvas id="price-${symbol}"></canvas></div>
+      </div>
+    </div>`;
   return card;
 }
 
