@@ -14,21 +14,33 @@
     header { background: #1a1a2e; color: #fff; padding: 1.2rem 2rem; }
     header h1 { font-size: 1.4rem; }
     header p  { font-size: 0.8rem; opacity: 0.7; margin-top: 0.3rem; }
-    main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    main { max-width: 1400px; margin: 1.5rem auto; padding: 0 1rem; }
+
+    /* 2カラムレイアウト（左：グラフ / 右：テーブル） */
+    .layout { display: flex; gap: 1.5rem; align-items: flex-start; }
+    .chart-col { flex: 1 1 0; min-width: 0; }
+    .table-col { flex: 0 0 460px; }
 
     /* サマリーテーブル */
     .summary-card {
       background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08);
-      margin-bottom: 1.5rem; overflow-x: auto;
+      overflow: auto; position: sticky; top: 1rem; max-height: calc(100vh - 2rem);
     }
-    .summary-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .summary-table th { position: sticky; top: 0; z-index: 1; }
+
+    @media (max-width: 900px) {
+      .layout { flex-direction: column; }
+      .table-col { flex: none; width: 100%; }
+      .summary-card { position: static; max-height: none; }
+    }
+    .summary-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
     .summary-table th {
-      background: #1a1a2e; color: #fff; padding: 0.6rem 1rem;
+      background: #1a1a2e; color: #fff; padding: 0.5rem 0.7rem;
       text-align: right; font-weight: 500; white-space: nowrap;
     }
     .summary-table th:first-child { text-align: left; }
     .summary-table td {
-      padding: 0.65rem 1rem; border-bottom: 1px solid #f0f0f0;
+      padding: 0.5rem 0.7rem; border-bottom: 1px solid #f0f0f0;
       text-align: right; white-space: nowrap;
     }
     .summary-table td:first-child { text-align: left; font-weight: 600; }
@@ -41,7 +53,7 @@
     .diff { font-size: 0.75rem; margin-left: 0.3rem; opacity: 0.85; }
 
     /* チャートカード */
-    .card { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08); margin-bottom: 2rem; padding: 1.5rem; display: none; }
+    .card { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08); margin-bottom: 0; padding: 1.5rem; display: none; }
     .card.active { display: block; }
     .card-header { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 1rem; flex-wrap: wrap; }
     .card-header h2 { font-size: 1.05rem; margin-right: 0.4rem; }
@@ -54,7 +66,7 @@
     .badge.soon { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
     .badge.per  { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
 
-    .chart-wrap { height: 300px; }
+    .chart-wrap { height: 260px; }
     .chart-toggle { display: flex; gap: 0.4rem; margin-bottom: 0.6rem; }
     .chart-toggle button {
       padding: 0.25rem 0.8rem; border-radius: 5px; border: 1.5px solid #d1d5db;
@@ -64,7 +76,7 @@
 
     .price-section { margin-top: 0.4rem; border-top: none; padding-top: 0; }
     .price-section h3 { font-size: 0.85rem; color: #666; margin-bottom: 0.4rem; }
-    .price-wrap { height: 260px; position: relative; }
+    .price-wrap { height: 200px; position: relative; }
 
     .legend { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.6rem 0; }
     .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; cursor: pointer; }
@@ -608,17 +620,27 @@ Promise.all([
 
   const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData);
 
+  // 2カラムレイアウト（左：グラフ / 右：テーブル）
+  const layout = document.createElement("div");
+  layout.className = "layout";
+  const chartCol = document.createElement("div");
+  chartCol.className = "chart-col";
+  const tableCol = document.createElement("div");
+  tableCol.className = "table-col";
+  layout.append(chartCol, tableCol);
+  main.appendChild(layout);
+
   // チャートカードを全件生成・チャート描画
   symbols.forEach((symbol, i) => {
     const card = buildCard(symbol, history, earningsDates, perData, names);
     if (i === 0) card.classList.add("active");
-    main.appendChild(card);
+    chartCol.appendChild(card);
     const epsChart   = buildChart(`chart-${symbol}`, history, symbol, earningsDates);
     const priceChart = buildPriceChart(symbol, history, earningsDates);
     syncChartAreas(epsChart, priceChart);
   });
 
-  main.appendChild(tableWrap);
+  tableCol.appendChild(tableWrap);
 
   // テーブル行クリックで切り替え
   tbody.addEventListener("click", e => {
