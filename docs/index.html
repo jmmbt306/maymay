@@ -268,7 +268,8 @@ function buildChart(canvasId, history, symbol, earningsDates) {
   const priceHi = highs.length ? Math.max(...highs) : 1;
   const pricePad = (priceHi - priceLo) * 0.1 || 1;
 
-  const UP = "#16a34a", DN = "#dc2626";
+  const UP = "rgba(22,163,74,0.35)", DN = "rgba(220,38,38,0.35)";
+  const UP_BORDER = "#16a34a", DN_BORDER = "#dc2626";
   const priceDatasets = [
     {
       label: "_wick_h",
@@ -288,8 +289,8 @@ function buildChart(canvasId, history, symbol, earningsDates) {
       label: "株価",
       type: "bar",
       data: priceData.map(d => ({ x: d.date, y: [d.o, d.c] })),
-      backgroundColor: priceData.map(d => d.up ? "rgba(22,163,74,0.75)" : "rgba(220,38,38,0.75)"),
-      borderColor:      priceData.map(d => d.up ? UP : DN),
+      backgroundColor: priceData.map(d => d.up ? "rgba(22,163,74,0.35)" : "rgba(220,38,38,0.35)"),
+      borderColor:      priceData.map(d => d.up ? UP_BORDER : DN_BORDER),
       borderWidth: 1, borderSkipped: false,
       barPercentage: 0.6, categoryPercentage: 1.0,
       grouped: false, order: 0, yAxisID: "yPrice",
