@@ -19,7 +19,7 @@
     /* 2カラムレイアウト（左：グラフ / 右：テーブル） */
     .layout { display: flex; gap: 1.5rem; align-items: flex-start; }
     .chart-col { flex: 1 1 0; min-width: 0; }
-    .table-col { flex: 0 0 460px; }
+    .table-col { flex: 0 0 320px; }
 
     /* サマリーテーブル */
     .summary-card {
@@ -155,7 +155,6 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
   const thead = document.createElement("thead");
   thead.innerHTML = `<tr>
     <th>銘柄</th>
-    <th>次回決算</th>
     ${PERIODS.map(p => `<th>${PERIOD_LABELS[p] || p}</th>`).join("")}
   </tr>`;
   table.appendChild(thead);
@@ -173,18 +172,6 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
     const tdSymbol = document.createElement("td");
     tdSymbol.textContent = symbol;
     tr.appendChild(tdSymbol);
-
-    // 次回決算日
-    const ed = (earningsDates || {})[symbol] || {};
-    const tdNext = document.createElement("td");
-    if (ed.next) {
-      const days = daysUntil(ed.next);
-      tdNext.textContent = days < 0 ? ed.next : `${ed.next}（${days}日後）`;
-      if (days >= 0 && days <= 14) tdNext.style.color = "#dc2626";
-    } else {
-      tdNext.textContent = "—";
-    }
-    tr.appendChild(tdNext);
 
     PERIODS.forEach(period => {
       const td = document.createElement("td");
