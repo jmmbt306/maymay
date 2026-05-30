@@ -306,7 +306,7 @@ function buildPriceChart(symbol, history, earningsDates) {
       {
         label: "出来高",
         data: data.map(d => ({ x: d.date, y: d.v })),
-        backgroundColor: data.map(d => d.up ? "rgba(22,163,74,0.25)" : "rgba(220,38,38,0.25)"),
+        backgroundColor: "rgba(245,158,11,0.35)",
         borderWidth: 0,
         barPercentage: 0.9, categoryPercentage: 1.0,
         grouped: false, order: 2,
@@ -338,7 +338,10 @@ function buildPriceChart(symbol, history, earningsDates) {
           type: "time",
           min: xMin, max: xMax,
           time: { unit: "day", tooltipFormat: "yyyy-MM-dd", displayFormats: { day: "MM/dd" } },
-          ticks: { display: false },
+          // 上の EPS/PER チャートと横方向の余白（端ラベルのはみ出し分）を揃えるため、
+          // 同じ日付目盛りを確保しつつ文字だけ透明にして非表示にする
+          ticks: { maxTicksLimit: 12, color: "rgba(0,0,0,0)" },
+          grid: { drawTicks: false },
           border: { display: false },
         },
         y: {
