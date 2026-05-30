@@ -238,6 +238,13 @@ function buildPriceChart(symbol, history, earningsDates) {
   const xMin = history[0]?.date;
   const xMax = history[history.length - 1]?.date;
 
+  // 株価軸は実データの高値・安値レンジに合わせる（0 始まりにしない）
+  const lows  = data.map(d => d.l).filter(v => v != null);
+  const highs = data.map(d => d.h).filter(v => v != null);
+  const priceLo = lows.length  ? Math.min(...lows)  : 0;
+  const priceHi = highs.length ? Math.max(...highs) : 1;
+  const pricePad = (priceHi - priceLo) * 0.1 || 1;
+
   const annotations = {};
   const ed = (earningsDates || {})[symbol];
   const dates = data.map(d => d.date);
@@ -318,13 +325,16 @@ function buildPriceChart(symbol, history, earningsDates) {
         },
         y: {
           position: "left",
+          min: priceLo - pricePad,
+          max: priceHi + pricePad,
           title: { display: true, text: "株価 ($)" },
           ticks: { callback: v => "$" + v.toFixed(0) },
         },
         yVol: {
           position: "right",
+          display: data.some(d => d.v != null),
           grid: { drawOnChartArea: false },
-          max: Math.max(...data.map(d => d.v ?? 0)) * 4,
+          max: (Math.max(0, ...data.map(d => d.v ?? 0)) || 1) * 4,
           min: 0,
           ticks: { callback: v => (v / 1e6).toFixed(0) + "M", maxTicksLimit: 4 },
           title: { display: false },
