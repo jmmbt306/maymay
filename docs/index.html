@@ -26,6 +26,10 @@
       background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08);
       overflow: auto; position: sticky; top: 1rem; max-height: calc(100vh - 2rem);
     }
+    @media (min-width: 901px) {
+      /* JS でアクティブなチャートカードの高さに合わせる */
+      .summary-card { max-height: none; }
+    }
     .summary-table th { position: sticky; top: 0; z-index: 1; }
 
     @media (max-width: 900px) {
@@ -100,6 +104,8 @@ const PERIOD_LABELS = { "0q": "今四半期", "+1q": "来四半期", "0y": "今�
 const PERIODS = ["0q", "+1q", "0y", "+1y"];
 const COLORS = ["#2563eb", "#16a34a", "#dc2626", "#d97706", "#7c3aed", "#0891b2"];
 const OHLC_KEYS = new Set(["o", "h", "l", "c", "v", "prev_close", "trailing_pe", "forward_pe"]);
+// プロットエリアを EPS/PER チャートと株価チャートで揃えるための固定軸幅
+const AXIS_W_LEFT = 56, AXIS_W_RIGHT = 52;
 
 function daysUntil(dateStr) {
   return Math.ceil((new Date(dateStr) - new Date()) / 86400000);
@@ -337,6 +343,7 @@ function buildPriceChart(symbol, history, earningsDates) {
         },
         y: {
           position: "left",
+          afterFit: s => { s.width = AXIS_W_LEFT; },
           min: priceLo - pricePad,
           max: priceHi + pricePad,
           title: { display: true, text: "株価 ($)" },
@@ -344,7 +351,8 @@ function buildPriceChart(symbol, history, earningsDates) {
         },
         yVol: {
           position: "right",
-          display: data.some(d => d.v != null),
+          display: true,
+          afterFit: s => { s.width = AXIS_W_RIGHT; },
           grid: { drawOnChartArea: false },
           max: (Math.max(0, ...data.map(d => d.v ?? 0)) || 1) * 4,
           min: 0,
@@ -499,11 +507,13 @@ function buildChart(canvasId, history, symbol, earningsDates) {
         },
         yQ: {
           position: "left",
+          afterFit: s => { s.width = AXIS_W_LEFT; },
           title: { display: true, text: "四半期 EPS ($)" },
           ticks: { callback: v => "$" + v.toFixed(2) },
         },
         yA: {
           position: "right",
+          afterFit: s => { s.width = AXIS_W_RIGHT; },
           title: { display: true, text: "年間 EPS ($)" },
           ticks: { callback: v => "$" + v.toFixed(2) },
           grid: { drawOnChartArea: false },
@@ -511,6 +521,7 @@ function buildChart(canvasId, history, symbol, earningsDates) {
         yPER: {
           position: "right",
           display: false,
+          afterFit: s => { s.width = AXIS_W_RIGHT; },
           min: Math.floor(perMin - perPad),
           max: Math.ceil(perMax + perPad),
           title: { display: true, text: "PER (x)" },
@@ -530,23 +541,6 @@ function switchChartMode(chart, mode) {
   chart.options.scales.yA.display = mode === "eps";
   chart.options.scales.yPER.display = mode === "per";
   chart.update();
-}
-
-function syncChartAreas(epsChart, priceChart) {
-  if (!epsChart || !priceChart) return;
-  requestAnimationFrame(() => {
-    const a1 = epsChart.chartArea, a2 = priceChart.chartArea;
-    if (!a1 || !a2) return;
-    const left  = Math.max(a1.left, a2.left);
-    const right1 = epsChart.width   - a1.right;
-    const right2 = priceChart.width - a2.right;
-    const right  = Math.max(right1, right2);
-    const pad = c => { c.options.layout = c.options.layout || {}; c.options.layout.padding = c.options.layout.padding || {}; };
-    pad(epsChart);   epsChart.options.layout.padding.left   = left - a1.left;  epsChart.options.layout.padding.right   = right - right1;
-    pad(priceChart); priceChart.options.layout.padding.left = left - a2.left;  priceChart.options.layout.padding.right = right - right2;
-    epsChart.update("none");
-    priceChart.update("none");
-  });
 }
 
 function buildCard(symbol, history, earningsDates, perData, names) {
@@ -650,12 +644,20 @@ Promise.all([
     const card = buildCard(symbol, history, earningsDates, perData, names);
     if (i === 0) card.classList.add("active");
     chartCol.appendChild(card);
-    const epsChart   = buildChart(`chart-${symbol}`, history, symbol, earningsDates);
-    const priceChart = buildPriceChart(symbol, history, earningsDates);
-    syncChartAreas(epsChart, priceChart);
+    buildChart(`chart-${symbol}`, history, symbol, earningsDates);
+    buildPriceChart(symbol, history, earningsDates);
   });
 
   tableCol.appendChild(tableWrap);
+
+  // サマリーテーブルの高さをアクティブなチャートカードの高さに揃える
+  const summaryCard = tableWrap;
+  function syncTableHeight() {
+    const active = chartCol.querySelector(".card.active");
+    if (active) summaryCard.style.height = active.offsetHeight + "px";
+  }
+  requestAnimationFrame(syncTableHeight);
+  window.addEventListener("resize", syncTableHeight);
 
   // テーブル行クリックで切り替え
   tbody.addEventListener("click", e => {
@@ -667,7 +669,8 @@ Promise.all([
     const epsChart   = Chart.getChart(`chart-${target}`);
     const priceChart = Chart.getChart(`price-${target}`);
     if (epsChart)   epsChart.resize();
-    if (priceChart) { priceChart.resize(); syncChartAreas(epsChart, priceChart); }
+    if (priceChart) priceChart.resize();
+    requestAnimationFrame(syncTableHeight);
   });
 
   // EPS/PER トグルボタン
@@ -680,11 +683,10 @@ Promise.all([
     if (!chart) return;
     btn.closest(".chart-toggle").querySelectorAll("button").forEach(b => b.classList.toggle("active", b === btn));
     switchChartMode(chart, mode);
-    const symbol = canvasId.replace(/^chart-/, "");
-    syncChartAreas(chart, Chart.getChart(`price-${symbol}`));
     const card = btn.closest(".card");
     card.querySelector(`[data-legend="eps-${canvasId}"]`).style.display = mode === "eps" ? "" : "none";
     card.querySelector(`[data-legend="per-${canvasId}"]`).style.display = mode === "per" ? "" : "none";
+    requestAnimationFrame(syncTableHeight);
   });
 
   // 凡例クリック（イベント委譲：遅延生成された要素にも対応）
