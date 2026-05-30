@@ -19,7 +19,7 @@
     /* 2カラムレイアウト（左：グラフ / 右：テーブル） */
     .layout { display: flex; gap: 1.5rem; align-items: flex-start; }
     .chart-col { flex: 1 1 0; min-width: 0; }
-    .table-col { flex: 0 0 320px; }
+    .table-col { flex: 0 0 360px; }
 
     /* サマリーテーブル */
     .summary-card {
@@ -155,6 +155,7 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
   const thead = document.createElement("thead");
   thead.innerHTML = `<tr>
     <th>銘柄</th>
+    <th>次回決算</th>
     ${PERIODS.map(p => `<th>${PERIOD_LABELS[p] || p}</th>`).join("")}
   </tr>`;
   table.appendChild(thead);
@@ -173,6 +174,19 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
     tdSymbol.textContent = symbol;
     tr.appendChild(tdSymbol);
 
+    // 次回決算（何日後）
+    const ed = (earningsDates || {})[symbol] || {};
+    const tdNext = document.createElement("td");
+    if (ed.next) {
+      const days = daysUntil(ed.next);
+      tdNext.textContent = days < 0 ? "決算済" : days === 0 ? "本日" : `${days}日後`;
+      tdNext.title = ed.next;
+      if (days >= 0 && days <= 14) tdNext.style.color = "#dc2626";
+    } else {
+      tdNext.textContent = "—";
+    }
+    tr.appendChild(tdNext);
+
     PERIODS.forEach(period => {
       const td = document.createElement("td");
       const val = cur[period];
@@ -183,13 +197,9 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
         const formatted = `$${val.toFixed(2)}`;
         const titleBase = prevDate ? `前回(${prevDate}): ${preVal != null ? "$" + preVal.toFixed(2) : "なし"}` : "比較データなし";
         td.title = titleBase;
+        td.textContent = formatted;
         if (preVal != null && Math.abs(val - preVal) >= 0.001) {
-          const diff = val - preVal;
-          const sign = diff > 0 ? "+" : "";
-          td.className = diff > 0 ? "up" : "down";
-          td.innerHTML = `${formatted}<span class="diff">(${sign}${diff.toFixed(2)})</span>`;
-        } else {
-          td.textContent = formatted;
+          td.className = val - preVal > 0 ? "up" : "down";
         }
       }
       tr.appendChild(td);
@@ -226,17 +236,19 @@ function buildPriceSection(symbol) {
 }
 
 function buildPriceChart(symbol, history, earningsDates) {
+  const xMax = history[history.length - 1]?.date;
+  const xMin = xMax
+    ? new Date(new Date(xMax).getTime() - 20 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10)
+    : history[0]?.date;
+
   const data = history
-    .filter(e => e[symbol]?.o != null && e[symbol]?.c != null)
+    .filter(e => e[symbol]?.o != null && e[symbol]?.c != null && e.date >= xMin)
     .map(e => ({
       date: e.date,
       o: e[symbol].o, h: e[symbol].h, l: e[symbol].l, c: e[symbol].c,
       v: e[symbol].v ?? null,
       up: e[symbol].c >= e[symbol].o,
     }));
-
-  const xMin = history[0]?.date;
-  const xMax = history[history.length - 1]?.date;
 
   // 株価軸は実データの高値・安値レンジに合わせる（0 始まりにしない）
   const lows  = data.map(d => d.l).filter(v => v != null);
@@ -451,8 +463,10 @@ function buildChart(canvasId, history, symbol, earningsDates) {
   const perMax = allPerValues.length ? Math.max(...allPerValues) : 100;
   const perPad = (perMax - perMin) * 0.1 || 5;
 
-  const xMin = history[0]?.date;
   const xMax = history[history.length - 1]?.date;
+  const xMin = xMax
+    ? new Date(new Date(xMax).getTime() - 20 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10)
+    : history[0]?.date;
 
   return new Chart(document.getElementById(canvasId), {
     type: "line",
