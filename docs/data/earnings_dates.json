@@ -1,70 +1,16 @@
 {
   "updated": "2026-05-30",
   "dates": {
-    "AAPL": {
-      "next": "2026-07-30",
-      "prev": "2026-04-30"
-    },
-    "MSFT": {
-      "next": "2026-07-29",
-      "prev": "2026-04-29"
-    },
     "NVDA": {
       "next": "2026-08-26",
       "prev": "2026-05-20"
-    },
-    "GOOGL": {
-      "next": "2026-07-23",
-      "prev": "2026-04-29"
-    },
-    "AMZN": {
-      "next": "2026-07-30",
-      "prev": "2026-04-29"
-    },
-    "META": {
-      "next": "2026-07-29",
-      "prev": "2026-04-29"
-    },
-    "TSLA": {
-      "next": "2026-07-22",
-      "prev": "2026-04-22"
     }
   },
   "per": {
-    "AAPL": {
-      "trailing": 37.7,
-      "forward": 32.5,
-      "analysts": 43
-    },
-    "MSFT": {
-      "trailing": 26.8,
-      "forward": 23.3,
-      "analysts": 54
-    },
     "NVDA": {
       "trailing": 32.4,
       "forward": 16.7,
       "analysts": 58
-    },
-    "GOOGL": {
-      "trailing": 29.0,
-      "forward": 26.2,
-      "analysts": 53
-    },
-    "AMZN": {
-      "trailing": 31.7,
-      "forward": 27.4,
-      "analysts": 62
-    },
-    "META": {
-      "trailing": 23.0,
-      "forward": 17.5,
-      "analysts": 59
-    },
-    "TSLA": {
-      "trailing": 399.8,
-      "forward": 173.6,
-      "analysts": 41
     }
   },
   "names": {
