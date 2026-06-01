@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-30",
+  "updated": "2026-06-01",
   "dates": {
     "NVDA": {
       "next": "2026-08-26",
@@ -101,6 +101,19 @@
     "TFC": "Truist Financial Corporation",
     "LEVI": "Levi Strauss & Co",
     "DAL": "Delta Air Lines, Inc.",
-    "STZ": "Constellation Brands, Inc."
+    "STZ": "Constellation Brands, Inc.",
+    "MRK": "Merck & Company, Inc.",
+    "FDX": "FedEx Corporation",
+    "SNOW": "Snowflake Inc.",
+    "DG": "Dollar General Corporation",
+    "SIG": "Signet Jewelers Limited",
+    "PANW": "Palo Alto Networks, Inc.",
+    "ULTA": "Ulta Beauty, Inc.",
+    "MDT": "Medtronic plc.",
+    "CRWD": "CrowdStrike Holdings, Inc.",
+    "AVGO": "Broadcom Inc.",
+    "FIVE": "Five Below, Inc.",
+    "CIEN": "Ciena Corporation",
+    "LULU": "lululemon athletica inc."
   }
 }

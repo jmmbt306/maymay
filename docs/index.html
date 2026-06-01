@@ -616,15 +616,25 @@ Promise.all([
       windowDays = parseInt(rangeSelect.value) || 30;
       symbols.forEach(symbol => {
         const id = `chart-${symbol}`;
-        // 再構築前に現在の EPS/PER モードを保持
-        const card = chartCol.querySelector(`.card[data-symbol="${symbol}"]`);
-        const mode = card?.querySelector(".chart-toggle button.active")?.dataset.mode || "eps";
         Chart.getChart(id)?.destroy();
-        const chart = buildChart(id, history, symbol, earningsDates);
-        if (mode === "per") switchChartMode(chart, "per");
+        buildChart(id, history, symbol, earningsDates);
+        // 再構築後に現在の EPS/PER モードを再適用
+        applyMode(chartCol.querySelector(`.card[data-symbol="${symbol}"]`), chartMode);
       });
       requestAnimationFrame(syncTableHeight);
     });
+  }
+
+  // EPS/PER モードは銘柄をまたいで保持する
+  let chartMode = "eps";
+  function applyMode(card, mode) {
+    if (!card) return;
+    const canvasId = card.querySelector("canvas").id;
+    const chart = Chart.getChart(canvasId);
+    if (chart) switchChartMode(chart, mode);
+    card.querySelectorAll(".chart-toggle button[data-mode]").forEach(b => b.classList.toggle("active", b.dataset.mode === mode));
+    card.querySelector(`[data-legend="eps-${canvasId}"]`).style.display = mode === "eps" ? "" : "none";
+    card.querySelector(`[data-legend="per-${canvasId}"]`).style.display = mode === "per" ? "" : "none";
   }
 
   // テーブル行クリックで切り替え
@@ -634,7 +644,9 @@ Promise.all([
     const target = tr.dataset.symbol;
     tbody.querySelectorAll("tr").forEach(r => r.classList.toggle("active", r.dataset.symbol === target));
     main.querySelectorAll(".card").forEach(c => c.classList.toggle("active", c.dataset.symbol === target));
+    const card = chartCol.querySelector(`.card[data-symbol="${target}"]`);
     Chart.getChart(`chart-${target}`)?.resize();
+    applyMode(card, chartMode); // 直前のモード（EPS/PER）を引き継ぐ
     requestAnimationFrame(syncTableHeight);
   });
 
@@ -642,15 +654,8 @@ Promise.all([
   main.addEventListener("click", e => {
     const btn = e.target.closest(".chart-toggle button[data-mode]");
     if (!btn) return;
-    const mode = btn.dataset.mode;
-    const canvasId = btn.dataset.canvas;
-    const chart = Chart.getChart(canvasId);
-    if (!chart) return;
-    btn.closest(".chart-toggle").querySelectorAll("button").forEach(b => b.classList.toggle("active", b === btn));
-    switchChartMode(chart, mode);
-    const card = btn.closest(".card");
-    card.querySelector(`[data-legend="eps-${canvasId}"]`).style.display = mode === "eps" ? "" : "none";
-    card.querySelector(`[data-legend="per-${canvasId}"]`).style.display = mode === "per" ? "" : "none";
+    chartMode = btn.dataset.mode;
+    applyMode(btn.closest(".card"), chartMode);
     requestAnimationFrame(syncTableHeight);
   });
 
