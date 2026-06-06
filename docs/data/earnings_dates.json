@@ -1,16 +1,916 @@
 {
-  "updated": "2026-06-05",
+  "updated": "2026-06-06",
   "dates": {
+    "AAPL": {
+      "next": "2026-07-30",
+      "prev": "2026-04-30"
+    },
+    "MSFT": {
+      "next": "2026-07-29",
+      "prev": "2026-04-29"
+    },
     "NVDA": {
       "next": "2026-08-26",
       "prev": "2026-05-20"
+    },
+    "GOOGL": {
+      "next": "2026-07-23",
+      "prev": "2026-04-29"
+    },
+    "AMZN": {
+      "next": "2026-07-30",
+      "prev": "2026-04-29"
+    },
+    "META": {
+      "next": "2026-07-29",
+      "prev": "2026-04-29"
+    },
+    "TSLA": {
+      "next": "2026-07-22",
+      "prev": "2026-04-22"
+    },
+    "HD": {
+      "next": "2026-08-18",
+      "prev": "2026-05-19"
+    },
+    "TOL": {
+      "next": "2026-08-18",
+      "prev": "2026-05-19"
+    },
+    "TGT": {
+      "next": "2026-08-19",
+      "prev": "2026-05-20"
+    },
+    "LOW": {
+      "next": "2026-08-19",
+      "prev": "2026-05-20"
+    },
+    "WMT": {
+      "next": "2026-08-20",
+      "prev": "2026-05-21"
+    },
+    "WDAY": {
+      "next": "2026-08-20",
+      "prev": "2026-05-21"
+    },
+    "BJ": {
+      "next": "2026-08-20",
+      "prev": "2026-05-22"
+    },
+    "CEG": {
+      "next": "2026-08-10",
+      "prev": "2026-05-11"
+    },
+    "Q": {
+      "next": "2026-08-11",
+      "prev": "2026-05-12"
+    },
+    "VG": {
+      "next": "2026-08-12",
+      "prev": "2026-05-12"
+    },
+    "ONON": {
+      "next": "2026-08-11",
+      "prev": "2026-05-12"
+    },
+    "UA": {
+      "next": "2026-08-07",
+      "prev": "2021-08-03"
+    },
+    "NBIS": {
+      "next": "2026-08-06",
+      "prev": "2026-05-13"
+    },
+    "CSCO": {
+      "next": "2026-08-12",
+      "prev": "2026-05-13"
+    },
+    "FIG": {
+      "next": "2026-08-14",
+      "prev": "2026-05-14"
+    },
+    "AMAT": {
+      "next": "2026-08-13",
+      "prev": "2026-05-14"
+    },
+    "BRK-B": {
+      "next": "2026-08-01",
+      "prev": "2026-05-02"
+    },
+    "PLTR": {
+      "next": "2026-08-03",
+      "prev": "2026-05-04"
+    },
+    "ON": {
+      "next": "2026-08-03",
+      "prev": "2026-05-04"
+    },
+    "ETN": {
+      "next": "2026-08-04",
+      "prev": "2026-05-05"
+    },
+    "SHOP": {
+      "next": "2026-08-05",
+      "prev": "2026-05-05"
+    },
+    "PFE": {
+      "next": "2026-07-29",
+      "prev": "2026-05-05"
+    },
+    "AMD": {
+      "next": "2026-08-04",
+      "prev": "2026-05-05"
+    },
+    "LITE": {
+      "next": "2026-05-05",
+      "prev": "2026-05-05"
+    },
+    "ANET": {
+      "next": "2026-08-04",
+      "prev": "2026-05-05"
+    },
+    "ALAB": {
+      "next": "2026-08-04",
+      "prev": "2026-05-05"
+    },
+    "MSTR": {
+      "next": "2026-07-30",
+      "prev": "2026-05-05"
+    },
+    "DIS": {
+      "next": "2026-08-05",
+      "prev": "2026-05-06"
+    },
+    "ARM": {
+      "next": "2026-07-29",
+      "prev": "2026-05-05"
+    },
+    "BROS": {
+      "next": "2026-08-05",
+      "prev": "2026-05-06"
+    },
+    "MCD": {
+      "next": "2026-08-06",
+      "prev": "2026-05-07"
+    },
+    "CRWV": {
+      "next": "2026-05-07",
+      "prev": "2026-05-07"
+    },
+    "NET": {
+      "next": "2026-07-30",
+      "prev": "2026-05-07"
+    },
+    "VZ": {
+      "next": "2026-07-21",
+      "prev": "2026-04-27"
+    },
+    "NUE": {
+      "next": "2026-07-27",
+      "prev": "2026-04-27"
+    },
+    "GLW": {
+      "next": "2026-07-28",
+      "prev": "2026-04-28"
+    },
+    "KO": {
+      "next": "2026-07-21",
+      "prev": "2026-04-28"
+    },
+    "HOOD": {
+      "next": "2026-07-29",
+      "prev": "2026-04-28"
+    },
+    "BE": {
+      "next": "2026-04-28",
+      "prev": "2026-04-28"
+    },
+    "SBUX": {
+      "next": "2026-07-28",
+      "prev": "2026-04-28"
+    },
+    "CMG": {
+      "next": "2026-07-29",
+      "prev": "2026-04-29"
+    },
+    "LLY": {
+      "next": "2026-08-05",
+      "prev": "2026-04-30"
+    },
+    "CAT": {
+      "next": "2026-08-04",
+      "prev": "2026-04-30"
+    },
+    "SNDK": {
+      "next": "2026-08-24",
+      "prev": "2026-04-30"
+    },
+    "WDC": {
+      "next": "2026-07-29",
+      "prev": "2026-04-30"
+    },
+    "XOM": {
+      "next": "2026-07-31",
+      "prev": "2026-05-01"
+    },
+    "CVX": {
+      "next": "2026-07-31",
+      "prev": "2026-05-01"
+    },
+    "ALK": {
+      "next": "2026-04-20",
+      "prev": "2026-04-20"
+    },
+    "UNH": {
+      "next": "2026-07-28",
+      "prev": "2026-04-21"
+    },
+    "GE": {
+      "next": "2026-07-16",
+      "prev": "2026-04-21"
+    },
+    "DHI": {
+      "next": "2026-07-21",
+      "prev": "2026-04-21"
+    },
+    "RTX": {
+      "next": "2026-07-21",
+      "prev": "2026-04-21"
+    },
+    "UAL": {
+      "next": "2026-04-21",
+      "prev": "2026-04-21"
+    },
+    "BA": {
+      "next": "2026-07-28",
+      "prev": "2026-04-22"
+    },
+    "GEV": {
+      "next": "2026-07-22",
+      "prev": "2026-04-22"
+    },
+    "VRT": {
+      "next": "2026-07-29",
+      "prev": "2026-04-22"
+    },
+    "NOW": {
+      "next": "2026-07-22",
+      "prev": "2026-04-22"
+    },
+    "IBM": {
+      "next": "2026-07-22",
+      "prev": "2026-04-22"
+    },
+    "HON": {
+      "next": "2026-07-23",
+      "prev": "2026-04-23"
+    },
+    "BX": {
+      "next": "2026-07-23",
+      "prev": "2026-04-23"
+    },
+    "AXP": {
+      "next": "2026-07-24",
+      "prev": "2026-04-23"
+    },
+    "AAL": {
+      "next": "2026-07-23",
+      "prev": "2026-04-23"
+    },
+    "LMT": {
+      "next": "2026-07-21",
+      "prev": "2026-04-23"
+    },
+    "INTC": {
+      "next": "2026-07-23",
+      "prev": "2026-04-23"
+    },
+    "PG": {
+      "next": "2026-07-29",
+      "prev": "2026-04-24"
+    },
+    "GS": {
+      "next": "2026-07-14",
+      "prev": "2026-04-13"
+    },
+    "JPM": {
+      "next": "2026-07-14",
+      "prev": "2026-04-14"
+    },
+    "WFC": {
+      "next": "2026-07-14",
+      "prev": "2026-04-14"
+    },
+    "C": {
+      "next": "2026-07-14",
+      "prev": "2026-04-14"
+    },
+    "JNJ": {
+      "next": "2026-07-15",
+      "prev": "2026-04-14"
+    },
+    "MS": {
+      "next": "2026-07-15",
+      "prev": "2026-04-15"
+    },
+    "JBHT": {
+      "next": "2026-07-14",
+      "prev": "2026-04-15"
+    },
+    "PEP": {
+      "next": "2026-07-09",
+      "prev": "2026-04-16"
+    },
+    "ABT": {
+      "next": "2026-07-16",
+      "prev": "2026-04-16"
+    },
+    "NFLX": {
+      "next": "2026-07-16",
+      "prev": "2026-04-16"
+    },
+    "FITB": {
+      "next": "2026-07-17",
+      "prev": "2026-04-17"
+    },
+    "RF": {
+      "next": "2026-07-17",
+      "prev": "2026-04-17"
+    },
+    "TFC": {
+      "next": "2026-07-17",
+      "prev": "2026-04-17"
+    },
+    "LEVI": {
+      "next": "2026-06-24",
+      "prev": "2026-04-07"
+    },
+    "DAL": {
+      "next": "2026-07-09",
+      "prev": "2026-04-08"
+    },
+    "STZ": {
+      "next": "2026-06-30",
+      "prev": "2026-04-08"
+    },
+    "MRK": {
+      "next": "2026-08-04",
+      "prev": "2026-04-30"
+    },
+    "FDX": {
+      "next": "2026-06-23",
+      "prev": "2026-03-19"
+    },
+    "SNOW": {
+      "next": "2026-08-26",
+      "prev": "2026-05-27"
+    },
+    "DG": {
+      "next": "2026-08-27",
+      "prev": "2026-06-02"
+    },
+    "SIG": {
+      "next": "2026-09-01",
+      "prev": "2026-06-02"
+    },
+    "PANW": {
+      "next": "2026-08-18",
+      "prev": "2026-06-02"
+    },
+    "ULTA": {
+      "next": "2026-08-27",
+      "prev": "2026-06-02"
+    },
+    "MDT": {
+      "next": "2026-08-18",
+      "prev": "2026-06-03"
+    },
+    "CRWD": {
+      "next": "2026-09-01",
+      "prev": "2026-06-03"
+    },
+    "AVGO": {
+      "next": "2026-09-03",
+      "prev": "2026-06-03"
+    },
+    "FIVE": {
+      "next": "2026-08-26",
+      "prev": "2026-06-03"
+    },
+    "CIEN": {
+      "next": "2026-06-04",
+      "prev": "2026-06-04"
+    },
+    "LULU": {
+      "next": "2026-09-03",
+      "prev": "2026-06-04"
     }
   },
   "per": {
+    "AAPL": {
+      "trailing": 37.2,
+      "forward": 32.0,
+      "analysts": 43
+    },
+    "MSFT": {
+      "trailing": 24.8,
+      "forward": 21.5,
+      "analysts": 55
+    },
     "NVDA": {
-      "trailing": 32.4,
+      "trailing": 31.5,
+      "forward": 16.2,
+      "analysts": 59
+    },
+    "GOOGL": {
+      "trailing": 28.1,
+      "forward": 25.5,
+      "analysts": 53
+    },
+    "AMZN": {
+      "trailing": 31.7,
+      "forward": 24.9,
+      "analysts": 62
+    },
+    "META": {
+      "trailing": 21.5,
+      "forward": 16.4,
+      "analysts": 59
+    },
+    "TSLA": {
+      "trailing": 358.7,
+      "forward": 156.1,
+      "analysts": 41
+    },
+    "HD": {
+      "trailing": 22.1,
+      "forward": 19.3,
+      "analysts": 33
+    },
+    "TOL": {
+      "trailing": 10.5,
+      "forward": 9.8,
+      "analysts": 16
+    },
+    "TGT": {
+      "trailing": 16.2,
+      "forward": 13.8,
+      "analysts": 33
+    },
+    "LOW": {
+      "trailing": 17.8,
+      "forward": 15.6,
+      "analysts": 33
+    },
+    "WMT": {
+      "trailing": 41.9,
+      "forward": 36.2,
+      "analysts": 42
+    },
+    "WDAY": {
+      "trailing": 45.1,
+      "forward": 11.4,
+      "analysts": 38
+    },
+    "BJ": {
+      "trailing": 20.5,
+      "forward": 18.3,
+      "analysts": 20
+    },
+    "CEG": {
+      "trailing": 22.1,
+      "forward": 18.7,
+      "analysts": 20
+    },
+    "Q": {
+      "trailing": 45.8,
+      "forward": 29.9,
+      "analysts": 8
+    },
+    "VG": {
+      "trailing": 13.3,
+      "forward": 13.4,
+      "analysts": 19
+    },
+    "ONON": {
+      "trailing": 39.0,
+      "forward": 17.0,
+      "analysts": 26
+    },
+    "UA": {
+      "trailing": null,
+      "forward": 14.2,
+      "analysts": null
+    },
+    "NBIS": {
+      "trailing": 87.6,
+      "forward": 630.7,
+      "analysts": 14
+    },
+    "CSCO": {
+      "trailing": 40.5,
+      "forward": 25.5,
+      "analysts": 22
+    },
+    "FIG": {
+      "trailing": null,
+      "forward": 64.5,
+      "analysts": 8
+    },
+    "AMAT": {
+      "trailing": 42.5,
+      "forward": 28.0,
+      "analysts": 36
+    },
+    "BRK-B": {
+      "trailing": 14.5,
+      "forward": 22.7,
+      "analysts": 3
+    },
+    "PLTR": {
+      "trailing": 152.3,
+      "forward": 65.3,
+      "analysts": 27
+    },
+    "ON": {
+      "trailing": 86.2,
+      "forward": 27.5,
+      "analysts": 29
+    },
+    "ETN": {
+      "trailing": 38.7,
+      "forward": 25.2,
+      "analysts": 27
+    },
+    "SHOP": {
+      "trailing": 107.4,
+      "forward": 47.0,
+      "analysts": 45
+    },
+    "PFE": {
+      "trailing": 19.9,
+      "forward": 9.2,
+      "analysts": 27
+    },
+    "AMD": {
+      "trailing": 156.5,
+      "forward": 35.7,
+      "analysts": 48
+    },
+    "LITE": {
+      "trailing": 151.5,
+      "forward": 47.7,
+      "analysts": 24
+    },
+    "ANET": {
+      "trailing": 52.8,
+      "forward": 34.7,
+      "analysts": 27
+    },
+    "ALAB": {
+      "trailing": 212.8,
+      "forward": 75.4,
+      "analysts": 22
+    },
+    "MSTR": {
+      "trailing": null,
+      "forward": 27.0,
+      "analysts": 13
+    },
+    "DIS": {
+      "trailing": 16.0,
+      "forward": 13.3,
+      "analysts": 29
+    },
+    "ARM": {
+      "trailing": 398.8,
+      "forward": 112.0,
+      "analysts": 37
+    },
+    "BROS": {
+      "trailing": 86.8,
+      "forward": 44.5,
+      "analysts": 23
+    },
+    "MCD": {
+      "trailing": 23.1,
+      "forward": 19.7,
+      "analysts": 31
+    },
+    "CRWV": {
+      "trailing": null,
+      "forward": -143.5,
+      "analysts": 33
+    },
+    "NET": {
+      "trailing": null,
+      "forward": 164.0,
+      "analysts": 31
+    },
+    "VZ": {
+      "trailing": 11.1,
+      "forward": 8.6,
+      "analysts": 22
+    },
+    "NUE": {
+      "trailing": 25.3,
+      "forward": 15.8,
+      "analysts": 15
+    },
+    "GLW": {
+      "trailing": 85.4,
+      "forward": 42.4,
+      "analysts": 15
+    },
+    "KO": {
+      "trailing": 25.0,
+      "forward": 22.8,
+      "analysts": 23
+    },
+    "HOOD": {
+      "trailing": 40.0,
+      "forward": 29.6,
+      "analysts": 24
+    },
+    "BE": {
+      "trailing": null,
+      "forward": 60.6,
+      "analysts": 24
+    },
+    "SBUX": {
+      "trailing": 72.7,
+      "forward": 31.6,
+      "analysts": 32
+    },
+    "CMG": {
+      "trailing": 26.9,
+      "forward": 21.6,
+      "analysts": 33
+    },
+    "LLY": {
+      "trailing": 40.2,
+      "forward": 25.4,
+      "analysts": 29
+    },
+    "CAT": {
+      "trailing": 45.0,
+      "forward": 30.2,
+      "analysts": 26
+    },
+    "SNDK": {
+      "trailing": 53.2,
+      "forward": 8.8,
+      "analysts": 22
+    },
+    "WDC": {
+      "trailing": 30.6,
+      "forward": 29.0,
+      "analysts": 23
+    },
+    "XOM": {
+      "trailing": 25.2,
+      "forward": 14.1,
+      "analysts": 22
+    },
+    "CVX": {
+      "trailing": 32.7,
+      "forward": 14.9,
+      "analysts": 23
+    },
+    "ALK": {
+      "trailing": 87.4,
+      "forward": 6.8,
+      "analysts": 16
+    },
+    "UNH": {
+      "trailing": 30.1,
+      "forward": 19.1,
+      "analysts": 26
+    },
+    "GE": {
+      "trailing": 40.8,
+      "forward": 37.8,
+      "analysts": 21
+    },
+    "DHI": {
+      "trailing": 13.7,
+      "forward": 12.1,
+      "analysts": 14
+    },
+    "RTX": {
+      "trailing": 34.0,
+      "forward": 23.9,
+      "analysts": 22
+    },
+    "UAL": {
+      "trailing": 9.5,
+      "forward": 7.4,
+      "analysts": 24
+    },
+    "BA": {
+      "trailing": 85.5,
+      "forward": 51.5,
+      "analysts": 25
+    },
+    "GEV": {
+      "trailing": 27.3,
+      "forward": 38.1,
+      "analysts": 33
+    },
+    "VRT": {
+      "trailing": 75.7,
+      "forward": 34.0,
+      "analysts": 25
+    },
+    "NOW": {
+      "trailing": 66.9,
+      "forward": 22.4,
+      "analysts": 44
+    },
+    "IBM": {
+      "trailing": 25.2,
+      "forward": 21.2,
+      "analysts": 21
+    },
+    "HON": {
+      "trailing": 34.1,
+      "forward": 18.7,
+      "analysts": 25
+    },
+    "BX": {
+      "trailing": 29.6,
+      "forward": 15.3,
+      "analysts": 20
+    },
+    "AXP": {
+      "trailing": 19.4,
+      "forward": 15.4,
+      "analysts": 24
+    },
+    "AAL": {
+      "trailing": 43.5,
+      "forward": 6.1,
+      "analysts": 24
+    },
+    "LMT": {
+      "trailing": 25.4,
+      "forward": 16.3,
+      "analysts": 19
+    },
+    "INTC": {
+      "trailing": null,
+      "forward": 64.2,
+      "analysts": 41
+    },
+    "PG": {
+      "trailing": 21.4,
+      "forward": 20.7,
+      "analysts": 22
+    },
+    "GS": {
+      "trailing": 19.0,
+      "forward": 15.9,
+      "analysts": 20
+    },
+    "JPM": {
+      "trailing": 14.9,
+      "forward": 13.3,
+      "analysts": 21
+    },
+    "WFC": {
+      "trailing": 12.7,
+      "forward": 10.4,
+      "analysts": 22
+    },
+    "C": {
+      "trailing": 16.4,
+      "forward": 10.6,
+      "analysts": 21
+    },
+    "JNJ": {
+      "trailing": 26.9,
+      "forward": 18.3,
+      "analysts": 23
+    },
+    "MS": {
+      "trailing": 19.2,
       "forward": 16.7,
-      "analysts": 58
+      "analysts": 21
+    },
+    "JBHT": {
+      "trailing": 44.2,
+      "forward": 31.0,
+      "analysts": 22
+    },
+    "PEP": {
+      "trailing": 22.3,
+      "forward": 15.5,
+      "analysts": 21
+    },
+    "ABT": {
+      "trailing": 25.5,
+      "forward": 15.0,
+      "analysts": 24
+    },
+    "NFLX": {
+      "trailing": 26.5,
+      "forward": 21.4,
+      "analysts": 44
+    },
+    "FITB": {
+      "trailing": 17.5,
+      "forward": 10.6,
+      "analysts": 19
+    },
+    "RF": {
+      "trailing": 11.8,
+      "forward": 10.0,
+      "analysts": 19
+    },
+    "TFC": {
+      "trailing": 12.2,
+      "forward": 9.6,
+      "analysts": 18
+    },
+    "LEVI": {
+      "trailing": 16.6,
+      "forward": 13.4,
+      "analysts": 15
+    },
+    "DAL": {
+      "trailing": 11.6,
+      "forward": 9.9,
+      "analysts": 25
+    },
+    "STZ": {
+      "trailing": 14.7,
+      "forward": 11.3,
+      "analysts": 22
+    },
+    "MRK": {
+      "trailing": 34.0,
+      "forward": 12.6,
+      "analysts": 27
+    },
+    "FDX": {
+      "trailing": 17.7,
+      "forward": 15.0,
+      "analysts": 26
+    },
+    "SNOW": {
+      "trailing": null,
+      "forward": 89.1,
+      "analysts": 48
+    },
+    "DG": {
+      "trailing": 14.7,
+      "forward": 13.0,
+      "analysts": 29
+    },
+    "SIG": {
+      "trailing": 11.8,
+      "forward": 6.8,
+      "analysts": 9
+    },
+    "PANW": {
+      "trailing": 238.6,
+      "forward": 66.2,
+      "analysts": 50
+    },
+    "ULTA": {
+      "trailing": 17.5,
+      "forward": 14.7,
+      "analysts": 24
+    },
+    "MDT": {
+      "trailing": 21.9,
+      "forward": 12.7,
+      "analysts": 26
+    },
+    "CRWD": {
+      "trailing": null,
+      "forward": 107.4,
+      "analysts": 51
+    },
+    "AVGO": {
+      "trailing": 64.1,
+      "forward": 20.0,
+      "analysts": 45
+    },
+    "FIVE": {
+      "trailing": 24.0,
+      "forward": 19.6,
+      "analysts": 22
+    },
+    "CIEN": {
+      "trailing": 163.8,
+      "forward": 50.8,
+      "analysts": 19
+    },
+    "LULU": {
+      "trailing": 9.2,
+      "forward": 9.6,
+      "analysts": 25
     }
   },
   "names": {
