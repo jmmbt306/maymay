@@ -113,6 +113,7 @@
 const PERIOD_LABELS = { "0q": "今四半期", "+1q": "来四半期", "0y": "今年度", "+1y": "来年度" };
 const PERIODS = ["0q", "+1q", "0y", "+1y"];
 const COLORS = ["#2563eb", "#16a34a", "#dc2626", "#d97706", "#7c3aed", "#0891b2"];
+const EPS_COLORS = { "0q": "#1d4ed8", "+1q": "#60a5fa", "0y": "#b91c1c", "+1y": "#f87171" };
 const OHLC_KEYS = new Set(["o", "h", "l", "c", "v", "prev_close", "trailing_pe", "forward_pe"]);
 
 // 表示する X 軸の期間（カレンダー日数）。プルダウンで切り替える。
@@ -340,12 +341,12 @@ function buildChart(canvasId, history, symbol, earningsDates) {
   });
 
   const QUARTERLY = new Set(["0q", "+1q"]);
-  const epsDatasets = Object.entries(periodArrays).map(([period, data], i) => ({
+  const epsDatasets = Object.entries(periodArrays).map(([period, data]) => ({
     label: PERIOD_LABELS[period] || period,
     type: "line",
     data,
-    borderColor: COLORS[i % COLORS.length],
-    backgroundColor: COLORS[i % COLORS.length] + "22",
+    borderColor: EPS_COLORS[period] || COLORS[0],
+    backgroundColor: (EPS_COLORS[period] || COLORS[0]) + "22",
     tension: 0.3, pointRadius: 3, pointHoverRadius: 6,
     yAxisID: QUARTERLY.has(period) ? "yQ" : "yA",
     _mode: "eps",
@@ -443,7 +444,7 @@ function buildChart(canvasId, history, symbol, earningsDates) {
           ticks: { maxTicksLimit: 12, callback: function (v) { return shortDate(this.getLabelForValue(v)); } },
         },
         yPrice: {
-          position: "left",
+          position: "right",
           min: priceLo - pricePad,
           max: priceHi + pricePad,
           title: { display: true, text: "株価 ($)" },
@@ -456,19 +457,19 @@ function buildChart(canvasId, history, symbol, earningsDates) {
           grid: { drawOnChartArea: false },
         },
         yQ: {
-          position: "right",
-          title: { display: true, text: "四半期 EPS ($)" },
+          position: "left",
+          title: { display: true, text: "四半期 EPS ($)", color: EPS_COLORS["0q"] },
           ticks: { callback: v => "$" + v.toFixed(2) },
           grid: { drawOnChartArea: false },
         },
         yA: {
-          position: "right",
-          title: { display: true, text: "年間 EPS ($)" },
+          position: "left",
+          title: { display: true, text: "年間 EPS ($)", color: EPS_COLORS["0y"] },
           ticks: { callback: v => "$" + v.toFixed(2) },
           grid: { drawOnChartArea: false },
         },
         yPER: {
-          position: "right",
+          position: "left",
           display: false,
           min: Math.floor(perMin - perPad),
           max: Math.ceil(perMax + perPad),
@@ -508,7 +509,7 @@ function buildCard(symbol, history, earningsDates, perData, names) {
   const base = PRICE_DATASET_COUNT;
   const epsLegendHtml = epsPeriods.map((p, i) => `
     <span class="legend-item" data-canvas="${canvasId}" data-idx="${base + i}">
-      <span class="legend-dot" style="background:${COLORS[i % COLORS.length]}"></span>
+      <span class="legend-dot" style="background:${EPS_COLORS[p] || COLORS[0]}"></span>
       ${PERIOD_LABELS[p] || p}
     </span>`).join("");
 

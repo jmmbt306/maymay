@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-06",
+  "updated": "2026-06-08",
   "dates": {
     "AAPL": {
       "next": "2026-07-30",
@@ -1014,6 +1014,15 @@
     "AVGO": "Broadcom Inc.",
     "FIVE": "Five Below, Inc.",
     "CIEN": "Ciena Corporation",
-    "LULU": "lululemon athletica inc."
+    "LULU": "lululemon athletica inc.",
+    "CPB": "The Campbell's Company",
+    "MTN": "Vail Resorts, Inc.",
+    "SJM": "The J.M. Smucker Company",
+    "CASY": "Caseys General Stores, Inc.",
+    "CBRL": "Cracker Barrel Old Country Stor",
+    "CHWY": "Chewy, Inc.",
+    "ORCL": "Oracle Corporation",
+    "ADBE": "Adobe Inc.",
+    "LEN": "Lennar Corporation"
   }
 }
