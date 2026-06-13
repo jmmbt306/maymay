@@ -409,6 +409,20 @@ function buildChart(canvasId, history, symbol, earningsDates) {
   const perMax = allPerValues.length ? Math.max(...allPerValues) : 100;
   const perPad = (perMax - perMin) * 0.1 || 5;
 
+  // yQ / yA の表示範囲を「表示期間内の変化量」に合わせて計算（0 起点にしない）
+  const rangeOf = periods => {
+    const vals = periods
+      .flatMap(p => periodArrays[p] || [])
+      .filter(pt => pt.x >= xMin)
+      .map(pt => pt.y);
+    if (!vals.length) return { min: 0, max: 1 };
+    const min = Math.min(...vals), max = Math.max(...vals);
+    const pad = (max - min) * 0.15 || Math.abs(max) * 0.05 || 0.1;
+    return { min: min - pad, max: max + pad };
+  };
+  const qRange = rangeOf(["0q", "+1q"]);
+  const aRange = rangeOf(["0y", "+1y"]);
+
   // 決算日アノテーション（データ期間内のみ表示）
   const annotations = {};
   const ed = (earningsDates || {})[symbol];
@@ -472,12 +486,14 @@ function buildChart(canvasId, history, symbol, earningsDates) {
         },
         yQ: {
           position: "left",
+          min: qRange.min, max: qRange.max,
           title: { display: true, text: "四半期 EPS ($)", color: EPS_COLORS["0q"] },
           ticks: { callback: v => "$" + v.toFixed(2) },
           grid: { drawOnChartArea: false },
         },
         yA: {
           position: "left",
+          min: aRange.min, max: aRange.max,
           title: { display: true, text: "年間 EPS ($)", color: EPS_COLORS["0y"] },
           ticks: { callback: v => "$" + v.toFixed(2) },
           grid: { drawOnChartArea: false },
