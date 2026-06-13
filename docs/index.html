@@ -72,11 +72,11 @@
     .badge.per  { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
 
     /* 株価ローソク足・出来高・EPS/PER を統合した単一チャート */
-    .chart-wrap { height: 340px; }
-    .chart-toggle { display: flex; gap: 0.4rem; margin-bottom: 0.6rem; }
+    .chart-wrap { height: 380px; }
+    .chart-toggle { display: flex; gap: 0.4rem; }
     .chart-toggle button {
-      padding: 0.25rem 0.8rem; border-radius: 5px; border: 1.5px solid #d1d5db;
-      background: #fff; color: #374151; font-size: 0.8rem; cursor: pointer;
+      padding: 0.2rem 0.7rem; border-radius: 5px; border: 1.5px solid #d1d5db;
+      background: #fff; color: #374151; font-size: 0.75rem; cursor: pointer;
     }
     .chart-toggle button.active { background: #1d4ed8; color: #fff; border-color: #1d4ed8; }
 
@@ -85,16 +85,15 @@
     .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
 
     .news-title { font-size: 0.78rem; font-weight: 600; color: #374151; margin-bottom: 0.3rem; }
-    .news-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.3rem; }
-    .news-item { font-size: 0.78rem; line-height: 1.3; }
+    .news-list {
+      list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;
+      max-height: 160px; overflow-y: auto;
+    }
+    .news-item { font-size: 0.78rem; line-height: 1.3; padding-bottom: 0.5rem; border-bottom: 1px solid #f0f0f0; }
+    .news-item:last-child { border-bottom: none; padding-bottom: 0; }
     .news-item a { color: #1d4ed8; text-decoration: none; }
     .news-item a:hover { text-decoration: underline; }
     .news-meta { color: #9ca3af; font-size: 0.72rem; margin-top: 0.1rem; }
-    .news-more {
-      margin-top: 0.5rem; padding: 0.2rem 0.7rem; border-radius: 5px;
-      border: 1px solid #d1d5db; background: #fff; color: #374151;
-      font-size: 0.75rem; cursor: pointer;
-    }
     .news-empty { font-size: 0.78rem; color: #9ca3af; }
 
     .range-label { font-size: 0.8rem; opacity: 0.85; margin-left: auto; display: flex; align-items: center; gap: 0.4rem; }
@@ -523,7 +522,6 @@ function switchChartMode(chart, mode) {
   chart.update();
 }
 
-const NEWS_DEFAULT = 3;
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
@@ -537,15 +535,12 @@ function newsHtml(symbol, news) {
   if (!items.length) {
     return `<div class="news-title">最近のニュース</div><div class="news-empty">ニュースはありません</div>`;
   }
-  const li = items.map((n, i) => `
-    <li class="news-item" data-news-idx="${i}" ${i >= NEWS_DEFAULT ? 'style="display:none"' : ""}>
+  const li = items.map(n => `
+    <li class="news-item">
       <a href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(n.title)}</a>
       <div class="news-meta">${escapeHtml(n.publisher || "")}${n.publisher && n.time ? " ・ " : ""}${newsTimeLabel(n.time)}</div>
     </li>`).join("");
-  const moreBtn = items.length > NEWS_DEFAULT
-    ? `<button class="news-more" data-symbol="${symbol}">他 ${items.length - NEWS_DEFAULT} 件を表示</button>`
-    : "";
-  return `<div class="news-title">最近のニュース</div><ul class="news-list">${li}</ul>${moreBtn}`;
+  return `<div class="news-title">最近のニュース</div><ul class="news-list">${li}</ul>`;
 }
 
 function buildCard(symbol, history, earningsDates, perData, names, news) {
@@ -592,12 +587,12 @@ function buildCard(symbol, history, earningsDates, perData, names, news) {
       <div class="card-header">
         <h2>${symbol}</h2>
         ${(names && names[symbol]) ? `<span class="company-name">${names[symbol]}</span>` : ""}
+        <div class="chart-toggle">
+          <button class="active" data-mode="eps" data-canvas="${canvasId}">EPS</button>
+          <button data-mode="per" data-canvas="${canvasId}">PER</button>
+        </div>
         ${analystBadge(symbol, perData)}
         ${earningsBadge(symbol, earningsDates)}
-      </div>
-      <div class="chart-toggle">
-        <button class="active" data-mode="eps" data-canvas="${canvasId}">EPS</button>
-        <button data-mode="per" data-canvas="${canvasId}">PER</button>
       </div>
       <div class="legend" data-legend="eps-${canvasId}">${epsLegendHtml}</div>
       <div class="legend" data-legend="per-${canvasId}" style="display:none">${perLegendHtml}</div>
@@ -717,15 +712,6 @@ Promise.all([
     if (!btn) return;
     chartMode = btn.dataset.mode;
     applyMode(btn.closest(".card"), chartMode);
-    requestAnimationFrame(syncTableHeight);
-  });
-
-  // ニュース「他 N 件を表示」ボタン
-  main.addEventListener("click", e => {
-    const btn = e.target.closest(".news-more");
-    if (!btn) return;
-    btn.closest(".news-panel").querySelectorAll(".news-item").forEach(li => { li.style.display = ""; });
-    btn.remove();
     requestAnimationFrame(syncTableHeight);
   });
 
