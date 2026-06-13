@@ -83,6 +83,20 @@
     .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; cursor: pointer; }
     .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
 
+    .news { margin-top: 0.8rem; border-top: 1px solid #e5e7eb; padding-top: 0.6rem; }
+    .news-title { font-size: 0.8rem; font-weight: 600; color: #374151; margin-bottom: 0.4rem; }
+    .news-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+    .news-item { font-size: 0.8rem; line-height: 1.35; }
+    .news-item a { color: #1d4ed8; text-decoration: none; }
+    .news-item a:hover { text-decoration: underline; }
+    .news-meta { color: #9ca3af; font-size: 0.72rem; margin-top: 0.1rem; }
+    .news-more {
+      margin-top: 0.5rem; padding: 0.2rem 0.7rem; border-radius: 5px;
+      border: 1px solid #d1d5db; background: #fff; color: #374151;
+      font-size: 0.75rem; cursor: pointer;
+    }
+    .news-empty { font-size: 0.78rem; color: #9ca3af; }
+
     .range-label { font-size: 0.8rem; opacity: 0.85; margin-left: auto; display: flex; align-items: center; gap: 0.4rem; }
     .range-label select {
       font-size: 0.8rem; padding: 0.2rem 0.4rem; border-radius: 5px;
@@ -493,7 +507,32 @@ function switchChartMode(chart, mode) {
   chart.update();
 }
 
-function buildCard(symbol, history, earningsDates, perData, names) {
+const NEWS_DEFAULT = 3;
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+function newsTimeLabel(t) {
+  if (!t) return "";
+  const d = new Date(t);
+  return isNaN(d) ? "" : `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}`;
+}
+function newsHtml(symbol, news) {
+  const items = (news && news[symbol]) || [];
+  if (!items.length) {
+    return `<div class="news"><div class="news-title">最近のニュース</div><div class="news-empty">ニュースはありません</div></div>`;
+  }
+  const li = items.map((n, i) => `
+    <li class="news-item" data-news-idx="${i}" ${i >= NEWS_DEFAULT ? 'style="display:none"' : ""}>
+      <a href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(n.title)}</a>
+      <div class="news-meta">${escapeHtml(n.publisher || "")}${n.publisher && n.time ? " ・ " : ""}${newsTimeLabel(n.time)}</div>
+    </li>`).join("");
+  const moreBtn = items.length > NEWS_DEFAULT
+    ? `<button class="news-more" data-symbol="${symbol}">他 ${items.length - NEWS_DEFAULT} 件を表示</button>`
+    : "";
+  return `<div class="news"><div class="news-title">最近のニュース</div><ul class="news-list">${li}</ul>${moreBtn}</div>`;
+}
+
+function buildCard(symbol, history, earningsDates, perData, names, news) {
   const canvasId = `chart-${symbol}`;
   const card = document.createElement("div");
   card.className = "card";
@@ -545,19 +584,22 @@ function buildCard(symbol, history, earningsDates, perData, names) {
     </div>
     <div class="legend" data-legend="eps-${canvasId}">${epsLegendHtml}</div>
     <div class="legend" data-legend="per-${canvasId}" style="display:none">${perLegendHtml}</div>
-    <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>`;
+    <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
+    ${newsHtml(symbol, news)}`;
   return card;
 }
 
 Promise.all([
   fetch("data/history.json").then(r => r.json()),
   fetch("data/earnings_dates.json").then(r => r.json()).catch(() => ({ dates: {}, per: {} })),
-]).then(([history, edData]) => {
+  fetch("data/news.json").then(r => r.json()).catch(() => ({ news: {} })),
+]).then(([history, edData, newsData]) => {
   if (!history.length) throw new Error("データがありません");
 
   const earningsDates = edData.dates || {};
   const perData = edData.per || {};
   const names = edData.names || {};
+  const news = newsData.news || {};
   const lastEntry = history[history.length - 1];
   const symbols = Object.keys(lastEntry).filter(k => k !== "date" && !k.startsWith("_"));
 
@@ -592,7 +634,7 @@ Promise.all([
 
   // チャートカードを全件生成・チャート描画
   symbols.forEach((symbol, i) => {
-    const card = buildCard(symbol, history, earningsDates, perData, names);
+    const card = buildCard(symbol, history, earningsDates, perData, names, news);
     if (i === 0) card.classList.add("active");
     chartCol.appendChild(card);
     buildChart(`chart-${symbol}`, history, symbol, earningsDates);
@@ -657,6 +699,15 @@ Promise.all([
     if (!btn) return;
     chartMode = btn.dataset.mode;
     applyMode(btn.closest(".card"), chartMode);
+    requestAnimationFrame(syncTableHeight);
+  });
+
+  // ニュース「他 N 件を表示」ボタン
+  main.addEventListener("click", e => {
+    const btn = e.target.closest(".news-more");
+    if (!btn) return;
+    btn.closest(".news").querySelectorAll(".news-item").forEach(li => { li.style.display = ""; });
+    btn.remove();
     requestAnimationFrame(syncTableHeight);
   });
 
