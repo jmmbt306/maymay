@@ -444,7 +444,7 @@
   },
   "per": {
     "AAPL": {
-      "trailing": 35.3,
+      "trailing": 35.2,
       "forward": 30.3,
       "analysts": 43
     },
@@ -470,12 +470,12 @@
     },
     "META": {
       "trailing": 20.6,
-      "forward": 15.7,
+      "forward": 15.6,
       "analysts": 59
     },
     "TSLA": {
       "trailing": 369.5,
-      "forward": 162.4,
+      "forward": 162.6,
       "analysts": 41
     },
     "HD": {
@@ -530,7 +530,7 @@
     },
     "ONON": {
       "trailing": 41.0,
-      "forward": 17.9,
+      "forward": 17.8,
       "analysts": 26
     },
     "UA": {
@@ -539,7 +539,7 @@
       "analysts": null
     },
     "NBIS": {
-      "trailing": 89.4,
+      "trailing": 90.1,
       "forward": 643.3,
       "analysts": 14
     },
@@ -564,7 +564,7 @@
       "analysts": 3
     },
     "PLTR": {
-      "trailing": 143.8,
+      "trailing": 142.2,
       "forward": 61.7,
       "analysts": 27
     },
@@ -595,8 +595,8 @@
     },
     "LITE": {
       "trailing": 161.4,
-      "forward": 50.9,
-      "analysts": 24
+      "forward": 50.8,
+      "analysts": 25
     },
     "ANET": {
       "trailing": 56.1,
@@ -646,7 +646,7 @@
     "VZ": {
       "trailing": 11.7,
       "forward": 9.1,
-      "analysts": 22
+      "analysts": 23
     },
     "NUE": {
       "trailing": 26.4,
@@ -694,7 +694,7 @@
       "analysts": 26
     },
     "SNDK": {
-      "trailing": 67.5,
+      "trailing": 67.6,
       "forward": 10.8,
       "analysts": 22
     },
@@ -801,7 +801,7 @@
     "PG": {
       "trailing": 21.9,
       "forward": 21.1,
-      "analysts": 22
+      "analysts": 23
     },
     "GS": {
       "trailing": 19.4,
@@ -841,7 +841,7 @@
     "PEP": {
       "trailing": 22.6,
       "forward": 15.8,
-      "analysts": 21
+      "analysts": 22
     },
     "ABT": {
       "trailing": 24.7,
@@ -891,7 +891,7 @@
     "FDX": {
       "trailing": 18.1,
       "forward": 17.9,
-      "analysts": 11
+      "analysts": 12
     },
     "SNOW": {
       "trailing": null,
@@ -965,7 +965,7 @@
     },
     "CASY": {
       "trailing": 46.7,
-      "forward": 38.4,
+      "forward": 38.3,
       "analysts": 16
     },
     "CBRL": {
