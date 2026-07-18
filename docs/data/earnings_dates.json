@@ -58,8 +58,7 @@
       "prev": "2026-05-22"
     },
     "CEG": {
-      "next": "2026-08-06",
-      "prev": "2026-05-11"
+      "next": "2026-08-06"
     },
     "Q": {
       "next": "2026-08-04",
@@ -106,8 +105,7 @@
       "prev": "2026-05-04"
     },
     "ETN": {
-      "next": "2026-07-31",
-      "prev": "2026-05-05"
+      "next": "2026-07-31"
     },
     "SHOP": {
       "next": "2026-08-05",
@@ -278,7 +276,8 @@
       "prev": "2026-04-23"
     },
     "LMT": {
-      "next": "2026-07-23"
+      "next": "2026-07-23",
+      "prev": "2026-04-23"
     },
     "INTC": {
       "next": "2026-07-23",
@@ -357,7 +356,8 @@
       "prev": "2026-04-30"
     },
     "FDX": {
-      "next": "2026-06-23"
+      "next": "2026-06-23",
+      "prev": "2026-06-23"
     },
     "SNOW": {
       "next": "2026-08-26",
@@ -438,6 +438,33 @@
     "LEN": {
       "next": "2026-06-11",
       "prev": "2026-06-11"
+    },
+    "CCL": {
+      "next": "2026-06-23",
+      "prev": "2026-06-23"
+    },
+    "KBH": {
+      "next": "2026-06-23",
+      "prev": "2026-06-23"
+    },
+    "PAYX": {
+      "next": "2026-06-24",
+      "prev": "2026-06-24"
+    },
+    "MU": {
+      "next": "2026-09-23",
+      "prev": "2026-06-24"
+    },
+    "MKC": {
+      "next": "2026-06-25",
+      "prev": "2026-06-25"
+    },
+    "DRI": {
+      "next": "2026-09-24",
+      "prev": "2026-06-25"
+    },
+    "FDXF": {
+      "next": "2026-09-08"
     }
   },
   "per": {
@@ -462,7 +489,7 @@
       "analysts": 53
     },
     "AMZN": {
-      "trailing": 29.5,
+      "trailing": 29.9,
       "forward": 24.9,
       "analysts": 61
     },
@@ -492,7 +519,7 @@
       "analysts": 34
     },
     "LOW": {
-      "trailing": 17.7,
+      "trailing": 18.3,
       "forward": 15.5,
       "analysts": 33
     },
@@ -552,7 +579,7 @@
       "analysts": 9
     },
     "AMAT": {
-      "trailing": 49.7,
+      "trailing": 52.7,
       "forward": 31.6,
       "analysts": 35
     },
@@ -572,7 +599,7 @@
       "analysts": 25
     },
     "ETN": {
-      "trailing": 39.1,
+      "trailing": 38.8,
       "forward": 25.4,
       "analysts": 25
     },
@@ -817,7 +844,7 @@
       "analysts": 22
     },
     "C": {
-      "trailing": 13.9,
+      "trailing": 14.2,
       "forward": 10.1,
       "analysts": 20
     },
@@ -862,7 +889,7 @@
       "analysts": 20
     },
     "TFC": {
-      "trailing": 13.0,
+      "trailing": 13.2,
       "forward": 10.3,
       "analysts": 18
     },
@@ -990,6 +1017,41 @@
       "trailing": 13.6,
       "forward": 12.7,
       "analysts": 13
+    },
+    "CCL": {
+      "trailing": 11.9,
+      "forward": 10.0,
+      "analysts": 25
+    },
+    "KBH": {
+      "trailing": 14.1,
+      "forward": 12.6,
+      "analysts": 12
+    },
+    "PAYX": {
+      "trailing": 23.5,
+      "forward": 17.9,
+      "analysts": 14
+    },
+    "MU": {
+      "trailing": 19.3,
+      "forward": 5.6,
+      "analysts": 42
+    },
+    "MKC": {
+      "trailing": 8.6,
+      "forward": 15.6,
+      "analysts": 13
+    },
+    "DRI": {
+      "trailing": 19.3,
+      "forward": 16.0,
+      "analysts": 24
+    },
+    "FDXF": {
+      "trailing": 33.5,
+      "forward": 30.4,
+      "analysts": 12
     }
   },
   "names": {
