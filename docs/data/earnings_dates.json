@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-18",
+  "updated": "2026-07-19",
   "dates": {
     "AAPL": {
       "next": "2026-07-30",
@@ -1166,6 +1166,11 @@
     "CHWY": "Chewy, Inc.",
     "ORCL": "Oracle Corporation",
     "ADBE": "Adobe Inc.",
-    "LEN": "Lennar Corporation"
+    "LEN": "Lennar Corporation",
+    "CCL": "Carnival Corporation Ltd.",
+    "PAYX": "Paychex, Inc.",
+    "MKC": "McCormick & Company, Incorporat",
+    "DRI": "Darden Restaurants, Inc.",
+    "FDXF": "FedEx Freight Holding Company, "
   }
 }
