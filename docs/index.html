@@ -685,14 +685,22 @@ function newsTimeLabel(t) {
 function newsHtml(symbol, news) {
   const items = (news && news[symbol]) || [];
   if (!items.length) {
-    return `<div class="news-title">最近のニュース</div><div class="news-empty">ニュースはありません</div>`;
+    return `<div class="news-title" style="font-size: 0.85rem; color: #64748b; padding: 0.5rem 0;">📰 最近のニュース: なし</div>`;
   }
   const li = items.map(n => `
     <li class="news-item">
       <a href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(n.title)}</a>
       <div class="news-meta">${escapeHtml(n.publisher || "")}${n.publisher && n.time ? " ・ " : ""}${newsTimeLabel(n.time)}</div>
     </li>`).join("");
-  return `<div class="news-title">最近のニュース</div><ul class="news-list">${li}</ul>`;
+  return `
+    <details class="news-details" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.6rem 1rem; margin-top: 0.5rem;">
+      <summary style="font-size: 0.85rem; font-weight: 600; color: #334155; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.4rem;">
+        <span>📰 最近のニュースを見る (${items.length}件)</span>
+        <span style="margin-left: auto; font-size: 0.7rem; color: #94a3b8;">▼ クリックで展開</span>
+      </summary>
+      <ul class="news-list" style="margin-top: 0.8rem; border-top: 1px dashed #cbd5e1; padding-top: 0.8rem;">${li}</ul>
+    </details>
+  `;
 }
 
 function buildCard(symbol, history, earningsDates, perData, names, news, reviews) {
