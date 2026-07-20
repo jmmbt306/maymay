@@ -104,6 +104,82 @@
 
     #loading { text-align: center; padding: 3rem; color: #666; }
     .error { color: #c0392b; padding: 2rem; }
+
+    /* 逆行シグナルパネル */
+    .signal-container {
+      background: linear-gradient(135deg, #1e1b4b, #311042);
+      color: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .signal-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 0.5rem;
+    }
+    .signal-header span.tag {
+      background: #dc2626;
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    .signal-list {
+      display: flex;
+      gap: 0.8rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.2) transparent;
+    }
+    .signal-list::-webkit-scrollbar {
+      height: 4px;
+    }
+    .signal-list::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
+    }
+    .signal-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      min-width: 140px;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+    .signal-item:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+    .signal-item .sym {
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .signal-item .pct {
+      color: #fca5a5;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .signal-item .price-detail {
+      font-size: 0.7rem;
+      opacity: 0.7;
+      margin-top: 0.2rem;
+    }
   </style>
 </head>
 <body>
@@ -144,6 +220,84 @@ function windowLabels(history) {
 // "YYYY-MM-DD" → "MM/DD"（カテゴリ軸の目盛り表示用）
 function shortDate(d) {
   return d ? d.slice(5).replace("-", "/") : d;
+}
+
+// 逆行シグナルの検出
+function detectDivergence(history, symbols) {
+  if (history.length < 2) return [];
+  
+  const latest = history[history.length - 1];
+  const cutoffDate = luxon.DateTime.fromISO(latest.date).minus({ days: 30 });
+  
+  let firstEntry = history[0];
+  for (let i = 0; i < history.length; i++) {
+    if (luxon.DateTime.fromISO(history[i].date) >= cutoffDate) {
+      firstEntry = history[i];
+      break;
+    }
+  }
+  
+  const periodDays = Math.ceil((new Date(latest.date) - new Date(firstEntry.date)) / 86400000);
+  const results = [];
+  
+  symbols.forEach(symbol => {
+    const cur = latest[symbol];
+    const pre = firstEntry[symbol];
+    if (!cur || !pre) return;
+    
+    const cur0q = cur["0q"], pre0q = pre["0q"];
+    const cur1q = cur["+1q"], pre1q = pre["+1q"];
+    const cur0y = cur["0y"], pre0y = pre["0y"];
+    const cur1y = cur["+1y"], pre1y = pre["+1y"];
+    
+    if (cur0q == null || pre0q == null ||
+        cur1q == null || pre1q == null ||
+        cur0y == null || pre0y == null ||
+        cur1y == null || pre1y == null) return;
+        
+    const diff0q = cur0q - pre0q;
+    const diff1q = cur1q - pre1q;
+    const diff0y = cur0y - pre0y;
+    const diff1y = cur1y - pre1y;
+    
+    // すべて増加しているか
+    const epsUp = diff0q > 0.0001 && diff1q > 0.0001 && diff0y > 0.0001 && diff1y > 0.0001;
+    if (!epsUp) return;
+    
+    // 株価終値
+    let priceStart = null;
+    let priceLatest = null;
+    
+    for (let i = history.indexOf(firstEntry); i < history.length; i++) {
+      if (history[i][symbol]?.c != null) {
+        priceStart = history[i][symbol].c;
+        break;
+      }
+    }
+    for (let i = history.length - 1; i >= 0; i--) {
+      if (history[i][symbol]?.c != null) {
+        priceLatest = history[i][symbol].c;
+        break;
+      }
+    }
+    
+    if (priceStart != null && priceLatest != null) {
+      const priceDiff = priceLatest - priceStart;
+      if (priceDiff <= 0) {
+        results.push({
+          symbol,
+          priceStart,
+          priceLatest,
+          priceDiff,
+          pricePct: (priceDiff / priceStart) * 100,
+          periodDays
+        });
+      }
+    }
+  });
+  
+  results.sort((a, b) => a.pricePct - b.pricePct);
+  return results;
 }
 
 function earningsBadge(symbol, earningsDates) {
@@ -542,7 +696,7 @@ function newsHtml(symbol, news) {
   return `<div class="news-title">最近のニュース</div><ul class="news-list">${li}</ul>`;
 }
 
-function buildCard(symbol, history, earningsDates, perData, names, news) {
+function buildCard(symbol, history, earningsDates, perData, names, news, reviews) {
   const canvasId = `chart-${symbol}`;
   const card = document.createElement("div");
   card.className = "card";
@@ -552,7 +706,8 @@ function buildCard(symbol, history, earningsDates, perData, names, news) {
   const lastSymbolEntry = latestEntry[symbol] || {};
   const epsPeriods = Object.keys(lastSymbolEntry).filter(k => !OHLC_KEYS.has(k) && PERIOD_LABELS[k]);
   const PER_LABELS = { trailing_pe: "PER(LTM)", forward_pe: "Forward PER" };
-  const PER_COLORS = { trailing_pe: "#7c3aed", forward_pe: "#0891b2" };
+  const PER_COLORS_CARD = { trailing_pe: "#7c3aed", forward_pe: "#0891b2" };
+  const SP500_COLORS = { trailing_pe: "#d97706", forward_pe: "#fbbf24" };
 
   // データセット並び: [価格系 PRICE_DATASET_COUNT 個] + EPS + PER + S&P500
   const base = PRICE_DATASET_COUNT;
@@ -562,8 +717,6 @@ function buildCard(symbol, history, earningsDates, perData, names, news) {
       ${PERIOD_LABELS[p] || p}
     </span>`).join("");
 
-  const PER_COLORS_CARD = { trailing_pe: "#7c3aed", forward_pe: "#0891b2" };
-  const SP500_COLORS = { trailing_pe: "#d97706", forward_pe: "#fbbf24" };
   const sp500LegendItems = [
     { key: "trailing_pe", label: "S&P500 PER(LTM)" },
     { key: "forward_pe",  label: "S&P500 PER(Fwd)" },
@@ -605,13 +758,15 @@ Promise.all([
   fetch("data/history.json").then(r => r.json()),
   fetch("data/earnings_dates.json").then(r => r.json()).catch(() => ({ dates: {}, per: {} })),
   fetch("data/news.json").then(r => r.json()).catch(() => ({ news: {} })),
-]).then(([history, edData, newsData]) => {
+  fetch("data/reviews.json").then(r => r.json()).catch(() => ({ reviews: {} })),
+]).then(([history, edData, newsData, reviewsData]) => {
   if (!history.length) throw new Error("データがありません");
 
   const earningsDates = edData.dates || {};
   const perData = edData.per || {};
   const names = edData.names || {};
   const news = newsData.news || {};
+  const reviews = reviewsData.reviews || {};
   const lastEntry = history[history.length - 1];
   const symbols = Object.keys(lastEntry).filter(k => k !== "date" && !k.startsWith("_"));
 
@@ -620,6 +775,33 @@ Promise.all([
 
   const main = document.getElementById("main");
   main.innerHTML = "";
+
+  // 逆行シグナルの検出
+  const divergenceList = detectDivergence(history, symbols);
+  
+  // シグナルUIの構築
+  if (divergenceList.length > 0) {
+    const itemsHtml = divergenceList.map(item => `
+      <div class="signal-item" data-symbol="${item.symbol}">
+        <div class="sym">
+          <span>${item.symbol}</span>
+          <span class="pct">${item.pricePct.toFixed(1)}%</span>
+        </div>
+        <div class="price-detail">$${item.priceStart.toFixed(1)} → $${item.priceLatest.toFixed(1)}</div>
+      </div>
+    `).join("");
+    
+    const signalContainer = document.createElement("div");
+    signalContainer.className = "signal-container";
+    signalContainer.innerHTML = `
+      <div class="signal-header">
+        <span class="tag">Divergence</span>
+        <span>📈 EPS予想上昇 × 📉 株価下落の逆行シグナル（直近 ${divergenceList[0].periodDays} 日間）</span>
+      </div>
+      <div class="signal-list">${itemsHtml}</div>
+    `;
+    main.appendChild(signalContainer);
+  }
 
   // サマリーテーブル
   // 次回決算日が近い順に並び替え（未設定は末尾）
@@ -646,7 +828,7 @@ Promise.all([
 
   // チャートカードを全件生成・チャート描画
   symbols.forEach((symbol, i) => {
-    const card = buildCard(symbol, history, earningsDates, perData, names, news);
+    const card = buildCard(symbol, history, earningsDates, perData, names, news, reviews);
     if (i === 0) card.classList.add("active");
     chartCol.appendChild(card);
     buildChart(`chart-${symbol}`, history, symbol, earningsDates);
@@ -712,6 +894,26 @@ Promise.all([
     chartMode = btn.dataset.mode;
     applyMode(btn.closest(".card"), chartMode);
     requestAnimationFrame(syncTableHeight);
+  });
+
+  // シグナルクリックで切り替え
+  main.addEventListener("click", e => {
+    const item = e.target.closest(".signal-item");
+    if (!item) return;
+    const target = item.dataset.symbol;
+    
+    tbody.querySelectorAll("tr").forEach(r => r.classList.toggle("active", r.dataset.symbol === target));
+    main.querySelectorAll(".card").forEach(c => c.classList.toggle("active", c.dataset.symbol === target));
+    
+    const card = chartCol.querySelector(`.card[data-symbol="${target}"]`);
+    Chart.getChart(`chart-${target}`)?.resize();
+    applyMode(card, chartMode);
+    requestAnimationFrame(syncTableHeight);
+    
+    const targetRow = tbody.querySelector(`tr[data-symbol="${target}"]`);
+    if (targetRow) {
+      targetRow.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
   });
 
   // 凡例クリック（イベント委譲：遅延生成された要素にも対応）
