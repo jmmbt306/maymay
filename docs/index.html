@@ -734,6 +734,21 @@ function buildCard(symbol, history, earningsDates, perData, names, news, reviews
     ...sp500LegendItems,
   ].join("");
 
+  const reviewObj = reviews && reviews[symbol];
+  let reviewHtml = "";
+  if (reviewObj && reviewObj.text) {
+    reviewHtml = `
+      <div class="ai-review-panel" style="background: linear-gradient(145deg, #f0f9ff, #e0f2fe); border:1px solid #bae6fd; padding:1rem; border-radius:8px; margin-top:1.2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+        <div style="font-size:0.75rem; font-weight:800; color:#0284c7; margin-bottom:0.4rem; display:flex; align-items:center; gap:0.4rem; text-transform: uppercase; letter-spacing: 0.05em;">
+          <span>✨ Gemini AI Review</span>
+        </div>
+        <div style="font-size:0.85rem; line-height:1.6; color:#1e293b; font-weight: 500;">
+          ${escapeHtml(reviewObj.text)}
+        </div>
+      </div>
+    `;
+  }
+
   card.innerHTML = `
     <div class="panel chart-panel">
       <div class="card-header">
@@ -749,6 +764,7 @@ function buildCard(symbol, history, earningsDates, perData, names, news, reviews
       <div class="legend" data-legend="eps-${canvasId}">${epsLegendHtml}</div>
       <div class="legend" data-legend="per-${canvasId}" style="display:none">${perLegendHtml}</div>
       <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
+      ${reviewHtml}
     </div>
     <div class="panel news-panel">${newsHtml(symbol, news)}</div>`;
   return card;
