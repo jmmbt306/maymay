@@ -222,78 +222,77 @@ function shortDate(d) {
   return d ? d.slice(5).replace("-", "/") : d;
 }
 
-// 逆行シグナルの検出
-function detectDivergence(history, symbols) {
+function detectDivergence(history, symbols, earningsDates) {
   if (history.length < 2) return [];
   
   const latest = history[history.length - 1];
-  const cutoffDate = luxon.DateTime.fromISO(latest.date).minus({ days: 30 });
+  const targetStart = luxon.DateTime.fromISO(latest.date).minus({ days: 90 });
+  const minStart = luxon.DateTime.fromISO(latest.date).minus({ days: 30 });
   
-  let firstEntry = history[0];
+  let startIndex = 0;
   for (let i = 0; i < history.length; i++) {
-    if (luxon.DateTime.fromISO(history[i].date) >= cutoffDate) {
-      firstEntry = history[i];
+    if (luxon.DateTime.fromISO(history[i].date) >= targetStart) {
+      startIndex = i;
       break;
     }
   }
   
-  const periodDays = Math.ceil((new Date(latest.date) - new Date(firstEntry.date)) / 86400000);
+  if (luxon.DateTime.fromISO(history[startIndex].date) > minStart) return [];
+  
+  const periodDays = Math.ceil((new Date(latest.date) - new Date(history[startIndex].date)) / 86400000);
   const results = [];
   
   symbols.forEach(symbol => {
-    const cur = latest[symbol];
-    const pre = firstEntry[symbol];
-    if (!cur || !pre) return;
-    
-    const cur0q = cur["0q"], pre0q = pre["0q"];
-    const cur1q = cur["+1q"], pre1q = pre["+1q"];
-    const cur0y = cur["0y"], pre0y = pre["0y"];
-    const cur1y = cur["+1y"], pre1y = pre["+1y"];
-    
-    if (cur0q == null || pre0q == null ||
-        cur1q == null || pre1q == null ||
-        cur0y == null || pre0y == null ||
-        cur1y == null || pre1y == null) return;
-        
-    const diff0q = cur0q - pre0q;
-    const diff1q = cur1q - pre1q;
-    const diff0y = cur0y - pre0y;
-    const diff1y = cur1y - pre1y;
-    
-    // すべて増加しているか
-    const epsUp = diff0q > 0.0001 && diff1q > 0.0001 && diff0y > 0.0001 && diff1y > 0.0001;
-    if (!epsUp) return;
-    
-    // 株価終値
     let priceStart = null;
     let priceLatest = null;
-    
-    for (let i = history.indexOf(firstEntry); i < history.length; i++) {
-      if (history[i][symbol]?.c != null) {
-        priceStart = history[i][symbol].c;
-        break;
-      }
+    for (let i = startIndex; i < history.length; i++) {
+      if (history[i][symbol]?.c != null) { priceStart = history[i][symbol].c; break; }
     }
-    for (let i = history.length - 1; i >= 0; i--) {
-      if (history[i][symbol]?.c != null) {
-        priceLatest = history[i][symbol].c;
-        break;
-      }
+    for (let i = history.length - 1; i >= startIndex; i--) {
+      if (history[i][symbol]?.c != null) { priceLatest = history[i][symbol].c; break; }
     }
     
-    if (priceStart != null && priceLatest != null) {
-      const priceDiff = priceLatest - priceStart;
-      if (priceDiff <= 0) {
-        results.push({
-          symbol,
-          priceStart,
-          priceLatest,
-          priceDiff,
-          pricePct: (priceDiff / priceStart) * 100,
-          periodDays
-        });
+    if (priceStart == null || priceLatest == null || priceLatest > priceStart) return;
+
+    let epsDiff = { "0q": 0, "+1q": 0, "0y": 0, "+1y": 0 };
+    let hasNull = false;
+
+    for (let i = startIndex + 1; i < history.length; i++) {
+      const prevData = history[i-1][symbol];
+      const curData = history[i][symbol];
+      if (!prevData || !curData) continue;
+      
+      let isNearEarnings = false;
+      const ed = (earningsDates || {})[symbol];
+      if (ed && ed.prev) {
+         const daysSince = Math.floor((new Date(history[i].date) - new Date(ed.prev)) / 86400000);
+         if (daysSince >= -1 && daysSince <= 7) isNearEarnings = true;
+      }
+      
+      if (!isNearEarnings) {
+         for (const key of ["0q", "+1q", "0y", "+1y"]) {
+            if (curData[key] != null && prevData[key] != null) {
+               epsDiff[key] += (curData[key] - prevData[key]);
+            } else {
+               hasNull = true;
+            }
+         }
       }
     }
+    
+    if (hasNull) return;
+    const epsUp = epsDiff["0q"] > 0.0001 && epsDiff["+1q"] > 0.0001 && epsDiff["0y"] > 0.0001 && epsDiff["+1y"] > 0.0001;
+    if (!epsUp) return;
+    
+    const priceDiff = priceLatest - priceStart;
+    results.push({
+      symbol,
+      priceStart,
+      priceLatest,
+      priceDiff,
+      pricePct: (priceDiff / priceStart) * 100,
+      periodDays
+    });
   });
   
   results.sort((a, b) => a.pricePct - b.pricePct);
@@ -793,7 +792,7 @@ Promise.all([
   main.innerHTML = "";
 
   // 逆行シグナルの検出
-  const divergenceList = detectDivergence(history, symbols);
+  const divergenceList = detectDivergence(history, symbols, earningsDates);
   
   // シグナルUIの構築
   if (divergenceList.length > 0) {
