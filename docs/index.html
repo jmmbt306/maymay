@@ -258,6 +258,23 @@ function detectDivergence(history, symbols, earningsDates) {
     const priceLatest = latestPrices.reduce((a,b)=>a+b, 0) / latestPrices.length;
     
     if (priceLatest > priceStart) return;
+    
+    let pricesForTrend = [];
+    for (let i = startIndex; i < history.length; i++) {
+      if (history[i][symbol]?.c != null) pricesForTrend.push(history[i][symbol].c);
+    }
+    if (pricesForTrend.length >= 2) {
+      const nPrices = pricesForTrend.length;
+      const meanX = (nPrices - 1) / 2;
+      const meanY = pricesForTrend.reduce((a,b)=>a+b, 0) / nPrices;
+      let num = 0, den = 0;
+      for (let i = 0; i < nPrices; i++) {
+        num += (i - meanX) * (pricesForTrend[i] - meanY);
+        den += (i - meanX) * (i - meanX);
+      }
+      const slope = den !== 0 ? num / den : 0;
+      if (slope > 0) return;
+    }
 
     let epsDiff = { "0q": 0, "+1q": 0, "0y": 0, "+1y": 0 };
     let hasNull = false;
