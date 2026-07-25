@@ -243,16 +243,21 @@ function detectDivergence(history, symbols, earningsDates) {
   const results = [];
   
   symbols.forEach(symbol => {
-    let priceStart = null;
-    let priceLatest = null;
-    for (let i = startIndex; i < history.length; i++) {
-      if (history[i][symbol]?.c != null) { priceStart = history[i][symbol].c; break; }
+    let startPrices = [];
+    for (let i = startIndex; i < history.length && startPrices.length < 5; i++) {
+      if (history[i][symbol]?.c != null) startPrices.push(history[i][symbol].c);
     }
-    for (let i = history.length - 1; i >= startIndex; i--) {
-      if (history[i][symbol]?.c != null) { priceLatest = history[i][symbol].c; break; }
+    let latestPrices = [];
+    for (let i = history.length - 1; i >= startIndex && latestPrices.length < 5; i--) {
+      if (history[i][symbol]?.c != null) latestPrices.push(history[i][symbol].c);
     }
     
-    if (priceStart == null || priceLatest == null || priceLatest > priceStart) return;
+    if (startPrices.length === 0 || latestPrices.length === 0) return;
+    
+    const priceStart = startPrices.reduce((a,b)=>a+b, 0) / startPrices.length;
+    const priceLatest = latestPrices.reduce((a,b)=>a+b, 0) / latestPrices.length;
+    
+    if (priceLatest > priceStart) return;
 
     let epsDiff = { "0q": 0, "+1q": 0, "0y": 0, "+1y": 0 };
     let hasNull = false;
