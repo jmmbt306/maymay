@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-25",
+  "updated": "2026-07-27",
   "dates": {
     "LEVI": {
       "next": "2026-09-30",
@@ -1528,6 +1528,29 @@
     "NEM": "Newmont Corporation",
     "NEE": "NextEra Energy, Inc.",
     "KBH": "KB Home",
-    "MU": "Micron Technology, Inc."
+    "MU": "Micron Technology, Inc.",
+    "AZN": "AstraZeneca PLC",
+    "CLS": "Celestica, Inc.",
+    "PYPL": "PayPal Holdings, Inc.",
+    "UPS": "United Parcel Service, Inc.",
+    "RCL": "Royal Caribbean Cruises Ltd.",
+    "STX": "Seagate Technology Holdings PLC",
+    "ENPH": "Enphase Energy, Inc.",
+    "V": "Visa Inc.",
+    "TER": "Teradyne, Inc.",
+    "F": "Ford Motor Company",
+    "CAKE": "The Cheesecake Factory Incorpor",
+    "SOFI": "SoFi Technologies, Inc.",
+    "BSX": "Boston Scientific Corporation",
+    "QCOM": "QUALCOMM Incorporated",
+    "LRCX": "Lam Research Corporation",
+    "FTNT": "Fortinet, Inc.",
+    "MA": "Mastercard Incorporated",
+    "OWL": "Blue Owl Capital Inc.",
+    "RBLX": "Roblox Corporation",
+    "RDDT": "Reddit, Inc.",
+    "RIVN": "Rivian Automotive, Inc.",
+    "MRNA": "Moderna, Inc.",
+    "D": "Dominion Energy, Inc."
   }
 }
