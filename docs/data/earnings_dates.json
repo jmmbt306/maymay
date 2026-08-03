@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-01",
+  "updated": "2026-08-03",
   "dates": {
     "LEVI": {
       "next": "2026-09-30",
@@ -1669,6 +1669,19 @@
     "RDDT": "Reddit, Inc.",
     "RIVN": "Rivian Automotive, Inc.",
     "MRNA": "Moderna, Inc.",
-    "D": "Dominion Energy, Inc."
+    "D": "Dominion Energy, Inc.",
+    "MAR": "Marriott International",
+    "ET": "Energy Transfer LP",
+    "SPCX": "Space Exploration Technologies ",
+    "CRCL": "Circle Internet Group, Inc.",
+    "U": "Unity Software Inc.",
+    "AXON": "Axon Enterprise, Inc.",
+    "DDOG": "Datadog, Inc.",
+    "DKNG": "DraftKings Inc.",
+    "ABNB": "Airbnb, Inc.",
+    "MP": "MP Materials Corp.",
+    "OKLO": "Oklo Inc.",
+    "VST": "Vistra Corp.",
+    "UAA": "Under Armour, Inc."
   }
 }
