@@ -325,7 +325,15 @@ function earningsBadge(symbol, earningsDates) {
   const e = earningsDates[symbol];
   if (!e) return "";
   let html = "";
-  if (e.prev) html += `<span class="badge">前回決算 ${e.prev}</span>`;
+  if (e.prev) {
+    let text = `前回決算 ${e.prev}`;
+    if (e.prev_est != null && e.prev_act != null) {
+      const surp = e.prev_surp != null ? (e.prev_surp > 0 ? `+${e.prev_surp.toFixed(1)}%` : `${e.prev_surp.toFixed(1)}%`) : "";
+      const mark = e.prev_act >= e.prev_est ? "🟢" : "🔴";
+      text += ` ${mark}予想$${e.prev_est.toFixed(2)} → 結果$${e.prev_act.toFixed(2)} (${surp})`;
+    }
+    html += `<span class="badge">${text}</span>`;
+  }
   if (e.next) {
     const days = daysUntil(e.next);
     const label = days < 0 ? `決算済 ${e.next}` : days === 0 ? `本日決算 ${e.next}` : `次回決算 ${e.next}（${days}日後）`;
