@@ -1,672 +1,1174 @@
 {
-  "updated": "2026-08-07",
+  "updated": "2026-08-08",
   "dates": {
     "LEVI": {
       "next": "2026-09-30",
-      "prev": "2026-07-08"
+      "prev": "2026-07-08",
+      "prev_est": 0.24,
+      "prev_act": 0.28,
+      "prev_surp": 14.77
     },
     "PEP": {
       "next": "2026-10-08",
-      "prev": "2026-07-09"
+      "prev": "2026-07-09",
+      "prev_est": 2.21,
+      "prev_act": 2.2,
+      "prev_surp": -0.37
     },
     "DAL": {
       "next": "2026-10-08",
-      "prev": "2026-07-10"
+      "prev": "2026-07-10",
+      "prev_est": 1.49,
+      "prev_act": 1.56,
+      "prev_surp": 4.54
     },
     "C": {
       "next": "2026-10-13",
-      "prev": "2026-07-14"
+      "prev": "2026-07-14",
+      "prev_est": 2.71,
+      "prev_act": 3.14,
+      "prev_surp": 15.62
     },
     "GS": {
       "next": "2026-10-13",
-      "prev": "2026-07-14"
+      "prev": "2026-07-14",
+      "prev_est": 14.54,
+      "prev_act": 20.98,
+      "prev_surp": 44.27
     },
     "JPM": {
       "next": "2026-10-13",
-      "prev": "2026-07-14"
+      "prev": "2026-07-14",
+      "prev_est": 5.8,
+      "prev_act": 6.14,
+      "prev_surp": 5.86
     },
     "BAC": {
       "next": "2026-10-14",
-      "prev": "2026-07-14"
+      "prev": "2026-07-14",
+      "prev_est": 1.12,
+      "prev_act": 1.21,
+      "prev_surp": 7.74
     },
     "WFC": {
       "next": "2026-10-13",
-      "prev": "2026-07-14"
+      "prev": "2026-07-14",
+      "prev_est": 1.72,
+      "prev_act": 2.0,
+      "prev_surp": 16.38
     },
     "AEHR": {
       "next": "2026-10-08",
-      "prev": "2026-07-14"
+      "prev": "2026-07-14",
+      "prev_est": -0.01,
+      "prev_act": 0.11,
+      "prev_surp": 1566.67
     },
     "ASML": {
       "next": "2026-10-14",
-      "prev": "2026-07-13"
+      "prev": "2026-07-13",
+      "prev_est": 6.9,
+      "prev_act": 7.58,
+      "prev_surp": 9.93
     },
     "BLK": {
       "next": "2026-10-14",
-      "prev": "2026-07-15"
+      "prev": "2026-07-15",
+      "prev_est": 12.69,
+      "prev_act": 13.91,
+      "prev_surp": 9.62
     },
     "MS": {
       "next": "2026-10-14",
-      "prev": "2026-07-15"
+      "prev": "2026-07-15",
+      "prev_est": 2.93,
+      "prev_act": 3.46,
+      "prev_surp": 17.94
     },
     "JNJ": {
       "next": "2026-10-13",
-      "prev": "2026-07-15"
+      "prev": "2026-07-15",
+      "prev_est": 2.85,
+      "prev_act": 2.9,
+      "prev_surp": 1.58
     },
     "UAL": {
       "next": "2026-10-21",
-      "prev": "2026-07-15"
+      "prev": "2026-07-15",
+      "prev_est": 1.85,
+      "prev_act": 1.99,
+      "prev_surp": 7.58
     },
     "JBHT": {
       "next": "2026-10-14",
-      "prev": "2026-07-15"
+      "prev": "2026-07-15",
+      "prev_est": 1.74,
+      "prev_act": 1.91,
+      "prev_surp": 9.55
     },
     "KARO": {
       "next": "2026-10-13",
-      "prev": "2026-07-15"
+      "prev": "2026-07-15",
+      "prev_est": 8.71,
+      "prev_act": 9.53,
+      "prev_surp": 9.47
     },
     "UNH": {
       "next": "2026-10-27",
-      "prev": "2026-07-16"
+      "prev": "2026-07-16",
+      "prev_est": 4.92,
+      "prev_act": 6.38,
+      "prev_surp": 29.8
     },
     "GE": {
       "next": "2026-10-20",
-      "prev": "2026-07-16"
+      "prev": "2026-07-16",
+      "prev_est": 1.86,
+      "prev_act": 2.02,
+      "prev_surp": 8.62
     },
     "ABT": {
       "next": "2026-10-14",
-      "prev": "2026-07-16"
+      "prev": "2026-07-16",
+      "prev_est": 1.28,
+      "prev_act": 1.31,
+      "prev_surp": 2.61
     },
     "NFLX": {
       "next": "2026-10-20",
-      "prev": "2026-07-16"
+      "prev": "2026-07-16",
+      "prev_est": 0.79,
+      "prev_act": 0.8,
+      "prev_surp": 1.45
     },
     "DPZ": {
       "next": "2026-10-13",
-      "prev": "2026-07-20"
+      "prev": "2026-07-20",
+      "prev_est": 4.17,
+      "prev_act": 4.07,
+      "prev_surp": -2.38
     },
     "HAL": {
       "next": "2026-10-20",
-      "prev": "2026-07-21"
+      "prev": "2026-07-21",
+      "prev_est": 0.54,
+      "prev_act": 0.55,
+      "prev_surp": 2.28
     },
     "DHI": {
       "next": "2026-10-29",
-      "prev": "2026-07-21"
+      "prev": "2026-07-21",
+      "prev_est": 2.99,
+      "prev_act": 3.2,
+      "prev_surp": 7.09
     },
     "DHR": {
       "next": "2026-10-20",
-      "prev": "2026-07-21"
+      "prev": "2026-07-21",
+      "prev_est": 1.84,
+      "prev_act": 1.94,
+      "prev_surp": 5.28
     },
     "SCHW": {
       "next": "2026-10-15",
-      "prev": "2026-07-21"
+      "prev": "2026-07-21",
+      "prev_est": 1.55,
+      "prev_act": 1.62,
+      "prev_surp": 4.55
     },
     "GM": {
       "next": "2026-10-20",
-      "prev": "2026-07-21"
+      "prev": "2026-07-21",
+      "prev_est": 3.19,
+      "prev_act": 3.57,
+      "prev_surp": 12.0
     },
     "MMM": {
       "next": "2026-10-20",
-      "prev": "2026-07-21"
+      "prev": "2026-07-21",
+      "prev_est": 2.25,
+      "prev_act": 2.4,
+      "prev_surp": 6.84
     },
     "GEV": {
       "next": "2026-10-28",
-      "prev": "2026-07-22"
+      "prev": "2026-07-22",
+      "prev_est": 3.18,
+      "prev_act": 2.47,
+      "prev_surp": -22.44
     },
     "T": {
       "next": "2026-10-21",
-      "prev": "2026-07-22"
+      "prev": "2026-07-22",
+      "prev_est": 0.59,
+      "prev_act": 0.65,
+      "prev_surp": 10.49
     },
     "TSLA": {
       "next": "2026-10-21",
-      "prev": "2026-07-22"
+      "prev": "2026-07-22",
+      "prev_est": 0.54,
+      "prev_act": 0.33,
+      "prev_surp": -38.35
     },
     "GOOGL": {
       "next": "2026-10-28",
-      "prev": "2026-07-22"
+      "prev": "2026-07-22",
+      "prev_est": 2.9,
+      "prev_act": 9.11,
+      "prev_surp": 214.23
     },
     "NOW": {
       "next": "2026-10-28",
-      "prev": "2026-07-22"
+      "prev": "2026-07-22",
+      "prev_est": 0.86,
+      "prev_act": 0.9,
+      "prev_surp": 5.05
     },
     "IBM": {
       "next": "2026-10-21",
-      "prev": "2026-07-22"
+      "prev": "2026-07-22",
+      "prev_est": 2.93,
+      "prev_act": 2.93,
+      "prev_surp": -0.1
     },
     "TXN": {
       "next": "2026-10-27",
-      "prev": "2026-07-22"
+      "prev": "2026-07-22",
+      "prev_est": 1.94,
+      "prev_act": 2.14,
+      "prev_surp": 10.48
     },
     "AAL": {
       "next": "2026-10-22",
-      "prev": "2026-07-23"
+      "prev": "2026-07-23",
+      "prev_est": 0.05,
+      "prev_act": 0.15,
+      "prev_surp": 227.58
     },
     "BX": {
       "next": "2026-10-22",
-      "prev": "2026-07-23"
+      "prev": "2026-07-23",
+      "prev_est": 1.34,
+      "prev_act": 1.52,
+      "prev_surp": 13.71
     },
     "LMT": {
       "next": "2026-10-20",
-      "prev": "2026-07-23"
+      "prev": "2026-07-23",
+      "prev_est": 7.2,
+      "prev_act": 7.94,
+      "prev_surp": 10.29
     },
     "INTC": {
       "next": "2026-10-22",
-      "prev": "2026-07-23"
+      "prev": "2026-07-23",
+      "prev_est": 0.22,
+      "prev_act": 0.42,
+      "prev_surp": 92.49
     },
     "NEM": {
       "next": "2026-10-22",
-      "prev": "2026-07-23"
+      "prev": "2026-07-23",
+      "prev_est": 1.99,
+      "prev_act": 2.1,
+      "prev_surp": 5.68
     },
     "VZ": {
       "next": "2026-10-20",
-      "prev": "2026-07-24"
+      "prev": "2026-07-24",
+      "prev_est": 1.27,
+      "prev_act": 1.3,
+      "prev_surp": 2.71
     },
     "AXP": {
       "next": "2026-10-23",
-      "prev": "2026-07-24"
+      "prev": "2026-07-24",
+      "prev_est": 4.4,
+      "prev_act": 4.53,
+      "prev_surp": 2.88
     },
     "AZN": {
       "next": "2026-10-30",
-      "prev": "2026-07-27"
+      "prev": "2026-07-27",
+      "prev_est": 1.25,
+      "prev_act": 1.32,
+      "prev_surp": 4.85
     },
     "CLS": {
       "next": "2026-10-26",
-      "prev": "2026-07-27"
+      "prev": "2026-07-27",
+      "prev_est": 2.31,
+      "prev_act": 2.54,
+      "prev_surp": 10.04
     },
     "NUE": {
       "next": "2026-10-26",
-      "prev": "2026-07-27"
+      "prev": "2026-07-27",
+      "prev_est": 4.53,
+      "prev_act": 4.84,
+      "prev_surp": 6.94
     },
     "PYPL": {
       "next": "2026-10-27",
-      "prev": "2026-07-28"
+      "prev": "2026-07-28",
+      "prev_est": 1.28,
+      "prev_act": 1.38,
+      "prev_surp": 8.03
     },
     "BA": {
       "next": "2026-10-28",
-      "prev": "2026-07-28"
+      "prev": "2026-07-28",
+      "prev_est": -0.31,
+      "prev_act": -0.76,
+      "prev_surp": -141.48
     },
     "KO": {
       "next": "2026-10-20",
-      "prev": "2026-07-28"
+      "prev": "2026-07-28",
+      "prev_est": 0.93,
+      "prev_act": 0.97,
+      "prev_surp": 4.05
     },
     "UPS": {
       "next": "2026-10-27",
-      "prev": "2026-07-28"
+      "prev": "2026-07-28",
+      "prev_est": 1.66,
+      "prev_act": 1.76,
+      "prev_surp": 5.75
     },
     "GLW": {
       "next": "2026-10-27",
-      "prev": "2026-07-28"
+      "prev": "2026-07-28",
+      "prev_est": 0.75,
+      "prev_act": 0.78,
+      "prev_surp": 3.48
     },
     "RCL": {
       "next": "2026-10-27",
-      "prev": "2026-07-28"
+      "prev": "2026-07-28",
+      "prev_est": 3.98,
+      "prev_act": 4.21,
+      "prev_surp": 5.74
     },
     "BE": {
       "next": "2026-10-27",
-      "prev": "2026-07-28"
+      "prev": "2026-07-28",
+      "prev_est": 0.41,
+      "prev_act": 0.78,
+      "prev_surp": 91.83
     },
     "STX": {
       "next": "2026-10-27",
-      "prev": "2026-07-28"
+      "prev": "2026-07-28",
+      "prev_est": 5.09,
+      "prev_act": 5.71,
+      "prev_surp": 12.09
     },
     "ENPH": {
       "next": "2026-10-27",
-      "prev": "2026-07-28"
+      "prev": "2026-07-28",
+      "prev_est": 0.46,
+      "prev_act": 0.46,
+      "prev_surp": -0.76
     },
     "V": {
       "next": "2026-10-27",
-      "prev": "2026-07-28"
+      "prev": "2026-07-28",
+      "prev_est": 3.23,
+      "prev_act": 3.32,
+      "prev_surp": 2.76
     },
     "TER": {
       "next": "2026-10-21",
-      "prev": "2026-07-28"
+      "prev": "2026-07-28",
+      "prev_est": 2.05,
+      "prev_act": 2.47,
+      "prev_surp": 20.28
     },
     "F": {
       "next": "2026-10-22",
-      "prev": "2026-07-28"
+      "prev": "2026-07-28",
+      "prev_est": 0.35,
+      "prev_act": 0.42,
+      "prev_surp": 21.27
     },
     "CAKE": {
       "next": "2026-10-27",
-      "prev": "2026-07-28"
+      "prev": "2026-07-28",
+      "prev_est": 1.18,
+      "prev_act": 1.44,
+      "prev_surp": 21.91
     },
     "SOFI": {
       "next": "2026-10-27",
-      "prev": "2026-07-29"
+      "prev": "2026-07-29",
+      "prev_est": 0.11,
+      "prev_act": 0.12,
+      "prev_surp": 10.02
     },
     "BSX": {
       "next": "2026-10-21",
-      "prev": "2026-07-29"
+      "prev": "2026-07-29",
+      "prev_est": 0.83,
+      "prev_act": 0.86,
+      "prev_surp": 3.86
     },
     "VRT": {
       "next": "2026-10-21",
-      "prev": "2026-07-29"
+      "prev": "2026-07-29",
+      "prev_est": 1.43,
+      "prev_act": 1.52,
+      "prev_surp": 6.42
     },
     "PG": {
       "next": "2026-10-22",
-      "prev": "2026-07-29"
+      "prev": "2026-07-29",
+      "prev_est": 1.41,
+      "prev_act": 1.43,
+      "prev_surp": 1.55
     },
     "MSFT": {
       "next": "2026-10-28",
-      "prev": "2026-07-29"
+      "prev": "2026-07-29",
+      "prev_est": 4.24,
+      "prev_act": 4.74,
+      "prev_surp": 11.81
     },
     "META": {
       "next": "2026-10-28",
-      "prev": "2026-07-29"
+      "prev": "2026-07-29",
+      "prev_est": 7.22,
+      "prev_act": 6.18,
+      "prev_surp": -14.42
     },
     "HOOD": {
-      "next": "2026-07-29",
-      "prev": "2026-07-29"
+      "next": "2026-11-04",
+      "prev": "2026-07-29",
+      "prev_est": 0.43,
+      "prev_act": 0.62,
+      "prev_surp": 43.71
     },
     "ARM": {
-      "next": "2026-07-29",
-      "prev": "2026-07-29"
+      "next": "2026-11-04",
+      "prev": "2026-07-29",
+      "prev_est": 0.4,
+      "prev_act": 0.45,
+      "prev_surp": 11.44
     },
     "QCOM": {
       "next": "2026-10-29",
-      "prev": "2026-07-29"
+      "prev": "2026-07-29",
+      "prev_est": 2.22,
+      "prev_act": 2.21,
+      "prev_surp": -0.49
     },
     "LRCX": {
       "next": "2026-10-21",
-      "prev": "2026-07-29"
+      "prev": "2026-07-29",
+      "prev_est": 1.68,
+      "prev_act": 1.82,
+      "prev_surp": 8.1
     },
     "CMG": {
       "next": "2026-07-29",
-      "prev": "2026-07-29"
+      "prev": "2026-07-29",
+      "prev_est": 0.32,
+      "prev_act": 0.33,
+      "prev_surp": 3.96
     },
     "FTNT": {
-      "next": "2026-07-29",
-      "prev": "2026-07-29"
+      "next": "2026-11-04",
+      "prev": "2026-07-29",
+      "prev_est": 0.75,
+      "prev_act": 0.9,
+      "prev_surp": 20.53
     },
     "MA": {
       "next": "2026-10-29",
-      "prev": "2026-07-30"
+      "prev": "2026-07-30",
+      "prev_est": 4.78,
+      "prev_act": 5.04,
+      "prev_surp": 5.53
     },
     "OWL": {
       "next": "2026-10-29",
-      "prev": "2026-07-29"
+      "prev": "2026-07-29",
+      "prev_est": 0.22,
+      "prev_act": 0.22,
+      "prev_surp": 1.75
     },
     "AAPL": {
       "next": "2026-10-29",
-      "prev": "2026-07-30"
+      "prev": "2026-07-30",
+      "prev_est": 1.89,
+      "prev_act": 2.02,
+      "prev_surp": 6.74
     },
     "AMZN": {
       "next": "2026-10-29",
-      "prev": "2026-07-30"
+      "prev": "2026-07-30",
+      "prev_est": 1.83,
+      "prev_act": 5.75,
+      "prev_surp": 215.02
     },
     "RBLX": {
       "next": "2026-10-29",
-      "prev": "2026-07-30"
+      "prev": "2026-07-30",
+      "prev_est": -0.33,
+      "prev_act": -0.26,
+      "prev_surp": 22.25
     },
     "RDDT": {
       "next": "2026-10-29",
-      "prev": "2026-07-30"
+      "prev": "2026-07-30",
+      "prev_est": 0.96,
+      "prev_act": 1.25,
+      "prev_surp": 29.56
     },
     "RIVN": {
       "next": "2026-07-30",
-      "prev": "2026-07-30"
+      "prev": "2026-07-30",
+      "prev_est": -0.78,
+      "prev_act": -0.63,
+      "prev_surp": 18.85
     },
     "XOM": {
       "next": "2026-10-30",
-      "prev": "2026-07-31"
+      "prev": "2026-07-31",
+      "prev_est": 3.63,
+      "prev_act": 4.11,
+      "prev_surp": 13.26
     },
     "MRNA": {
       "next": "2026-07-31",
-      "prev": "2026-07-31"
+      "prev": "2026-07-31",
+      "prev_est": -2.06,
+      "prev_act": -1.97,
+      "prev_surp": 4.33
     },
     "CVX": {
       "next": "2026-10-30",
-      "prev": "2026-07-31"
+      "prev": "2026-07-31",
+      "prev_est": 5.57,
+      "prev_act": 6.06,
+      "prev_surp": 8.84
     },
     "D": {
       "next": "2026-10-30",
-      "prev": "2026-07-31"
+      "prev": "2026-07-31",
+      "prev_est": 0.67,
+      "prev_act": 0.79,
+      "prev_surp": 17.2
     },
     "MAR": {
-      "next": "2026-08-03",
-      "prev": "2026-05-06"
+      "next": "2026-11-03",
+      "prev": "2026-08-03",
+      "prev_est": 3.08,
+      "prev_act": 3.19,
+      "prev_surp": 3.63
     },
     "PLTR": {
-      "next": "2026-08-03",
-      "prev": "2026-05-04"
+      "next": "2026-11-02",
+      "prev": "2026-08-03",
+      "prev_est": 0.35,
+      "prev_act": 0.41,
+      "prev_surp": 18.51
     },
     "ON": {
-      "next": "2026-08-03",
-      "prev": "2026-05-04"
+      "next": "2026-11-02",
+      "prev": "2026-08-03",
+      "prev_est": 0.72,
+      "prev_act": 0.74,
+      "prev_surp": 3.42
     },
     "PFE": {
-      "next": "2026-08-04",
-      "prev": "2026-05-05"
+      "next": "2026-11-03",
+      "prev": "2026-08-04",
+      "prev_est": 0.68,
+      "prev_act": 0.77,
+      "prev_surp": 12.87
     },
     "CAT": {
-      "next": "2026-08-04",
-      "prev": "2026-04-30"
+      "next": "2026-10-29",
+      "prev": "2026-08-04",
+      "prev_est": 6.2,
+      "prev_act": 8.17,
+      "prev_surp": 31.83
     },
     "MCD": {
-      "next": "2026-08-04",
-      "prev": "2026-05-07"
+      "next": "2026-11-05",
+      "prev": "2026-08-04",
+      "prev_est": 3.32,
+      "prev_act": 3.38,
+      "prev_surp": 1.77
     },
     "ET": {
-      "next": "2026-08-04",
-      "prev": "2026-05-05"
+      "next": "2026-11-04",
+      "prev": "2026-08-04",
+      "prev_est": 0.37,
+      "prev_act": 0.59,
+      "prev_surp": 60.42
     },
     "AMD": {
-      "next": "2026-08-04",
-      "prev": "2026-05-05"
+      "next": "2026-11-03",
+      "prev": "2026-08-04",
+      "prev_est": 1.61,
+      "prev_act": 1.66,
+      "prev_surp": 3.21
     },
     "SPCX": {
-      "next": "2026-08-04"
+      "next": "2026-11-03",
+      "prev": "2026-08-04",
+      "prev_est": -0.29,
+      "prev_act": -0.09,
+      "prev_surp": 68.89
     },
     "ANET": {
-      "next": "2026-08-04",
-      "prev": "2026-05-05"
+      "next": "2026-11-03",
+      "prev": "2026-08-04",
+      "prev_est": 0.89,
+      "prev_act": 1.02,
+      "prev_surp": 15.18
     },
     "ALAB": {
-      "next": "2026-08-04",
-      "prev": "2026-05-05"
+      "next": "2026-11-03",
+      "prev": "2026-08-04",
+      "prev_est": 0.69,
+      "prev_act": 0.8,
+      "prev_surp": 15.62
     },
     "LLY": {
-      "next": "2026-08-05",
-      "prev": "2026-04-30"
+      "next": "2026-10-29",
+      "prev": "2026-08-05",
+      "prev_est": 6.58,
+      "prev_act": 8.38,
+      "prev_surp": 27.27
     },
     "SHOP": {
-      "next": "2026-08-05",
-      "prev": "2026-05-05"
+      "next": "2026-11-03",
+      "prev": "2026-08-05",
+      "prev_est": 0.4,
+      "prev_act": 0.42,
+      "prev_surp": 5.05
     },
     "DIS": {
       "next": "2026-08-05",
-      "prev": "2026-05-06"
+      "prev": "2026-08-05",
+      "prev_est": 1.85,
+      "prev_act": 2.06,
+      "prev_surp": 11.09
     },
     "CRCL": {
       "next": "2026-08-05",
-      "prev": "2026-05-11"
+      "prev": "2026-08-05",
+      "prev_est": 0.16,
+      "prev_act": 0.18,
+      "prev_surp": 13.61
     },
     "U": {
-      "next": "2026-08-06",
-      "prev": "2026-05-07"
+      "next": "2026-11-04",
+      "prev": "2026-08-06",
+      "prev_est": 0.25,
+      "prev_act": 0.28,
+      "prev_surp": 12.41
     },
     "SNDK": {
-      "next": "2026-08-05",
-      "prev": "2026-04-30"
+      "next": "2026-11-06",
+      "prev": "2026-08-05",
+      "prev_est": 34.52,
+      "prev_act": 39.25,
+      "prev_surp": 13.72
     },
     "WDC": {
-      "next": "2026-08-05",
-      "prev": "2026-04-30"
+      "next": "2026-11-05",
+      "prev": "2026-08-05",
+      "prev_est": 3.3,
+      "prev_act": 3.56,
+      "prev_surp": 7.87
     },
     "AXON": {
-      "next": "2026-08-05",
-      "prev": "2026-05-06"
+      "next": "2026-11-03",
+      "prev": "2026-08-05",
+      "prev_est": 1.84,
+      "prev_act": 1.88,
+      "prev_surp": 1.96
     },
     "DDOG": {
-      "next": "2026-08-06",
-      "prev": "2026-05-07"
+      "next": "2026-11-05",
+      "prev": "2026-08-06",
+      "prev_est": 0.58,
+      "prev_act": 0.65,
+      "prev_surp": 11.45
     },
     "DKNG": {
-      "next": "2026-08-06",
-      "prev": "2026-05-06"
+      "next": "2026-11-05",
+      "prev": "2026-08-06",
+      "prev_est": 0.19,
+      "prev_act": 0.09,
+      "prev_surp": -53.06
     },
     "ABNB": {
-      "next": "2026-08-06",
-      "prev": "2026-05-07"
+      "next": "2026-11-05",
+      "prev": "2026-08-06",
+      "prev_est": 1.25,
+      "prev_act": 1.37,
+      "prev_surp": 9.48
     },
     "MP": {
-      "next": "2026-08-06",
-      "prev": "2026-05-07"
+      "next": "2026-11-05",
+      "prev": "2026-08-06",
+      "prev_est": null,
+      "prev_act": -0.01,
+      "prev_surp": -173.22
     },
     "OKLO": {
       "next": "2026-08-07",
-      "prev": "2026-03-17"
+      "prev": "2026-08-07",
+      "prev_est": -0.16,
+      "prev_act": -0.28,
+      "prev_surp": -74.57
     },
     "VST": {
-      "next": "2026-08-07",
-      "prev": "2026-05-08"
+      "next": "2026-11-05",
+      "prev": "2026-05-08",
+      "prev_est": 1.87,
+      "prev_act": 2.87,
+      "prev_surp": 53.35
     },
     "UAA": {
-      "next": "2026-08-07",
-      "prev": "2026-05-12"
+      "next": "2026-11-05",
+      "prev": "2026-08-07",
+      "prev_est": 0.02,
+      "prev_act": 0.05,
+      "prev_surp": 199.22
     },
     "NEE": {
       "next": "2026-10-27",
-      "prev": "2026-07-24"
+      "prev": "2026-07-24",
+      "prev_est": 1.11,
+      "prev_act": 1.15,
+      "prev_surp": 3.8
     },
     "NVDA": {
       "next": "2026-08-26",
-      "prev": "2026-05-20"
+      "prev": "2026-05-20",
+      "prev_est": 1.77,
+      "prev_act": 1.87,
+      "prev_surp": 5.54
     },
     "HD": {
       "next": "2026-08-18",
-      "prev": "2026-05-19"
+      "prev": "2026-05-19",
+      "prev_est": 3.41,
+      "prev_act": 3.43,
+      "prev_surp": 0.69
     },
     "TOL": {
       "next": "2026-08-18",
-      "prev": "2026-05-19"
+      "prev": "2026-05-19",
+      "prev_est": 2.59,
+      "prev_act": 2.72,
+      "prev_surp": 5.11
     },
     "TGT": {
       "next": "2026-08-19",
-      "prev": "2026-05-20"
+      "prev": "2026-05-20",
+      "prev_est": 1.46,
+      "prev_act": 1.71,
+      "prev_surp": 17.31
     },
     "LOW": {
       "next": "2026-08-19",
-      "prev": "2026-05-20"
+      "prev": "2026-05-20",
+      "prev_est": 2.97,
+      "prev_act": 3.03,
+      "prev_surp": 2.12
     },
     "WMT": {
       "next": "2026-08-20",
-      "prev": "2026-05-21"
+      "prev": "2026-05-21",
+      "prev_est": 0.66,
+      "prev_act": 0.66,
+      "prev_surp": 0.19
     },
     "WDAY": {
-      "next": "2026-08-20",
-      "prev": "2026-05-21"
+      "next": "2026-08-27",
+      "prev": "2026-05-21",
+      "prev_est": 2.52,
+      "prev_act": 2.66,
+      "prev_surp": 5.68
     },
     "BJ": {
       "next": "2026-08-21",
-      "prev": "2026-05-22"
+      "prev": "2026-05-22",
+      "prev_est": 1.03,
+      "prev_act": 1.1,
+      "prev_surp": 6.69
     },
     "CEG": {
       "next": "2026-08-06",
-      "prev": "2026-05-11"
+      "prev": "2026-08-06",
+      "prev_est": 2.28,
+      "prev_act": 2.55,
+      "prev_surp": 11.73
     },
     "Q": {
       "next": "2026-08-04",
-      "prev": "2026-05-12"
+      "prev": "2026-08-04",
+      "prev_est": 1.07,
+      "prev_act": 1.19,
+      "prev_surp": 11.01
     },
     "VG": {
       "next": "2026-08-11",
-      "prev": "2026-05-12"
+      "prev": "2026-05-12",
+      "prev_est": 0.12,
+      "prev_act": 0.19,
+      "prev_surp": 63.51
     },
     "ONON": {
       "next": "2026-08-11",
-      "prev": "2026-05-12"
+      "prev": "2026-05-12",
+      "prev_est": 0.27,
+      "prev_act": 0.37,
+      "prev_surp": 38.01
     },
     "UA": {
-      "next": "2026-08-07",
-      "prev": "2021-08-03"
+      "next": "2026-11-05",
+      "prev": "2021-08-03",
+      "prev_est": 0.05,
+      "prev_act": 0.1,
+      "prev_surp": 100.0
     },
     "NBIS": {
       "next": "2026-08-12",
-      "prev": "2026-05-13"
+      "prev": "2026-05-13",
+      "prev_est": -0.71,
+      "prev_act": 2.11,
+      "prev_surp": 396.14
     },
     "CSCO": {
       "next": "2026-08-12",
-      "prev": "2026-05-13"
+      "prev": "2026-05-13",
+      "prev_est": 1.04,
+      "prev_act": 1.06,
+      "prev_surp": 2.29
     },
     "FIG": {
-      "next": "2026-08-05",
-      "prev": "2026-05-14"
+      "next": "2026-11-04",
+      "prev": "2026-08-05",
+      "prev_est": 0.05,
+      "prev_act": 0.08,
+      "prev_surp": 74.79
     },
     "AMAT": {
       "next": "2026-08-13",
-      "prev": "2026-05-14"
+      "prev": "2026-05-14",
+      "prev_est": 2.69,
+      "prev_act": 2.86,
+      "prev_surp": 6.5
     },
     "BRK-B": {
       "next": "2026-08-08",
-      "prev": "2026-05-02"
+      "prev": "2026-08-08",
+      "prev_est": 5.13,
+      "prev_act": 6.03,
+      "prev_surp": 17.4
     },
     "ETN": {
-      "next": "2026-07-31",
-      "prev": "2026-07-31"
+      "next": "2026-11-03",
+      "prev": "2026-07-31",
+      "prev_est": 3.08,
+      "prev_act": 3.15,
+      "prev_surp": 2.39
     },
     "LITE": {
       "next": "2026-08-11",
-      "prev": "2026-05-05"
+      "prev": "2026-05-05",
+      "prev_est": 2.27,
+      "prev_act": 2.37,
+      "prev_surp": 4.62
     },
     "MSTR": {
       "next": "2026-10-29",
-      "prev": "2026-07-30"
+      "prev": "2026-07-30",
+      "prev_est": 3.07,
+      "prev_act": -24.45,
+      "prev_surp": -895.3
     },
     "BROS": {
-      "next": "2026-08-05",
-      "prev": "2026-05-06"
+      "next": "2026-11-04",
+      "prev": "2026-08-05",
+      "prev_est": 0.3,
+      "prev_act": 0.33,
+      "prev_surp": 11.19
     },
     "CRWV": {
       "next": "2026-08-11",
-      "prev": "2026-05-07"
+      "prev": "2026-05-07",
+      "prev_est": -0.91,
+      "prev_act": -1.12,
+      "prev_surp": -22.36
     },
     "NET": {
-      "next": "2026-08-06",
-      "prev": "2026-05-07"
+      "next": "2026-10-29",
+      "prev": "2026-08-06",
+      "prev_est": 0.27,
+      "prev_act": 0.29,
+      "prev_surp": 7.5
     },
     "SBUX": {
       "next": "2026-10-28",
-      "prev": "2026-07-29"
+      "prev": "2026-07-29",
+      "prev_est": 0.65,
+      "prev_act": 0.85,
+      "prev_surp": 30.79
     },
     "ALK": {
       "next": "2026-10-22",
-      "prev": "2026-07-21"
+      "prev": "2026-07-21",
+      "prev_est": -0.99,
+      "prev_act": -0.92,
+      "prev_surp": 7.24
     },
     "RTX": {
       "next": "2026-10-20",
-      "prev": "2026-07-23"
+      "prev": "2026-07-23",
+      "prev_est": 1.66,
+      "prev_act": 1.89,
+      "prev_surp": 13.71
     },
     "HON": {
       "next": "2026-10-22",
-      "prev": "2026-07-23"
+      "prev": "2026-07-23",
+      "prev_est": 1.82,
+      "prev_act": 1.95,
+      "prev_surp": 7.22
     },
     "FITB": {
       "next": "2026-10-19",
-      "prev": "2026-07-17"
+      "prev": "2026-07-17",
+      "prev_est": 0.84,
+      "prev_act": 0.83,
+      "prev_surp": -1.24
     },
     "RF": {
       "next": "2026-10-16",
-      "prev": "2026-07-17"
+      "prev": "2026-07-17",
+      "prev_est": 0.63,
+      "prev_act": 0.68,
+      "prev_surp": 7.91
     },
     "TFC": {
       "next": "2026-10-16",
-      "prev": "2026-07-17"
+      "prev": "2026-07-17",
+      "prev_est": 1.08,
+      "prev_act": 1.23,
+      "prev_surp": 13.78
     },
     "STZ": {
       "next": "2026-10-05",
-      "prev": "2026-06-30"
+      "prev": "2026-06-30",
+      "prev_est": 3.2,
+      "prev_act": 3.43,
+      "prev_surp": 7.13
     },
     "MRK": {
-      "next": "2026-08-04",
-      "prev": "2026-04-30"
+      "next": "2026-10-29",
+      "prev": "2026-08-04",
+      "prev_est": -0.26,
+      "prev_act": -0.13,
+      "prev_surp": 49.43
     },
     "FDX": {
       "next": "2026-10-28",
-      "prev": "2026-06-23"
+      "prev": "2026-06-23",
+      "prev_est": 5.92,
+      "prev_act": 6.31,
+      "prev_surp": 6.53
     },
     "SNOW": {
-      "next": "2026-08-26",
-      "prev": "2026-05-27"
+      "next": "2026-09-02",
+      "prev": "2026-05-27",
+      "prev_est": 0.32,
+      "prev_act": 0.39,
+      "prev_surp": 21.95
     },
     "DG": {
       "next": "2026-08-27",
-      "prev": "2026-06-02"
+      "prev": "2026-06-02",
+      "prev_est": 1.88,
+      "prev_act": 2.0,
+      "prev_surp": 6.22
     },
     "SIG": {
       "next": "2026-09-01",
-      "prev": "2026-06-02"
+      "prev": "2026-06-02",
+      "prev_est": 1.38,
+      "prev_act": 1.56,
+      "prev_surp": 12.89
     },
     "PANW": {
-      "next": "2026-08-18",
-      "prev": "2026-06-02"
+      "next": "2026-09-01",
+      "prev": "2026-06-02",
+      "prev_est": 0.8,
+      "prev_act": 0.85,
+      "prev_surp": 6.62
     },
     "ULTA": {
       "next": "2026-08-27",
-      "prev": "2026-06-02"
+      "prev": "2026-06-02",
+      "prev_est": 6.89,
+      "prev_act": 7.74,
+      "prev_surp": 12.28
     },
     "MDT": {
       "next": "2026-09-01",
-      "prev": "2026-06-03"
+      "prev": "2026-06-03",
+      "prev_est": 1.54,
+      "prev_act": 1.55,
+      "prev_surp": 0.56
     },
     "CRWD": {
-      "next": "2026-09-01",
-      "prev": "2026-06-03"
+      "next": "2026-08-26",
+      "prev": "2026-06-03",
+      "prev_est": 0.27,
+      "prev_act": 0.28,
+      "prev_surp": 3.05
     },
     "AVGO": {
-      "next": "2026-09-03",
-      "prev": "2026-06-03"
+      "next": "2026-09-02",
+      "prev": "2026-06-03",
+      "prev_est": 2.4,
+      "prev_act": 2.44,
+      "prev_surp": 1.74
     },
     "FIVE": {
       "next": "2026-08-26",
-      "prev": "2026-06-03"
+      "prev": "2026-06-03",
+      "prev_est": 1.79,
+      "prev_act": 2.22,
+      "prev_surp": 24.26
     },
     "CIEN": {
-      "next": "2026-09-09",
-      "prev": "2026-06-04"
+      "next": "2026-09-03",
+      "prev": "2026-06-04",
+      "prev_est": 1.46,
+      "prev_act": 1.64,
+      "prev_surp": 12.34
     },
     "LULU": {
       "next": "2026-09-03",
-      "prev": "2026-06-04"
+      "prev": "2026-06-04",
+      "prev_est": 1.68,
+      "prev_act": 1.69,
+      "prev_surp": 0.38
     },
     "CPB": {
       "next": "2026-09-09",
-      "prev": "2026-06-08"
+      "prev": "2026-06-08",
+      "prev_est": 0.48,
+      "prev_act": 0.5,
+      "prev_surp": 4.5
     },
     "MTN": {
       "next": "2026-09-28",
-      "prev": "2026-06-08"
+      "prev": "2026-06-08",
+      "prev_est": 8.96,
+      "prev_act": 8.81,
+      "prev_surp": -1.62
     },
     "SJM": {
-      "next": "2026-08-27",
-      "prev": "2026-06-09"
+      "next": "2026-08-26",
+      "prev": "2026-06-09",
+      "prev_est": 2.64,
+      "prev_act": 2.77,
+      "prev_surp": 5.01
     },
     "CASY": {
       "next": "2026-09-09",
-      "prev": "2026-06-09"
+      "prev": "2026-06-09",
+      "prev_est": 3.31,
+      "prev_act": 4.37,
+      "prev_surp": 32.11
     },
     "CBRL": {
       "next": "2026-09-16",
-      "prev": "2026-06-09"
+      "prev": "2026-06-09",
+      "prev_est": -0.48,
+      "prev_act": 0.29,
+      "prev_surp": 160.35
     },
     "CHWY": {
       "next": "2026-09-02",
-      "prev": "2026-06-10"
+      "prev": "2026-06-10",
+      "prev_est": 0.43,
+      "prev_act": 0.43,
+      "prev_surp": 0.79
     },
     "ORCL": {
       "next": "2026-09-09",
-      "prev": "2026-06-10"
+      "prev": "2026-06-10",
+      "prev_est": 1.96,
+      "prev_act": 2.11,
+      "prev_surp": 7.52
     },
     "ADBE": {
       "next": "2026-09-10",
-      "prev": "2026-06-11"
+      "prev": "2026-06-11",
+      "prev_est": 5.81,
+      "prev_act": 5.96,
+      "prev_surp": 2.5
     },
     "LEN": {
       "next": "2026-09-17",
-      "prev": "2026-06-11"
+      "prev": "2026-06-11",
+      "prev_est": 1.23,
+      "prev_act": 1.31,
+      "prev_surp": 6.15
     },
     "CCL": {
       "next": "2026-09-28",
-      "prev": "2026-06-23"
+      "prev": "2026-06-23",
+      "prev_est": 0.34,
+      "prev_act": 0.41,
+      "prev_surp": 21.08
     },
     "KBH": {
       "next": "2026-09-24",
-      "prev": "2026-06-23"
+      "prev": "2026-06-23",
+      "prev_est": 0.46,
+      "prev_act": 0.43,
+      "prev_surp": -5.98
     },
     "PAYX": {
       "next": "2026-09-29",
-      "prev": "2026-06-24"
+      "prev": "2026-06-24",
+      "prev_est": 1.31,
+      "prev_act": 1.32,
+      "prev_surp": 0.91
     },
     "MU": {
       "next": "2026-09-23",
-      "prev": "2026-06-24"
+      "prev": "2026-06-24",
+      "prev_est": 20.71,
+      "prev_act": 25.11,
+      "prev_surp": 21.25
     },
     "MKC": {
       "next": "2026-10-06",
-      "prev": "2026-06-25"
+      "prev": "2026-06-25",
+      "prev_est": 0.7,
+      "prev_act": 0.8,
+      "prev_surp": 14.8
     },
     "DRI": {
       "next": "2026-09-24",
-      "prev": "2026-06-25"
+      "prev": "2026-06-25",
+      "prev_est": 3.64,
+      "prev_act": 3.66,
+      "prev_surp": 0.64
     },
     "FDXF": {
       "next": "2026-10-28"
@@ -674,238 +1176,238 @@
   },
   "per": {
     "LEVI": {
-      "trailing": 17.5,
+      "trailing": 17.4,
       "forward": 14.3,
       "analysts": 15
     },
     "PEP": {
-      "trailing": 18.3,
+      "trailing": 18.2,
       "forward": 15.5,
       "analysts": 22
     },
     "DAL": {
-      "trailing": 14.5,
-      "forward": 9.9,
+      "trailing": 15.1,
+      "forward": 10.3,
       "analysts": 24
     },
     "C": {
-      "trailing": 14.3,
-      "forward": 10.3,
+      "trailing": 14.6,
+      "forward": 10.5,
       "analysts": 20
     },
     "GS": {
-      "trailing": 15.7,
-      "forward": 13.8,
+      "trailing": 16.1,
+      "forward": 14.0,
       "analysts": 20
     },
     "JPM": {
-      "trailing": 15.1,
-      "forward": 14.2,
-      "analysts": 20
+      "trailing": 15.3,
+      "forward": 14.3,
+      "analysts": 21
     },
     "BAC": {
-      "trailing": 14.3,
-      "forward": 11.7,
+      "trailing": 14.6,
+      "forward": 11.9,
       "analysts": 22
     },
     "WFC": {
-      "trailing": 12.6,
+      "trailing": 12.7,
       "forward": 11.0,
       "analysts": 23
     },
     "AEHR": {
       "trailing": null,
-      "forward": 57.8,
+      "forward": 74.5,
       "analysts": 3
     },
     "ASML": {
-      "trailing": 55.9,
-      "forward": 27.7,
+      "trailing": 59.2,
+      "forward": 29.4,
       "analysts": 15
     },
     "BLK": {
-      "trailing": 26.1,
-      "forward": 16.9,
+      "trailing": 27.2,
+      "forward": 17.7,
       "analysts": 16
     },
     "MS": {
-      "trailing": 17.0,
-      "forward": 15.4,
+      "trailing": 17.5,
+      "forward": 15.9,
       "analysts": 21
     },
     "JNJ": {
-      "trailing": 29.8,
-      "forward": 20.1,
+      "trailing": 30.0,
+      "forward": 21.1,
       "analysts": 22
     },
     "UAL": {
-      "trailing": 11.4,
-      "forward": 7.8,
+      "trailing": 12.1,
+      "forward": 8.4,
       "analysts": 23
     },
     "JBHT": {
-      "trailing": 38.6,
-      "forward": 26.9,
+      "trailing": 38.2,
+      "forward": 26.5,
       "analysts": 22
     },
     "KARO": {
-      "trailing": 32.3,
-      "forward": 22.9,
+      "trailing": 31.8,
+      "forward": 22.8,
       "analysts": 5
     },
     "UNH": {
-      "trailing": 31.3,
-      "forward": 18.5,
+      "trailing": 30.7,
+      "forward": 18.1,
       "analysts": 26
     },
     "GE": {
-      "trailing": 42.4,
-      "forward": 39.7,
+      "trailing": 43.7,
+      "forward": 40.8,
       "analysts": 21
     },
     "ABT": {
-      "trailing": 34.2,
-      "forward": 17.4,
+      "trailing": 34.9,
+      "forward": 17.8,
       "analysts": 24
     },
     "NFLX": {
-      "trailing": 22.6,
-      "forward": 18.8,
+      "trailing": 23.3,
+      "forward": 19.4,
       "analysts": 45
     },
     "DPZ": {
-      "trailing": 19.7,
-      "forward": 16.6,
+      "trailing": 19.9,
+      "forward": 16.8,
       "analysts": 27
     },
     "HAL": {
-      "trailing": 16.9,
-      "forward": 11.1,
+      "trailing": 16.7,
+      "forward": 11.0,
       "analysts": 25
     },
     "DHI": {
-      "trailing": 13.6,
-      "forward": 12.2,
+      "trailing": 14.4,
+      "forward": 12.8,
       "analysts": 12
     },
     "DHR": {
-      "trailing": 34.7,
-      "forward": 21.0,
+      "trailing": 36.5,
+      "forward": 22.0,
       "analysts": 23
     },
     "SCHW": {
-      "trailing": 19.2,
-      "forward": 13.4,
-      "analysts": 19
+      "trailing": 19.6,
+      "forward": 13.8,
+      "analysts": 20
     },
     "GM": {
-      "trailing": 39.7,
+      "trailing": 39.1,
       "forward": 6.0,
       "analysts": 27
     },
     "MMM": {
-      "trailing": 31.4,
-      "forward": 18.2,
+      "trailing": 32.5,
+      "forward": 18.8,
       "analysts": 17
     },
     "GEV": {
       "trailing": 28.4,
-      "forward": 39.8,
+      "forward": 39.9,
       "analysts": 34
     },
     "T": {
-      "trailing": 7.7,
-      "forward": 9.1,
+      "trailing": 7.9,
+      "forward": 9.3,
       "analysts": 23
     },
     "TSLA": {
-      "trailing": 285.5,
-      "forward": 140.2,
+      "trailing": 304.2,
+      "forward": 148.1,
       "analysts": 40
     },
     "GOOGL": {
-      "trailing": 17.9,
-      "forward": 24.2,
+      "trailing": 17.8,
+      "forward": 24.0,
       "analysts": 55
     },
     "NOW": {
-      "trailing": 69.5,
-      "forward": 22.2,
+      "trailing": 78.0,
+      "forward": 24.9,
       "analysts": 46
     },
     "IBM": {
-      "trailing": 19.9,
-      "forward": 17.0,
+      "trailing": 21.1,
+      "forward": 18.0,
       "analysts": 23
     },
     "TXN": {
-      "trailing": 41.8,
-      "forward": 26.5,
+      "trailing": 43.5,
+      "forward": 27.5,
       "analysts": 31
     },
     "AAL": {
       "trailing": null,
-      "forward": 6.1,
+      "forward": 6.4,
       "analysts": 23
     },
     "BX": {
-      "trailing": 28.6,
-      "forward": 17.1,
+      "trailing": 30.7,
+      "forward": 18.3,
       "analysts": 21
     },
     "LMT": {
-      "trailing": 21.5,
-      "forward": 17.8,
+      "trailing": 21.7,
+      "forward": 18.0,
       "analysts": 19
     },
     "INTC": {
       "trailing": null,
-      "forward": 44.3,
+      "forward": 49.4,
       "analysts": 41
     },
     "NEM": {
-      "trailing": 11.8,
-      "forward": 8.8,
+      "trailing": 14.2,
+      "forward": 10.7,
       "analysts": 21
     },
     "VZ": {
-      "trailing": 12.2,
+      "trailing": 12.3,
       "forward": 8.9,
       "analysts": 23
     },
     "AXP": {
-      "trailing": 20.4,
-      "forward": 16.7,
+      "trailing": 20.7,
+      "forward": 16.9,
       "analysts": 25
     },
     "AZN": {
-      "trailing": 25.4,
-      "forward": 14.6,
+      "trailing": 24.2,
+      "forward": 13.9,
       "analysts": 10
     },
     "CLS": {
       "trailing": 36.4,
-      "forward": 16.7,
-      "analysts": 18
+      "forward": 16.2,
+      "analysts": 16
     },
     "NUE": {
-      "trailing": 20.5,
-      "forward": 14.2,
+      "trailing": 21.7,
+      "forward": 14.5,
       "analysts": 16
     },
     "PYPL": {
-      "trailing": 10.8,
-      "forward": 9.9,
+      "trailing": 11.2,
+      "forward": 10.2,
       "analysts": 33
     },
     "BA": {
-      "trailing": 77.5,
-      "forward": 52.2,
+      "trailing": 84.0,
+      "forward": 56.7,
       "analysts": 26
     },
     "KO": {
-      "trailing": 26.3,
-      "forward": 24.8,
+      "trailing": 26.1,
+      "forward": 24.7,
       "analysts": 23
     },
     "UPS": {
@@ -914,603 +1416,603 @@
       "analysts": 26
     },
     "GLW": {
-      "trailing": 63.7,
-      "forward": 32.1,
+      "trailing": 76.4,
+      "forward": 38.3,
       "analysts": 15
     },
     "RCL": {
-      "trailing": 19.6,
-      "forward": 15.7,
+      "trailing": 19.8,
+      "forward": 15.8,
       "analysts": 26
     },
     "BE": {
-      "trailing": 270.8,
-      "forward": 42.0,
+      "trailing": 284.9,
+      "forward": 44.8,
       "analysts": 26
     },
     "STX": {
-      "trailing": 61.7,
-      "forward": 15.6,
+      "trailing": 58.5,
+      "forward": 14.7,
       "analysts": 23
     },
     "ENPH": {
-      "trailing": 37.2,
-      "forward": 16.3,
+      "trailing": 41.5,
+      "forward": 18.2,
       "analysts": 27
     },
     "V": {
-      "trailing": 31.2,
-      "forward": 24.5,
-      "analysts": 38
+      "trailing": 30.9,
+      "forward": 24.2,
+      "analysts": 37
     },
     "TER": {
-      "trailing": 50.5,
-      "forward": 31.8,
+      "trailing": 52.1,
+      "forward": 32.8,
       "analysts": 15
     },
     "F": {
       "trailing": null,
-      "forward": 7.7,
+      "forward": 7.3,
       "analysts": 20
     },
     "CAKE": {
-      "trailing": 27.5,
-      "forward": 20.6,
+      "trailing": 29.0,
+      "forward": 21.7,
       "analysts": 15
     },
     "SOFI": {
-      "trailing": 33.3,
-      "forward": 20.1,
+      "trailing": 37.5,
+      "forward": 22.6,
       "analysts": 19
     },
     "BSX": {
-      "trailing": 18.9,
-      "forward": 13.6,
+      "trailing": 20.0,
+      "forward": 14.3,
       "analysts": 29
     },
     "VRT": {
-      "trailing": 54.7,
-      "forward": 26.7,
+      "trailing": 61.8,
+      "forward": 29.9,
       "analysts": 26
     },
     "PG": {
-      "trailing": 21.8,
-      "forward": 19.5,
+      "trailing": 22.0,
+      "forward": 19.7,
       "analysts": 23
     },
     "MSFT": {
-      "trailing": 25.9,
-      "forward": 20.0,
+      "trailing": 27.9,
+      "forward": 21.3,
       "analysts": 53
     },
     "META": {
-      "trailing": 21.0,
-      "forward": 15.7,
+      "trailing": 22.3,
+      "forward": 16.9,
       "analysts": 57
     },
     "HOOD": {
-      "trailing": 38.3,
-      "forward": 27.5,
+      "trailing": 41.3,
+      "forward": 29.3,
       "analysts": 26
     },
     "ARM": {
-      "trailing": 244.6,
-      "forward": 78.1,
+      "trailing": 285.4,
+      "forward": 92.1,
       "analysts": 37
     },
     "QCOM": {
-      "trailing": 16.9,
-      "forward": 14.3,
+      "trailing": 19.2,
+      "forward": 16.4,
       "analysts": 30
     },
     "LRCX": {
-      "trailing": 50.8,
-      "forward": 25.3,
+      "trailing": 54.1,
+      "forward": 27.0,
       "analysts": 31
     },
     "CMG": {
-      "trailing": 34.5,
-      "forward": 27.2,
+      "trailing": 30.4,
+      "forward": 24.0,
       "analysts": 31
     },
     "FTNT": {
-      "trailing": 57.2,
-      "forward": 43.2,
+      "trailing": 56.4,
+      "forward": 42.5,
       "analysts": 37
     },
     "MA": {
-      "trailing": 31.5,
-      "forward": 25.0,
+      "trailing": 31.0,
+      "forward": 24.5,
       "analysts": 38
     },
     "OWL": {
-      "trailing": 85.8,
-      "forward": 10.4,
-      "analysts": 16
+      "trailing": 98.9,
+      "forward": 12.0,
+      "analysts": 17
     },
     "AAPL": {
-      "trailing": 35.5,
-      "forward": 32.5,
+      "trailing": 36.0,
+      "forward": 32.9,
       "analysts": 41
     },
     "AMZN": {
-      "trailing": 21.8,
-      "forward": 26.4,
-      "analysts": 61
+      "trailing": 22.1,
+      "forward": 26.6,
+      "analysts": 60
     },
     "RBLX": {
       "trailing": null,
-      "forward": -29.2,
-      "analysts": 31
+      "forward": -30.9,
+      "analysts": 35
     },
     "RDDT": {
-      "trailing": 32.7,
-      "forward": 14.9,
+      "trailing": 37.6,
+      "forward": 16.8,
       "analysts": 33
     },
     "RIVN": {
       "trailing": null,
-      "forward": -8.2,
+      "forward": -9.0,
       "analysts": 26
     },
     "XOM": {
-      "trailing": 26.2,
-      "forward": 14.7,
+      "trailing": 25.8,
+      "forward": 14.5,
       "analysts": 22
     },
     "MRNA": {
       "trailing": null,
-      "forward": -11.4,
+      "forward": -12.2,
       "analysts": 19
     },
     "CVX": {
-      "trailing": 18.9,
-      "forward": 15.4,
+      "trailing": 18.0,
+      "forward": 14.4,
       "analysts": 24
     },
     "D": {
-      "trailing": 23.9,
-      "forward": 18.1,
+      "trailing": 23.3,
+      "forward": 17.7,
       "analysts": 12
     },
     "MAR": {
-      "trailing": 39.1,
-      "forward": 28.4,
+      "trailing": 36.6,
+      "forward": 26.9,
       "analysts": 24
     },
     "PLTR": {
-      "trailing": 138.3,
-      "forward": 58.8,
+      "trailing": 147.0,
+      "forward": 74.8,
       "analysts": 27
     },
     "ON": {
-      "trailing": 60.0,
-      "forward": 18.8,
+      "trailing": 53.1,
+      "forward": 18.0,
       "analysts": 25
     },
     "PFE": {
-      "trailing": 19.1,
-      "forward": 8.8,
+      "trailing": 35.2,
+      "forward": 9.3,
       "analysts": 26
     },
     "CAT": {
-      "trailing": 40.7,
-      "forward": 26.8,
+      "trailing": 36.2,
+      "forward": 26.3,
       "analysts": 26
     },
     "MCD": {
       "trailing": 22.3,
-      "forward": 19.2,
+      "forward": 19.6,
       "analysts": 31
     },
     "ET": {
-      "trailing": 17.0,
-      "forward": 13.3,
+      "trailing": 13.8,
+      "forward": 12.6,
       "analysts": 21
     },
     "AMD": {
-      "trailing": 158.7,
-      "forward": 34.5,
-      "analysts": 47
+      "trailing": 123.3,
+      "forward": 31.3,
+      "analysts": 46
     },
     "SPCX": {
       "trailing": null,
-      "forward": 120.0,
-      "analysts": 21
+      "forward": 71.8,
+      "analysts": 17
     },
     "ANET": {
-      "trailing": 62.2,
-      "forward": 40.4,
+      "trailing": 59.9,
+      "forward": 36.7,
       "analysts": 27
     },
     "ALAB": {
-      "trailing": 208.9,
-      "forward": 67.3,
+      "trailing": 163.8,
+      "forward": 53.4,
       "analysts": 22
     },
     "LLY": {
-      "trailing": 40.8,
+      "trailing": 39.8,
       "forward": 25.5,
       "analysts": 26
     },
     "SHOP": {
-      "trailing": 114.9,
-      "forward": 50.2,
-      "analysts": 45
+      "trailing": 101.7,
+      "forward": 62.7,
+      "analysts": 46
     },
     "DIS": {
-      "trailing": 15.4,
-      "forward": 12.9,
-      "analysts": 30
+      "trailing": 21.6,
+      "forward": 14.1,
+      "analysts": 31
     },
     "CRCL": {
-      "trailing": null,
-      "forward": 32.0,
-      "analysts": 22
+      "trailing": 13.4,
+      "forward": 38.4,
+      "analysts": 23
     },
     "U": {
       "trailing": null,
-      "forward": 24.1,
+      "forward": 25.9,
       "analysts": 22
     },
     "SNDK": {
-      "trailing": 41.5,
-      "forward": 5.7,
+      "trailing": 16.4,
+      "forward": 4.6,
       "analysts": 22
     },
     "WDC": {
-      "trailing": 32.6,
-      "forward": 29.1,
+      "trailing": 17.9,
+      "forward": 13.6,
       "analysts": 24
     },
     "AXON": {
-      "trailing": 212.8,
-      "forward": 50.2,
+      "trailing": 237.9,
+      "forward": 54.0,
       "analysts": 19
     },
     "DDOG": {
-      "trailing": 669.9,
-      "forward": 93.2,
-      "analysts": 46
+      "trailing": 477.4,
+      "forward": 79.3,
+      "analysts": 45
     },
     "DKNG": {
-      "trailing": 260.9,
-      "forward": 14.0,
+      "trailing": null,
+      "forward": 14.7,
       "analysts": 35
     },
     "ABNB": {
-      "trailing": 37.4,
-      "forward": 25.2,
-      "analysts": 38
+      "trailing": 40.7,
+      "forward": 29.1,
+      "analysts": 39
     },
     "MP": {
       "trailing": null,
-      "forward": 43.5,
+      "forward": 55.4,
       "analysts": 16
     },
     "OKLO": {
       "trailing": null,
-      "forward": -46.0,
+      "forward": -57.5,
       "analysts": 20
     },
     "VST": {
-      "trailing": 24.7,
-      "forward": 14.3,
-      "analysts": 18
+      "trailing": 23.6,
+      "forward": 13.6,
+      "analysts": 19
     },
     "UAA": {
       "trailing": null,
-      "forward": 28.1,
-      "analysts": 19
+      "forward": 26.6,
+      "analysts": 18
     },
     "NEE": {
-      "trailing": 19.5,
-      "forward": 19.7,
+      "trailing": 19.0,
+      "forward": 19.2,
       "analysts": 19
     },
     "NVDA": {
-      "trailing": 30.8,
-      "forward": 15.6,
+      "trailing": 34.2,
+      "forward": 17.4,
       "analysts": 58
     },
     "HD": {
-      "trailing": 23.6,
-      "forward": 20.6,
+      "trailing": 25.3,
+      "forward": 22.1,
       "analysts": 32
     },
     "TOL": {
-      "trailing": 11.1,
-      "forward": 10.3,
+      "trailing": 11.8,
+      "forward": 11.0,
       "analysts": 15
     },
     "TGT": {
-      "trailing": 19.1,
-      "forward": 16.2,
+      "trailing": 19.8,
+      "forward": 16.7,
       "analysts": 34
     },
     "LOW": {
-      "trailing": 17.6,
-      "forward": 15.4,
+      "trailing": 18.9,
+      "forward": 16.6,
       "analysts": 33
     },
     "WMT": {
-      "trailing": 39.2,
-      "forward": 33.9,
-      "analysts": 41
+      "trailing": 39.4,
+      "forward": 34.1,
+      "analysts": 40
     },
     "WDAY": {
-      "trailing": 50.0,
-      "forward": 12.7,
+      "trailing": 55.8,
+      "forward": 14.2,
       "analysts": 39
     },
     "BJ": {
-      "trailing": 22.5,
-      "forward": 20.0,
+      "trailing": 22.2,
+      "forward": 19.7,
       "analysts": 20
     },
     "CEG": {
-      "trailing": 22.8,
-      "forward": 19.6,
+      "trailing": 26.4,
+      "forward": 20.3,
       "analysts": 21
     },
     "Q": {
-      "trailing": 42.2,
-      "forward": 26.8,
+      "trailing": 49.3,
+      "forward": 25.7,
       "analysts": 8
     },
     "VG": {
-      "trailing": 13.9,
-      "forward": 13.7,
+      "trailing": 13.8,
+      "forward": 13.6,
       "analysts": 19
     },
     "ONON": {
-      "trailing": 39.4,
-      "forward": 16.8,
+      "trailing": 40.4,
+      "forward": 17.6,
       "analysts": 27
     },
     "UA": {
       "trailing": null,
-      "forward": 17.1,
+      "forward": 15.6,
       "analysts": null
     },
     "NBIS": {
-      "trailing": 73.5,
-      "forward": -118.0,
-      "analysts": 15
+      "trailing": 72.6,
+      "forward": -87.0,
+      "analysts": 16
     },
     "CSCO": {
-      "trailing": 38.7,
-      "forward": 24.2,
+      "trailing": 40.5,
+      "forward": 25.3,
       "analysts": 22
     },
     "FIG": {
       "trailing": null,
-      "forward": 74.4,
+      "forward": 65.0,
       "analysts": 10
     },
     "AMAT": {
-      "trailing": 47.8,
-      "forward": 30.0,
+      "trailing": 50.8,
+      "forward": 31.6,
       "analysts": 35
     },
     "BRK-B": {
-      "trailing": 15.2,
-      "forward": 23.7,
+      "trailing": 15.5,
+      "forward": 24.2,
       "analysts": 3
     },
     "ETN": {
-      "trailing": 40.7,
-      "forward": 26.2,
+      "trailing": 45.6,
+      "forward": 28.0,
       "analysts": 25
     },
     "LITE": {
-      "trailing": 125.0,
-      "forward": 38.9,
-      "analysts": 25
+      "trailing": 156.2,
+      "forward": 47.5,
+      "analysts": 24
     },
     "MSTR": {
       "trailing": null,
-      "forward": 20.9,
+      "forward": 2.0,
       "analysts": 14
     },
     "BROS": {
-      "trailing": 102.9,
-      "forward": 52.4,
+      "trailing": 73.6,
+      "forward": 41.3,
       "analysts": 24
     },
     "CRWV": {
       "trailing": null,
-      "forward": -45.0,
-      "analysts": 34
+      "forward": -56.5,
+      "analysts": 35
     },
     "NET": {
       "trailing": null,
-      "forward": 176.5,
+      "forward": 180.0,
       "analysts": 31
     },
     "SBUX": {
-      "trailing": 60.8,
-      "forward": 33.9,
+      "trailing": 61.0,
+      "forward": 34.0,
       "analysts": 31
     },
     "ALK": {
       "trailing": null,
-      "forward": 7.9,
+      "forward": 8.3,
       "analysts": 16
     },
     "RTX": {
-      "trailing": 37.9,
-      "forward": 27.5,
+      "trailing": 39.2,
+      "forward": 28.4,
       "analysts": 22
     },
     "HON": {
-      "trailing": 9.3,
-      "forward": 24.3,
+      "trailing": 9.5,
+      "forward": 24.7,
       "analysts": 19
     },
     "FITB": {
-      "trailing": 19.0,
-      "forward": 11.4,
+      "trailing": 19.2,
+      "forward": 11.6,
       "analysts": 20
     },
     "RF": {
-      "trailing": 12.6,
-      "forward": 10.9,
+      "trailing": 12.8,
+      "forward": 11.1,
       "analysts": 20
     },
     "TFC": {
-      "trailing": 11.9,
-      "forward": 10.4,
+      "trailing": 12.0,
+      "forward": 10.5,
       "analysts": 18
     },
     "STZ": {
-      "trailing": 12.4,
-      "forward": 10.5,
+      "trailing": 12.9,
+      "forward": 11.0,
       "analysts": 23
     },
     "MRK": {
-      "trailing": 36.7,
+      "trailing": 102.9,
       "forward": 13.5,
       "analysts": 26
     },
     "FDX": {
-      "trailing": 16.6,
-      "forward": 15.0,
+      "trailing": 17.2,
+      "forward": 15.3,
       "analysts": 25
     },
     "SNOW": {
       "trailing": null,
-      "forward": 108.7,
+      "forward": 122.5,
       "analysts": 48
     },
     "DG": {
-      "trailing": 18.0,
+      "trailing": 17.9,
       "forward": 15.8,
       "analysts": 29
     },
     "SIG": {
-      "trailing": 13.1,
-      "forward": 7.6,
+      "trailing": 13.7,
+      "forward": 7.9,
       "analysts": 10
     },
     "PANW": {
-      "trailing": 286.1,
-      "forward": 80.4,
+      "trailing": 313.7,
+      "forward": 88.3,
       "analysts": 50
     },
     "ULTA": {
-      "trailing": 19.2,
-      "forward": 16.1,
+      "trailing": 21.2,
+      "forward": 17.7,
       "analysts": 24
     },
     "MDT": {
-      "trailing": 22.9,
-      "forward": 13.3,
+      "trailing": 23.4,
+      "forward": 13.6,
       "analysts": 25
     },
     "CRWD": {
       "trailing": null,
-      "forward": 122.1,
+      "forward": 137.2,
       "analysts": 50
     },
     "AVGO": {
-      "trailing": 65.0,
-      "forward": 20.0,
+      "trailing": 71.4,
+      "forward": 21.9,
       "analysts": 45
     },
     "FIVE": {
-      "trailing": 27.4,
-      "forward": 22.2,
+      "trailing": 30.8,
+      "forward": 25.0,
       "analysts": 21
     },
     "CIEN": {
-      "trailing": 124.9,
-      "forward": 39.1,
+      "trailing": 137.0,
+      "forward": 42.8,
       "analysts": 19
     },
     "LULU": {
-      "trailing": 9.6,
-      "forward": 10.5,
+      "trailing": 10.4,
+      "forward": 11.4,
       "analysts": 26
     },
     "CPB": {
-      "trailing": 10.8,
-      "forward": 11.3,
+      "trailing": 11.3,
+      "forward": 11.9,
       "analysts": 17
     },
     "MTN": {
       "trailing": 32.1,
-      "forward": 23.6,
+      "forward": 23.5,
       "analysts": 12
     },
     "SJM": {
       "trailing": null,
-      "forward": 11.1,
+      "forward": 11.2,
       "analysts": 16
     },
     "CASY": {
-      "trailing": 45.5,
-      "forward": 36.9,
+      "trailing": 43.5,
+      "forward": 35.3,
       "analysts": 18
     },
     "CBRL": {
-      "trailing": 49.0,
-      "forward": 51.2,
+      "trailing": 50.3,
+      "forward": 52.5,
       "analysts": 8
     },
     "CHWY": {
-      "trailing": 37.7,
-      "forward": 12.3,
+      "trailing": 39.2,
+      "forward": 12.8,
       "analysts": 21
     },
     "ORCL": {
-      "trailing": 22.3,
-      "forward": 11.9,
+      "trailing": 25.2,
+      "forward": 13.5,
       "analysts": 41
     },
     "ADBE": {
-      "trailing": 14.3,
-      "forward": 9.1,
+      "trailing": 15.2,
+      "forward": 9.6,
       "analysts": 34
     },
     "LEN": {
-      "trailing": 12.9,
-      "forward": 12.7,
+      "trailing": 13.8,
+      "forward": 13.6,
       "analysts": 13
     },
     "CCL": {
-      "trailing": 12.5,
-      "forward": 10.5,
+      "trailing": 13.1,
+      "forward": 11.0,
       "analysts": 25
     },
     "KBH": {
-      "trailing": 13.4,
-      "forward": 12.4,
+      "trailing": 14.3,
+      "forward": 13.2,
       "analysts": 12
     },
     "PAYX": {
-      "trailing": 23.8,
-      "forward": 18.3,
+      "trailing": 24.5,
+      "forward": 18.8,
       "analysts": 14
     },
     "MU": {
-      "trailing": 18.6,
-      "forward": 5.4,
-      "analysts": 42
+      "trailing": 19.8,
+      "forward": 5.7,
+      "analysts": 43
     },
     "MKC": {
-      "trailing": 8.5,
-      "forward": 15.4,
+      "trailing": 8.8,
+      "forward": 16.1,
       "analysts": 13
     },
     "DRI": {
-      "trailing": 19.5,
-      "forward": 16.4,
+      "trailing": 20.5,
+      "forward": 17.3,
       "analysts": 24
     },
     "FDXF": {
-      "trailing": 30.9,
-      "forward": 28.0,
+      "trailing": 33.0,
+      "forward": 28.9,
       "analysts": 12
     }
   },
