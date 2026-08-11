@@ -347,7 +347,11 @@ function perBadges(symbol, latestEntry, perData) {
 function analystBadge(symbol, perData) {
   const p = (perData || {})[symbol];
   if (!p || p.analysts == null) return "";
-  return `<span class="badge analyst">アナリスト ${p.analysts}人</span>`;
+  let text = `アナリスト ${p.analysts}人`;
+  if (p.target_mean != null) {
+    text += ` / 目標株価 $${p.target_mean.toFixed(2)}`;
+  }
+  return `<span class="badge analyst">${text}</span>`;
 }
 
 function buildSummaryTable(symbols, history, earningsDates, perData) {
