@@ -243,12 +243,24 @@ function detectDivergence(history, symbols, earningsDates) {
   const results = [];
   
   symbols.forEach(symbol => {
+    let symStartIndex = startIndex;
+    const ed = (earningsDates || {})[symbol];
+    if (ed && ed.prev) {
+      const targetStart = luxon.DateTime.fromISO(ed.prev).plus({ days: 3 });
+      for (let i = 0; i < history.length; i++) {
+        if (luxon.DateTime.fromISO(history[i].date) >= targetStart) {
+          symStartIndex = Math.max(startIndex, i);
+          break;
+        }
+      }
+    }
+
     let startPrices = [];
-    for (let i = startIndex; i < history.length && startPrices.length < 5; i++) {
+    for (let i = symStartIndex; i < history.length && startPrices.length < 5; i++) {
       if (history[i][symbol]?.c != null) startPrices.push(history[i][symbol].c);
     }
     let latestPrices = [];
-    for (let i = history.length - 1; i >= startIndex && latestPrices.length < 5; i--) {
+    for (let i = history.length - 1; i >= symStartIndex && latestPrices.length < 5; i--) {
       if (history[i][symbol]?.c != null) latestPrices.push(history[i][symbol].c);
     }
     
@@ -260,7 +272,7 @@ function detectDivergence(history, symbols, earningsDates) {
     if (priceLatest > priceStart) return;
     
     let pricesForTrend = [];
-    for (let i = startIndex; i < history.length; i++) {
+    for (let i = symStartIndex; i < history.length; i++) {
       if (history[i][symbol]?.c != null) pricesForTrend.push(history[i][symbol].c);
     }
     if (pricesForTrend.length >= 2) {
@@ -279,25 +291,16 @@ function detectDivergence(history, symbols, earningsDates) {
     let epsDiff = { "0q": 0, "+1q": 0, "0y": 0, "+1y": 0 };
     let hasNull = false;
 
-    for (let i = startIndex + 1; i < history.length; i++) {
+    for (let i = symStartIndex + 1; i < history.length; i++) {
       const prevData = history[i-1][symbol];
       const curData = history[i][symbol];
       if (!prevData || !curData) continue;
       
-      let isNearEarnings = false;
-      const ed = (earningsDates || {})[symbol];
-      if (ed && ed.prev) {
-         const daysSince = Math.floor((new Date(history[i].date) - new Date(ed.prev)) / 86400000);
-         if (daysSince >= -1 && daysSince <= 7) isNearEarnings = true;
-      }
-      
-      if (!isNearEarnings) {
-         for (const key of ["0q", "+1q", "0y", "+1y"]) {
-            if (curData[key] != null && prevData[key] != null) {
-               epsDiff[key] += (curData[key] - prevData[key]);
-            } else {
-               hasNull = true;
-            }
+      for (const key of ["0q", "+1q", "0y", "+1y"]) {
+         if (curData[key] != null && prevData[key] != null) {
+            epsDiff[key] += (curData[key] - prevData[key]);
+         } else {
+            hasNull = true;
          }
       }
     }
