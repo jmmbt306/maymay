@@ -882,6 +882,61 @@ Promise.all([
     main.appendChild(signalContainer);
   }
 
+  // 目標株価乖離率ランキングの算出
+  const targetDivList = [];
+  symbols.forEach(symbol => {
+    const p = perData[symbol] || {};
+    const c = lastEntry[symbol]?.c;
+    if (p.target_mean != null && c != null && c > 0) {
+      const divRate = (p.target_mean - c) / c * 100;
+      targetDivList.push({ symbol, divRate, target: p.target_mean, price: c });
+    }
+  });
+  targetDivList.sort((a, b) => b.divRate - a.divRate); // 降順
+  
+  const topDivs = targetDivList.slice(0, 5);
+  const bottomDivs = targetDivList.slice(-5).reverse();
+
+  if (topDivs.length > 0 || bottomDivs.length > 0) {
+    const buildDivHtml = (item) => `
+      <div class="signal-item" data-symbol="${item.symbol}">
+        <div class="sym">
+          <span>${item.symbol}</span>
+          <span class="pct" style="color: ${item.divRate >= 0 ? '#ec4899' : '#64748b'}">
+            ${item.divRate >= 0 ? '+' : ''}${item.divRate.toFixed(1)}%
+          </span>
+        </div>
+        <div class="price-detail">株価 $${item.price.toFixed(1)} → 目標 $${item.target.toFixed(1)}</div>
+      </div>
+    `;
+
+    const rankingContainer = document.createElement("div");
+    rankingContainer.className = "signal-container";
+    rankingContainer.style.marginTop = "0.5rem";
+    
+    let html = "";
+    if (topDivs.length > 0) {
+      html += `
+        <div class="signal-header" style="background: rgba(236,72,153,0.15); border-bottom-color: rgba(236,72,153,0.3)">
+          <span class="tag" style="background: rgba(236,72,153,0.8)">Top Target</span>
+          <span>🔥 目標株価乖離率 上位5銘柄</span>
+        </div>
+        <div class="signal-list" style="margin-bottom: 0.5rem;">${topDivs.map(buildDivHtml).join("")}</div>
+      `;
+    }
+    if (bottomDivs.length > 0) {
+      html += `
+        <div class="signal-header" style="background: rgba(100,116,139,0.15); border-bottom-color: rgba(100,116,139,0.3)">
+          <span class="tag" style="background: rgba(100,116,139,0.8)">Low Target</span>
+          <span>❄️ 目標株価乖離率 下位5銘柄</span>
+        </div>
+        <div class="signal-list">${bottomDivs.map(buildDivHtml).join("")}</div>
+      `;
+    }
+    rankingContainer.innerHTML = html;
+    main.appendChild(rankingContainer);
+  }
+
   // サマリーテーブル
   // 次回決算日が近い順に並び替え（未設定は末尾）
   symbols.sort((a, b) => {
