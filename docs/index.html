@@ -518,7 +518,7 @@ function buildChart(canvasId, history, symbol, earningsDates) {
   // --- EPS / PER ライン ---
   const periodArrays = {};
   const perArrays = { trailing_pe: [], forward_pe: [] };
-  const targetMeanArray = [];
+  const targetDivArray = [];
   history.forEach(entry => {
     if (!xLabelsSet.has(entry.date)) return;
     const d = entry[symbol];
@@ -527,7 +527,9 @@ function buildChart(canvasId, history, symbol, earningsDates) {
       if (k === "trailing_pe" || k === "forward_pe") {
         if (v !== null) perArrays[k].push({ x: entry.date, y: v });
       } else if (k === "target_mean") {
-        if (v !== null) targetMeanArray.push({ x: entry.date, y: v });
+        if (v !== null && d.c != null && d.c > 0) {
+          targetDivArray.push({ x: entry.date, y: (v - d.c) / d.c * 100 });
+        }
       } else if (!OHLC_KEYS.has(k) && PERIOD_LABELS[k]) {
         if (!periodArrays[k]) periodArrays[k] = [];
         if (v !== null) periodArrays[k].push({ x: entry.date, y: v });
@@ -535,17 +537,17 @@ function buildChart(canvasId, history, symbol, earningsDates) {
     });
   });
 
-  if (targetMeanArray.length > 0) {
+  if (targetDivArray.length > 0) {
     priceDatasets.push({
-      label: "目標株価 (平均)",
+      label: "目標株価乖離率",
       type: "line",
-      data: targetMeanArray,
+      data: targetDivArray,
       borderColor: "#ec4899", // pink
       borderDash: [5, 5],
       borderWidth: 2,
       backgroundColor: "transparent",
       tension: 0.3, pointRadius: 2, pointHoverRadius: 5,
-      yAxisID: "yPrice",
+      yAxisID: "yPct",
       hidden: false,
       _mode: "price",
     });
@@ -681,6 +683,12 @@ function buildChart(canvasId, history, symbol, earningsDates) {
           position: "right",
           display: false,
           min: 0, max: volMax,
+          grid: { drawOnChartArea: false },
+        },
+        yPct: {
+          position: "right",
+          title: { display: true, text: "目標株価乖離率 (%)", color: "#ec4899" },
+          ticks: { callback: v => (v > 0 ? "+" : "") + v.toFixed(1) + "%" },
           grid: { drawOnChartArea: false },
         },
         yQ: {
