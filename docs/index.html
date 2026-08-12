@@ -518,6 +518,7 @@ function buildChart(canvasId, history, symbol, earningsDates) {
   // --- EPS / PER ライン ---
   const periodArrays = {};
   const perArrays = { trailing_pe: [], forward_pe: [] };
+  const targetMeanArray = [];
   history.forEach(entry => {
     if (!xLabelsSet.has(entry.date)) return;
     const d = entry[symbol];
@@ -525,12 +526,30 @@ function buildChart(canvasId, history, symbol, earningsDates) {
     Object.entries(d).forEach(([k, v]) => {
       if (k === "trailing_pe" || k === "forward_pe") {
         if (v !== null) perArrays[k].push({ x: entry.date, y: v });
+      } else if (k === "target_mean") {
+        if (v !== null) targetMeanArray.push({ x: entry.date, y: v });
       } else if (!OHLC_KEYS.has(k) && PERIOD_LABELS[k]) {
         if (!periodArrays[k]) periodArrays[k] = [];
         if (v !== null) periodArrays[k].push({ x: entry.date, y: v });
       }
     });
   });
+
+  if (targetMeanArray.length > 0) {
+    priceDatasets.push({
+      label: "目標株価 (平均)",
+      type: "line",
+      data: targetMeanArray,
+      borderColor: "#ec4899", // pink
+      borderDash: [5, 5],
+      borderWidth: 2,
+      backgroundColor: "transparent",
+      tension: 0.3, pointRadius: 2, pointHoverRadius: 5,
+      yAxisID: "yPrice",
+      hidden: false,
+      _mode: "price",
+    });
+  }
 
   const QUARTERLY = new Set(["0q", "+1q"]);
   const epsDatasets = Object.entries(periodArrays).map(([period, data]) => ({
