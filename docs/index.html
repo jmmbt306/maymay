@@ -897,6 +897,10 @@ Promise.all([
   const topDivs = targetDivList.slice(0, 5);
   const bottomDivs = targetDivList.slice(-5).reverse();
 
+  const rankingContainer = document.createElement("div");
+  rankingContainer.className = "signal-container";
+  rankingContainer.style.marginTop = "0.5rem";
+
   if (topDivs.length > 0 || bottomDivs.length > 0) {
     const buildDivHtml = (item) => `
       <div class="signal-item" data-symbol="${item.symbol}">
@@ -909,10 +913,6 @@ Promise.all([
         <div class="price-detail">株価 $${item.price.toFixed(1)} → 目標 $${item.target.toFixed(1)}</div>
       </div>
     `;
-
-    const rankingContainer = document.createElement("div");
-    rankingContainer.className = "signal-container";
-    rankingContainer.style.marginTop = "0.5rem";
     
     let html = "";
     if (topDivs.length > 0) {
@@ -934,8 +934,15 @@ Promise.all([
       `;
     }
     rankingContainer.innerHTML = html;
-    main.appendChild(rankingContainer);
+  } else {
+    rankingContainer.innerHTML = `
+      <div class="signal-header" style="background: rgba(255,255,255,0.05); border-bottom-color: rgba(255,255,255,0.1)">
+        <span class="tag" style="background: rgba(255,255,255,0.2)">Target Ranking</span>
+        <span style="opacity: 0.7">目標株価データが取得されると、ここに乖離率ランキングが表示されます（次回の自動更新をお待ちください）</span>
+      </div>
+    `;
   }
+  main.appendChild(rankingContainer);
 
   // サマリーテーブル
   // 次回決算日が近い順に並び替え（未設定は末尾）
