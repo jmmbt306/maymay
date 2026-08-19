@@ -894,8 +894,8 @@ Promise.all([
   });
   targetDivList.sort((a, b) => b.divRate - a.divRate); // 降順
   
-  const topDivs = targetDivList.slice(0, 8);
-  const bottomDivs = targetDivList.slice(-8).reverse();
+  const topDivs = targetDivList.slice(0, 7);
+  const bottomDivs = targetDivList.slice(-7).reverse();
 
   const rankingContainer = document.createElement("div");
   rankingContainer.className = "signal-container";
@@ -919,7 +919,7 @@ Promise.all([
       html += `
         <div class="signal-header" style="background: rgba(236,72,153,0.15); border-bottom-color: rgba(236,72,153,0.3)">
           <span class="tag" style="background: rgba(236,72,153,0.8)">Top Target</span>
-          <span>🔥 目標株価乖離率 上位8銘柄</span>
+          <span>🔥 目標株価乖離率 上位7銘柄</span>
         </div>
         <div class="signal-list" style="margin-bottom: 0.5rem;">${topDivs.map(buildDivHtml).join("")}</div>
       `;
@@ -928,7 +928,7 @@ Promise.all([
       html += `
         <div class="signal-header" style="background: rgba(100,116,139,0.15); border-bottom-color: rgba(100,116,139,0.3)">
           <span class="tag" style="background: rgba(100,116,139,0.8)">Low Target</span>
-          <span>❄️ 目標株価乖離率 下位8銘柄</span>
+          <span>❄️ 目標株価乖離率 下位7銘柄</span>
         </div>
         <div class="signal-list">${bottomDivs.map(buildDivHtml).join("")}</div>
       `;
