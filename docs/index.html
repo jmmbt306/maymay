@@ -860,7 +860,7 @@ Promise.all([
   
   // シグナルUIの構築
   if (divergenceList.length > 0) {
-    const itemsHtml = divergenceList.map(item => `
+    const itemsHtml = divergenceList.slice(0, 8).map(item => `
       <div class="signal-item" data-symbol="${item.symbol}">
         <div class="sym">
           <span>${item.symbol}</span>
