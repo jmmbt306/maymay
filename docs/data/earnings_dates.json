@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-15",
+  "updated": "2026-09-16",
   "dates": {
     "LEVI": {
       "next": "2026-09-30",
@@ -1852,6 +1852,30 @@
     "MP": "MP Materials Corp.",
     "OKLO": "Oklo Inc.",
     "VST": "Vistra Corp.",
-    "UAA": "Under Armour, Inc."
+    "UAA": "Under Armour, Inc.",
+    "UBER": "Uber Technologies, Inc.",
+    "NVO": "Novo Nordisk A/S",
+    "APP": "Applovin Corporation",
+    "ELF": "e.l.f. Beauty, Inc.",
+    "MNDY": "monday.com Ltd.",
+    "SMCI": "Super Micro Computer, Inc.",
+    "COHR": "Coherent Corp.",
+    "CBRS": "Cerebras Systems Inc.",
+    "ADI": "Analog Devices, Inc.",
+    "TJX": "TJX Companies, Inc. (The)",
+    "EL": "Estee Lauder Companies, Inc. (T",
+    "ZM": "Zoom Communications, Inc.",
+    "CRM": "Salesforce, Inc.",
+    "OKTA": "Okta, Inc.",
+    "BBY": "Best Buy Co., Inc.",
+    "DLTR": "Dollar Tree, Inc.",
+    "MRVL": "Marvell Technology, Inc.",
+    "AFRM": "Affirm Holdings, Inc.",
+    "S": "SentinelOne, Inc.",
+    "DELL": "Dell Technologies Inc.",
+    "MDB": "MongoDB, Inc.",
+    "GTLB": "GitLab Inc.",
+    "HPE": "Hewlett Packard Enterprise Comp",
+    "ZS": "Zscaler, Inc."
   }
 }
