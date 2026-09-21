@@ -537,8 +537,9 @@ function buildChart(canvasId, history, symbol, earningsDates) {
     });
   });
 
+  const extraDatasets = [];
   if (targetDivArray.length > 0) {
-    priceDatasets.push({
+    extraDatasets.push({
       label: "目標株価乖離率",
       type: "line",
       data: targetDivArray,
@@ -548,8 +549,8 @@ function buildChart(canvasId, history, symbol, earningsDates) {
       backgroundColor: "transparent",
       tension: 0.3, pointRadius: 2, pointHoverRadius: 5,
       yAxisID: "yPct",
-      hidden: false,
-      
+      hidden: true,
+      _mode: "per"
     });
   }
 
@@ -637,7 +638,7 @@ function buildChart(canvasId, history, symbol, earningsDates) {
 
   return new Chart(document.getElementById(canvasId), {
     type: "bar",
-    data: { datasets: [...priceDatasets, ...epsDatasets, ...perDatasets, ...sp500Datasets] },
+    data: { datasets: [...priceDatasets, ...epsDatasets, ...perDatasets, ...sp500Datasets, ...extraDatasets] },
     options: {
       responsive: true,
       maintainAspectRatio: false,
@@ -687,6 +688,7 @@ function buildChart(canvasId, history, symbol, earningsDates) {
         },
         yPct: {
           position: "right",
+          display: false,
           title: { display: true, text: "目標株価乖離率 (%)", color: "#ec4899" },
           ticks: { callback: v => (v > 0 ? "+" : "") + v.toFixed(1) + "%" },
           grid: { drawOnChartArea: false },
@@ -727,6 +729,7 @@ function switchChartMode(chart, mode) {
   chart.options.scales.yQ.display = mode === "eps";
   chart.options.scales.yA.display = mode === "eps";
   chart.options.scales.yPER.display = mode === "per";
+  chart.options.scales.yPct.display = mode === "per";
   chart.update();
 }
 
