@@ -256,7 +256,7 @@ function analystBadge(symbol, perData) {
   return `<span class="badge analyst">${text}</span>`;
 }
 
-function buildSummaryTable(symbols, history, earningsDates, perData, targetDivList) {
+function buildSummaryTable(symbols, history, earningsDates, perData) {
   const last = history[history.length - 1];
 
   // 各銘柄ごとに、直近のデータがある1つ前のエントリを探す
@@ -267,7 +267,6 @@ function buildSummaryTable(symbols, history, earningsDates, perData, targetDivLi
     return null;
   }
 
-  const targetDivMap = new Map((targetDivList || []).map(item => [item.symbol, item]));
   
   const wrap = document.createElement("div");
   wrap.className = "summary-card";
@@ -280,8 +279,7 @@ function buildSummaryTable(symbols, history, earningsDates, perData, targetDivLi
   thead.innerHTML = `<tr>
     <th>銘柄</th>
     <th>次回決算</th>
-      <th>目標株価乖離率</th>
-  </tr>`;
+    </tr>`;
   table.appendChild(thead);
 
   const tbody = document.createElement("tbody");
@@ -315,18 +313,6 @@ function buildSummaryTable(symbols, history, earningsDates, perData, targetDivLi
 
 
     
-    // 目標株価乖離率
-    const targetItem = targetDivMap.get(symbol);
-    const tdTarget = document.createElement("td");
-    if (targetItem) {
-      tdTarget.dataset.sort = targetItem.divRate;
-      tdTarget.textContent = `${targetItem.divRate > 0 ? '+' : ''}${targetItem.divRate.toFixed(1)}%`;
-      tdTarget.style.color = targetItem.divRate >= 0 ? "#ec4899" : "#64748b";
-    } else {
-      tdTarget.dataset.sort = -999999;
-      tdTarget.textContent = "—";
-    }
-    tr.appendChild(tdTarget);
 
     tbody.appendChild(tr);
   });
@@ -780,68 +766,6 @@ Promise.all([
   main.innerHTML = "";
 
   // 逆行シグナルの検出
-  // 目標株価乖離率ランキングの算出
-  const targetDivList = [];
-  symbols.forEach(symbol => {
-    const p = perData[symbol] || {};
-    const c = lastEntry[symbol]?.c;
-    if (p.target_mean != null && c != null && c > 0) {
-      const divRate = (p.target_mean - c) / c * 100;
-      targetDivList.push({ symbol, divRate, target: p.target_mean, price: c });
-    }
-  });
-  targetDivList.sort((a, b) => b.divRate - a.divRate); // 降順
-  
-  const topDivs = targetDivList.slice(0, 10);
-  const bottomDivs = targetDivList.slice(-10).reverse();
-
-  const rankingContainer = document.createElement("div");
-  rankingContainer.className = "signal-container";
-  rankingContainer.style.marginTop = "0.5rem";
-
-  if (topDivs.length > 0 || bottomDivs.length > 0) {
-    const buildDivHtml = (item) => `
-      <div class="signal-item" data-symbol="${item.symbol}">
-        <div class="sym">
-          <span>${item.symbol}</span>
-          <span class="pct" style="color: ${item.divRate >= 0 ? '#ec4899' : '#64748b'}">
-            ${item.divRate >= 0 ? '+' : ''}${item.divRate.toFixed(1)}%
-          </span>
-        </div>
-        <div class="price-detail">株価 $${item.price.toFixed(1)} → 目標 $${item.target.toFixed(1)}</div>
-      </div>
-    `;
-    
-    let html = "";
-    if (topDivs.length > 0) {
-      html += `
-        <div class="signal-header" style="background: rgba(236,72,153,0.15); border-bottom-color: rgba(236,72,153,0.3)">
-          <span class="tag" style="background: rgba(236,72,153,0.8)">Top Target</span>
-          <span>🔥 目標株価乖離率 上位10銘柄</span>
-        </div>
-        <div class="signal-list" style="margin-bottom: 0.5rem;">${topDivs.map(buildDivHtml).join("")}</div>
-      `;
-    }
-    if (bottomDivs.length > 0) {
-      html += `
-        <div class="signal-header" style="background: rgba(100,116,139,0.15); border-bottom-color: rgba(100,116,139,0.3)">
-          <span class="tag" style="background: rgba(100,116,139,0.8)">Low Target</span>
-          <span>❄️ 目標株価乖離率 下位10銘柄</span>
-        </div>
-        <div class="signal-list">${bottomDivs.map(buildDivHtml).join("")}</div>
-      `;
-    }
-    rankingContainer.innerHTML = html;
-  } else {
-    rankingContainer.innerHTML = `
-      <div class="signal-header" style="background: rgba(255,255,255,0.05); border-bottom-color: rgba(255,255,255,0.1)">
-        <span class="tag" style="background: rgba(255,255,255,0.2)">Target Ranking</span>
-        <span style="opacity: 0.7">目標株価データが取得されると、ここに乖離率ランキングが表示されます（次回の自動更新をお待ちください）</span>
-      </div>
-    `;
-  }
-  main.appendChild(rankingContainer);
-
   // サマリーテーブル
   // 次回決算日が近い順に並び替え（未設定は末尾）
   symbols.sort((a, b) => {
@@ -853,7 +777,7 @@ Promise.all([
     return 0;
   });
 
-  const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData, targetDivList);
+  const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData);
 
   // 2カラムレイアウト（左：グラフ / 右：テーブル）
   const layout = document.createElement("div");
