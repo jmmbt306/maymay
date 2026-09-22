@@ -358,7 +358,7 @@ function analystBadge(symbol, perData) {
   return `<span class="badge analyst">${text}</span>`;
 }
 
-function buildSummaryTable(symbols, history, earningsDates, perData) {
+function buildSummaryTable(symbols, history, earningsDates, perData, divergenceList, targetDivList) {
   const last = history[history.length - 1];
 
   // 各銘柄ごとに、直近のデータがある1つ前のエントリを探す
@@ -369,6 +369,9 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
     return null;
   }
 
+  const divSignalMap = new Map((divergenceList || []).map(item => [item.symbol, item]));
+  const targetDivMap = new Map((targetDivList || []).map(item => [item.symbol, item]));
+  
   const wrap = document.createElement("div");
   wrap.className = "summary-card";
 
@@ -380,6 +383,8 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
   thead.innerHTML = `<tr>
     <th>銘柄</th>
     <th>次回決算</th>
+      <th>逆行シグナル</th>
+    <th>目標株価乖離率</th>
   </tr>`;
   table.appendChild(thead);
 
@@ -412,6 +417,34 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
     }
     tr.appendChild(tdNext);
 
+
+    
+    // 逆行シグナル
+    const sig = divSignalMap.get(symbol);
+    const tdSig = document.createElement("td");
+    if (sig) {
+      tdSig.dataset.sort = sig.pricePct;
+      tdSig.textContent = `🚨 ${sig.pricePct.toFixed(1)}%`;
+      tdSig.style.color = "#fca5a5";
+      tdSig.title = `直近${sig.periodDays}日間でEPS予想上昇に対し株価が下落`;
+    } else {
+      tdSig.dataset.sort = 999999;
+      tdSig.textContent = "—";
+    }
+    tr.appendChild(tdSig);
+
+    // 目標株価乖離率
+    const targetItem = targetDivMap.get(symbol);
+    const tdTarget = document.createElement("td");
+    if (targetItem) {
+      tdTarget.dataset.sort = targetItem.divRate;
+      tdTarget.textContent = `${targetItem.divRate > 0 ? '+' : ''}${targetItem.divRate.toFixed(1)}%`;
+      tdTarget.style.color = targetItem.divRate >= 0 ? "#ec4899" : "#64748b";
+    } else {
+      tdTarget.dataset.sort = -999999;
+      tdTarget.textContent = "—";
+    }
+    tr.appendChild(tdTarget);
 
     tbody.appendChild(tr);
   });
@@ -964,7 +997,7 @@ Promise.all([
     return 0;
   });
 
-  const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData);
+  const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData, divergenceList, targetDivList);
 
   // 2カラムレイアウト（左：グラフ / 右：テーブル）
   const layout = document.createElement("div");
