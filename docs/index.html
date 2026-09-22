@@ -395,12 +395,14 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
     tr.dataset.symbol = symbol;
 
     const tdSymbol = document.createElement("td");
+    tdSymbol.dataset.sort = symbol;
     tdSymbol.textContent = symbol;
     tr.appendChild(tdSymbol);
 
     // 次回決算（何日後）
     const ed = (earningsDates || {})[symbol] || {};
     const tdNext = document.createElement("td");
+    tdNext.dataset.sort = ed.next || "9999-99-99";
     if (ed.next) {
       const days = daysUntil(ed.next);
       tdNext.textContent = days < 0 ? "決算済" : days === 0 ? "本日" : `${days}日後`;
@@ -415,6 +417,7 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
       const td = document.createElement("td");
       const val = cur[period];
       const preVal = pre[period];
+      td.dataset.sort = val != null ? val : -999999;
       if (val == null) {
         td.textContent = "—";
       } else {
@@ -444,6 +447,47 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
   } else {
     info.textContent = `比較データなし（全 ${history.length} 日分 / データが1日分のみ）`;
   }
+
+  // ソート機能の追加
+  let currentSortCol = -1;
+  let currentSortAsc = true;
+  
+  thead.querySelectorAll("th").forEach((th, index) => {
+    th.style.cursor = "pointer";
+    th.addEventListener("click", () => {
+      // 以前のソート記号をクリア
+      thead.querySelectorAll("th").forEach(t => t.textContent = t.textContent.replace(/[▲▼]/g, ""));
+      
+      if (currentSortCol === index) {
+        currentSortAsc = !currentSortAsc;
+      } else {
+        currentSortCol = index;
+        currentSortAsc = true;
+      }
+      
+      th.textContent += currentSortAsc ? "▲" : "▼";
+      
+      const rows = Array.from(tbody.querySelectorAll("tr"));
+      rows.sort((a, b) => {
+        const tdA = a.children[index];
+        const tdB = b.children[index];
+        let valA = tdA.dataset.sort;
+        let valB = tdB.dataset.sort;
+        
+        // 1列目（銘柄）と2列目（次回決算）以外は数値として比較
+        if (index > 1) {
+          valA = parseFloat(valA);
+          valB = parseFloat(valB);
+        }
+        
+        if (valA < valB) return currentSortAsc ? -1 : 1;
+        if (valA > valB) return currentSortAsc ? 1 : -1;
+        return 0;
+      });
+      
+      rows.forEach(row => tbody.appendChild(row));
+    });
+  });
 
   wrap.appendChild(table);
   wrap.appendChild(info);
