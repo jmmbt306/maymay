@@ -269,13 +269,13 @@ function detectDivergence(history, symbols, earningsDates) {
     
     const priceStart = startPrices.reduce((a,b)=>a+b, 0) / startPrices.length;
     const priceLatest = latestPrices.reduce((a,b)=>a+b, 0) / latestPrices.length;
-    
-    if (priceLatest > priceStart) return;
+    const priceDiff = priceLatest - priceStart;
     
     let pricesForTrend = [];
     for (let i = symStartIndex; i < history.length; i++) {
       if (history[i][symbol]?.c != null) pricesForTrend.push(history[i][symbol].c);
     }
+    let slope = 0;
     if (pricesForTrend.length >= 2) {
       const nPrices = pricesForTrend.length;
       const meanX = (nPrices - 1) / 2;
@@ -285,8 +285,7 @@ function detectDivergence(history, symbols, earningsDates) {
         num += (i - meanX) * (pricesForTrend[i] - meanY);
         den += (i - meanX) * (i - meanX);
       }
-      const slope = den !== 0 ? num / den : 0;
-      if (slope > 0) return;
+      slope = den !== 0 ? num / den : 0;
     }
 
     let epsDiff = { "0q": 0, "+1q": 0, "0y": 0, "+1y": 0 };
@@ -307,11 +306,22 @@ function detectDivergence(history, symbols, earningsDates) {
     }
     
     if (hasNull) return;
-    const epsUp = epsDiff["0q"] > 0.0001 && epsDiff["+1q"] > 0.0001 && epsDiff["0y"] > 0.0001 && epsDiff["+1y"] > 0.0001;
-    if (!epsUp) return;
     
-    const priceDiff = priceLatest - priceStart;
+    const epsUp = epsDiff["0q"] > 0.0001 && epsDiff["+1q"] > 0.0001 && epsDiff["0y"] > 0.0001 && epsDiff["+1y"] > 0.0001;
+    const epsDownOrFlat = epsDiff["0q"] <= 0.0001 && epsDiff["+1q"] <= 0.0001 && epsDiff["0y"] <= 0.0001 && epsDiff["+1y"] <= 0.0001;
+    
+    let type = null;
+    if (epsUp && priceLatest < priceStart && slope < 0) {
+      type = "good_eps_bad_price";
+    } else if (epsDownOrFlat && priceLatest > priceStart && slope > 0) {
+      type = "bad_eps_good_price";
+    }
+
+    if (!type) return;
+    
     results.push({
+      type,
+
       symbol,
       priceStart,
       priceLatest,
@@ -424,11 +434,17 @@ function buildSummaryTable(symbols, history, earningsDates, perData, divergenceL
     const tdSig = document.createElement("td");
     if (sig) {
       tdSig.dataset.sort = sig.pricePct;
-      tdSig.textContent = `🚨 ${sig.pricePct.toFixed(1)}%`;
-      tdSig.style.color = "#fca5a5";
-      tdSig.title = `直近${sig.periodDays}日間でEPS予想上昇に対し株価が下落`;
+      if (sig.type === "good_eps_bad_price") {
+        tdSig.textContent = `🚨 ${sig.pricePct.toFixed(1)}%`;
+        tdSig.style.color = "#fca5a5";
+        tdSig.title = `直近${sig.periodDays}日間でEPS予想上昇に対し株価が下落`;
+      } else {
+        tdSig.textContent = `⚠️ +${sig.pricePct.toFixed(1)}%`;
+        tdSig.style.color = "#fde047";
+        tdSig.title = `直近${sig.periodDays}日間でEPS予想低下/横ばいに対し株価が上昇`;
+      }
     } else {
-      tdSig.dataset.sort = 999999;
+      tdSig.dataset.sort = -999999;
       tdSig.textContent = "—";
     }
     tr.appendChild(tdSig);
