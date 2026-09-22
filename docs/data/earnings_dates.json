@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-21",
+  "updated": "2026-09-22",
   "dates": {
     "LEVI": {
       "next": "2026-09-30",
@@ -2122,6 +2122,9 @@
     "MDB": "MongoDB, Inc.",
     "GTLB": "GitLab Inc.",
     "HPE": "Hewlett Packard Enterprise Comp",
-    "ZS": "Zscaler, Inc."
+    "ZS": "Zscaler, Inc.",
+    "GIS": "General Mills, Inc.",
+    "BB": "BlackBerry Limited",
+    "COST": "Costco Wholesale Corporation"
   }
 }
