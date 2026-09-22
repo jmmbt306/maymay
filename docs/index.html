@@ -223,6 +223,108 @@ function shortDate(d) {
   return d ? d.slice(5).replace("-", "/") : d;
 }
 
+function detectDivergence(history, symbols, earningsDates) {
+  if (history.length < 2) return [];
+  
+  const latest = history[history.length - 1];
+  const targetStart = luxon.DateTime.fromISO(latest.date).minus({ days: 90 });
+  const minStart = luxon.DateTime.fromISO(latest.date).minus({ days: 30 });
+  
+  let startIndex = 0;
+  for (let i = 0; i < history.length; i++) {
+    if (luxon.DateTime.fromISO(history[i].date) >= targetStart) {
+      startIndex = i;
+      break;
+    }
+  }
+  
+  if (luxon.DateTime.fromISO(history[startIndex].date) > minStart) return [];
+  
+  const periodDays = Math.ceil((new Date(latest.date) - new Date(history[startIndex].date)) / 86400000);
+  const results = [];
+  
+  symbols.forEach(symbol => {
+    let symStartIndex = startIndex;
+    const ed = (earningsDates || {})[symbol];
+    if (ed && ed.prev) {
+      const targetStart = luxon.DateTime.fromISO(ed.prev).plus({ days: 3 });
+      for (let i = 0; i < history.length; i++) {
+        if (luxon.DateTime.fromISO(history[i].date) >= targetStart) {
+          symStartIndex = Math.max(startIndex, i);
+          break;
+        }
+      }
+    }
+
+    let startPrices = [];
+    for (let i = symStartIndex; i < history.length && startPrices.length < 5; i++) {
+      if (history[i][symbol]?.c != null) startPrices.push(history[i][symbol].c);
+    }
+    let latestPrices = [];
+    for (let i = history.length - 1; i >= symStartIndex && latestPrices.length < 5; i--) {
+      if (history[i][symbol]?.c != null) latestPrices.push(history[i][symbol].c);
+    }
+    
+    if (startPrices.length === 0 || latestPrices.length === 0) return;
+    
+    const priceStart = startPrices.reduce((a,b)=>a+b, 0) / startPrices.length;
+    const priceLatest = latestPrices.reduce((a,b)=>a+b, 0) / latestPrices.length;
+    
+    if (priceLatest > priceStart) return;
+    
+    let pricesForTrend = [];
+    for (let i = symStartIndex; i < history.length; i++) {
+      if (history[i][symbol]?.c != null) pricesForTrend.push(history[i][symbol].c);
+    }
+    if (pricesForTrend.length >= 2) {
+      const nPrices = pricesForTrend.length;
+      const meanX = (nPrices - 1) / 2;
+      const meanY = pricesForTrend.reduce((a,b)=>a+b, 0) / nPrices;
+      let num = 0, den = 0;
+      for (let i = 0; i < nPrices; i++) {
+        num += (i - meanX) * (pricesForTrend[i] - meanY);
+        den += (i - meanX) * (i - meanX);
+      }
+      const slope = den !== 0 ? num / den : 0;
+      if (slope > 0) return;
+    }
+
+    let epsDiff = { "0q": 0, "+1q": 0, "0y": 0, "+1y": 0 };
+    let hasNull = false;
+
+    for (let i = symStartIndex + 1; i < history.length; i++) {
+      const prevData = history[i-1][symbol];
+      const curData = history[i][symbol];
+      if (!prevData || !curData) continue;
+      
+      for (const key of ["0q", "+1q", "0y", "+1y"]) {
+         if (curData[key] != null && prevData[key] != null) {
+            epsDiff[key] += (curData[key] - prevData[key]);
+         } else {
+            hasNull = true;
+         }
+      }
+    }
+    
+    if (hasNull) return;
+    const epsUp = epsDiff["0q"] > 0.0001 && epsDiff["+1q"] > 0.0001 && epsDiff["0y"] > 0.0001 && epsDiff["+1y"] > 0.0001;
+    if (!epsUp) return;
+    
+    const priceDiff = priceLatest - priceStart;
+    results.push({
+      symbol,
+      priceStart,
+      priceLatest,
+      priceDiff,
+      pricePct: (priceDiff / priceStart) * 100,
+      periodDays
+    });
+  });
+  
+  results.sort((a, b) => a.pricePct - b.pricePct);
+  return results;
+}
+
 function earningsBadge(symbol, earningsDates) {
   const e = earningsDates[symbol];
   if (!e) return "";
@@ -256,7 +358,7 @@ function analystBadge(symbol, perData) {
   return `<span class="badge analyst">${text}</span>`;
 }
 
-function buildSummaryTable(symbols, history, earningsDates, perData) {
+function buildSummaryTable(symbols, history, earningsDates, perData, divergenceList, targetDivList) {
   const last = history[history.length - 1];
 
   // 各銘柄ごとに、直近のデータがある1つ前のエントリを探す
@@ -267,6 +369,8 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
     return null;
   }
 
+  const divSignalMap = new Map((divergenceList || []).map(item => [item.symbol, item]));
+  const targetDivMap = new Map((targetDivList || []).map(item => [item.symbol, item]));
   
   const wrap = document.createElement("div");
   wrap.className = "summary-card";
@@ -279,7 +383,9 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
   thead.innerHTML = `<tr>
     <th>銘柄</th>
     <th>次回決算</th>
-    </tr>`;
+      <th>逆行シグナル</th>
+    <th>目標株価乖離率</th>
+  </tr>`;
   table.appendChild(thead);
 
   const tbody = document.createElement("tbody");
@@ -313,6 +419,32 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
 
 
     
+    // 逆行シグナル
+    const sig = divSignalMap.get(symbol);
+    const tdSig = document.createElement("td");
+    if (sig) {
+      tdSig.dataset.sort = sig.pricePct;
+      tdSig.textContent = `🚨 ${sig.pricePct.toFixed(1)}%`;
+      tdSig.style.color = "#fca5a5";
+      tdSig.title = `直近${sig.periodDays}日間でEPS予想上昇に対し株価が下落`;
+    } else {
+      tdSig.dataset.sort = 999999;
+      tdSig.textContent = "—";
+    }
+    tr.appendChild(tdSig);
+
+    // 目標株価乖離率
+    const targetItem = targetDivMap.get(symbol);
+    const tdTarget = document.createElement("td");
+    if (targetItem) {
+      tdTarget.dataset.sort = targetItem.divRate;
+      tdTarget.textContent = `${targetItem.divRate > 0 ? '+' : ''}${targetItem.divRate.toFixed(1)}%`;
+      tdTarget.style.color = targetItem.divRate >= 0 ? "#ec4899" : "#64748b";
+    } else {
+      tdTarget.dataset.sort = -999999;
+      tdTarget.textContent = "—";
+    }
+    tr.appendChild(tdTarget);
 
     tbody.appendChild(tr);
   });
@@ -766,6 +898,20 @@ Promise.all([
   main.innerHTML = "";
 
   // 逆行シグナルの検出
+  const divergenceList = detectDivergence(history, symbols, earningsDates);
+  
+  // 目標株価乖離率ランキングの算出
+  const targetDivList = [];
+  symbols.forEach(symbol => {
+    const p = perData[symbol] || {};
+    const c = lastEntry[symbol]?.c;
+    if (p.target_mean != null && c != null && c > 0) {
+      const divRate = (p.target_mean - c) / c * 100;
+      targetDivList.push({ symbol, divRate, target: p.target_mean, price: c });
+    }
+  });
+  targetDivList.sort((a, b) => b.divRate - a.divRate); // 降順
+  
   // サマリーテーブル
   // 次回決算日が近い順に並び替え（未設定は末尾）
   symbols.sort((a, b) => {
@@ -777,7 +923,7 @@ Promise.all([
     return 0;
   });
 
-  const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData);
+  const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData, divergenceList, targetDivList);
 
   // 2カラムレイアウト（左：グラフ / 右：テーブル）
   const layout = document.createElement("div");
