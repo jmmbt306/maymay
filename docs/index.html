@@ -549,8 +549,8 @@ function buildChart(canvasId, history, symbol, earningsDates) {
       backgroundColor: "transparent",
       tension: 0.3, pointRadius: 2, pointHoverRadius: 5,
       yAxisID: "yPct",
-      hidden: true,
-      _mode: "per"
+      hidden: false,
+      _mode: "eps"
     });
   }
 
@@ -688,7 +688,6 @@ function buildChart(canvasId, history, symbol, earningsDates) {
         },
         yPct: {
           position: "right",
-          display: false,
           title: { display: true, text: "目標株価乖離率 (%)", color: "#ec4899" },
           ticks: { callback: v => (v > 0 ? "+" : "") + v.toFixed(1) + "%" },
           grid: { drawOnChartArea: false },
@@ -729,7 +728,7 @@ function switchChartMode(chart, mode) {
   chart.options.scales.yQ.display = mode === "eps";
   chart.options.scales.yA.display = mode === "eps";
   chart.options.scales.yPER.display = mode === "per";
-  chart.options.scales.yPct.display = mode === "per";
+  chart.options.scales.yPct.display = mode === "eps";
   chart.update();
 }
 
