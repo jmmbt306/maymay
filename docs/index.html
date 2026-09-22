@@ -380,7 +380,6 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
   thead.innerHTML = `<tr>
     <th>銘柄</th>
     <th>次回決算</th>
-    ${PERIODS.map(p => `<th>${PERIOD_LABELS[p] || p}</th>`).join("")}
   </tr>`;
   table.appendChild(thead);
 
@@ -412,25 +411,6 @@ function buildSummaryTable(symbols, history, earningsDates, perData) {
       tdNext.textContent = "—";
     }
     tr.appendChild(tdNext);
-
-    PERIODS.forEach(period => {
-      const td = document.createElement("td");
-      const val = cur[period];
-      const preVal = pre[period];
-      td.dataset.sort = val != null ? val : -999999;
-      if (val == null) {
-        td.textContent = "—";
-      } else {
-        const formatted = `$${val.toFixed(2)}`;
-        const titleBase = prevDate ? `前回(${prevDate}): ${preVal != null ? "$" + preVal.toFixed(2) : "なし"}` : "比較データなし";
-        td.title = titleBase;
-        td.textContent = formatted;
-        if (preVal != null && Math.abs(val - preVal) >= 0.001) {
-          td.className = val - preVal > 0 ? "up" : "down";
-        }
-      }
-      tr.appendChild(td);
-    });
 
 
     tbody.appendChild(tr);
