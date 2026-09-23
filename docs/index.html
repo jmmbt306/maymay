@@ -368,7 +368,7 @@ function analystBadge(symbol, perData) {
   return `<span class="badge analyst">${text}</span>`;
 }
 
-function buildSummaryTable(symbols, history, earningsDates, perData, divergenceList, targetDivList) {
+function buildSummaryTable(symbols, history, earningsDates, perData, divergenceList, targetDivList, sectors) {
   const last = history[history.length - 1];
 
   // 各銘柄ごとに、直近のデータがある1つ前のエントリを探す
@@ -392,6 +392,7 @@ function buildSummaryTable(symbols, history, earningsDates, perData, divergenceL
   const thead = document.createElement("thead");
   thead.innerHTML = `<tr>
     <th>銘柄</th>
+    <th>セクター</th>
     <th>次回決算</th>
       <th>逆行シグナル</th>
     <th>目標株価乖離率</th>
@@ -412,6 +413,11 @@ function buildSummaryTable(symbols, history, earningsDates, perData, divergenceL
     tdSymbol.dataset.sort = symbol;
     tdSymbol.textContent = symbol;
     tr.appendChild(tdSymbol);
+
+    const tdSector = document.createElement("td");
+    tdSector.dataset.sort = (sectors && sectors[symbol]) || "";
+    tdSector.textContent = (sectors && sectors[symbol]) || "—";
+    tr.appendChild(tdSector);
 
     // 次回決算（何日後）
     const ed = (earningsDates || {})[symbol] || {};
@@ -903,6 +909,7 @@ Promise.all([
   const earningsDates = edData.dates || {};
   const perData = edData.per || {};
   const names = edData.names || {};
+  const sectors = edData.sectors || {};
   const news = newsData.news || {};
   const lastEntry = history[history.length - 1];
   const symbols = Object.keys(lastEntry).filter(k => k !== "date" && !k.startsWith("_"));
@@ -939,7 +946,7 @@ Promise.all([
     return 0;
   });
 
-  const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData, divergenceList, targetDivList);
+  const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData, divergenceList, targetDivList, sectors);
 
   // 2カラムレイアウト（左：グラフ / 右：テーブル）
   const layout = document.createElement("div");
