@@ -73,12 +73,13 @@
 
     /* 株価ローソク足・出来高・EPS/PER を統合した単一チャート */
     .chart-wrap { height: 408px; }
-    .chart-toggle { display: flex; gap: 0.4rem; }
-    .chart-toggle button {
+    .chart-toggle, .panel-toggle { display: flex; gap: 0.4rem; }
+    .panel-toggle { margin-bottom: 0.5rem; }
+    .chart-toggle button, .panel-toggle button {
       padding: 0.2rem 0.7rem; border-radius: 5px; border: 1.5px solid #d1d5db;
       background: #fff; color: #374151; font-size: 0.75rem; cursor: pointer;
     }
-    .chart-toggle button.active { background: #1d4ed8; color: #fff; border-color: #1d4ed8; }
+    .chart-toggle button.active, .panel-toggle button.active { background: #1d4ed8; color: #fff; border-color: #1d4ed8; }
 
     .legend { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.4rem 0; }
     .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; cursor: pointer; }
@@ -880,7 +881,11 @@ function buildCard(symbol, history, earningsDates, perData, names, news) {
   ].join("");
 
   card.innerHTML = `
-    <div class="panel chart-panel">
+    <div class="panel-toggle">
+      <button class="active" data-tab="chart">チャート</button>
+      <button data-tab="news">ニュース</button>
+    </div>
+    <div class="panel chart-panel" data-tab-content="chart">
       <div class="card-header">
         <h2>${symbol}</h2>
         ${(names && names[symbol]) ? `<span class="company-name">${names[symbol]}</span>` : ""}
@@ -895,7 +900,7 @@ function buildCard(symbol, history, earningsDates, perData, names, news) {
       <div class="legend" data-legend="per-${canvasId}" style="display:none">${perLegendHtml}</div>
       <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
     </div>
-    <div class="panel news-panel">${newsHtml(symbol, news)}</div>`;
+    <div class="panel news-panel" data-tab-content="news" style="display:none">${newsHtml(symbol, news)}</div>`;
   return card;
 }
 
@@ -1017,6 +1022,26 @@ Promise.all([
     Chart.getChart(`chart-${target}`)?.resize();
     applyMode(card, chartMode); // 直前のモード（EPS/PER）を引き継ぐ
     requestAnimationFrame(syncTableHeight);
+  });
+
+  // タブ切り替え
+  main.addEventListener("click", e => {
+    const btn = e.target.closest(".panel-toggle button[data-tab]");
+    if (!btn) return;
+    const tabName = btn.dataset.tab;
+    const card = btn.closest(".card");
+    
+    card.querySelectorAll(".panel-toggle button[data-tab]").forEach(b => {
+      b.classList.toggle("active", b === btn);
+    });
+    
+    card.querySelectorAll("[data-tab-content]").forEach(panel => {
+      if (panel.dataset.tabContent === tabName) {
+        panel.style.display = "";
+      } else {
+        panel.style.display = "none";
+      }
+    });
   });
 
   // EPS/PER トグルボタン
