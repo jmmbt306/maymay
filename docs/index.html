@@ -88,7 +88,6 @@
     .news-title { font-size: 0.78rem; font-weight: 600; color: #374151; margin-bottom: 0.3rem; }
     .news-list {
       list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;
-      max-height: 120px; overflow-y: auto;
     }
     .news-item { font-size: 0.78rem; line-height: 1.3; padding-bottom: 0.5rem; border-bottom: 1px solid #f0f0f0; }
     .news-item:last-child { border-bottom: none; padding-bottom: 0; }
@@ -832,13 +831,12 @@ function newsHtml(symbol, news) {
       <div class="news-meta">${escapeHtml(n.publisher || "")}${n.publisher && n.time ? " ・ " : ""}${newsTimeLabel(n.time)}</div>
     </li>`).join("");
   return `
-    <details class="news-details" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.6rem 1rem; margin-top: 0.5rem;">
-      <summary style="font-size: 0.85rem; font-weight: 600; color: #334155; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.4rem;">
-        <span>📰 最近のニュースを見る (${items.length}件)</span>
-        <span style="margin-left: auto; font-size: 0.7rem; color: #94a3b8;">▼ クリックで展開</span>
-      </summary>
+    <div class="news-details" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.6rem 1rem; margin-top: 0.5rem; min-height: 400px; box-sizing: border-box;">
+      <div style="font-size: 0.85rem; font-weight: 600; color: #334155; display: flex; align-items: center; gap: 0.4rem;">
+        <span>📰 最近のニュース (${items.length}件)</span>
+      </div>
       <ul class="news-list" style="margin-top: 0.8rem; border-top: 1px dashed #cbd5e1; padding-top: 0.8rem;">${li}</ul>
-    </details>
+    </div>
   `;
 }
 
@@ -902,7 +900,7 @@ function buildCard(symbol, history, earningsDates, perData, names, news) {
         <div class="legend" data-legend="per-${canvasId}" style="display:none">${perLegendHtml}</div>
         <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
       </div>
-      <div class="news-panel" data-tab-content="news" style="display:none">${newsHtml(symbol, news)}</div>
+      <div class="news-panel" data-tab-content="news" style="display:none; height: 504px; overflow-y: auto;">${newsHtml(symbol, news)}</div>
     </div>`;
   return card;
 }
