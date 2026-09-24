@@ -16,7 +16,7 @@
     header p  { font-size: 0.75rem; opacity: 0.7; }
     main { max-width: 1400px; margin: 1rem auto; padding: 0 1rem; }
 
-    /* 2カラムレイアウト（左：グラフ / 右：テーブル） */
+    /* 2カラムレイアウト（左：テーブル / 右：グラフ） */
     .layout { display: flex; gap: 1.5rem; align-items: flex-start; }
     .chart-col { flex: 1 1 0; min-width: 0; }
     .table-col { flex: 0 0 360px; }
@@ -953,14 +953,14 @@ Promise.all([
 
   const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData, divergenceList, targetDivList, sectors);
 
-  // 2カラムレイアウト（左：グラフ / 右：テーブル）
+  // 2カラムレイアウト（左：テーブル / 右：グラフ）
   const layout = document.createElement("div");
   layout.className = "layout";
   const chartCol = document.createElement("div");
   chartCol.className = "chart-col";
   const tableCol = document.createElement("div");
   tableCol.className = "table-col";
-  layout.append(chartCol, tableCol);
+  layout.append(tableCol, chartCol);
   main.appendChild(layout);
 
   // チャートカードを全件生成・チャート描画
