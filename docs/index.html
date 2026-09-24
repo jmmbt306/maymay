@@ -74,7 +74,7 @@
     /* 株価ローソク足・出来高・EPS/PER を統合した単一チャート */
     .chart-wrap { height: 469px; }
     .chart-toggle, .panel-toggle { display: flex; gap: 0.4rem; }
-    .panel-toggle { margin-bottom: 0.5rem; }
+    .panel-toggle { margin-bottom: 0; }
     .chart-toggle button, .panel-toggle button {
       padding: 0.2rem 0.7rem; border-radius: 5px; border: 1.5px solid #d1d5db;
       background: #fff; color: #374151; font-size: 0.75rem; cursor: pointer;
@@ -881,14 +881,14 @@ function buildCard(symbol, history, earningsDates, perData, names, news) {
   ].join("");
 
   card.innerHTML = `
-    <div class="panel-toggle">
-      <button class="active" data-tab="chart">チャート</button>
-      <button data-tab="news">ニュース</button>
-    </div>
-    <div class="panel chart-panel" data-tab-content="chart">
+    <div class="panel chart-panel">
       <div class="card-header">
         <h2>${symbol}</h2>
         ${(names && names[symbol]) ? `<span class="company-name">${names[symbol]}</span>` : ""}
+        <div class="panel-toggle">
+          <button class="active" data-tab="chart">チャート</button>
+          <button data-tab="news">ニュース</button>
+        </div>
         <div class="chart-toggle">
           <button class="active" data-mode="eps" data-canvas="${canvasId}">EPS</button>
           <button data-mode="per" data-canvas="${canvasId}">PER</button>
@@ -896,11 +896,13 @@ function buildCard(symbol, history, earningsDates, perData, names, news) {
         ${analystBadge(symbol, perData)}
         ${earningsBadge(symbol, earningsDates)}
       </div>
-      <div class="legend" data-legend="eps-${canvasId}">${epsLegendHtml}</div>
-      <div class="legend" data-legend="per-${canvasId}" style="display:none">${perLegendHtml}</div>
-      <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
-    </div>
-    <div class="panel news-panel" data-tab-content="news" style="display:none">${newsHtml(symbol, news)}</div>`;
+      <div data-tab-content="chart">
+        <div class="legend" data-legend="eps-${canvasId}">${epsLegendHtml}</div>
+        <div class="legend" data-legend="per-${canvasId}" style="display:none">${perLegendHtml}</div>
+        <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
+      </div>
+      <div class="news-panel" data-tab-content="news" style="display:none">${newsHtml(symbol, news)}</div>
+    </div>`;
   return card;
 }
 
