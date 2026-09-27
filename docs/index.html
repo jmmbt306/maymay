@@ -827,7 +827,16 @@ function newsTimeLabel(t) {
   return isNaN(d) ? "" : `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}`;
 }
 function newsHtml(symbol, news) {
-  const items = (news && news[symbol]) || [];
+  let items = [];
+  let ai = null;
+  const entry = (news && news[symbol]);
+  if (Array.isArray(entry)) {
+    items = entry;
+  } else if (entry && Array.isArray(entry.items)) {
+    items = entry.items;
+    ai = entry.ai_analysis;
+  }
+  
   if (!items.length) {
     return `<div class="news-title" style="font-size: 0.85rem; color: #64748b; padding: 0.5rem 0;">📰 最近のニュース: なし</div>`;
   }
@@ -836,8 +845,24 @@ function newsHtml(symbol, news) {
       <a href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(n.title)}</a>
       <div class="news-meta">${escapeHtml(n.publisher || "")}${n.publisher && n.time ? " ・ " : ""}${newsTimeLabel(n.time)}</div>
     </li>`).join("");
+    
+  let aiHtml = "";
+  if (ai) {
+    const badgeColor = ai.sentiment === "ポジティブ" ? "background: #dcfce7; color: #166534;" : 
+                       ai.sentiment === "ネガティブ" ? "background: #fee2e2; color: #991b1b;" : 
+                       "background: #f1f5f9; color: #475569;";
+    aiHtml = `
+      <div style="margin-bottom: 1rem; padding: 0.8rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+        <div style="font-size: 0.75rem; font-weight: bold; color: #64748b; margin-bottom: 0.3rem;">🤖 AI分析サマリー</div>
+        <div style="margin-bottom: 0.5rem;"><span style="display: inline-block; padding: 0.2rem 0.5rem; font-size: 0.7rem; font-weight: bold; border-radius: 4px; ${badgeColor}">${escapeHtml(ai.sentiment)}</span></div>
+        <div style="font-size: 0.8rem; line-height: 1.4; color: #334155; white-space: pre-wrap;">${escapeHtml(ai.summary)}</div>
+      </div>
+    `;
+  }
+  
   return `
     <div class="news-details" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.6rem 1rem; margin-top: 0.5rem; min-height: 400px; box-sizing: border-box;">
+      ${aiHtml}
       <div style="font-size: 0.85rem; font-weight: 600; color: #334155; display: flex; align-items: center; gap: 0.4rem;">
         <span>📰 最近のニュース (${items.length}件)</span>
       </div>
