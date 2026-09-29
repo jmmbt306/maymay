@@ -428,13 +428,14 @@ function buildSummaryTable(symbols, history, earningsDates, perData, divergenceL
     // 次回決算（何日後）
     const ed = (earningsDates || {})[symbol] || {};
     const tdNext = document.createElement("td");
-    tdNext.dataset.sort = ed.next || "9999-99-99";
     if (ed.next) {
       const days = daysUntil(ed.next);
+      tdNext.dataset.sort = days < 0 ? "9999-99-98-" + ed.next : ed.next;
       tdNext.textContent = days < 0 ? "決算済" : days === 0 ? "本日" : `${days}日後`;
       tdNext.title = ed.next;
       if (days >= 0 && days <= 14) tdNext.style.color = "#dc2626";
     } else {
+      tdNext.dataset.sort = "9999-99-99";
       tdNext.textContent = "—";
     }
     tr.appendChild(tdNext);
@@ -974,14 +975,18 @@ Promise.all([
   targetDivList.sort((a, b) => b.divRate - a.divRate); // 降順
   
   // サマリーテーブル
-  // 次回決算日が近い順に並び替え（未設定は末尾）
+  // 次回決算日が近い順に並び替え（決算済・未設定は末尾）
   symbols.sort((a, b) => {
     const da = earningsDates[a]?.next;
     const db = earningsDates[b]?.next;
-    if (da && db) return da < db ? -1 : da > db ? 1 : 0;
-    if (da) return -1;
-    if (db) return 1;
-    return 0;
+    if (!da && !db) return 0;
+    if (!da) return 1;
+    if (!db) return -1;
+    const daysA = daysUntil(da);
+    const daysB = daysUntil(db);
+    if (daysA < 0 && daysB >= 0) return 1;
+    if (daysB < 0 && daysA >= 0) return -1;
+    return da < db ? -1 : da > db ? 1 : 0;
   });
 
   const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData, divergenceList, targetDivList, sectors);
