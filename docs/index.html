@@ -932,9 +932,9 @@ function buildCard(symbol, history, earningsDates, perData, names, news) {
 }
 
 Promise.all([
-  fetch("data/history.json").then(r => r.json()),
-  fetch("data/earnings_dates.json").then(r => r.json()).catch(() => ({ dates: {}, per: {} })),
-  fetch("data/news.json").then(r => r.json()).catch(() => ({ news: {} })),
+  fetch(`data/history.json?t=${Date.now()}`).then(r => r.json()),
+  fetch(`data/earnings_dates.json?t=${Date.now()}`).then(r => r.json()).catch(() => ({ dates: {}, per: {} })),
+  fetch(`data/news.json?t=${Date.now()}`).then(r => r.json()).catch(() => ({ news: {} })),
 ]).then(([history, edData, newsData]) => {
   if (!history.length) throw new Error("データがありません");
 
