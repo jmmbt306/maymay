@@ -85,17 +85,6 @@
     .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; cursor: pointer; }
     .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
 
-    .news-title { font-size: 0.78rem; font-weight: 600; color: #374151; margin-bottom: 0.3rem; }
-    .news-list {
-      list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;
-    }
-    .news-item { font-size: 0.78rem; line-height: 1.3; padding-bottom: 0.5rem; border-bottom: 1px solid #f0f0f0; }
-    .news-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .news-item a { color: #1d4ed8; text-decoration: none; }
-    .news-item a:hover { text-decoration: underline; }
-    .news-meta { color: #9ca3af; font-size: 0.72rem; margin-top: 0.1rem; }
-    .news-empty { font-size: 0.78rem; color: #9ca3af; }
-
     .range-label { font-size: 0.8rem; opacity: 0.85; margin-left: auto; display: flex; align-items: center; gap: 0.4rem; }
     .range-label select {
       font-size: 0.8rem; padding: 0.2rem 0.4rem; border-radius: 5px;
@@ -816,19 +805,6 @@ function switchChartMode(chart, mode) {
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
-function newsTimeLabel(t) {
-  if (!t) return "";
-  const d = new Date(t);
-  return isNaN(d) ? "" : `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}`;
-}
-function newsHtml(symbol, news) {
-  let items = [];
-  const entry = (news && news[symbol]);
-  if (Array.isArray(entry)) {
-    items = entry;
-  } else if (entry && Array.isArray(entry.items)) {
-    items = entry.items;
-  }
   
   if (!items.length) {
     return `<div class="news-title" style="font-size: 0.85rem; color: #64748b; padding: 0.5rem 0;">📰 最近のニュース: なし</div>`;
@@ -850,7 +826,7 @@ function newsHtml(symbol, news) {
   `;
 }
 
-function buildCard(symbol, history, earningsDates, perData, names, news) {
+function buildCard(symbol, history, earningsDates, perData, names) {
   const canvasId = `chart-${symbol}`;
   const card = document.createElement("div");
   card.className = "card";
@@ -895,7 +871,6 @@ function buildCard(symbol, history, earningsDates, perData, names, news) {
         ${(names && names[symbol]) ? `<span class="company-name">${names[symbol]}</span>` : ""}
         <div class="panel-toggle">
           <button class="active" data-tab="chart">チャート</button>
-          <button data-tab="news">ニュース</button>
         </div>
         <div class="chart-toggle">
           <button class="active" data-mode="eps" data-canvas="${canvasId}">EPS</button>
@@ -910,7 +885,6 @@ function buildCard(symbol, history, earningsDates, perData, names, news) {
         <div class="legend" data-legend="per-${canvasId}" style="display:none">${perLegendHtml}</div>
         <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
       </div>
-      <div class="news-panel" data-tab-content="news" style="display:none; height: 504px; overflow-y: auto;">${newsHtml(symbol, news)}</div>
     </div>`;
   return card;
 }
@@ -918,15 +892,13 @@ function buildCard(symbol, history, earningsDates, perData, names, news) {
 Promise.all([
   fetch(`data/history.json?t=${Date.now()}`).then(r => r.json()),
   fetch(`data/earnings_dates.json?t=${Date.now()}`).then(r => r.json()).catch(() => ({ dates: {}, per: {} })),
-  fetch(`data/news.json?t=${Date.now()}`).then(r => r.json()).catch(() => ({ news: {} })),
-]).then(([history, edData, newsData]) => {
+]).then(([history, edData]) => {
   if (!history.length) throw new Error("データがありません");
 
   const earningsDates = edData.dates || {};
   const perData = edData.per || {};
   const names = edData.names || {};
   const sectors = edData.sectors || {};
-  const news = newsData.news || {};
   const lastEntry = history[history.length - 1];
   const symbols = Object.keys(lastEntry).filter(k => k !== "date" && !k.startsWith("_"));
 
@@ -980,7 +952,7 @@ Promise.all([
 
   // チャートカードを全件生成・チャート描画
   symbols.forEach((symbol, i) => {
-    const card = buildCard(symbol, history, earningsDates, perData, names, news);
+    const card = buildCard(symbol, history, earningsDates, perData, names);
     if (i === 0) card.classList.add("active");
     chartCol.appendChild(card);
     buildChart(`chart-${symbol}`, history, symbol, earningsDates);
