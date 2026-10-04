@@ -870,12 +870,9 @@ function buildCard(symbol, history, earningsDates, perData, names, insiderData) 
         <h2>${symbol}</h2>
         ${(names && names[symbol]) ? `<span class="company-name">${names[symbol]}</span>` : ""}
         <div class="panel-toggle">
-          <button class="active" data-tab="chart">チャート</button>
+          <button class="active" data-tab="chart" data-mode="eps" data-canvas="${canvasId}">EPS</button>
+          <button data-tab="chart" data-mode="per" data-canvas="${canvasId}">PER</button>
           <button data-tab="insider">財務＆インサイダー</button>
-        </div>
-        <div class="chart-toggle">
-          <button class="active" data-mode="eps" data-canvas="${canvasId}">EPS</button>
-          <button data-mode="per" data-canvas="${canvasId}">PER</button>
         </div>
         <div style="flex-basis: 100%; height: 0; margin: 0; padding: 0;"></div>
         ${analystBadge(symbol, perData)}
@@ -1062,17 +1059,20 @@ Promise.all([
   });
 
 
-  // タブ切り替え
+  // タブ・モード切り替え統合
   main.addEventListener("click", e => {
-    const btn = e.target.closest(".panel-toggle button[data-tab]");
+    const btn = e.target.closest(".panel-toggle button");
     if (!btn) return;
+    
     const tabName = btn.dataset.tab;
     const card = btn.closest(".card");
     
-    card.querySelectorAll(".panel-toggle button[data-tab]").forEach(b => {
+    // active クラスの更新
+    card.querySelectorAll(".panel-toggle button").forEach(b => {
       b.classList.toggle("active", b === btn);
     });
     
+    // パネル切り替え
     card.querySelectorAll("[data-tab-content]").forEach(panel => {
       if (panel.dataset.tabContent === tabName) {
         panel.style.display = "";
@@ -1080,15 +1080,13 @@ Promise.all([
         panel.style.display = "none";
       }
     });
-  });
 
-  // EPS/PER トグルボタン
-  main.addEventListener("click", e => {
-    const btn = e.target.closest(".chart-toggle button[data-mode]");
-    if (!btn) return;
-    chartMode = btn.dataset.mode;
-    applyMode(btn.closest(".card"), chartMode);
-    requestAnimationFrame(syncTableHeight);
+    // モード切り替え (EPS/PER)
+    if (btn.dataset.mode) {
+      chartMode = btn.dataset.mode;
+      applyMode(card, chartMode);
+      requestAnimationFrame(syncTableHeight);
+    }
   });
 
   // シグナルクリックで切り替え
