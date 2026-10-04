@@ -850,9 +850,6 @@ function buildCard(symbol, history, earningsDates, perData, names) {
       <div class="card-header">
         <h2>${symbol}</h2>
         ${(names && names[symbol]) ? `<span class="company-name">${names[symbol]}</span>` : ""}
-        <div class="panel-toggle">
-          <button class="active" data-tab="chart">チャート</button>
-        </div>
         <div class="chart-toggle">
           <button class="active" data-mode="eps" data-canvas="${canvasId}">EPS</button>
           <button data-mode="per" data-canvas="${canvasId}">PER</button>
@@ -861,7 +858,7 @@ function buildCard(symbol, history, earningsDates, perData, names) {
         ${analystBadge(symbol, perData)}
         ${earningsBadge(symbol, earningsDates)}
       </div>
-      <div data-tab-content="chart">
+      <div>
         <div class="legend" data-legend="eps-${canvasId}">${epsLegendHtml}</div>
         <div class="legend" data-legend="per-${canvasId}" style="display:none">${perLegendHtml}</div>
         <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
@@ -990,26 +987,6 @@ Promise.all([
     Chart.getChart(`chart-${target}`)?.resize();
     applyMode(card, chartMode); // 直前のモード（EPS/PER）を引き継ぐ
     requestAnimationFrame(syncTableHeight);
-  });
-
-  // タブ切り替え
-  main.addEventListener("click", e => {
-    const btn = e.target.closest(".panel-toggle button[data-tab]");
-    if (!btn) return;
-    const tabName = btn.dataset.tab;
-    const card = btn.closest(".card");
-    
-    card.querySelectorAll(".panel-toggle button[data-tab]").forEach(b => {
-      b.classList.toggle("active", b === btn);
-    });
-    
-    card.querySelectorAll("[data-tab-content]").forEach(panel => {
-      if (panel.dataset.tabContent === tabName) {
-        panel.style.display = "";
-      } else {
-        panel.style.display = "none";
-      }
-    });
   });
 
   // EPS/PER トグルボタン
