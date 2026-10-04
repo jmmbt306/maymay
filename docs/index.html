@@ -357,7 +357,7 @@ function analystBadge(symbol, perData) {
   return `<span class="badge analyst">${text}</span>`;
 }
 
-function buildSummaryTable(symbols, history, earningsDates, perData, divergenceList, targetDivList, sectors) {
+function buildSummaryTable(symbols, history, earningsDates, perData, divergenceList, targetDivList, sectors, insiderData) {
   const last = history[history.length - 1];
 
   // 各銘柄ごとに、直近のデータがある1つ前のエントリを探す
@@ -383,6 +383,7 @@ function buildSummaryTable(symbols, history, earningsDates, perData, divergenceL
     <th>銘柄</th>
     <th>セクター</th>
     <th>次回決算</th>
+    <th>インサイダー</th>
       <th>逆行シグナル</th>
     <th>目標株価乖離率</th>
   </tr>`;
@@ -422,6 +423,24 @@ function buildSummaryTable(symbols, history, earningsDates, perData, divergenceL
       tdNext.textContent = "—";
     }
     tr.appendChild(tdNext);
+    
+    // インサイダー
+    const tdInsider = document.createElement("td");
+    const ins = insiderData[symbol];
+    if (ins && ins.trend) {
+      tdInsider.dataset.sort = ins.trend === "買い優勢" ? "1" : ins.trend === "売り優勢" ? "3" : "2";
+      if (ins.trend === "買い優勢") {
+        tdInsider.innerHTML = '<span class="badge" style="background:#dcfce7;color:#166534;">買い優勢</span>';
+      } else if (ins.trend === "売り優勢") {
+        tdInsider.innerHTML = '<span class="badge" style="background:#fee2e2;color:#991b1b;">売り優勢</span>';
+      } else {
+        tdInsider.innerHTML = '<span class="badge" style="background:#f1f5f9;color:#475569;">動きなし</span>';
+      }
+    } else {
+      tdInsider.dataset.sort = "9";
+      tdInsider.textContent = "—";
+    }
+    tr.appendChild(tdInsider);
 
 
     
@@ -807,7 +826,7 @@ function escapeHtml(s) {
 }
 
 
-function buildCard(symbol, history, earningsDates, perData, names) {
+function buildCard(symbol, history, earningsDates, perData, names, insiderData) {
   const canvasId = `chart-${symbol}`;
   const card = document.createElement("div");
   card.className = "card";
@@ -850,6 +869,10 @@ function buildCard(symbol, history, earningsDates, perData, names) {
       <div class="card-header">
         <h2>${symbol}</h2>
         ${(names && names[symbol]) ? `<span class="company-name">${names[symbol]}</span>` : ""}
+        <div class="panel-toggle">
+          <button class="active" data-tab="chart">チャート</button>
+          <button data-tab="insider">財務＆インサイダー</button>
+        </div>
         <div class="chart-toggle">
           <button class="active" data-mode="eps" data-canvas="${canvasId}">EPS</button>
           <button data-mode="per" data-canvas="${canvasId}">PER</button>
@@ -858,10 +881,19 @@ function buildCard(symbol, history, earningsDates, perData, names) {
         ${analystBadge(symbol, perData)}
         ${earningsBadge(symbol, earningsDates)}
       </div>
-      <div>
+      <div data-tab-content="chart">
         <div class="legend" data-legend="eps-${canvasId}">${epsLegendHtml}</div>
         <div class="legend" data-legend="per-${canvasId}" style="display:none">${perLegendHtml}</div>
         <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>
+      </div>
+      <div data-tab-content="insider" style="display:none; padding: 1rem; height: 504px; overflow-y: auto; box-sizing: border-box;">
+        <h3 style="font-size:0.9rem; margin:0 0 0.5rem 0;">自社株買い (Repurchase of Capital Stock)</h3>
+        <div style="height: 200px; margin-bottom: 1.5rem;">
+          <canvas id="buybacks-${symbol}"></canvas>
+        </div>
+        <h3 style="font-size:0.9rem; margin:0 0 0.5rem 0;">直近のインサイダー取引</h3>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.8rem;" id="ins-list-${symbol}">
+        </ul>
       </div>
     </div>`;
   return card;
@@ -870,13 +902,15 @@ function buildCard(symbol, history, earningsDates, perData, names) {
 Promise.all([
   fetch(`data/history.json?t=${Date.now()}`).then(r => r.json()),
   fetch(`data/earnings_dates.json?t=${Date.now()}`).then(r => r.json()).catch(() => ({ dates: {}, per: {} })),
-]).then(([history, edData]) => {
+  fetch(`data/insider_data.json?t=${Date.now()}`).then(r => r.json()).catch(() => ({ data: {} })),
+]).then(([history, edData, insiderResp]) => {
   if (!history.length) throw new Error("データがありません");
 
   const earningsDates = edData.dates || {};
   const perData = edData.per || {};
   const names = edData.names || {};
   const sectors = edData.sectors || {};
+  const insiderData = insiderResp.data || {};
   const lastEntry = history[history.length - 1];
   const symbols = Object.keys(lastEntry).filter(k => k !== "date" && !k.startsWith("_"));
 
@@ -916,7 +950,7 @@ Promise.all([
     return da < db ? -1 : da > db ? 1 : 0;
   });
 
-  const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData, divergenceList, targetDivList, sectors);
+  const { wrap: tableWrap, tbody } = buildSummaryTable(symbols, history, earningsDates, perData, divergenceList, targetDivList, sectors, insiderData);
 
   // 2カラムレイアウト（左：テーブル / 右：グラフ）
   const layout = document.createElement("div");
@@ -930,10 +964,48 @@ Promise.all([
 
   // チャートカードを全件生成・チャート描画
   symbols.forEach((symbol, i) => {
-    const card = buildCard(symbol, history, earningsDates, perData, names);
+    const card = buildCard(symbol, history, earningsDates, perData, names, insiderData);
     if (i === 0) card.classList.add("active");
     chartCol.appendChild(card);
     buildChart(`chart-${symbol}`, history, symbol, earningsDates);
+    
+    // インサイダータブの描画
+    if (insiderData[symbol]) {
+      const ins = insiderData[symbol];
+      // グラフ描画
+      if (ins.buybacks && ins.buybacks.length > 0) {
+        new Chart(document.getElementById(`buybacks-${symbol}`), {
+          type: 'bar',
+          data: {
+            labels: ins.buybacks.map(b => b.year),
+            datasets: [{
+              label: '自社株買い (絶対値)',
+              data: ins.buybacks.map(b => b.amount),
+              backgroundColor: '#3b82f6',
+              borderRadius: 4
+            }]
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true, ticks: { callback: v => (v / 1e9).toFixed(1) + 'B' } } }
+          }
+        });
+      }
+      // リスト描画
+      const ul = document.getElementById(`ins-list-${symbol}`);
+      if (ins.transactions && ins.transactions.length > 0) {
+        ul.innerHTML = ins.transactions.map(t => `
+          <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+            <div style="font-weight:bold;">${escapeHtml(t.insider)} <span style="font-weight:normal;color:#64748b;font-size:0.7rem;">(${escapeHtml(t.position)})</span></div>
+            <div>${t.date} : ${t.shares.toLocaleString()} shares / $${t.value.toLocaleString()}</div>
+            <div style="color:#64748b; font-size:0.75rem;">${escapeHtml(t.text)}</div>
+          </li>
+        `).join("");
+      } else {
+        ul.innerHTML = '<li>最近の取引はありません</li>';
+      }
+    }
   });
 
   tableCol.appendChild(tableWrap);
@@ -987,6 +1059,27 @@ Promise.all([
     Chart.getChart(`chart-${target}`)?.resize();
     applyMode(card, chartMode); // 直前のモード（EPS/PER）を引き継ぐ
     requestAnimationFrame(syncTableHeight);
+  });
+
+
+  // タブ切り替え
+  main.addEventListener("click", e => {
+    const btn = e.target.closest(".panel-toggle button[data-tab]");
+    if (!btn) return;
+    const tabName = btn.dataset.tab;
+    const card = btn.closest(".card");
+    
+    card.querySelectorAll(".panel-toggle button[data-tab]").forEach(b => {
+      b.classList.toggle("active", b === btn);
+    });
+    
+    card.querySelectorAll("[data-tab-content]").forEach(panel => {
+      if (panel.dataset.tabContent === tabName) {
+        panel.style.display = "";
+      } else {
+        panel.style.display = "none";
+      }
+    });
   });
 
   // EPS/PER トグルボタン
