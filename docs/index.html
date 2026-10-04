@@ -805,26 +805,7 @@ function switchChartMode(chart, mode) {
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
-  
-  if (!items.length) {
-    return `<div class="news-title" style="font-size: 0.85rem; color: #64748b; padding: 0.5rem 0;">📰 最近のニュース: なし</div>`;
-  }
-  const li = items.map(n => `
-    <li class="news-item">
-      <a href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(n.title)}</a>
-      <div class="news-meta">${escapeHtml(n.publisher || "")}${n.publisher && n.time ? " ・ " : ""}${newsTimeLabel(n.time)}</div>
-    </li>`).join("");
-    
 
-  return `
-    <div class="news-details" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.6rem 1rem; margin-top: 0.5rem; min-height: 400px; box-sizing: border-box;">
-      <div style="font-size: 0.85rem; font-weight: 600; color: #334155; display: flex; align-items: center; gap: 0.4rem;">
-        <span>📰 最近のニュース (${items.length}件)</span>
-      </div>
-      <ul class="news-list" style="margin-top: 0.8rem; border-top: 1px dashed #cbd5e1; padding-top: 0.8rem;">${li}</ul>
-    </div>
-  `;
-}
 
 function buildCard(symbol, history, earningsDates, perData, names) {
   const canvasId = `chart-${symbol}`;
