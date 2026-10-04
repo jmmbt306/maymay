@@ -1035,14 +1035,40 @@ Promise.all([
 
   // EPS/PER モードは銘柄をまたいで保持する
   let chartMode = "eps";
-  function applyMode(card, mode) {
+  let currentTab = "chart";
+
+  function applyTabAndMode(card) {
     if (!card) return;
-    const canvasId = card.querySelector("canvas").id;
-    const chart = Chart.getChart(canvasId);
-    if (chart) switchChartMode(chart, mode);
-    card.querySelectorAll(".chart-toggle button[data-mode]").forEach(b => b.classList.toggle("active", b.dataset.mode === mode));
-    card.querySelector(`[data-legend="eps-${canvasId}"]`).style.display = mode === "eps" ? "" : "none";
-    card.querySelector(`[data-legend="per-${canvasId}"]`).style.display = mode === "per" ? "" : "none";
+    
+    // タブのパネル表示非表示
+    card.querySelectorAll("[data-tab-content]").forEach(panel => {
+      panel.style.display = panel.dataset.tabContent === currentTab ? "" : "none";
+    });
+    
+    // ボタンの active 状態
+    card.querySelectorAll(".panel-toggle button").forEach(b => {
+      if (currentTab === "chart" && b.dataset.mode) {
+        b.classList.toggle("active", b.dataset.mode === chartMode);
+      } else if (currentTab === "insider" && b.dataset.tab === "insider") {
+        b.classList.toggle("active", true);
+      } else {
+        b.classList.toggle("active", false);
+      }
+    });
+
+    // Chart.js のモード適用
+    const canvas = card.querySelector(`canvas[id^="chart-"]`);
+    if (canvas) {
+      const canvasId = canvas.id;
+      const chart = Chart.getChart(canvasId);
+      if (chart) switchChartMode(chart, chartMode);
+      
+      const epsLegend = card.querySelector(`[data-legend="eps-${canvasId}"]`);
+      if (epsLegend) epsLegend.style.display = chartMode === "eps" ? "" : "none";
+      
+      const perLegend = card.querySelector(`[data-legend="per-${canvasId}"]`);
+      if (perLegend) perLegend.style.display = chartMode === "per" ? "" : "none";
+    }
   }
 
   // テーブル行クリックで切り替え
@@ -1054,7 +1080,7 @@ Promise.all([
     main.querySelectorAll(".card").forEach(c => c.classList.toggle("active", c.dataset.symbol === target));
     const card = chartCol.querySelector(`.card[data-symbol="${target}"]`);
     Chart.getChart(`chart-${target}`)?.resize();
-    applyMode(card, chartMode); // 直前のモード（EPS/PER）を引き継ぐ
+    applyTabAndMode(card);
     requestAnimationFrame(syncTableHeight);
   });
 
@@ -1064,29 +1090,15 @@ Promise.all([
     const btn = e.target.closest(".panel-toggle button");
     if (!btn) return;
     
-    const tabName = btn.dataset.tab;
-    const card = btn.closest(".card");
-    
-    // active クラスの更新
-    card.querySelectorAll(".panel-toggle button").forEach(b => {
-      b.classList.toggle("active", b === btn);
-    });
-    
-    // パネル切り替え
-    card.querySelectorAll("[data-tab-content]").forEach(panel => {
-      if (panel.dataset.tabContent === tabName) {
-        panel.style.display = "";
-      } else {
-        panel.style.display = "none";
-      }
-    });
-
-    // モード切り替え (EPS/PER)
+    currentTab = btn.dataset.tab;
     if (btn.dataset.mode) {
       chartMode = btn.dataset.mode;
-      applyMode(card, chartMode);
-      requestAnimationFrame(syncTableHeight);
     }
+    
+    // すべての card に適用する（現在非表示の card も状態を揃える）
+    main.querySelectorAll(".card").forEach(c => applyTabAndMode(c));
+    
+    requestAnimationFrame(syncTableHeight);
   });
 
   // シグナルクリックで切り替え
@@ -1100,7 +1112,7 @@ Promise.all([
     
     const card = chartCol.querySelector(`.card[data-symbol="${target}"]`);
     Chart.getChart(`chart-${target}`)?.resize();
-    applyMode(card, chartMode);
+    applyTabAndMode(card);
     requestAnimationFrame(syncTableHeight);
     
   });
