@@ -977,7 +977,7 @@ Promise.all([
         new Chart(document.getElementById(`buybacks-${symbol}`), {
           type: 'bar',
           data: {
-            labels: ins.buybacks.map(b => b.year),
+            labels: ins.buybacks.map(b => b.period || b.year),
             datasets: [{
               label: '自社株買い (絶対値)',
               data: ins.buybacks.map(b => b.amount),
