@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-10",
+  "updated": "2026-10-13",
   "data": {
     "LEVI": {
       "trend": "買い優勢",
@@ -12289,6 +12289,62 @@
         }
       ],
       "buybacks": []
+    },
+    "TSM": {
+      "trend": "動きなし",
+      "net_shares": 0.0,
+      "transactions": [
+        {
+          "date": "2026-07-28",
+          "insider": "TIEN BOR-ZEN",
+          "position": "Officer",
+          "shares": 15.0,
+          "value": 5850.0,
+          "text": "Purchase at price 390.00 per share."
+        },
+        {
+          "date": "2026-07-20",
+          "insider": "TIEN BOR-ZEN",
+          "position": "Officer",
+          "shares": 10.0,
+          "value": 4050.0,
+          "text": "Purchase at price 405.00 per share."
+        },
+        {
+          "date": "2026-05-20",
+          "insider": "TIEN BOR-ZEN",
+          "position": "Officer",
+          "shares": 17.0,
+          "value": 6718.0,
+          "text": "Purchase at price 391.81 - 400.00 per share."
+        },
+        {
+          "date": "2026-04-28",
+          "insider": "TIEN BOR-ZEN",
+          "position": "Officer",
+          "shares": 20.0,
+          "value": 7760.0,
+          "text": "Purchase at price 386.00 - 390.00 per share."
+        },
+        {
+          "date": "2026-03-31",
+          "insider": "BURNS URSULA M",
+          "position": "Director",
+          "shares": 1000.0,
+          "value": 322050.0,
+          "text": "Purchase at price 322.05 per share."
+        }
+      ],
+      "buybacks": [
+        {
+          "period": "2025-09",
+          "amount": 0.0
+        },
+        {
+          "period": "2025-12",
+          "amount": 0.0
+        }
+      ]
     }
   }
 }
