@@ -427,10 +427,21 @@ function buildSummaryTable(symbols, history, earningsDates, perData, divergenceL
     // インサイダー
     const tdInsider = document.createElement("td");
     const ins = insiderData[symbol];
-    const hasPurchase = ins && ins.transactions && ins.transactions.some(t => (t.text || "").toLowerCase().includes("purchase"));
-    if (hasPurchase) {
-      tdInsider.dataset.sort = "0";
-      tdInsider.innerHTML = '<span class="badge" style="background:#fef08a;color:#854d0e;">購入あり</span>';
+    const purchases = (ins && ins.transactions) ? ins.transactions.filter(t => (t.text || "").toLowerCase().includes("purchase")) : [];
+    if (purchases.length > 0) {
+      const now = new Date();
+      const isRecent = purchases.some(t => {
+        if (!t.date) return false;
+        const diffDays = (now - new Date(t.date)) / 86400000;
+        return diffDays <= 7;
+      });
+      if (isRecent) {
+        tdInsider.dataset.sort = "0";
+        tdInsider.innerHTML = '<span class="badge" style="background:#dcfce7;color:#166534;font-weight:bold;">購入あり</span>';
+      } else {
+        tdInsider.dataset.sort = "1";
+        tdInsider.innerHTML = '<span class="badge" style="background:#fef08a;color:#854d0e;">購入あり</span>';
+      }
     } else {
       tdInsider.dataset.sort = "9";
       tdInsider.textContent = "—";
