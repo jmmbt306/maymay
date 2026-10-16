@@ -216,107 +216,70 @@ function detectDivergence(history, symbols, earningsDates) {
   if (history.length < 2) return [];
   
   const latest = history[history.length - 1];
-  const targetStart = luxon.DateTime.fromISO(latest.date).minus({ days: 90 });
-  const minStart = luxon.DateTime.fromISO(latest.date).minus({ days: 30 });
-  
-  let startIndex = 0;
-  for (let i = 0; i < history.length; i++) {
-    if (luxon.DateTime.fromISO(history[i].date) >= targetStart) {
-      startIndex = i;
-      break;
-    }
-  }
-  
-  if (luxon.DateTime.fromISO(history[startIndex].date) > minStart) return [];
-  
-  const periodDays = Math.ceil((new Date(latest.date) - new Date(history[startIndex].date)) / 86400000);
   const results = [];
   
   symbols.forEach(symbol => {
-    let symStartIndex = startIndex;
     const ed = (earningsDates || {})[symbol];
-    if (ed && ed.prev) {
-      const targetStart = luxon.DateTime.fromISO(ed.prev).plus({ days: 3 });
-      for (let i = 0; i < history.length; i++) {
-        if (luxon.DateTime.fromISO(history[i].date) >= targetStart) {
-          symStartIndex = Math.max(startIndex, i);
-          break;
-        }
+    const prevEd = ed?.prev;
+    if (!prevEd) return;
+
+    // 前回決算日の翌日以降で株価データがあるインデックスを取得
+    const afterIndices = [];
+    for (let i = 0; i < history.length; i++) {
+      if (history[i].date > prevEd && history[i][symbol]?.c != null) {
+        afterIndices.push(i);
       }
     }
 
-    let startPrices = [];
-    for (let i = symStartIndex; i < history.length && startPrices.length < 5; i++) {
-      if (history[i][symbol]?.c != null) startPrices.push(history[i][symbol].c);
-    }
-    let latestPrices = [];
-    for (let i = history.length - 1; i >= symStartIndex && latestPrices.length < 5; i--) {
-      if (history[i][symbol]?.c != null) latestPrices.push(history[i][symbol].c);
-    }
-    
-    if (startPrices.length === 0 || latestPrices.length === 0) return;
-    
-    const priceStart = startPrices.reduce((a,b)=>a+b, 0) / startPrices.length;
-    const priceLatest = latestPrices.reduce((a,b)=>a+b, 0) / latestPrices.length;
-    const priceDiff = priceLatest - priceStart;
-    
-    let pricesForTrend = [];
-    for (let i = symStartIndex; i < history.length; i++) {
-      if (history[i][symbol]?.c != null) pricesForTrend.push(history[i][symbol].c);
-    }
-    let slope = 0;
-    if (pricesForTrend.length >= 2) {
-      const nPrices = pricesForTrend.length;
-      const meanX = (nPrices - 1) / 2;
-      const meanY = pricesForTrend.reduce((a,b)=>a+b, 0) / nPrices;
-      let num = 0, den = 0;
-      for (let i = 0; i < nPrices; i++) {
-        num += (i - meanX) * (pricesForTrend[i] - meanY);
-        den += (i - meanX) * (i - meanX);
-      }
-      slope = den !== 0 ? num / den : 0;
-    }
+    // 決算後3営業日目〜7営業日目（計5営業日）を「決算後の安定期間」とする
+    // 少なくとも安定期間開始（3営業日目）＋その後数日のデータが必要
+    if (afterIndices.length < 5) return;
 
-    let epsDiff = { "0q": 0, "+1q": 0, "0y": 0, "+1y": 0 };
-    let hasNull = false;
+    const settleIndices = afterIndices.slice(2, 7);
+    const basePrice = settleIndices.reduce((sum, idx) => sum + history[idx][symbol].c, 0) / settleIndices.length;
+    const settleStartDate = history[settleIndices[0]].date;
+    const settleEndIdx = settleIndices[settleIndices.length - 1];
 
-    for (let i = symStartIndex + 1; i < history.length; i++) {
-      const prevData = history[i-1][symbol];
-      const curData = history[i][symbol];
-      if (!prevData || !curData) continue;
-      
-      for (const key of ["0q", "+1q", "0y", "+1y"]) {
-         if (curData[key] != null && prevData[key] != null) {
-            epsDiff[key] += (curData[key] - prevData[key]);
-         } else {
-            hasNull = true;
-         }
-      }
-    }
-    
-    if (hasNull) return;
-    
-    const epsUp = epsDiff["0q"] > 0.0001 && epsDiff["+1q"] > 0.0001 && epsDiff["0y"] > 0.0001 && epsDiff["+1y"] > 0.0001;
-    const epsDownOrFlat = epsDiff["0q"] <= 0.0001 && epsDiff["+1q"] <= 0.0001 && epsDiff["0y"] <= 0.0001 && epsDiff["+1y"] <= 0.0001;
-    
+    const curEntry = latest[symbol];
+    const curPrice = curEntry?.c;
+    if (curPrice == null || basePrice <= 0) return;
+
+    const pricePct = ((curPrice - basePrice) / basePrice) * 100;
+
+    // 安定期間終了時点と現在のファンダメンタルズ（EPS予想・目標株価）を比較
+    const baseEntry = history[settleEndIdx][symbol] || {};
+
+    const eps0yStart = baseEntry["0y"], eps0yCur = curEntry["0y"];
+    const eps1yStart = baseEntry["+1y"], eps1yCur = curEntry["+1y"];
+
+    // 今年度・来年度EPSが下方修正されていないか（-0.5%以内なら維持とみなす）
+    const eps0yMaintained = (eps0yStart != null && eps0yCur != null) ? (eps0yCur >= eps0yStart * 0.995) : true;
+    const eps1yMaintained = (eps1yStart != null && eps1yCur != null) ? (eps1yCur >= eps1yStart * 0.995) : true;
+    const epsMaintained = eps0yMaintained && eps1yMaintained;
+
+    // EPSが明確に上方修正されているか（+0.5%以上）
+    const epsUp = (eps0yStart != null && eps0yCur != null && eps0yCur > eps0yStart * 1.005) ||
+                  (eps1yStart != null && eps1yCur != null && eps1yCur > eps1yStart * 1.005);
+
+    // 目標株価が引き下げられていないか（-0.5%以内なら維持とみなす）
+    const targetStart = baseEntry.target_mean, targetCur = curEntry.target_mean;
+    const targetMaintained = (targetStart != null && targetCur != null) ? (targetCur >= targetStart * 0.995) : true;
+
     let type = null;
-    if (epsUp && priceLatest < priceStart && slope < 0) {
-      type = "good_eps_bad_price";
-    } else if (epsDownOrFlat && priceLatest > priceStart && slope > 0) {
-      type = "bad_eps_good_price";
+    if (pricePct <= -3.0 && epsMaintained && targetMaintained) {
+      type = epsUp ? "dip_eps_up" : "unexplained_dip";
     }
 
-    if (!type) return;
-    
     results.push({
       type,
-
       symbol,
-      priceStart,
-      priceLatest,
-      priceDiff,
-      pricePct: (priceDiff / priceStart) * 100,
-      periodDays
+      basePrice,
+      settleStartDate,
+      priceLatest: curPrice,
+      pricePct,
+      epsMaintained,
+      targetMaintained,
+      epsUp
     });
   });
   
@@ -450,22 +413,27 @@ function buildSummaryTable(symbols, history, earningsDates, perData, divergenceL
 
 
     
-    // 逆行シグナル
+    // 逆行シグナル（決算安定後からの理由なき下落）
     const sig = divSignalMap.get(symbol);
     const tdSig = document.createElement("td");
-    if (sig) {
+    if (sig && sig.type) {
       tdSig.dataset.sort = sig.pricePct;
-      if (sig.type === "good_eps_bad_price") {
-        tdSig.textContent = `🚨 ${sig.pricePct.toFixed(1)}%`;
-        tdSig.style.color = "#fca5a5";
-        tdSig.title = `直近${sig.periodDays}日間でEPS予想上昇に対し株価が下落`;
+      if (sig.type === "dip_eps_up") {
+        tdSig.innerHTML = `<span class="badge" style="background:#dcfce7;color:#166534;font-weight:bold;">🔥 ${sig.pricePct.toFixed(1)}%</span>`;
+        tdSig.title = `決算後の安定株価($${sig.basePrice.toFixed(2)})から下落中（EPS予想は上方修正・目標株価維持）`;
       } else {
-        tdSig.textContent = `⚠️ +${sig.pricePct.toFixed(1)}%`;
-        tdSig.style.color = "#fde047";
-        tdSig.title = `直近${sig.periodDays}日間でEPS予想低下/横ばいに対し株価が上昇`;
+        tdSig.innerHTML = `<span class="badge" style="background:#fee2e2;color:#991b1b;font-weight:bold;">📉 ${sig.pricePct.toFixed(1)}%</span>`;
+        tdSig.title = `決算後の安定株価($${sig.basePrice.toFixed(2)})から理由なき下落（EPS予想・目標株価ともに維持）`;
       }
+    } else if (sig) {
+      // 条件外（上昇中、またはEPS/目標株価の下方修正を伴う下落）は参考値として薄く表示し、ソート時は下位に送る
+      tdSig.dataset.sort = 1000 + sig.pricePct;
+      tdSig.textContent = `${sig.pricePct > 0 ? '+' : ''}${sig.pricePct.toFixed(1)}%`;
+      tdSig.style.color = "#94a3b8";
+      tdSig.style.fontSize = "0.78rem";
+      tdSig.title = `決算後の安定株価: $${sig.basePrice.toFixed(2)}`;
     } else {
-      tdSig.dataset.sort = -999999;
+      tdSig.dataset.sort = 999999;
       tdSig.textContent = "—";
     }
     tr.appendChild(tdSig);
@@ -720,15 +688,54 @@ function buildChart(canvasId, history, symbol, earningsDates) {
   const qRange = rangeOf(["0q", "+1q"]);
   const aRange = rangeOf(["0y", "+1y"]);
 
-  // 決算日アノテーション（データ期間内のみ表示）
+  // 決算日アノテーション（データ期間内のみ表示）と決算後の安定株価ライン
   const annotations = {};
   const ed = (earningsDates || {})[symbol];
-  if (ed?.prev && xLabels.includes(ed.prev)) {
-    annotations.prevEarnings = {
-      type: "line", xMin: ed.prev, xMax: ed.prev,
-      borderColor: "#f59e0b", borderWidth: 2, borderDash: [4, 4],
-      label: { display: true, content: `前回決算 ${ed.prev}`, position: "start", backgroundColor: "#f59e0b", color: "#fff", font: { size: 10 }, padding: 3 },
-    };
+  if (ed?.prev && ed.prev >= xLabels[0] && ed.prev <= xLabels[xLabels.length - 1]) {
+    // 決算日当日が休場やデータ欠損でX軸にない場合、直後の取引日にフォールバック
+    const plotDate = xLabels.find(d => d >= ed.prev);
+    if (plotDate) {
+      annotations.prevEarnings = {
+        type: "line", xMin: plotDate, xMax: plotDate,
+        borderColor: "#f59e0b", borderWidth: 2, borderDash: [4, 4],
+        label: { display: true, content: `前回決算 ${ed.prev}`, position: "start", backgroundColor: "#f59e0b", color: "#fff", font: { size: 10 }, padding: 3 },
+      };
+    }
+  }
+
+  // 決算後の安定株価（3〜7営業日目の平均終値）の基準ライン
+  if (ed?.prev) {
+    const afterDates = [];
+    for (let i = 0; i < history.length; i++) {
+      if (history[i].date > ed.prev && history[i][symbol]?.c != null) {
+        afterDates.push({ date: history[i].date, c: history[i][symbol].c });
+      }
+    }
+    if (afterDates.length >= 5) {
+      const settleSlice = afterDates.slice(2, 7);
+      const basePrice = settleSlice.reduce((s, d) => s + d.c, 0) / settleSlice.length;
+      const startX = xLabels.find(d => d >= settleSlice[0].date) || xLabels[0];
+      annotations.basePriceLine = {
+        type: "line",
+        yScaleID: "yPrice",
+        yMin: basePrice,
+        yMax: basePrice,
+        xMin: startX,
+        xMax: xLabels[xLabels.length - 1],
+        borderColor: "rgba(15, 23, 42, 0.55)",
+        borderWidth: 1.5,
+        borderDash: [4, 4],
+        label: {
+          display: true,
+          content: `安定株価 $${basePrice.toFixed(2)}`,
+          position: "end",
+          backgroundColor: "rgba(15, 23, 42, 0.75)",
+          color: "#fff",
+          font: { size: 10 },
+          padding: 3
+        }
+      };
+    }
   }
 
   return new Chart(document.getElementById(canvasId), {
@@ -1032,8 +1039,8 @@ Promise.all([
         const id = `chart-${symbol}`;
         Chart.getChart(id)?.destroy();
         buildChart(id, history, symbol, earningsDates);
-        // 再構築後に現在の EPS/PER モードを再適用
-        applyMode(chartCol.querySelector(`.card[data-symbol="${symbol}"]`), chartMode);
+        // 再構築後に現在のタブ・EPS/PER モードを再適用
+        applyTabAndMode(chartCol.querySelector(`.card[data-symbol="${symbol}"]`));
       });
       requestAnimationFrame(syncTableHeight);
     });
