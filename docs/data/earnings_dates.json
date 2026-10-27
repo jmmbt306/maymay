@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24",
+  "updated": "2026-10-27",
   "dates": {
     "STZ": {
       "next": "2026-10-06",
@@ -2238,7 +2238,11 @@
     "NKE": "Nike, Inc.",
     "TSM": "Taiwan Semiconductor Manufactur",
     "COF": "Capital One Financial Corporati",
-    "MSCI": "MSCI Inc."
+    "MSCI": "MSCI Inc.",
+    "NTRS": "Northern Trust Corporation",
+    "REGN": "Regeneron Pharmaceuticals, Inc.",
+    "SKHY": "SK hynix Inc.",
+    "APH": "Amphenol Corporation"
   },
   "sectors": {
     "STZ": "Consumer Defensive",
@@ -2439,6 +2443,10 @@
     "NKE": "Consumer Cyclical",
     "FDXF": "Industrials",
     "COF": "Financial Services",
-    "MSCI": "Financial Services"
+    "MSCI": "Financial Services",
+    "NTRS": "Financial Services",
+    "REGN": "Healthcare",
+    "SKHY": "Technology",
+    "APH": "Technology"
   }
 }
