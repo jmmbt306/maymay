@@ -1,10 +1,26 @@
 {
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "data": {
     "LEVI": {
       "trend": "買い優勢",
-      "net_shares": 333025.0,
+      "net_shares": 236045.0,
       "transactions": [
+        {
+          "date": "2026-08-05",
+          "insider": "MING JENNY J",
+          "position": "Director",
+          "shares": 54.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-08-05",
+          "insider": "ALSTEAD TROY M",
+          "position": "Director",
+          "shares": 85.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
         {
           "date": "2026-08-05",
           "insider": "ECKERT ROBERT ANDREW",
@@ -23,7 +39,7 @@
         },
         {
           "date": "2026-08-05",
-          "insider": "MING JENNY J",
+          "insider": "BERAUD JILL",
           "position": "Director",
           "shares": 54.0,
           "value": 0.0,
@@ -31,9 +47,9 @@
         },
         {
           "date": "2026-08-05",
-          "insider": "ALSTEAD TROY M",
+          "insider": "JONES JEFFREY J II",
           "position": "Director",
-          "shares": 85.0,
+          "shares": 67.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
@@ -55,14 +71,6 @@
         },
         {
           "date": "2026-08-05",
-          "insider": "PRIME JOSHUA E,",
-          "position": "Director",
-          "shares": 106.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-08-05",
           "insider": "GARTEN YAEL",
           "position": "Director",
           "shares": 156.0,
@@ -71,17 +79,9 @@
         },
         {
           "date": "2026-08-05",
-          "insider": "BERAUD JILL",
+          "insider": "PRIME JOSHUA E,",
           "position": "Director",
-          "shares": 54.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-08-05",
-          "insider": "JONES JEFFREY J II",
-          "position": "Director",
-          "shares": 67.0,
+          "shares": 106.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         }
@@ -115,14 +115,6 @@
       "transactions": [
         {
           "date": "2026-10-01",
-          "insider": "COOPER EDITH W.",
-          "position": "Director",
-          "shares": 1911.0,
-          "value": 200000.0,
-          "text": "Stock Award(Grant) at price 0.00 - 125.60 per share."
-        },
-        {
-          "date": "2026-10-01",
           "insider": "CONDE CESAR",
           "position": "Director",
           "shares": 2329.0,
@@ -147,6 +139,14 @@
         },
         {
           "date": "2026-10-01",
+          "insider": "COOPER EDITH W.",
+          "position": "Director",
+          "shares": 1911.0,
+          "value": 200000.0,
+          "text": "Stock Award(Grant) at price 0.00 - 125.60 per share."
+        },
+        {
+          "date": "2026-10-01",
           "insider": "VASELLA DANIEL L",
           "position": "Director",
           "shares": 3363.0,
@@ -163,17 +163,17 @@
         },
         {
           "date": "2026-10-01",
-          "insider": "DUBLON DINA",
+          "insider": "COOK IAN M",
           "position": "Director",
-          "shares": 3543.0,
+          "shares": 3480.0,
           "value": 200000.0,
           "text": "Stock Award(Grant) at price 0.00 - 125.60 per share."
         },
         {
           "date": "2026-10-01",
-          "insider": "COOK IAN M",
+          "insider": "DUBLON DINA",
           "position": "Director",
-          "shares": 3480.0,
+          "shares": 3543.0,
           "value": 200000.0,
           "text": "Stock Award(Grant) at price 0.00 - 125.60 per share."
         },
@@ -187,11 +187,11 @@
         },
         {
           "date": "2026-10-01",
-          "insider": "POHLAD ROBERT C",
+          "insider": "LEWIS DAVE J",
           "position": "Director",
-          "shares": 1827.0,
-          "value": 229787.0,
-          "text": "Stock Award(Grant) at price 125.60 - 126.72 per share."
+          "shares": 2007.0,
+          "value": 200000.0,
+          "text": "Stock Award(Grant) at price 0.00 - 125.60 per share."
         }
       ],
       "buybacks": [
@@ -219,7 +219,7 @@
     },
     "DAL": {
       "trend": "売り優勢",
-      "net_shares": -64747.0,
+      "net_shares": -65487.0,
       "transactions": [
         {
           "date": "2026-08-05",
@@ -414,8 +414,72 @@
     },
     "GS": {
       "trend": "買い優勢",
-      "net_shares": 108092.0,
+      "net_shares": 371452.0,
       "transactions": [
+        {
+          "date": "2026-10-28",
+          "insider": "LESLIE ERICKA T",
+          "position": "Officer",
+          "shares": 250.0,
+          "value": 229305.0,
+          "text": "Sale at price 909.63 - 926.28 per share."
+        },
+        {
+          "date": "2026-10-27",
+          "insider": "SOLOMON DAVID M",
+          "position": "Chief Executive Officer",
+          "shares": 12000.0,
+          "value": 10928695.0,
+          "text": "Sale at price 910.46 - 912.11 per share."
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "ROGERS JOHN F W",
+          "position": "Officer",
+          "shares": 36633.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "SOLOMON DAVID M",
+          "position": "Chief Executive Officer",
+          "shares": 109896.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "WALDRON JOHN E.",
+          "position": "President",
+          "shares": 73265.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "FREDMAN SHEARA J.",
+          "position": "Officer",
+          "shares": 18317.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "COLEMAN DENIS P.",
+          "position": "Chief Financial Officer",
+          "shares": 36633.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-22",
+          "insider": "LESLIE ERICKA T",
+          "position": "Officer",
+          "shares": 250.0,
+          "value": 222562.0,
+          "text": "Sale at price 890.03 - 890.85 per share."
+        },
         {
           "date": "2026-08-28",
           "insider": "LESLIE ERICKA T",
@@ -431,73 +495,13 @@
           "shares": 175.0,
           "value": 184445.0,
           "text": "Sale at price 1053.05 - 1054.77 per share."
-        },
-        {
-          "date": "2026-07-15",
-          "insider": "LESLIE ERICKA T",
-          "position": "Officer",
-          "shares": 250.0,
-          "value": 287951.0,
-          "text": "Sale at price 1151.29 - 1152.15 per share."
-        },
-        {
-          "date": "2026-07-15",
-          "insider": "VINIAR DAVID A",
-          "position": "Director",
-          "shares": 2000.0,
-          "value": 0.0,
-          "text": "Stock Gift at price 0.00 per share."
-        },
-        {
-          "date": "2026-05-14",
-          "insider": "COLEMAN DENIS P.",
-          "position": "Chief Financial Officer",
-          "shares": 6857.0,
-          "value": 6675613.0,
-          "text": "Sale at price 972.29 - 975.21 per share."
-        },
-        {
-          "date": "2026-05-06",
-          "insider": "RUEMMLER KATHRYN H",
-          "position": "General Counsel",
-          "shares": 14292.0,
-          "value": 13421235.0,
-          "text": "Sale at price 933.08 - 941.25 per share."
-        },
-        {
-          "date": "2026-05-01",
-          "insider": "FREDMAN SHEARA J.",
-          "position": "Officer",
-          "shares": 10301.0,
-          "value": 9571354.0,
-          "text": "Sale at price 925.18 - 930.21 per share."
-        },
-        {
-          "date": "2026-05-01",
-          "insider": "RUEMMLER KATHRYN H",
-          "position": "General Counsel",
-          "shares": 683.0,
-          "value": 634927.0,
-          "text": "Sale at price 928.85 - 930.35 per share."
-        },
-        {
-          "date": "2026-05-01",
-          "insider": "SOLOMON DAVID M",
-          "position": "Chief Executive Officer",
-          "shares": 3470.0,
-          "value": 3229543.0,
-          "text": "Sale at price 930.43 - 931.25 per share."
-        },
-        {
-          "date": "2026-04-28",
-          "insider": "ROGERS JOHN F W",
-          "position": "Officer",
-          "shares": 21915.0,
-          "value": 0.0,
-          "text": ""
         }
       ],
       "buybacks": [
+        {
+          "period": "2025-03",
+          "amount": 4360000000.0
+        },
         {
           "period": "2025-06",
           "amount": 3000000000.0
@@ -513,10 +517,6 @@
         {
           "period": "2026-03",
           "amount": 6450000000.0
-        },
-        {
-          "period": "2026-06",
-          "amount": 4675000000.0
         }
       ]
     },
@@ -766,30 +766,6 @@
         },
         {
           "date": "2026-03-05",
-          "insider": "SCHARF CHARLES W",
-          "position": "Chief Executive Officer",
-          "shares": 379767.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-03-05",
-          "insider": "SOMMERS BARRY",
-          "position": "Officer",
-          "shares": 101035.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-03-05",
-          "insider": "PATTERSON ELLEN REILLY",
-          "position": "General Counsel",
-          "shares": 97258.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-03-05",
           "insider": "HRANICKY KYLE G",
           "position": "Officer",
           "shares": 58141.0,
@@ -806,26 +782,46 @@
         },
         {
           "date": "2026-03-05",
-          "insider": "SANTOS KLEBER",
-          "position": "Officer",
-          "shares": 60914.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-03-05",
           "insider": "FERCHO KRISTY",
           "position": "Officer",
           "shares": 25823.0,
           "value": 0.0,
           "text": ""
+        },
+        {
+          "date": "2026-03-05",
+          "insider": "SOMMERS BARRY",
+          "position": "Officer",
+          "shares": 101035.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-03-05",
+          "insider": "SANTOMASSIMO MICHAEL P",
+          "position": "Chief Financial Officer",
+          "shares": 125481.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-03-05",
+          "insider": "PATTERSON ELLEN REILLY",
+          "position": "General Counsel",
+          "shares": 97258.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-03-05",
+          "insider": "SCHARF CHARLES W",
+          "position": "Chief Executive Officer",
+          "shares": 379767.0,
+          "value": 0.0,
+          "text": ""
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 5016000000.0
-        },
         {
           "period": "2025-09",
           "amount": 6000000000.0
@@ -841,6 +837,10 @@
         {
           "period": "2026-06",
           "amount": 3015000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 2500000000.0
         }
       ]
     },
@@ -954,14 +954,6 @@
       "transactions": [],
       "buybacks": [
         {
-          "period": "2025-03",
-          "amount": 2592600000.0
-        },
-        {
-          "period": "2025-06",
-          "amount": 1485200000.0
-        },
-        {
           "period": "2025-09",
           "amount": 172200000.0
         },
@@ -972,12 +964,20 @@
         {
           "period": "2026-03",
           "amount": 1000000000.0
+        },
+        {
+          "period": "2026-06",
+          "amount": 1077500000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 4071000000.0
         }
       ]
     },
     "BLK": {
-      "trend": "売り優勢",
-      "net_shares": -31224.0,
+      "trend": "買い優勢",
+      "net_shares": 11415.0,
       "transactions": [
         {
           "date": "2026-09-30",
@@ -1278,10 +1278,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 0.0
-        },
-        {
           "period": "2025-09",
           "amount": 1902000000.0
         },
@@ -1296,6 +1292,10 @@
         {
           "period": "2026-06",
           "amount": 221000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 1709000000.0
         }
       ]
     },
@@ -1386,10 +1386,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 240000000.0
-        },
-        {
           "period": "2025-09",
           "amount": 21000000.0
         },
@@ -1404,12 +1400,16 @@
         {
           "period": "2026-06",
           "amount": 0.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 0.0
         }
       ]
     },
     "JBHT": {
       "trend": "買い優勢",
-      "net_shares": 74614.0,
+      "net_shares": 67199.0,
       "transactions": [
         {
           "date": "2026-06-05",
@@ -1477,26 +1477,22 @@
         },
         {
           "date": "2026-04-23",
+          "insider": "ROBO JAMES L",
+          "position": "Director",
+          "shares": 1359.0,
+          "value": 344792.0,
+          "text": "Stock Award(Grant) at price 253.71 per share."
+        },
+        {
+          "date": "2026-04-23",
           "insider": "LISBOA PERSIO V",
           "position": "Director",
           "shares": 1241.0,
           "value": 314854.0,
           "text": "Stock Award(Grant) at price 253.71 per share."
-        },
-        {
-          "date": "2026-04-23",
-          "insider": "BIGGS M BRETT",
-          "position": "Director",
-          "shares": 855.0,
-          "value": 216922.0,
-          "text": "Stock Award(Grant) at price 253.71 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 316997000.0
-        },
         {
           "period": "2025-09",
           "amount": 232381000.0
@@ -1512,6 +1508,10 @@
         {
           "period": "2026-06",
           "amount": 95894000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 175107000.0
         }
       ]
     },
@@ -1519,14 +1519,6 @@
       "trend": "動きなし",
       "net_shares": 0.0,
       "transactions": [
-        {
-          "date": "2026-08-26",
-          "insider": "CALISTO ISAIAS JOSE",
-          "position": "Chief Executive Officer",
-          "shares": 359.0,
-          "value": 23026.0,
-          "text": "Sale at price 64.00 - 64.15 per share."
-        },
         {
           "date": "2026-08-24",
           "insider": "CALISTO ISAIAS JOSE",
@@ -1598,19 +1590,43 @@
           "shares": 45869.0,
           "value": 2962564.0,
           "text": "Sale at price 64.51 - 64.65 per share."
+        },
+        {
+          "date": "2026-07-30",
+          "insider": "CALISTO ISAIAS JOSE",
+          "position": "Chief Executive Officer",
+          "shares": 50527.0,
+          "value": 3237667.0,
+          "text": "Sale at price 63.47 - 64.43 per share."
         }
       ],
       "buybacks": []
     },
     "UNH": {
       "trend": "買い優勢",
-      "net_shares": 2822.0,
+      "net_shares": 3622.0,
       "transactions": [
         {
           "date": "2026-10-01",
           "insider": "BAKER CHARLES D",
           "position": "Director",
           "shares": 257.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-10-01",
+          "insider": "GOTTLIEB SCOTT",
+          "position": "Director",
+          "shares": 257.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-10-01",
+          "insider": "GARCIA PAUL REU",
+          "position": "Director",
+          "shares": 258.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
@@ -1624,9 +1640,9 @@
         },
         {
           "date": "2026-10-01",
-          "insider": "GARCIA PAUL REU",
+          "insider": "FLYNN TIMOTHY PATRICK",
           "position": "Director",
-          "shares": 258.0,
+          "shares": 262.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
@@ -1655,22 +1671,6 @@
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
         {
-          "date": "2026-10-01",
-          "insider": "FLYNN TIMOTHY PATRICK",
-          "position": "Director",
-          "shares": 262.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-10-01",
-          "insider": "GOTTLIEB SCOTT",
-          "position": "Director",
-          "shares": 257.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
           "date": "2026-09-22",
           "insider": "BAKER CHARLES D",
           "position": "Director",
@@ -1680,9 +1680,9 @@
         },
         {
           "date": "2026-09-22",
-          "insider": "STANKIEWICZ DENNIS ANDREW",
-          "position": "Officer",
-          "shares": 51.0,
+          "insider": "GOTTLIEB SCOTT",
+          "position": "Director",
+          "shares": 5.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         }
@@ -1797,10 +1797,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 1745000000.0
-        },
-        {
           "period": "2025-09",
           "amount": 1844000000.0
         },
@@ -1815,12 +1811,16 @@
         {
           "period": "2026-06",
           "amount": 2128000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 1979000000.0
         }
       ]
     },
     "ABT": {
-      "trend": "買い優勢",
-      "net_shares": 35755.0,
+      "trend": "売り優勢",
+      "net_shares": -3877.0,
       "transactions": [
         {
           "date": "2026-09-02",
@@ -1928,8 +1928,32 @@
     },
     "NFLX": {
       "trend": "買い優勢",
-      "net_shares": 45687.0,
+      "net_shares": 47206.0,
       "transactions": [
+        {
+          "date": "2026-10-28",
+          "insider": "PETERS GREGORY K.",
+          "position": "Officer and Director",
+          "shares": 1519.0,
+          "value": 0.0,
+          "text": "Stock Gift at price 0.00 per share."
+        },
+        {
+          "date": "2026-10-26",
+          "insider": "SMITH BRADFORD LEE",
+          "position": "Director",
+          "shares": 17980.0,
+          "value": 250045.0,
+          "text": "Conversion of Exercise of derivative security at price 12.75 - 14.69 per share."
+        },
+        {
+          "date": "2026-10-26",
+          "insider": "SMITH BRADFORD LEE",
+          "position": "Director",
+          "shares": 17980.0,
+          "value": 1151193.0,
+          "text": "Sale at price 63.55 - 65.14 per share."
+        },
         {
           "date": "2026-09-10",
           "insider": "BARTON RICHARD N",
@@ -1985,37 +2009,9 @@
           "shares": 2160.0,
           "value": 43431.0,
           "text": "Conversion of Exercise of derivative security at price 20.11 per share."
-        },
-        {
-          "date": "2026-08-05",
-          "insider": "BARTON RICHARD N",
-          "position": "Director",
-          "shares": 2160.0,
-          "value": 162216.0,
-          "text": "Sale at price 75.10 per share."
-        },
-        {
-          "date": "2026-08-04",
-          "insider": "HYMAN DAVID A",
-          "position": "Officer",
-          "shares": 5723.0,
-          "value": 416899.0,
-          "text": "Sale at price 72.85 per share."
-        },
-        {
-          "date": "2026-08-04",
-          "insider": "SARANDOS THEODORE ANTHONY JR.",
-          "position": "Chief Executive Officer",
-          "shares": 133162.0,
-          "value": 9733584.0,
-          "text": "Sale at price 72.90 - 73.48 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 1654327000.0
-        },
         {
           "period": "2025-09",
           "amount": 1856885000.0
@@ -2031,12 +2027,16 @@
         {
           "period": "2026-06",
           "amount": 4714403000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 4796725000.0
         }
       ]
     },
     "DPZ": {
       "trend": "買い優勢",
-      "net_shares": 2969.0,
+      "net_shares": 1424.0,
       "transactions": [
         {
           "date": "2026-09-30",
@@ -2121,10 +2121,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 153041000.0
-        },
-        {
           "period": "2025-09",
           "amount": 74657000.0
         },
@@ -2139,6 +2135,10 @@
         {
           "period": "2026-06",
           "amount": 159518000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 73623000.0
         }
       ]
     },
@@ -2229,10 +2229,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 257000000.0
-        },
-        {
           "period": "2025-09",
           "amount": 250000000.0
         },
@@ -2247,6 +2243,10 @@
         {
           "period": "2026-06",
           "amount": 208000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 250000000.0
         }
       ]
     },
@@ -2363,6 +2363,22 @@
       "net_shares": 1025672.0,
       "transactions": [
         {
+          "date": "2026-10-28",
+          "insider": "BOUDA CHRISTOPHER",
+          "position": "Officer",
+          "shares": 7598.0,
+          "value": 1782157.0,
+          "text": "Sale at price 234.54 - 234.58 per share."
+        },
+        {
+          "date": "2026-10-28",
+          "insider": "BOUDA CHRISTOPHER",
+          "position": "Officer",
+          "shares": 7598.0,
+          "value": 537483.0,
+          "text": "Conversion of Exercise of derivative security at price 70.74 per share."
+        },
+        {
           "date": "2026-08-21",
           "insider": "BLAIR RAINER M",
           "position": "Chief Executive Officer",
@@ -2425,29 +2441,9 @@
           "shares": 3298.0,
           "value": 237060.0,
           "text": "Conversion of Exercise of derivative security at price 71.88 per share."
-        },
-        {
-          "date": "2026-05-15",
-          "insider": "ZERHOUNI ELIAS A",
-          "position": "Director",
-          "shares": 680.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-05-15",
-          "insider": "LIST-STOLL TERI L.",
-          "position": "Director",
-          "shares": 680.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 0.0
-        },
         {
           "period": "2025-09",
           "amount": 2010000000.0
@@ -2463,13 +2459,25 @@
         {
           "period": "2026-06",
           "amount": 894000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 0.0
         }
       ]
     },
     "SCHW": {
       "trend": "売り優勢",
-      "net_shares": -682659.0,
+      "net_shares": -818255.0,
       "transactions": [
+        {
+          "date": "2026-10-29",
+          "insider": "SCHWAB CHARLES R JR.",
+          "position": "Chairman of the Board",
+          "shares": 203150.0,
+          "value": 18105625.0,
+          "text": "Sale at price 88.36 - 89.50 per share."
+        },
         {
           "date": "2026-10-01",
           "insider": "HATHI NEESHA",
@@ -2541,14 +2549,6 @@
           "shares": 9175.0,
           "value": 1002397.0,
           "text": "Sale at price 109.25 per share."
-        },
-        {
-          "date": "2026-08-24",
-          "insider": "BETTINGER WALTER W II",
-          "position": "Chairman of the Board",
-          "shares": 176210.0,
-          "value": 8248390.0,
-          "text": "Conversion of Exercise of derivative security at price 46.81 per share."
         }
       ],
       "buybacks": [
@@ -2769,10 +2769,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 953000000.0
-        },
-        {
           "period": "2025-09",
           "amount": 472000000.0
         },
@@ -2787,12 +2783,16 @@
         {
           "period": "2026-06",
           "amount": 994000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 232000000.0
         }
       ]
     },
     "GEV": {
-      "trend": "買い優勢",
-      "net_shares": 42159.0,
+      "trend": "売り優勢",
+      "net_shares": -2337.0,
       "transactions": [
         {
           "date": "2026-06-01",
@@ -2801,38 +2801,6 @@
           "shares": 4819.0,
           "value": 4568798.0,
           "text": "Sale at price 948.08 per share."
-        },
-        {
-          "date": "2026-05-14",
-          "insider": "POTVIN MATTHEW JOSEPH",
-          "position": "Officer",
-          "shares": 2333.0,
-          "value": 2470857.0,
-          "text": "Sale at price 1059.09 per share."
-        },
-        {
-          "date": "2026-05-14",
-          "insider": "RUCKER KIM K. W.",
-          "position": "Director",
-          "shares": 495.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-05-14",
-          "insider": "MALAVE JESUS JR.",
-          "position": "Director",
-          "shares": 495.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-05-14",
-          "insider": "MATTHEW HARRIS C",
-          "position": "Director",
-          "shares": 495.0,
-          "value": 0.0,
-          "text": ""
         },
         {
           "date": "2026-05-14",
@@ -2873,13 +2841,41 @@
           "shares": 495.0,
           "value": 0.0,
           "text": ""
+        },
+        {
+          "date": "2026-05-14",
+          "insider": "RUCKER KIM K. W.",
+          "position": "Director",
+          "shares": 495.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-05-14",
+          "insider": "MALAVE JESUS JR.",
+          "position": "Director",
+          "shares": 495.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-05-14",
+          "insider": "MATTHEW HARRIS C",
+          "position": "Director",
+          "shares": 495.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-05-14",
+          "insider": "POTVIN MATTHEW JOSEPH",
+          "position": "Officer",
+          "shares": 2333.0,
+          "value": 2470857.0,
+          "text": "Sale at price 1059.09 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 480000000.0
-        },
         {
           "period": "2025-09",
           "amount": 660000000.0
@@ -2895,6 +2891,10 @@
         {
           "period": "2026-06",
           "amount": 2393000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 1625000000.0
         }
       ]
     },
@@ -2902,6 +2902,14 @@
       "trend": "動きなし",
       "net_shares": 0.0,
       "transactions": [
+        {
+          "date": "2026-10-23",
+          "insider": "STANKEY JOHN T",
+          "position": "Chief Executive Officer",
+          "shares": 13000.0,
+          "value": 0.0,
+          "text": "Stock Gift at price 0.00 per share."
+        },
         {
           "date": "2026-10-06",
           "insider": "CAKARIC DARCIE M.",
@@ -2973,21 +2981,9 @@
           "shares": 2690.0,
           "value": 62544.0,
           "text": "Stock Award(Grant) at price 23.25 per share."
-        },
-        {
-          "date": "2026-07-31",
-          "insider": "STANKEY JOHN T",
-          "position": "Chief Executive Officer",
-          "shares": 927.0,
-          "value": 21574.0,
-          "text": "Stock Award(Grant) at price 23.25 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 961000000.0
-        },
         {
           "period": "2025-09",
           "amount": 1490000000.0
@@ -3003,6 +2999,10 @@
         {
           "period": "2026-06",
           "amount": 2194000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 2803000000.0
         }
       ]
     },
@@ -3180,12 +3180,8 @@
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 13238000000.0
-        },
-        {
           "period": "2025-09",
-          "amount": 11904000000.0
+          "amount": 11504000000.0
         },
         {
           "period": "2025-12",
@@ -3198,12 +3194,16 @@
         {
           "period": "2026-06",
           "amount": 0.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 0.0
         }
       ]
     },
     "NOW": {
       "trend": "買い優勢",
-      "net_shares": 158949.0,
+      "net_shares": 167876.0,
       "transactions": [
         {
           "date": "2026-08-31",
@@ -3271,26 +3271,22 @@
         },
         {
           "date": "2026-08-14",
-          "insider": "FONTAINE DANIELLE",
-          "position": "Officer",
-          "shares": 975.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-08-14",
           "insider": "NOWBAR HOSSEIN",
           "position": "President",
           "shares": 5066.0,
           "value": 0.0,
           "text": ""
+        },
+        {
+          "date": "2026-08-14",
+          "insider": "FONTAINE DANIELLE",
+          "position": "Officer",
+          "shares": 975.0,
+          "value": 0.0,
+          "text": ""
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 361000000.0
-        },
         {
           "period": "2025-09",
           "amount": 584000000.0
@@ -3305,6 +3301,10 @@
         },
         {
           "period": "2026-06",
+          "amount": 0.0
+        },
+        {
+          "period": "2026-09",
           "amount": 0.0
         }
       ]
@@ -3339,6 +3339,14 @@
         },
         {
           "date": "2026-02-25",
+          "insider": "MIEBACH MICHAEL",
+          "position": "Director",
+          "shares": 434.0,
+          "value": 101264.0,
+          "text": "Purchase at price 233.33 per share."
+        },
+        {
+          "date": "2026-02-25",
           "insider": "HOWARD MICHELLE J.",
           "position": "Director",
           "shares": 50.0,
@@ -3346,12 +3354,12 @@
           "text": "Purchase at price 237.83 per share."
         },
         {
-          "date": "2026-02-25",
-          "insider": "MIEBACH MICHAEL",
-          "position": "Director",
-          "shares": 434.0,
-          "value": 101264.0,
-          "text": "Purchase at price 233.33 per share."
+          "date": "2026-02-20",
+          "insider": "THOMAS ROBERT DAVID",
+          "position": "Officer",
+          "shares": 8414.0,
+          "value": 0.0,
+          "text": ""
         },
         {
           "date": "2026-02-20",
@@ -3366,14 +3374,6 @@
           "insider": "FEHRING NICOLAS A.",
           "position": "Officer",
           "shares": 1568.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-02-20",
-          "insider": "THOMAS ROBERT DAVID",
-          "position": "Officer",
-          "shares": 8414.0,
           "value": 0.0,
           "text": ""
         },
@@ -3396,10 +3396,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 153000000.0
-        },
-        {
           "period": "2025-09",
           "amount": 414000000.0
         },
@@ -3414,13 +3410,65 @@
         {
           "period": "2026-06",
           "amount": 115000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 352000000.0
         }
       ]
     },
     "TXN": {
       "trend": "売り優勢",
-      "net_shares": -38379.0,
+      "net_shares": -28096.0,
       "transactions": [
+        {
+          "date": "2026-10-27",
+          "insider": "SANCHEZ ROBERT E",
+          "position": "Director",
+          "shares": 6065.0,
+          "value": 480712.0,
+          "text": "Conversion of Exercise of derivative security at price 79.26 per share."
+        },
+        {
+          "date": "2026-10-27",
+          "insider": "PATSLEY PAMELA H",
+          "position": "Director",
+          "shares": 4532.0,
+          "value": 473186.0,
+          "text": "Conversion of Exercise of derivative security at price 104.41 per share."
+        },
+        {
+          "date": "2026-10-27",
+          "insider": "CLARK JANET F",
+          "position": "Director",
+          "shares": 4306.0,
+          "value": 474306.0,
+          "text": "Conversion of Exercise of derivative security at price 110.15 per share."
+        },
+        {
+          "date": "2026-10-27",
+          "insider": "SANCHEZ ROBERT E",
+          "position": "Director",
+          "shares": 6065.0,
+          "value": 1832923.0,
+          "text": "Sale at price 302.14 - 303.07 per share."
+        },
+        {
+          "date": "2026-10-27",
+          "insider": "PATSLEY PAMELA H",
+          "position": "Director",
+          "shares": 4532.0,
+          "value": 1366670.0,
+          "text": "Sale at price 301.56 per share."
+        },
+        {
+          "date": "2026-10-27",
+          "insider": "CLARK JANET F",
+          "position": "Director",
+          "shares": 4306.0,
+          "value": 1302404.0,
+          "text": "Sale at price 302.40 - 303.17 per share."
+        },
         {
           "date": "2026-08-27",
           "insider": "ABRAHAM TSEDENIYA",
@@ -3452,61 +3500,9 @@
           "shares": 10000.0,
           "value": 3204289.0,
           "text": "Sale at price 320.41 - 321.01 per share."
-        },
-        {
-          "date": "2026-05-14",
-          "insider": "LIZARDI RAFAEL R",
-          "position": "Chief Financial Officer",
-          "shares": 47734.0,
-          "value": 8344381.0,
-          "text": "Conversion of Exercise of derivative security at price 174.81 per share."
-        },
-        {
-          "date": "2026-05-14",
-          "insider": "BAHAI AHMAD",
-          "position": "Officer",
-          "shares": 5000.0,
-          "value": 550750.0,
-          "text": "Conversion of Exercise of derivative security at price 110.15 per share."
-        },
-        {
-          "date": "2026-05-14",
-          "insider": "BAHAI AHMAD",
-          "position": "Officer",
-          "shares": 5000.0,
-          "value": 1545636.0,
-          "text": "Sale at price 309.13 per share."
-        },
-        {
-          "date": "2026-05-14",
-          "insider": "LIZARDI RAFAEL R",
-          "position": "Chief Financial Officer",
-          "shares": 47734.0,
-          "value": 14706996.0,
-          "text": "Sale at price 307.85 - 309.45 per share."
-        },
-        {
-          "date": "2026-05-13",
-          "insider": "COX CARRIE SMITH",
-          "position": "Director",
-          "shares": 8838.0,
-          "value": 947492.0,
-          "text": "Conversion of Exercise of derivative security at price 104.41 - 110.15 per share."
-        },
-        {
-          "date": "2026-05-13",
-          "insider": "COX CARRIE SMITH",
-          "position": "Director",
-          "shares": 8838.0,
-          "value": 2708029.0,
-          "text": "Sale at price 306.37 - 307.04 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 302000000.0
-        },
         {
           "period": "2025-09",
           "amount": 119000000.0
@@ -3522,6 +3518,10 @@
         {
           "period": "2026-06",
           "amount": 27000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 48000000.0
         }
       ]
     },
@@ -3722,8 +3722,24 @@
     },
     "LMT": {
       "trend": "売り優勢",
-      "net_shares": -5616.0,
+      "net_shares": -7719.0,
       "transactions": [
+        {
+          "date": "2026-10-23",
+          "insider": "BURRITT DAVID B",
+          "position": "Director",
+          "shares": 1796.0,
+          "value": 0.0,
+          "text": "Stock Gift at price 0.00 per share."
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "ST JOHN FRANK A",
+          "position": "Chief Operating Officer",
+          "shares": 3899.0,
+          "value": 2346276.0,
+          "text": "Sale at price 600.42 - 602.60 per share."
+        },
         {
           "date": "2026-08-13",
           "insider": "DONOVAN JOHN M",
@@ -3787,29 +3803,9 @@
           "shares": 2410.0,
           "value": 1592149.0,
           "text": "Sale at price 660.62 - 666.05 per share."
-        },
-        {
-          "date": "2026-02-20",
-          "insider": "ST JOHN FRANK A",
-          "position": "Chief Operating Officer",
-          "shares": 3756.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-02-20",
-          "insider": "HILL STEPHANIE C",
-          "position": "Officer",
-          "shares": 2517.0,
-          "value": 0.0,
-          "text": ""
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 500000000.0
-        },
         {
           "period": "2025-09",
           "amount": 1000000000.0
@@ -3824,6 +3820,10 @@
         },
         {
           "period": "2026-06",
+          "amount": 0.0
+        },
+        {
+          "period": "2026-09",
           "amount": 0.0
         }
       ]
@@ -3866,6 +3866,30 @@
         },
         {
           "date": "2026-05-07",
+          "insider": "GOLDSMITH ANDREA JO",
+          "position": "Director",
+          "shares": 12552.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-05-07",
+          "insider": "WEISLER DION J",
+          "position": "Director",
+          "shares": 12552.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-05-07",
+          "insider": "HENRY ALYSSA",
+          "position": "Director",
+          "shares": 12552.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-05-07",
           "insider": "SMITH STACY J",
           "position": "Director",
           "shares": 12552.0,
@@ -3882,33 +3906,9 @@
         },
         {
           "date": "2026-05-07",
-          "insider": "HENRY ALYSSA",
+          "insider": "BARRATT CRAIG H",
           "position": "Director",
-          "shares": 12552.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-05-07",
-          "insider": "WEISLER DION J",
-          "position": "Director",
-          "shares": 12552.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-05-07",
-          "insider": "GOLDSMITH ANDREA JO",
-          "position": "Director",
-          "shares": 12552.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-05-07",
-          "insider": "YEARY FRANK D",
-          "position": "Director",
-          "shares": 26611.0,
+          "shares": 2730.0,
           "value": 0.0,
           "text": ""
         }
@@ -3917,8 +3917,16 @@
     },
     "NEM": {
       "trend": "買い優勢",
-      "net_shares": 36366.0,
+      "net_shares": 38630.0,
       "transactions": [
+        {
+          "date": "2026-10-26",
+          "insider": "LEYVA DEBORAH",
+          "position": "Officer",
+          "shares": 2264.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
         {
           "date": "2026-09-01",
           "insider": "VILJOEN NATASCHA",
@@ -3990,21 +3998,9 @@
           "shares": 2674.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-07-27",
-          "insider": "FRY DAVID JAMES",
-          "position": "Officer",
-          "shares": 3691.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 1011000000.0
-        },
         {
           "period": "2025-09",
           "amount": 516000000.0
@@ -4020,6 +4016,10 @@
         {
           "period": "2026-06",
           "amount": 1567000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 1779000000.0
         }
       ]
     },
@@ -4027,6 +4027,14 @@
       "trend": "動きなし",
       "net_shares": 0.0,
       "transactions": [
+        {
+          "date": "2026-10-27",
+          "insider": "MALADY KYLE",
+          "position": "Officer",
+          "shares": 1100.0,
+          "value": 47300.0,
+          "text": "Sale at price 43.00 per share."
+        },
         {
           "date": "2026-10-20",
           "insider": "MALADY KYLE",
@@ -4098,23 +4106,15 @@
           "shares": 1100.0,
           "value": 55066.0,
           "text": "Sale at price 50.06 per share."
-        },
-        {
-          "date": "2026-08-18",
-          "insider": "MALADY KYLE",
-          "position": "Officer",
-          "shares": 1100.0,
-          "value": 53548.0,
-          "text": "Sale at price 48.68 per share."
         }
       ],
       "buybacks": [
         {
-          "period": "2025-03",
+          "period": "2025-06",
           "amount": 0.0
         },
         {
-          "period": "2025-06",
+          "period": "2025-09",
           "amount": 0.0
         },
         {
@@ -4124,6 +4124,10 @@
         {
           "period": "2026-06",
           "amount": 1000000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 500000000.0
         }
       ]
     },
@@ -4241,19 +4245,19 @@
       "transactions": [
         {
           "date": "2026-09-14",
-          "insider": "Sarin (Aradhana M.D.)",
-          "position": "",
-          "shares": 73.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-09-14",
           "insider": "Soriot (Pascal)",
           "position": "",
           "shares": 60000.0,
           "value": 9798900.0,
           "text": "Bought at price 163.32 per share."
+        },
+        {
+          "date": "2026-09-14",
+          "insider": "Sarin (Aradhana M.D.)",
+          "position": "",
+          "shares": 73.0,
+          "value": 0.0,
+          "text": ""
         },
         {
           "date": "2026-09-14",
@@ -4289,17 +4293,17 @@
         },
         {
           "date": "2026-03-04",
-          "insider": "Sarin (Aradhana M.D.)",
+          "insider": "Soriot (Pascal)",
           "position": "",
-          "shares": 4863.0,
+          "shares": 14967.0,
           "value": 0.0,
           "text": ""
         },
         {
           "date": "2026-03-04",
-          "insider": "Soriot (Pascal)",
+          "insider": "Sarin (Aradhana M.D.)",
           "position": "",
-          "shares": 14967.0,
+          "shares": 4863.0,
           "value": 0.0,
           "text": ""
         },
@@ -4409,10 +4413,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 40000000.0
-        },
-        {
           "period": "2025-09",
           "amount": 0.0
         },
@@ -4426,6 +4426,10 @@
         },
         {
           "period": "2026-06",
+          "amount": 0.0
+        },
+        {
+          "period": "2026-09",
           "amount": 0.0
         }
       ]
@@ -4447,22 +4451,6 @@
           "insider": "TOPALIAN LEON J",
           "position": "Chief Executive Officer",
           "shares": 26000.0,
-          "value": 1103960.0,
-          "text": "Conversion of Exercise of derivative security at price 42.46 per share."
-        },
-        {
-          "date": "2026-08-14",
-          "insider": "BEHR ALLEN C.",
-          "position": "Officer",
-          "shares": 7739.0,
-          "value": 857017.0,
-          "text": "Conversion of Exercise of derivative security at price 110.74 per share."
-        },
-        {
-          "date": "2026-08-14",
-          "insider": "TOPALIAN LEON J",
-          "position": "Chief Executive Officer",
-          "shares": 26000.0,
           "value": 6981547.0,
           "text": "Sale at price 268.52 - 269.29 per share."
         },
@@ -4473,6 +4461,22 @@
           "shares": 7739.0,
           "value": 2121578.0,
           "text": "Sale at price 274.00 - 274.42 per share."
+        },
+        {
+          "date": "2026-08-14",
+          "insider": "TOPALIAN LEON J",
+          "position": "Chief Executive Officer",
+          "shares": 26000.0,
+          "value": 1103960.0,
+          "text": "Conversion of Exercise of derivative security at price 42.46 per share."
+        },
+        {
+          "date": "2026-08-14",
+          "insider": "BEHR ALLEN C.",
+          "position": "Officer",
+          "shares": 7739.0,
+          "value": 857017.0,
+          "text": "Conversion of Exercise of derivative security at price 110.74 per share."
         },
         {
           "date": "2026-08-03",
@@ -4486,25 +4490,17 @@
           "date": "2026-07-30",
           "insider": "LAXTON STEPHEN D.",
           "position": "President",
-          "shares": 2409.0,
-          "value": 0.0,
-          "text": "Stock Gift at price 0.00 per share."
-        },
-        {
-          "date": "2026-07-30",
-          "insider": "LAXTON STEPHEN D.",
-          "position": "President",
           "shares": 3968.0,
           "value": 1019617.0,
           "text": "Sale at price 256.96 per share."
         },
         {
-          "date": "2026-06-03",
-          "insider": "HOLLATZ JOHN J",
-          "position": "Officer",
-          "shares": 10560.0,
-          "value": 1391986.0,
-          "text": "Conversion of Exercise of derivative security at price 130.71 - 133.03 per share."
+          "date": "2026-07-30",
+          "insider": "LAXTON STEPHEN D.",
+          "position": "President",
+          "shares": 2409.0,
+          "value": 0.0,
+          "text": "Stock Gift at price 0.00 per share."
         },
         {
           "date": "2026-06-03",
@@ -4513,6 +4509,14 @@
           "shares": 10560.0,
           "value": 2729291.0,
           "text": "Sale at price 258.33 - 258.57 per share."
+        },
+        {
+          "date": "2026-06-03",
+          "insider": "HOLLATZ JOHN J",
+          "position": "Officer",
+          "shares": 10560.0,
+          "value": 1391986.0,
+          "text": "Conversion of Exercise of derivative security at price 130.71 - 133.03 per share."
         }
       ],
       "buybacks": [
@@ -4540,7 +4544,7 @@
     },
     "PYPL": {
       "trend": "買い優勢",
-      "net_shares": 151838.0,
+      "net_shares": 163907.0,
       "transactions": [
         {
           "date": "2026-09-15",
@@ -4549,6 +4553,14 @@
           "shares": 12004.0,
           "value": 0.0,
           "text": ""
+        },
+        {
+          "date": "2026-09-03",
+          "insider": "KELLER FRANK",
+          "position": "Officer",
+          "shares": 4612.0,
+          "value": 255656.0,
+          "text": "Sale at price 54.68 - 56.71 per share."
         },
         {
           "date": "2026-09-03",
@@ -4567,18 +4579,26 @@
           "text": "Sale at price 54.80 per share."
         },
         {
-          "date": "2026-09-03",
-          "insider": "KELLER FRANK",
-          "position": "Officer",
-          "shares": 4612.0,
-          "value": 255656.0,
-          "text": "Sale at price 54.68 - 56.71 per share."
-        },
-        {
           "date": "2026-09-01",
           "insider": "MILLER JAMIE S",
           "position": "Chief Operating Officer",
           "shares": 7414.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-09-01",
+          "insider": "KELLER FRANK",
+          "position": "Officer",
+          "shares": 10321.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-09-01",
+          "insider": "NATALI CHRIS",
+          "position": "Officer",
+          "shares": 1126.0,
           "value": 0.0,
           "text": ""
         },
@@ -4599,22 +4619,6 @@
           "text": ""
         },
         {
-          "date": "2026-09-01",
-          "insider": "NATALI CHRIS",
-          "position": "Officer",
-          "shares": 1126.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-09-01",
-          "insider": "KELLER FRANK",
-          "position": "Officer",
-          "shares": 10321.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
           "date": "2026-08-18",
           "insider": "KEREERE SUZAN",
           "position": "Officer",
@@ -4624,10 +4628,6 @@
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 1551000000.0
-        },
         {
           "period": "2025-09",
           "amount": 1500000000.0
@@ -4643,6 +4643,10 @@
         {
           "period": "2026-06",
           "amount": 1552000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 1501000000.0
         }
       ]
     },
@@ -5059,6 +5063,14 @@
         },
         {
           "date": "2026-05-28",
+          "insider": "FAIN RICHARD DAVID",
+          "position": "Director",
+          "shares": 831.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-05-28",
           "insider": "HOWE STEPHEN R. JR",
           "position": "Director",
           "shares": 831.0,
@@ -5088,21 +5100,9 @@
           "shares": 831.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-05-28",
-          "insider": "WILHELMSEN ARNE ALEXANDER",
-          "position": "Director",
-          "shares": 831.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 0.0
-        },
         {
           "period": "2025-09",
           "amount": 414000000.0
@@ -5118,6 +5118,10 @@
         {
           "period": "2026-06",
           "amount": 199000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 0.0
         }
       ]
     },
@@ -5175,19 +5179,19 @@
         },
         {
           "date": "2026-08-14",
-          "insider": "JOSHI AMAN",
-          "position": "Officer",
-          "shares": 4677.0,
-          "value": 1130665.0,
-          "text": "Sale at price 241.75 per share."
-        },
-        {
-          "date": "2026-08-14",
           "insider": "CHITOORI SATISH PRABHU",
           "position": "Chief Operating Officer",
           "shares": 2053.0,
           "value": 496087.0,
           "text": "Sale at price 241.64 per share."
+        },
+        {
+          "date": "2026-08-14",
+          "insider": "JOSHI AMAN",
+          "position": "Officer",
+          "shares": 4677.0,
+          "value": 1130665.0,
+          "text": "Sale at price 241.75 per share."
         },
         {
           "date": "2026-08-14",
@@ -5210,94 +5214,90 @@
     },
     "STX": {
       "trend": "買い優勢",
-      "net_shares": 45658.0,
+      "net_shares": 62436.0,
       "transactions": [
         {
-          "date": "2026-09-21",
-          "insider": "MORRIS JOHN CHRISTOPHER",
-          "position": "Chief Technology Officer",
-          "shares": 9354.0,
-          "value": 8211951.0,
-          "text": "Sale at price 863.66 - 902.07 per share."
-        },
-        {
-          "date": "2026-09-21",
-          "insider": "MORRIS JOHN CHRISTOPHER",
-          "position": "Chief Technology Officer",
-          "shares": 915.0,
-          "value": 144936.0,
-          "text": "Conversion of Exercise of derivative security at price 158.40 per share."
-        },
-        {
-          "date": "2026-09-15",
-          "insider": "MORRIS JOHN CHRISTOPHER",
-          "position": "Chief Technology Officer",
-          "shares": 15465.0,
-          "value": 11941704.0,
-          "text": "Sale at price 772.15 per share."
-        },
-        {
-          "date": "2026-09-15",
-          "insider": "MOSLEY WILLIAM D",
-          "position": "Chief Executive Officer",
-          "shares": 97889.0,
-          "value": 75584519.0,
-          "text": "Sale at price 772.14 per share."
-        },
-        {
-          "date": "2026-09-15",
-          "insider": "ROMANO GIANLUCA",
-          "position": "Chief Financial Officer",
-          "shares": 49983.0,
-          "value": 38595124.0,
-          "text": "Sale at price 772.16 per share."
-        },
-        {
-          "date": "2026-09-15",
-          "insider": "TEH BAN-SENG",
+          "date": "2026-10-23",
+          "insider": "LEE JAMES CI",
           "position": "Officer",
-          "shares": 52730.0,
-          "value": 41239128.0,
-          "text": "Sale at price 771.38 - 800.47 per share."
+          "shares": 547.0,
+          "value": 351411.0,
+          "text": "Sale at price 642.14 per share."
         },
         {
-          "date": "2026-09-14",
-          "insider": "MORRIS JOHN CHRISTOPHER",
-          "position": "Chief Technology Officer",
-          "shares": 492.0,
-          "value": 384952.0,
-          "text": "Sale at price 781.23 per share."
+          "date": "2026-10-23",
+          "insider": "ADAMS MARK W",
+          "position": "Director",
+          "shares": 1580.0,
+          "value": 0.0,
+          "text": ""
         },
         {
-          "date": "2026-09-14",
-          "insider": "MOSLEY WILLIAM D",
-          "position": "Chief Executive Officer",
-          "shares": 1869.0,
-          "value": 1460696.0,
-          "text": "Sale at price 781.23 per share."
+          "date": "2026-10-23",
+          "insider": "ARUMUGAVELU SHANKAR",
+          "position": "Director",
+          "shares": 1580.0,
+          "value": 0.0,
+          "text": ""
         },
         {
-          "date": "2026-09-14",
-          "insider": "ROMANO GIANLUCA",
-          "position": "Chief Financial Officer",
-          "shares": 5555.0,
-          "value": 4677037.0,
-          "text": "Sale at price 781.24 - 868.43 per share."
+          "date": "2026-10-23",
+          "insider": "CONYERS YOLANDA LEE",
+          "position": "Director",
+          "shares": 1580.0,
+          "value": 0.0,
+          "text": ""
         },
         {
-          "date": "2026-09-14",
-          "insider": "TEH BAN-SENG",
-          "position": "Officer",
-          "shares": 989.0,
-          "value": 770431.0,
-          "text": "Sale at price 779.00 per share."
+          "date": "2026-10-23",
+          "insider": "SZLOSEK THOMAS A",
+          "position": "Director",
+          "shares": 1580.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "GELDMACHER JAY L",
+          "position": "Director",
+          "shares": 1580.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "BHATT PRATIK",
+          "position": "Director",
+          "shares": 1580.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "HAGGART DYLAN G.",
+          "position": "Director",
+          "shares": 1580.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "CLEMMER RICHARD L",
+          "position": "Director",
+          "shares": 1580.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "CANNON MICHAEL REYE",
+          "position": "Director",
+          "shares": 1868.0,
+          "value": 0.0,
+          "text": ""
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-03",
-          "amount": 0.0
-        },
         {
           "period": "2025-09",
           "amount": 29000000.0
@@ -5313,6 +5313,10 @@
         {
           "period": "2026-06",
           "amount": 117000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 400000000.0
         }
       ]
     },
@@ -5394,18 +5398,14 @@
         },
         {
           "date": "2026-05-13",
-          "insider": "GOMO STEVEN J",
+          "insider": "MORA RICHARD",
           "position": "Director",
-          "shares": 6428.0,
+          "shares": 5952.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 29993000.0
-        },
         {
           "period": "2025-09",
           "amount": 0.0
@@ -5420,6 +5420,10 @@
         },
         {
           "period": "2026-06",
+          "amount": 0.0
+        },
+        {
+          "period": "2026-09",
           "amount": 0.0
         }
       ]
@@ -5546,18 +5550,18 @@
         },
         {
           "date": "2026-10-15",
-          "insider": "SMITH GREGORY STEPHEN",
-          "position": "Chief Executive Officer",
-          "shares": 4000.0,
-          "value": 1365120.0,
-          "text": "Sale at price 341.28 per share."
-        },
-        {
-          "date": "2026-10-15",
           "insider": "MATZ MARILYN",
           "position": "Director",
           "shares": 800.0,
           "value": 273024.0,
+          "text": "Sale at price 341.28 per share."
+        },
+        {
+          "date": "2026-10-15",
+          "insider": "SMITH GREGORY STEPHEN",
+          "position": "Chief Executive Officer",
+          "shares": 4000.0,
+          "value": 1365120.0,
           "text": "Sale at price 341.28 per share."
         },
         {
@@ -5586,18 +5590,18 @@
         },
         {
           "date": "2026-09-15",
-          "insider": "SMITH GREGORY STEPHEN",
-          "position": "Chief Executive Officer",
-          "shares": 4000.0,
-          "value": 1351320.0,
-          "text": "Sale at price 337.83 per share."
-        },
-        {
-          "date": "2026-09-15",
           "insider": "MATZ MARILYN",
           "position": "Director",
           "shares": 800.0,
           "value": 270264.0,
+          "text": "Sale at price 337.83 per share."
+        },
+        {
+          "date": "2026-09-15",
+          "insider": "SMITH GREGORY STEPHEN",
+          "position": "Chief Executive Officer",
+          "shares": 4000.0,
+          "value": 1351320.0,
           "text": "Sale at price 337.83 per share."
         },
         {
@@ -5610,10 +5614,10 @@
         },
         {
           "date": "2026-08-17",
-          "insider": "SMITH GREGORY STEPHEN",
-          "position": "Chief Executive Officer",
-          "shares": 4000.0,
-          "value": 1700000.0,
+          "insider": "MATZ MARILYN",
+          "position": "Director",
+          "shares": 1200.0,
+          "value": 510000.0,
           "text": "Sale at price 425.00 per share."
         }
       ],
@@ -5727,10 +5731,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 0.0
-        },
-        {
           "period": "2025-09",
           "amount": 0.0
         },
@@ -5744,6 +5744,10 @@
         },
         {
           "period": "2026-06",
+          "amount": 0.0
+        },
+        {
+          "period": "2026-09",
           "amount": 0.0
         }
       ]
@@ -5778,19 +5782,19 @@
         },
         {
           "date": "2026-08-10",
-          "insider": "AMES EDIE A",
-          "position": "Director",
-          "shares": 3000.0,
-          "value": 320850.0,
-          "text": "Sale at price 106.95 per share."
-        },
-        {
-          "date": "2026-08-10",
           "insider": "GORDON DAVID M",
           "position": "President",
           "shares": 31950.0,
           "value": 3515369.0,
           "text": "Sale at price 109.98 - 110.08 per share."
+        },
+        {
+          "date": "2026-08-10",
+          "insider": "AMES EDIE A",
+          "position": "Director",
+          "shares": 3000.0,
+          "value": 320850.0,
+          "text": "Sale at price 106.95 per share."
         },
         {
           "date": "2026-08-10",
@@ -5835,6 +5839,10 @@
       ],
       "buybacks": [
         {
+          "period": "2025-03",
+          "amount": 141359000.0
+        },
+        {
           "period": "2025-06",
           "amount": 131000.0
         },
@@ -5849,10 +5857,6 @@
         {
           "period": "2026-03",
           "amount": 18402000.0
-        },
-        {
-          "period": "2026-06",
-          "amount": 10962000.0
         }
       ]
     },
@@ -5886,17 +5890,25 @@
         },
         {
           "date": "2026-09-14",
-          "insider": "KEOUGH KELLI ALLEN",
-          "position": "Officer",
-          "shares": 127867.0,
+          "insider": "LAVET ROBERT S",
+          "position": "General Counsel",
+          "shares": 36057.0,
           "value": 0.0,
           "text": ""
         },
         {
           "date": "2026-09-14",
-          "insider": "SCHUPPENHAUER ERIC",
-          "position": "Officer",
-          "shares": 6493.0,
+          "insider": "NOTO ANTHONY J.",
+          "position": "Chief Executive Officer",
+          "shares": 345554.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-09-14",
+          "insider": "LAPOINTE CHRISTOPHER",
+          "position": "Chief Financial Officer",
+          "shares": 104152.0,
           "value": 0.0,
           "text": ""
         },
@@ -5918,25 +5930,17 @@
         },
         {
           "date": "2026-09-14",
-          "insider": "LAPOINTE CHRISTOPHER",
-          "position": "Chief Financial Officer",
-          "shares": 104152.0,
+          "insider": "KEOUGH KELLI ALLEN",
+          "position": "Officer",
+          "shares": 127867.0,
           "value": 0.0,
           "text": ""
         },
         {
           "date": "2026-09-14",
-          "insider": "LAVET ROBERT S",
-          "position": "General Counsel",
-          "shares": 36057.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-09-14",
-          "insider": "NOTO ANTHONY J.",
-          "position": "Chief Executive Officer",
-          "shares": 345554.0,
+          "insider": "SCHUPPENHAUER ERIC",
+          "position": "Officer",
+          "shares": 6493.0,
           "value": 0.0,
           "text": ""
         }
@@ -6145,8 +6149,40 @@
     },
     "PG": {
       "trend": "買い優勢",
-      "net_shares": 107542.0,
+      "net_shares": 99030.0,
       "transactions": [
+        {
+          "date": "2026-10-23",
+          "insider": "JEJURIKAR SHAILESH",
+          "position": "Chief Executive Officer",
+          "shares": 35000.0,
+          "value": 2748200.0,
+          "text": "Conversion of Exercise of derivative security at price 78.52 per share."
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "PURUSHOTHAMAN BALAJI",
+          "position": "Officer",
+          "shares": 4181.0,
+          "value": 671929.0,
+          "text": "Sale at price 160.71 per share."
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "GAMA PAUL",
+          "position": "Officer",
+          "shares": 4331.0,
+          "value": 698460.0,
+          "text": "Sale at price 161.27 per share."
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "JEJURIKAR SHAILESH",
+          "position": "Chief Executive Officer",
+          "shares": 35000.0,
+          "value": 5708048.0,
+          "text": "Sale at price 163.09 per share."
+        },
         {
           "date": "2026-10-13",
           "insider": "PORTMAN ROBERT JONES",
@@ -6194,45 +6230,9 @@
           "shares": 1438.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-10-13",
-          "insider": "ARNOLD CRAIG",
-          "position": "Director",
-          "shares": 1438.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-10-13",
-          "insider": "JIMENEZ JOSEPH JR",
-          "position": "Director",
-          "shares": 1438.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-10-13",
-          "insider": "CHANG AMY L",
-          "position": "Director",
-          "shares": 1438.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-10-13",
-          "insider": "KEMPCZINSKI CHRISTOPHER J",
-          "position": "Director",
-          "shares": 1438.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 700000000.0
-        },
         {
           "period": "2025-09",
           "amount": 1250000000.0
@@ -6248,6 +6248,10 @@
         {
           "period": "2026-06",
           "amount": 875000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 1250000000.0
         }
       ]
     },
@@ -6338,10 +6342,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 4546000000.0
-        },
-        {
           "period": "2025-09",
           "amount": 5650000000.0
         },
@@ -6356,13 +6356,33 @@
         {
           "period": "2026-06",
           "amount": 4579000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 4379000000.0
         }
       ]
     },
     "META": {
       "trend": "買い優勢",
-      "net_shares": 1164036.0,
+      "net_shares": 1163626.0,
       "transactions": [
+        {
+          "date": "2026-10-26",
+          "insider": "OLIVAN JAVIER",
+          "position": "Chief Operating Officer",
+          "shares": 1575.0,
+          "value": 1008000.0,
+          "text": "Sale at price 640.00 per share."
+        },
+        {
+          "date": "2026-10-26",
+          "insider": "ALFORD PEGGY",
+          "position": "Director",
+          "shares": 390.0,
+          "value": 249600.0,
+          "text": "Sale at price 640.00 per share."
+        },
         {
           "date": "2026-10-19",
           "insider": "OLIVAN JAVIER",
@@ -6426,29 +6446,9 @@
           "shares": 40000.0,
           "value": 28510260.0,
           "text": "Sale at price 700.50 - 725.02 per share."
-        },
-        {
-          "date": "2026-09-15",
-          "insider": "COX CHRISTOPHER K",
-          "position": "Officer",
-          "shares": 20000.0,
-          "value": 13504556.0,
-          "text": "Sale at price 675.23 per share."
-        },
-        {
-          "date": "2026-09-14",
-          "insider": "OLIVAN JAVIER",
-          "position": "Chief Operating Officer",
-          "shares": 1575.0,
-          "value": 1035925.0,
-          "text": "Sale at price 657.73 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 10167000000.0
-        },
         {
           "period": "2025-09",
           "amount": 3327000000.0
@@ -6464,21 +6464,17 @@
         {
           "period": "2026-06",
           "amount": 0.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 0.0
         }
       ]
     },
     "HOOD": {
       "trend": "売り優勢",
-      "net_shares": -333871.0,
+      "net_shares": -328036.0,
       "transactions": [
-        {
-          "date": "2026-10-05",
-          "insider": "TENEV VLADIMIR",
-          "position": "Chief Executive Officer",
-          "shares": 375000.0,
-          "value": 0.0,
-          "text": ""
-        },
         {
           "date": "2026-10-05",
           "insider": "GALLAGHER DANIEL MARTIN JR",
@@ -6496,12 +6492,12 @@
           "text": "Sale at price 113.24 - 114.95 per share."
         },
         {
-          "date": "2026-09-30",
-          "insider": "SEGAL SUSAN L",
-          "position": "Director",
-          "shares": 216.0,
+          "date": "2026-10-05",
+          "insider": "TENEV VLADIMIR",
+          "position": "Chief Executive Officer",
+          "shares": 375000.0,
           "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
+          "text": ""
         },
         {
           "date": "2026-09-30",
@@ -6512,12 +6508,12 @@
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
         {
-          "date": "2026-09-22",
-          "insider": "TENEV VLADIMIR",
-          "position": "Chief Executive Officer",
-          "shares": 240834.0,
+          "date": "2026-09-30",
+          "insider": "SEGAL SUSAN L",
+          "position": "Director",
+          "shares": 216.0,
           "value": 0.0,
-          "text": ""
+          "text": "Stock Award(Grant) at price 0.00 per share."
         },
         {
           "date": "2026-09-22",
@@ -6528,10 +6524,10 @@
           "text": "Sale at price 125.33 - 126.14 per share."
         },
         {
-          "date": "2026-09-21",
+          "date": "2026-09-22",
           "insider": "TENEV VLADIMIR",
           "position": "Chief Executive Officer",
-          "shares": 259166.0,
+          "shares": 240834.0,
           "value": 0.0,
           "text": ""
         },
@@ -6544,6 +6540,14 @@
           "text": "Sale at price 125.55 - 126.15 per share."
         },
         {
+          "date": "2026-09-21",
+          "insider": "TENEV VLADIMIR",
+          "position": "Chief Executive Officer",
+          "shares": 259166.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
           "date": "2026-09-15",
           "insider": "VERMA SHIV",
           "position": "Chief Financial Officer",
@@ -6553,10 +6557,6 @@
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 124000000.0
-        },
         {
           "period": "2025-09",
           "amount": 107000000.0
@@ -6572,6 +6572,10 @@
         {
           "period": "2026-06",
           "amount": 414000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 25000000.0
         }
       ]
     },
@@ -6664,7 +6668,7 @@
     },
     "QCOM": {
       "trend": "売り優勢",
-      "net_shares": -49353.0,
+      "net_shares": -49161.0,
       "transactions": [
         {
           "date": "2026-10-20",
@@ -6775,6 +6779,22 @@
       "net_shares": -187668.0,
       "transactions": [
         {
+          "date": "2026-10-23",
+          "insider": "ARCHER TIMOTHY M",
+          "position": "Chief Executive Officer",
+          "shares": 31400.0,
+          "value": 7128428.0,
+          "text": "Sale at price 227.02 per share."
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "ARCHER TIMOTHY M",
+          "position": "Chief Executive Officer",
+          "shares": 31400.0,
+          "value": 943036.0,
+          "text": "Conversion of Exercise of derivative security at price 30.03 per share."
+        },
+        {
           "date": "2026-09-09",
           "insider": "ARCHER TIMOTHY M",
           "position": "Chief Executive Officer",
@@ -6837,29 +6857,9 @@
           "shares": 30000.0,
           "value": 900990.0,
           "text": "Conversion of Exercise of derivative security at price 30.03 per share."
-        },
-        {
-          "date": "2026-07-13",
-          "insider": "TALWALKAR ABHIJIT Y",
-          "position": "Director",
-          "shares": 18282.0,
-          "value": 6124470.0,
-          "text": "Sale at price 335.00 per share."
-        },
-        {
-          "date": "2026-07-02",
-          "insider": "ARCHER TIMOTHY M",
-          "position": "Chief Executive Officer",
-          "shares": 30000.0,
-          "value": 11700300.0,
-          "text": "Sale at price 390.01 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 1292277000.0
-        },
         {
           "period": "2025-09",
           "amount": 975791000.0
@@ -6875,6 +6875,10 @@
         {
           "period": "2026-06",
           "amount": 246560000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 1024965000.0
         }
       ]
     },
@@ -6965,10 +6969,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 443259000.0
-        },
-        {
           "period": "2025-09",
           "amount": 686665000.0
         },
@@ -6983,6 +6983,10 @@
         {
           "period": "2026-06",
           "amount": 653878000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 110029000.0
         }
       ]
     },
@@ -7181,10 +7185,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 2289000000.0
-        },
-        {
           "period": "2025-09",
           "amount": 3331000000.0
         },
@@ -7199,6 +7199,10 @@
         {
           "period": "2026-06",
           "amount": 4898000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 2960000000.0
         }
       ]
     },
@@ -7312,7 +7316,7 @@
     },
     "AAPL": {
       "trend": "買い優勢",
-      "net_shares": 256210.0,
+      "net_shares": 257744.0,
       "transactions": [
         {
           "date": "2026-10-20",
@@ -7420,7 +7424,7 @@
     },
     "AMZN": {
       "trend": "買い優勢",
-      "net_shares": 908869.0,
+      "net_shares": 912718.0,
       "transactions": [
         {
           "date": "2026-10-01",
@@ -7590,7 +7594,16 @@
           "text": "Sale at price 37.78 - 38.45 per share."
         }
       ],
-      "buybacks": []
+      "buybacks": [
+        {
+          "period": "2025-09",
+          "amount": 0.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 201000000.0
+        }
+      ]
     },
     "RDDT": {
       "trend": "買い優勢",
@@ -7601,16 +7614,32 @@
           "insider": "HUFFMAN STEVE LADD",
           "position": "Chief Executive Officer",
           "shares": 17308.0,
-          "value": 437719.0,
-          "text": "Conversion of Exercise of derivative security at price 25.29 per share."
+          "value": 2744446.0,
+          "text": "Sale at price 155.33 - 163.72 per share."
         },
         {
           "date": "2026-10-13",
           "insider": "HUFFMAN STEVE LADD",
           "position": "Chief Executive Officer",
           "shares": 17308.0,
-          "value": 2744446.0,
-          "text": "Sale at price 155.33 - 163.72 per share."
+          "value": 437719.0,
+          "text": "Conversion of Exercise of derivative security at price 25.29 per share."
+        },
+        {
+          "date": "2026-10-05",
+          "insider": "NEWHOUSE STEVEN O",
+          "position": "Director",
+          "shares": 115.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-10-05",
+          "insider": "GALE MARY PORTER",
+          "position": "Director",
+          "shares": 107.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
         },
         {
           "date": "2026-10-05",
@@ -7637,30 +7666,6 @@
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
         {
-          "date": "2026-10-05",
-          "insider": "NEWHOUSE STEVEN O",
-          "position": "Director",
-          "shares": 115.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-10-05",
-          "insider": "GALE MARY PORTER",
-          "position": "Director",
-          "shares": 107.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-09-29",
-          "insider": "HUFFMAN STEVE LADD",
-          "position": "Chief Executive Officer",
-          "shares": 17308.0,
-          "value": 437719.0,
-          "text": "Conversion of Exercise of derivative security at price 25.29 per share."
-        },
-        {
           "date": "2026-09-29",
           "insider": "HUFFMAN STEVE LADD",
           "position": "Chief Executive Officer",
@@ -7669,12 +7674,20 @@
           "text": "Sale at price 142.44 - 147.25 per share."
         },
         {
-          "date": "2026-09-15",
+          "date": "2026-09-29",
           "insider": "HUFFMAN STEVE LADD",
           "position": "Chief Executive Officer",
           "shares": 17308.0,
           "value": 437719.0,
           "text": "Conversion of Exercise of derivative security at price 25.29 per share."
+        },
+        {
+          "date": "2026-09-15",
+          "insider": "HUFFMAN STEVE LADD",
+          "position": "Chief Executive Officer",
+          "shares": 17308.0,
+          "value": 2771194.0,
+          "text": "Sale at price 158.21 - 163.64 per share."
         }
       ],
       "buybacks": [
@@ -7698,13 +7711,21 @@
     },
     "RIVN": {
       "trend": "買い優勢",
-      "net_shares": 62893234.0,
+      "net_shares": 62904730.0,
       "transactions": [
         {
           "date": "2026-10-20",
           "insider": "GOMEZ AIDAN N.",
           "position": "Director",
           "shares": 807.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-10-20",
+          "insider": "KRAFCIK JOHN",
+          "position": "Director",
+          "shares": 1251.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
@@ -7758,7 +7779,7 @@
         },
         {
           "date": "2026-07-20",
-          "insider": "SCHWARTZ SANFORD HAROLD",
+          "insider": "KRAFCIK JOHN",
           "position": "Director",
           "shares": 1192.0,
           "value": 0.0,
@@ -7766,15 +7787,7 @@
         },
         {
           "date": "2026-07-20",
-          "insider": "KRAWIEC PETER",
-          "position": "Director",
-          "shares": 884.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-07-20",
-          "insider": "KRAFCIK JOHN",
+          "insider": "SCHWARTZ SANFORD HAROLD",
           "position": "Director",
           "shares": 1192.0,
           "value": 0.0,
@@ -7837,7 +7850,7 @@
         },
         {
           "date": "2026-01-02",
-          "insider": "DREYFUS MARIA S",
+          "insider": "ANGELAKIS MICHAEL J",
           "position": "Director",
           "shares": 2500.0,
           "value": 0.0,
@@ -7845,7 +7858,7 @@
         },
         {
           "date": "2026-01-02",
-          "insider": "ANGELAKIS MICHAEL J",
+          "insider": "DREYFUS MARIA S",
           "position": "Director",
           "shares": 2500.0,
           "value": 0.0,
@@ -7923,25 +7936,17 @@
           "date": "2026-09-10",
           "insider": "MOCK JAMES M",
           "position": "Chief Financial Officer",
-          "shares": 19836.0,
-          "value": 614123.0,
-          "text": "Conversion of Exercise of derivative security at price 30.96 per share."
-        },
-        {
-          "date": "2026-09-10",
-          "insider": "MOCK JAMES M",
-          "position": "Chief Financial Officer",
           "shares": 34836.0,
           "value": 4685094.0,
           "text": "Sale at price 134.49 per share."
         },
         {
-          "date": "2026-09-04",
+          "date": "2026-09-10",
           "insider": "MOCK JAMES M",
           "position": "Chief Financial Officer",
-          "shares": 11797.0,
-          "value": 0.0,
-          "text": ""
+          "shares": 19836.0,
+          "value": 614123.0,
+          "text": "Conversion of Exercise of derivative security at price 30.96 per share."
         },
         {
           "date": "2026-09-04",
@@ -7952,12 +7957,20 @@
           "text": ""
         },
         {
-          "date": "2026-09-01",
+          "date": "2026-09-04",
           "insider": "MOCK JAMES M",
           "position": "Chief Financial Officer",
-          "shares": 2475.0,
+          "shares": 11797.0,
           "value": 0.0,
           "text": ""
+        },
+        {
+          "date": "2026-09-01",
+          "insider": "KLINGER SHANNON THYME",
+          "position": "Officer",
+          "shares": 5637.0,
+          "value": 107462.0,
+          "text": "Conversion of Exercise of derivative security at price 30.96 per share."
         },
         {
           "date": "2026-09-01",
@@ -8292,7 +8305,7 @@
     },
     "PLTR": {
       "trend": "買い優勢",
-      "net_shares": 259437.0,
+      "net_shares": 238296.0,
       "transactions": [
         {
           "date": "2026-10-15",
@@ -8395,8 +8408,8 @@
       ]
     },
     "ON": {
-      "trend": "売り優勢",
-      "net_shares": -47968.0,
+      "trend": "動きなし",
+      "net_shares": 0.0,
       "transactions": [
         {
           "date": "2026-07-02",
@@ -8524,19 +8537,19 @@
         },
         {
           "date": "2026-08-05",
-          "insider": "BLAYLOCK RONALD E",
-          "position": "Director",
-          "shares": 39231.0,
-          "value": 998821.0,
-          "text": "Purchase at price 25.46 per share."
-        },
-        {
-          "date": "2026-08-05",
           "insider": "BUCKLEY MORTIMER J.",
           "position": "Director",
           "shares": 37632.0,
           "value": 960369.0,
           "text": "Purchase at price 25.52 per share."
+        },
+        {
+          "date": "2026-08-05",
+          "insider": "BLAYLOCK RONALD E",
+          "position": "Director",
+          "shares": 39231.0,
+          "value": 998821.0,
+          "text": "Purchase at price 25.46 per share."
         },
         {
           "date": "2026-06-09",
@@ -8556,22 +8569,6 @@
         },
         {
           "date": "2026-02-25",
-          "insider": "FONSECA LIDIA PH.D.",
-          "position": "Officer",
-          "shares": 56888.0,
-          "value": 1923952.0,
-          "text": "Conversion of Exercise of derivative security at price 33.82 per share."
-        },
-        {
-          "date": "2026-02-25",
-          "insider": "LANKLER DOUGLAS M",
-          "position": "Officer",
-          "shares": 122907.0,
-          "value": 4156715.0,
-          "text": "Conversion of Exercise of derivative security at price 33.82 per share."
-        },
-        {
-          "date": "2026-02-25",
           "insider": "MCDERMOTT MICHAEL",
           "position": "Officer",
           "shares": 37925.0,
@@ -8584,6 +8581,22 @@
           "position": "Chief Executive Officer",
           "shares": 491626.0,
           "value": 16626791.0,
+          "text": "Conversion of Exercise of derivative security at price 33.82 per share."
+        },
+        {
+          "date": "2026-02-25",
+          "insider": "DAMICO JENNIFER B.",
+          "position": "Officer",
+          "shares": 17558.0,
+          "value": 593812.0,
+          "text": "Conversion of Exercise of derivative security at price 33.82 per share."
+        },
+        {
+          "date": "2026-02-25",
+          "insider": "SAHNI PAYAL",
+          "position": "Officer",
+          "shares": 56888.0,
+          "value": 1923952.0,
           "text": "Conversion of Exercise of derivative security at price 33.82 per share."
         }
       ],
@@ -8619,7 +8632,7 @@
         },
         {
           "date": "2026-06-10",
-          "insider": "KEENE NAZZIC S",
+          "insider": "JOHNSON GERALD",
           "position": "Director",
           "shares": 211.0,
           "value": 0.0,
@@ -8627,7 +8640,7 @@
         },
         {
           "date": "2026-06-10",
-          "insider": "JOHNSON GERALD",
+          "insider": "KEENE NAZZIC S",
           "position": "Director",
           "shares": 211.0,
           "value": 0.0,
@@ -8911,7 +8924,7 @@
     },
     "AMD": {
       "trend": "買い優勢",
-      "net_shares": 582804.0,
+      "net_shares": 614124.0,
       "transactions": [
         {
           "date": "2026-10-15",
@@ -9072,12 +9085,12 @@
       ],
       "buybacks": [
         {
-          "period": "2025-03",
-          "amount": 508000000.0
+          "period": "2025-09",
+          "amount": 5000000.0
         },
         {
-          "period": "2025-06",
-          "amount": 12000000.0
+          "period": "2025-12",
+          "amount": 600000000.0
         },
         {
           "period": "2026-03",
@@ -9086,21 +9099,17 @@
         {
           "period": "2026-06",
           "amount": 80000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 0.0
         }
       ]
     },
     "ANET": {
       "trend": "売り優勢",
-      "net_shares": -6014548.0,
+      "net_shares": -5586548.0,
       "transactions": [
-        {
-          "date": "2026-10-20",
-          "insider": "DUDA KENNETH",
-          "position": "President",
-          "shares": 43333.0,
-          "value": 7839496.0,
-          "text": "Sale at price 177.91 - 182.79 per share."
-        },
         {
           "date": "2026-10-20",
           "insider": "DUDA KENNETH",
@@ -9108,6 +9117,14 @@
           "shares": 17333.0,
           "value": 245198.0,
           "text": "Conversion of Exercise of derivative security at price 14.15 per share."
+        },
+        {
+          "date": "2026-10-20",
+          "insider": "DUDA KENNETH",
+          "position": "President",
+          "shares": 43333.0,
+          "value": 7839496.0,
+          "text": "Sale at price 177.91 - 182.79 per share."
         },
         {
           "date": "2026-10-09",
@@ -9153,17 +9170,17 @@
           "date": "2026-09-21",
           "insider": "DUDA KENNETH",
           "position": "President",
-          "shares": 43333.0,
-          "value": 8818195.0,
-          "text": "Sale at price 201.70 - 205.50 per share."
+          "shares": 17333.0,
+          "value": 245198.0,
+          "text": "Conversion of Exercise of derivative security at price 14.15 per share."
         },
         {
           "date": "2026-09-21",
           "insider": "DUDA KENNETH",
           "position": "President",
-          "shares": 17333.0,
-          "value": 245198.0,
-          "text": "Conversion of Exercise of derivative security at price 14.15 per share."
+          "shares": 43333.0,
+          "value": 8818195.0,
+          "text": "Sale at price 201.70 - 205.50 per share."
         },
         {
           "date": "2026-09-17",
@@ -9277,9 +9294,9 @@
           "date": "2026-07-01",
           "insider": "ALBA MANUEL",
           "position": "Director",
-          "shares": 136974.0,
-          "value": 60543455.0,
-          "text": "Sale at price 429.58 - 459.02 per share."
+          "shares": 37535.0,
+          "value": 16792742.0,
+          "text": "Sale at price 429.58 - 468.00 per share."
         }
       ],
       "buybacks": []
@@ -9371,12 +9388,8 @@
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 692000000.0
-        },
-        {
           "period": "2025-09",
-          "amount": 708300000.0
+          "amount": 708000000.0
         },
         {
           "period": "2025-12",
@@ -9389,6 +9402,10 @@
         {
           "period": "2026-06",
           "amount": 1601000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 377000000.0
         }
       ]
     },
@@ -9498,13 +9515,37 @@
     },
     "UBER": {
       "trend": "買い優勢",
-      "net_shares": 379351.0,
+      "net_shares": 369184.0,
       "transactions": [
+        {
+          "date": "2026-10-16",
+          "insider": "KRISHNAMURTHY BALAJI",
+          "position": "Chief Financial Officer",
+          "shares": 4392.0,
+          "value": 0.0,
+          "text": ""
+        },
         {
           "date": "2026-10-16",
           "insider": "MACDONALD ANDREW",
           "position": "President",
           "shares": 10168.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-16",
+          "insider": "WEST, TONY",
+          "position": "Officer",
+          "shares": 7195.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-16",
+          "insider": "HAZELBAKER JILL",
+          "position": "President",
+          "shares": 9160.0,
           "value": 0.0,
           "text": ""
         },
@@ -9521,30 +9562,6 @@
           "insider": "THAIN JOHN A",
           "position": "Director",
           "shares": 350.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-10-16",
-          "insider": "WEST, TONY",
-          "position": "Officer",
-          "shares": 7195.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-10-16",
-          "insider": "KRISHNAMURTHY BALAJI",
-          "position": "Chief Financial Officer",
-          "shares": 4392.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-10-16",
-          "insider": "HAZELBAKER JILL",
-          "position": "President",
-          "shares": 9160.0,
           "value": 0.0,
           "text": ""
         },
@@ -9574,9 +9591,9 @@
         },
         {
           "date": "2026-08-14",
-          "insider": "MACDONALD ANDREW",
-          "position": "President",
-          "shares": 10167.0,
+          "insider": "KRISHNAMURTHY BALAJI",
+          "position": "Chief Financial Officer",
+          "shares": 4393.0,
           "value": 0.0,
           "text": ""
         }
@@ -9726,10 +9743,10 @@
         },
         {
           "date": "2026-10-02",
-          "insider": "FOX-GEEN JEREMY",
-          "position": "Chief Financial Officer",
-          "shares": 4238.0,
-          "value": 363536.0,
+          "insider": "RAZZAGHI HOSSEIN",
+          "position": "Officer",
+          "shares": 1830.0,
+          "value": 156977.0,
           "text": "Sale at price 85.78 per share."
         },
         {
@@ -9742,10 +9759,10 @@
         },
         {
           "date": "2026-10-02",
-          "insider": "RAZZAGHI HOSSEIN",
-          "position": "Officer",
-          "shares": 1830.0,
-          "value": 156977.0,
+          "insider": "FOX-GEEN JEREMY",
+          "position": "Chief Financial Officer",
+          "shares": 4238.0,
+          "value": 363536.0,
           "text": "Sale at price 85.78 per share."
         },
         {
@@ -9774,14 +9791,6 @@
         },
         {
           "date": "2026-09-08",
-          "insider": "ALLAIRE JEREMY D",
-          "position": "Chief Executive Officer",
-          "shares": 62264.0,
-          "value": 6104579.0,
-          "text": "Sale at price 96.50 - 100.34 per share."
-        },
-        {
-          "date": "2026-09-08",
           "insider": "CHANDHOK NIKHIL",
           "position": "Chief Technology Officer",
           "shares": 26666.0,
@@ -9789,12 +9798,20 @@
           "text": "Sale at price 100.40 per share."
         },
         {
+          "date": "2026-09-08",
+          "insider": "ALLAIRE JEREMY D",
+          "position": "Chief Executive Officer",
+          "shares": 62264.0,
+          "value": 6104579.0,
+          "text": "Sale at price 96.50 - 100.34 per share."
+        },
+        {
           "date": "2026-09-02",
-          "insider": "FOX-GEEN JEREMY",
-          "position": "Chief Financial Officer",
-          "shares": 23120.0,
-          "value": 2096504.0,
-          "text": "Sale at price 87.87 - 92.20 per share."
+          "insider": "RAZZAGHI HOSSEIN",
+          "position": "Officer",
+          "shares": 7458.0,
+          "value": 655334.0,
+          "text": "Sale at price 87.87 per share."
         }
       ],
       "buybacks": []
@@ -9829,19 +9846,19 @@
         },
         {
           "date": "2026-08-25",
-          "insider": "BROMBERG MATTHEW S",
-          "position": "Chief Executive Officer",
-          "shares": 16383.0,
-          "value": 742278.0,
-          "text": "Sale at price 45.28 - 45.96 per share."
-        },
-        {
-          "date": "2026-08-25",
           "insider": "YAHES JARROD",
           "position": "Chief Financial Officer",
           "shares": 26017.0,
           "value": 1178854.0,
           "text": "Sale at price 45.28 - 45.95 per share."
+        },
+        {
+          "date": "2026-08-25",
+          "insider": "BROMBERG MATTHEW S",
+          "position": "Chief Executive Officer",
+          "shares": 16383.0,
+          "value": 742278.0,
+          "text": "Sale at price 45.28 - 45.96 per share."
         },
         {
           "date": "2026-05-28",
@@ -9869,18 +9886,18 @@
         },
         {
           "date": "2026-05-26",
-          "insider": "BROMBERG MATTHEW S",
-          "position": "Chief Executive Officer",
-          "shares": 138993.0,
-          "value": 3777830.0,
-          "text": "Sale at price 27.18 per share."
-        },
-        {
-          "date": "2026-05-26",
           "insider": "YAHES JARROD",
           "position": "Chief Financial Officer",
           "shares": 24021.0,
           "value": 652891.0,
+          "text": "Sale at price 27.18 per share."
+        },
+        {
+          "date": "2026-05-26",
+          "insider": "BROMBERG MATTHEW S",
+          "position": "Chief Executive Officer",
+          "shares": 138993.0,
+          "value": 3777830.0,
           "text": "Sale at price 27.18 per share."
         }
       ],
@@ -10087,10 +10104,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-03",
-          "amount": 0.0
-        },
-        {
           "period": "2025-09",
           "amount": 553000000.0
         },
@@ -10105,6 +10118,10 @@
         {
           "period": "2026-06",
           "amount": 672000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 1001000000.0
         }
       ]
     },
@@ -10154,17 +10171,17 @@
         },
         {
           "date": "2026-07-15",
-          "insider": "WEBB MAYNARD GEORGE JR",
+          "insider": "MESSING BARBARA",
           "position": "Director",
-          "shares": 41.0,
+          "shares": 40.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
         {
           "date": "2026-07-15",
-          "insider": "MESSING BARBARA",
+          "insider": "WEBB MAYNARD GEORGE JR",
           "position": "Director",
-          "shares": 40.0,
+          "shares": 41.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
@@ -10218,7 +10235,7 @@
     },
     "ELF": {
       "trend": "買い優勢",
-      "net_shares": 314836.0,
+      "net_shares": 242985.0,
       "transactions": [
         {
           "date": "2026-10-15",
@@ -10608,8 +10625,32 @@
     },
     "ABNB": {
       "trend": "買い優勢",
-      "net_shares": 6322714.0,
+      "net_shares": 6207657.0,
       "transactions": [
+        {
+          "date": "2026-10-26",
+          "insider": "BLECHARCZYK NATHAN",
+          "position": "Officer, Director and Beneficial Owner",
+          "shares": 17692.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-26",
+          "insider": "BLECHARCZYK NATHAN",
+          "position": "Officer, Director and Beneficial Owner",
+          "shares": 4077.0,
+          "value": 0.0,
+          "text": "Stock Gift at price 0.00 per share."
+        },
+        {
+          "date": "2026-10-26",
+          "insider": "BLECHARCZYK NATHAN",
+          "position": "Officer, Director and Beneficial Owner",
+          "shares": 13615.0,
+          "value": 2325621.0,
+          "text": "Sale at price 169.70 - 172.00 per share."
+        },
         {
           "date": "2026-10-15",
           "insider": "BERNSTEIN DAVID CHARLES",
@@ -10665,30 +10706,6 @@
           "shares": 11204.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-09-28",
-          "insider": "BLECHARCZYK NATHAN",
-          "position": "Officer, Director and Beneficial Owner",
-          "shares": 13615.0,
-          "value": 2135172.0,
-          "text": "Sale at price 154.45 - 158.31 per share."
-        },
-        {
-          "date": "2026-09-15",
-          "insider": "BERNSTEIN DAVID CHARLES",
-          "position": "Officer",
-          "shares": 1489.0,
-          "value": 251537.0,
-          "text": "Sale at price 168.93 per share."
-        },
-        {
-          "date": "2026-09-14",
-          "insider": "BLECHARCZYK NATHAN",
-          "position": "Officer, Director and Beneficial Owner",
-          "shares": 17692.0,
-          "value": 0.0,
-          "text": ""
         }
       ],
       "buybacks": [
@@ -10805,19 +10822,19 @@
         },
         {
           "date": "2026-10-02",
-          "insider": "NARAYANADAS VIVEK",
-          "position": "General Counsel",
-          "shares": 1014.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-10-02",
           "insider": "BEALMEAR RICHARD CRAIG",
           "position": "Chief Financial Officer",
           "shares": 22096.0,
           "value": 70265.0,
           "text": "Conversion of Exercise of derivative security at price 3.18 per share."
+        },
+        {
+          "date": "2026-10-02",
+          "insider": "NARAYANADAS VIVEK",
+          "position": "General Counsel",
+          "shares": 1014.0,
+          "value": 0.0,
+          "text": ""
         },
         {
           "date": "2026-10-01",
@@ -10852,19 +10869,19 @@
         },
         {
           "date": "2026-09-08",
-          "insider": "HUDSON SCOTT A",
-          "position": "Officer",
-          "shares": 44444.0,
-          "value": 6747545.0,
-          "text": "Sale at price 150.97 - 152.56 per share."
-        },
-        {
-          "date": "2026-09-08",
           "insider": "MOLDOVAN KRISTOPHER E.",
           "position": "Chief Financial Officer",
           "shares": 20000.0,
           "value": 3020600.0,
           "text": "Sale at price 151.03 per share."
+        },
+        {
+          "date": "2026-09-08",
+          "insider": "HUDSON SCOTT A",
+          "position": "Officer",
+          "shares": 44444.0,
+          "value": 6747545.0,
+          "text": "Sale at price 150.97 - 152.56 per share."
         },
         {
           "date": "2026-09-01",
@@ -10942,14 +10959,6 @@
       "trend": "動きなし",
       "net_shares": 0.0,
       "transactions": [
-        {
-          "date": "2026-08-11",
-          "insider": "TALEGHANI REZA",
-          "position": "Chief Financial Officer",
-          "shares": 18656.0,
-          "value": 100181.0,
-          "text": "Purchase at price 5.37 per share."
-        },
         {
           "date": "2026-05-14",
           "insider": "WATSA V PREM ET AL",
@@ -11144,7 +11153,7 @@
     },
     "ONON": {
       "trend": "買い優勢",
-      "net_shares": 331736.0,
+      "net_shares": 335886.0,
       "transactions": [
         {
           "date": "2026-09-21",
@@ -11259,22 +11268,6 @@
         },
         {
           "date": "2026-08-17",
-          "insider": "LIANG CHARLES",
-          "position": "Chief Executive Officer",
-          "shares": 3650.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-08-17",
-          "insider": "LIU LIANG CHIU-CHU SARA",
-          "position": "Director and Beneficial Owner of more than 10% of a Class of Security",
-          "shares": 3650.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-08-17",
           "insider": "WEIGAND DAVID E",
           "position": "Chief Financial Officer",
           "shares": 6500.0,
@@ -11306,6 +11299,22 @@
           "text": ""
         },
         {
+          "date": "2026-08-17",
+          "insider": "LIANG CHARLES",
+          "position": "Chief Executive Officer",
+          "shares": 3650.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-08-17",
+          "insider": "LIU LIANG CHIU-CHU SARA",
+          "position": "Director and Beneficial Owner of more than 10% of a Class of Security",
+          "shares": 3650.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
           "date": "2026-08-10",
           "insider": "CHEUNG KENNETH",
           "position": "Officer",
@@ -11318,8 +11327,24 @@
     },
     "CRWV": {
       "trend": "売り優勢",
-      "net_shares": -21582591.0,
+      "net_shares": -18439132.0,
       "transactions": [
+        {
+          "date": "2026-10-20",
+          "insider": "HUTCHINS GLENN H",
+          "position": "Director",
+          "shares": 320.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-10-20",
+          "insider": "WHITMAN MARGARET C.",
+          "position": "Director",
+          "shares": 122.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
         {
           "date": "2026-10-13",
           "insider": "JONES JONATHAN",
@@ -11383,22 +11408,6 @@
           "shares": 107692.0,
           "value": 0.0,
           "text": ""
-        },
-        {
-          "date": "2026-09-22",
-          "insider": "INTRATOR MICHAEL N",
-          "position": "Chief Executive Officer",
-          "shares": 307692.0,
-          "value": 26713370.0,
-          "text": "Sale at price 85.57 - 88.95 per share."
-        },
-        {
-          "date": "2026-09-22",
-          "insider": "AGRAWAL NITIN",
-          "position": "Chief Financial Officer",
-          "shares": 55764.0,
-          "value": 4841823.0,
-          "text": "Sale at price 85.57 - 89.02 per share."
         }
       ],
       "buybacks": []
@@ -11492,8 +11501,24 @@
     },
     "NBIS": {
       "trend": "売り優勢",
-      "net_shares": -839809.0,
+      "net_shares": -838686.0,
       "transactions": [
+        {
+          "date": "2026-10-28",
+          "insider": "GRIMME ARNE",
+          "position": "Director",
+          "shares": 353.0,
+          "value": 57740.0,
+          "text": "Purchase at price 159.04 - 169.84 per share."
+        },
+        {
+          "date": "2026-10-26",
+          "insider": "GRIMME ARNE",
+          "position": "Director",
+          "shares": 770.0,
+          "value": 122438.0,
+          "text": "Purchase at price 153.96 - 161.97 per share."
+        },
         {
           "date": "2026-10-21",
           "insider": "GRIMME ARNE",
@@ -11557,22 +11582,6 @@
           "shares": 14546.0,
           "value": 3406091.0,
           "text": "Sale at price 234.16 per share."
-        },
-        {
-          "date": "2026-10-01",
-          "insider": "KOROLENKO ANDREY",
-          "position": "Officer",
-          "shares": 29090.0,
-          "value": 6811714.0,
-          "text": "Sale at price 234.16 per share."
-        },
-        {
-          "date": "2026-09-15",
-          "insider": "BOYNTON JOHN",
-          "position": "Director",
-          "shares": 6364.0,
-          "value": 1338712.0,
-          "text": "Sale at price 207.67 - 216.52 per share."
         }
       ],
       "buybacks": []
@@ -11687,7 +11696,7 @@
     },
     "COHR": {
       "trend": "買い優勢",
-      "net_shares": 39189.0,
+      "net_shares": 41189.0,
       "transactions": [
         {
           "date": "2026-09-11",
@@ -11774,8 +11783,32 @@
     },
     "CBRS": {
       "trend": "買い優勢",
-      "net_shares": 73305978.0,
+      "net_shares": 73296001.0,
       "transactions": [
+        {
+          "date": "2026-10-27",
+          "insider": "LIE SEAN",
+          "position": "Chief Technology Officer",
+          "shares": 18000.0,
+          "value": 0.0,
+          "text": "Stock Gift at price 0.00 per share."
+        },
+        {
+          "date": "2026-10-27",
+          "insider": "LIE SEAN",
+          "position": "Chief Technology Officer",
+          "shares": 60000.0,
+          "value": 6947166.0,
+          "text": "Sale at price 113.92 - 116.82 per share."
+        },
+        {
+          "date": "2026-10-27",
+          "insider": "LIE SEAN",
+          "position": "Chief Technology Officer",
+          "shares": 32023.0,
+          "value": 0.0,
+          "text": ""
+        },
         {
           "date": "2026-09-29",
           "insider": "KOMIN ROBERT PATRICK JR",
@@ -11831,30 +11864,6 @@
           "shares": 120000.0,
           "value": 0.0,
           "text": ""
-        },
-        {
-          "date": "2026-09-04",
-          "insider": "VASSALLO STEVEN",
-          "position": "Director",
-          "shares": 50000.0,
-          "value": 10515135.0,
-          "text": "Sale at price 209.81 - 211.56 per share."
-        },
-        {
-          "date": "2026-09-04",
-          "insider": "LIE SEAN",
-          "position": "Chief Technology Officer",
-          "shares": 16038.0,
-          "value": 0.0,
-          "text": "Stock Gift at price 0.00 per share."
-        },
-        {
-          "date": "2026-09-04",
-          "insider": "LIE SEAN",
-          "position": "Chief Technology Officer",
-          "shares": 53460.0,
-          "value": 11235154.0,
-          "text": "Sale at price 210.16 per share."
         }
       ],
       "buybacks": [
@@ -12222,7 +12231,7 @@
         },
         {
           "date": "2026-06-09",
-          "insider": "BERKERY ROSEMARY T",
+          "insider": "NEMEROV JACKWYN L",
           "position": "Director",
           "shares": 802.0,
           "value": 0.0,
@@ -12230,7 +12239,7 @@
         },
         {
           "date": "2026-06-09",
-          "insider": "NEMEROV JACKWYN L",
+          "insider": "LANE AMY BETH",
           "position": "Director",
           "shares": 802.0,
           "value": 0.0,
@@ -12246,7 +12255,7 @@
         },
         {
           "date": "2026-06-09",
-          "insider": "LANE AMY BETH",
+          "insider": "BERKERY ROSEMARY T",
           "position": "Director",
           "shares": 802.0,
           "value": 0.0,
@@ -12418,7 +12427,7 @@
     },
     "WMT": {
       "trend": "売り優勢",
-      "net_shares": -8909501.0,
+      "net_shares": -8890085.0,
       "transactions": [
         {
           "date": "2026-09-01",
@@ -12470,18 +12479,10 @@
         },
         {
           "date": "2026-06-30",
-          "insider": "MORITZ ROBERT EDWARD JR.",
+          "insider": "PENNER GREGORY BOYD",
           "position": "Director",
-          "shares": 276.0,
-          "value": 31260.0,
-          "text": "Stock Award(Grant) at price 113.26 per share."
-        },
-        {
-          "date": "2026-06-30",
-          "insider": "MEHROTRA SHISHIR",
-          "position": "Director",
-          "shares": 254.0,
-          "value": 28768.0,
+          "shares": 502.0,
+          "value": 56857.0,
           "text": "Stock Award(Grant) at price 113.26 per share."
         },
         {
@@ -12494,10 +12495,18 @@
         },
         {
           "date": "2026-06-30",
-          "insider": "FRIAR SARAH J",
+          "insider": "MEHROTRA SHISHIR",
           "position": "Director",
-          "shares": 309.0,
-          "value": 34997.0,
+          "shares": 254.0,
+          "value": 28768.0,
+          "text": "Stock Award(Grant) at price 113.26 per share."
+        },
+        {
+          "date": "2026-06-30",
+          "insider": "MORITZ ROBERT EDWARD JR.",
+          "position": "Director",
+          "shares": 276.0,
+          "value": 31260.0,
           "text": "Stock Award(Grant) at price 113.26 per share."
         }
       ],
@@ -12530,14 +12539,6 @@
       "transactions": [
         {
           "date": "2026-10-12",
-          "insider": "CHANG MICHELLE",
-          "position": "Chief Financial Officer",
-          "shares": 8489.0,
-          "value": 844341.0,
-          "text": "Sale at price 98.67 - 99.84 per share."
-        },
-        {
-          "date": "2026-10-12",
           "insider": "SANKARLINGAM VELCHAMY",
           "position": "Officer",
           "shares": 7645.0,
@@ -12545,12 +12546,20 @@
           "text": "Sale at price 98.63 - 99.54 per share."
         },
         {
+          "date": "2026-10-12",
+          "insider": "CHANG MICHELLE",
+          "position": "Chief Financial Officer",
+          "shares": 8489.0,
+          "value": 844341.0,
+          "text": "Sale at price 98.67 - 99.84 per share."
+        },
+        {
           "date": "2026-10-09",
-          "insider": "MCGARRY KIMBERLY J",
-          "position": "Officer",
-          "shares": 3121.0,
-          "value": 0.0,
-          "text": ""
+          "insider": "YUAN ERIC S.",
+          "position": "Chief Executive Officer",
+          "shares": 46823.0,
+          "value": 4432733.0,
+          "text": "Conversion of Exercise of derivative security at price 94.67 per share."
         },
         {
           "date": "2026-10-09",
@@ -12570,11 +12579,11 @@
         },
         {
           "date": "2026-10-09",
-          "insider": "YUAN ERIC S.",
-          "position": "Chief Executive Officer",
-          "shares": 46823.0,
-          "value": 4432733.0,
-          "text": "Conversion of Exercise of derivative security at price 94.67 per share."
+          "insider": "MCGARRY KIMBERLY J",
+          "position": "Officer",
+          "shares": 3121.0,
+          "value": 0.0,
+          "text": ""
         },
         {
           "date": "2026-10-08",
@@ -12850,8 +12859,16 @@
     },
     "CRWD": {
       "trend": "売り優勢",
-      "net_shares": -1435520.0,
+      "net_shares": -1445520.0,
       "transactions": [
+        {
+          "date": "2026-10-26",
+          "insider": "KURTZ GEORGE ROBERT",
+          "position": "Chief Executive Officer",
+          "shares": 20000.0,
+          "value": 5111835.0,
+          "text": "Sale at price 235.96 - 263.53 per share."
+        },
         {
           "date": "2026-10-20",
           "insider": "KURTZ GEORGE ROBERT",
@@ -12910,14 +12927,6 @@
         },
         {
           "date": "2026-10-01",
-          "insider": "SAHA ANURAG",
-          "position": "Officer",
-          "shares": 24776.0,
-          "value": 6509118.0,
-          "text": "Sale at price 259.95 - 264.60 per share."
-        },
-        {
-          "date": "2026-10-01",
           "insider": "GANDHI SAMEER K.",
           "position": "Director",
           "shares": 54000.0,
@@ -12925,12 +12934,12 @@
           "text": "Sale at price 260.34 - 269.07 per share."
         },
         {
-          "date": "2026-09-29",
-          "insider": "KURTZ GEORGE ROBERT",
-          "position": "Chief Executive Officer",
-          "shares": 20000.0,
-          "value": 5164035.0,
-          "text": "Sale at price 248.24 - 262.42 per share."
+          "date": "2026-10-01",
+          "insider": "SAHA ANURAG",
+          "position": "Officer",
+          "shares": 24776.0,
+          "value": 6509118.0,
+          "text": "Sale at price 259.95 - 264.60 per share."
         }
       ],
       "buybacks": [
@@ -13253,8 +13262,24 @@
     },
     "DLTR": {
       "trend": "売り優勢",
-      "net_shares": -1624435.0,
+      "net_shares": -1623255.0,
       "transactions": [
+        {
+          "date": "2026-10-27",
+          "insider": "KONRAD JOCELYN Z",
+          "position": "Officer",
+          "shares": 1033.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-10-27",
+          "insider": "MAHESHWARI ADITYA",
+          "position": "Officer",
+          "shares": 147.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
         {
           "date": "2026-09-04",
           "insider": "STAHL STEPHANIE P",
@@ -13318,22 +13343,6 @@
           "shares": 1398.0,
           "value": 0.0,
           "text": ""
-        },
-        {
-          "date": "2026-06-24",
-          "insider": "MANTLE RIDGE, L.P.",
-          "position": "Unknown",
-          "shares": 2230455.0,
-          "value": 248271946.0,
-          "text": "Sale at price 111.31 per share."
-        },
-        {
-          "date": "2026-06-24",
-          "insider": "MANTLE RIDGE, L.P.",
-          "position": "Unknown",
-          "shares": 602170.0,
-          "value": 89639026.0,
-          "text": "Conversion of Exercise of derivative security at price 148.86 per share."
         }
       ],
       "buybacks": [
@@ -13476,16 +13485,16 @@
           "insider": "O'HARE ROBERT WARREN",
           "position": "Chief Financial Officer",
           "shares": 65591.0,
-          "value": 5248592.0,
-          "text": "Sale at price 80.02 per share."
+          "value": 1829545.0,
+          "text": "Conversion of Exercise of derivative security at price 17.19 - 57.59 per share."
         },
         {
           "date": "2026-10-09",
           "insider": "O'HARE ROBERT WARREN",
           "position": "Chief Financial Officer",
           "shares": 65591.0,
-          "value": 1829545.0,
-          "text": "Conversion of Exercise of derivative security at price 17.19 - 57.59 per share."
+          "value": 5248592.0,
+          "text": "Sale at price 80.02 per share."
         },
         {
           "date": "2026-09-14",
@@ -13507,17 +13516,17 @@
           "date": "2026-09-03",
           "insider": "ADKINS KATHERINE ELIZABETH",
           "position": "Officer",
-          "shares": 83328.0,
-          "value": 6086351.0,
-          "text": "Sale at price 70.13 - 75.53 per share."
+          "shares": 93922.0,
+          "value": 1897337.0,
+          "text": "Conversion of Exercise of derivative security at price 22.30 - 23.35 per share."
         },
         {
           "date": "2026-09-03",
           "insider": "ADKINS KATHERINE ELIZABETH",
           "position": "Officer",
-          "shares": 93922.0,
-          "value": 1897337.0,
-          "text": "Conversion of Exercise of derivative security at price 22.30 - 23.35 per share."
+          "shares": 83328.0,
+          "value": 6086351.0,
+          "text": "Sale at price 70.13 - 75.53 per share."
         },
         {
           "date": "2026-09-02",
@@ -13529,9 +13538,9 @@
         },
         {
           "date": "2026-09-01",
-          "insider": "JIYANE SIPHELELE N",
-          "position": "Officer",
-          "shares": 9038.0,
+          "insider": "O'HARE ROBERT WARREN",
+          "position": "Chief Financial Officer",
+          "shares": 11987.0,
           "value": 0.0,
           "text": ""
         },
@@ -13545,9 +13554,9 @@
         },
         {
           "date": "2026-09-01",
-          "insider": "O'HARE ROBERT WARREN",
-          "position": "Chief Financial Officer",
-          "shares": 11987.0,
+          "insider": "JIYANE SIPHELELE N",
+          "position": "Officer",
+          "shares": 9038.0,
           "value": 0.0,
           "text": ""
         }
@@ -13793,14 +13802,6 @@
       "transactions": [
         {
           "date": "2026-10-06",
-          "insider": "PADGETT BARRY L",
-          "position": "President",
-          "shares": 15460.0,
-          "value": 391602.0,
-          "text": "Sale at price 25.33 per share."
-        },
-        {
-          "date": "2026-10-06",
           "insider": "PINCZUK ANA G.",
           "position": "Officer and Director",
           "shares": 16042.0,
@@ -13813,6 +13814,14 @@
           "position": "Chief Financial Officer",
           "shares": 51703.0,
           "value": 1309637.0,
+          "text": "Sale at price 25.33 per share."
+        },
+        {
+          "date": "2026-10-06",
+          "insider": "PADGETT BARRY L",
+          "position": "President",
+          "shares": 15460.0,
+          "value": 391602.0,
           "text": "Sale at price 25.33 per share."
         },
         {
@@ -13857,10 +13866,10 @@
         },
         {
           "date": "2026-09-08",
-          "insider": "CONDER KEENAN MICHAEL",
-          "position": "Officer",
-          "shares": 8312.0,
-          "value": 164494.0,
+          "insider": "WEINGARTEN TOMER",
+          "position": "Chief Executive Officer",
+          "shares": 38759.0,
+          "value": 767041.0,
           "text": "Sale at price 19.79 per share."
         },
         {
@@ -13888,6 +13897,38 @@
       "net_shares": 1287959.0,
       "transactions": [
         {
+          "date": "2026-10-22",
+          "insider": "RADAKOVICH LYNN VOJVODICH",
+          "position": "Director",
+          "shares": 2022.0,
+          "value": 62965.0,
+          "text": "Conversion of Exercise of derivative security at price 31.14 per share."
+        },
+        {
+          "date": "2026-10-22",
+          "insider": "RADAKOVICH LYNN VOJVODICH",
+          "position": "Director",
+          "shares": 2022.0,
+          "value": 930120.0,
+          "text": "Sale at price 460.00 per share."
+        },
+        {
+          "date": "2026-10-09",
+          "insider": "SILVER LAKE PARTNERS V DE AIV, L.P.",
+          "position": "Beneficial Owner of more than 10% of a Class of Security",
+          "shares": 36614.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-09",
+          "insider": "SILVER LAKE TECHNOLOGY INVESTORS IV, L.P.",
+          "position": "Beneficial Owner of more than 10% of a Class of Security",
+          "shares": 995.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
           "date": "2026-10-09",
           "insider": "SL SPV-2, L.P.",
           "position": "Director and Beneficial Owner of more than 10% of a Class of Security",
@@ -13905,25 +13946,9 @@
         },
         {
           "date": "2026-10-09",
-          "insider": "SILVER LAKE TECHNOLOGY INVESTORS IV, L.P.",
-          "position": "Beneficial Owner of more than 10% of a Class of Security",
-          "shares": 995.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-10-09",
           "insider": "SILVER LAKE TECHNOLOGY INVESTORS V, L.P.",
           "position": "Beneficial Owner of more than 10% of a Class of Security",
           "shares": 449.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-10-09",
-          "insider": "SILVER LAKE PARTNERS V DE AIV, L.P.",
-          "position": "Beneficial Owner of more than 10% of a Class of Security",
-          "shares": 36614.0,
           "value": 0.0,
           "text": ""
         },
@@ -13949,22 +13974,6 @@
           "position": "Director and Beneficial Owner of more than 10% of a Class of Security",
           "shares": 44408.0,
           "value": 25858975.0,
-          "text": "Sale at price 572.87 - 589.28 per share."
-        },
-        {
-          "date": "2026-10-09",
-          "insider": "SILVER LAKE PARTNERS V DE AIV, L.P.",
-          "position": "Beneficial Owner of more than 10% of a Class of Security",
-          "shares": 25494.0,
-          "value": 14845272.0,
-          "text": "Sale at price 572.87 - 589.28 per share."
-        },
-        {
-          "date": "2026-10-09",
-          "insider": "SILVER LAKE PARTNERS IV, LP.",
-          "position": "Beneficial Owner of more than 10% of a Class of Security",
-          "shares": 50454.0,
-          "value": 29386956.0,
           "text": "Sale at price 572.87 - 589.28 per share."
         }
       ],
@@ -13993,7 +14002,7 @@
     },
     "PANW": {
       "trend": "売り優勢",
-      "net_shares": -170648.0,
+      "net_shares": -170672.0,
       "transactions": [
         {
           "date": "2026-10-01",
@@ -14077,10 +14086,6 @@
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-01",
-          "amount": 0.0
-        },
         {
           "period": "2025-04",
           "amount": 0.0
@@ -14309,7 +14314,7 @@
     },
     "AVGO": {
       "trend": "売り優勢",
-      "net_shares": -349036.0,
+      "net_shares": -352492.0,
       "transactions": [
         {
           "date": "2026-07-10",
@@ -14561,14 +14566,6 @@
         },
         {
           "date": "2026-09-23",
-          "insider": "BEAULIER JONATHAN MEAD",
-          "position": "Officer",
-          "shares": 755.0,
-          "value": 253953.0,
-          "text": "Sale at price 336.36 per share."
-        },
-        {
-          "date": "2026-09-23",
           "insider": "DAGEVILLE BENOIT",
           "position": "Director",
           "shares": 16668.0,
@@ -14582,6 +14579,14 @@
           "shares": 50000.0,
           "value": 16954000.0,
           "text": "Sale at price 339.08 per share."
+        },
+        {
+          "date": "2026-09-23",
+          "insider": "BEAULIER JONATHAN MEAD",
+          "position": "Officer",
+          "shares": 755.0,
+          "value": 253953.0,
+          "text": "Sale at price 336.36 per share."
         },
         {
           "date": "2026-09-22",
@@ -14633,8 +14638,16 @@
     },
     "ZS": {
       "trend": "売り優勢",
-      "net_shares": -18086.0,
+      "net_shares": -18600.0,
       "transactions": [
+        {
+          "date": "2026-10-26",
+          "insider": "RUBIN KEVIN E",
+          "position": "Chief Financial Officer",
+          "shares": 514.0,
+          "value": 133201.0,
+          "text": "Sale at price 253.26 - 261.27 per share."
+        },
         {
           "date": "2026-10-19",
           "insider": "GELLER ADAM",
@@ -14669,18 +14682,18 @@
         },
         {
           "date": "2026-09-21",
-          "insider": "GELLER ADAM",
-          "position": "Officer",
-          "shares": 661.0,
-          "value": 132200.0,
-          "text": "Sale at price 200.00 per share."
-        },
-        {
-          "date": "2026-09-21",
           "insider": "SCHLOSSMAN ROBERT S",
           "position": "Officer",
           "shares": 5394.0,
           "value": 1078800.0,
+          "text": "Sale at price 200.00 per share."
+        },
+        {
+          "date": "2026-09-21",
+          "insider": "GELLER ADAM",
+          "position": "Officer",
+          "shares": 661.0,
+          "value": 132200.0,
           "text": "Sale at price 200.00 per share."
         },
         {
@@ -14701,18 +14714,10 @@
         },
         {
           "date": "2026-09-16",
-          "insider": "RICH MICHAEL J",
+          "insider": "SCHLOSSMAN ROBERT S",
           "position": "Officer",
-          "shares": 4108.0,
-          "value": 791870.0,
-          "text": "Sale at price 192.76 per share."
-        },
-        {
-          "date": "2026-09-16",
-          "insider": "RUBIN KEVIN E",
-          "position": "Chief Financial Officer",
-          "shares": 5957.0,
-          "value": 1148288.0,
+          "shares": 2325.0,
+          "value": 448174.0,
           "text": "Sale at price 192.76 per share."
         }
       ],
@@ -14828,8 +14833,40 @@
     },
     "ORCL": {
       "trend": "買い優勢",
-      "net_shares": 445253.0,
+      "net_shares": 482742.0,
       "transactions": [
+        {
+          "date": "2026-10-23",
+          "insider": "HENLEY JEFFREY O",
+          "position": "Officer and Director",
+          "shares": 8033.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "CATZ SAFRA A",
+          "position": "Chief Executive Officer",
+          "shares": 8033.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "SMITH MARIA",
+          "position": "Officer",
+          "shares": 8926.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-23",
+          "insider": "LEVEY STUART A",
+          "position": "Officer",
+          "shares": 12497.0,
+          "value": 0.0,
+          "text": ""
+        },
         {
           "date": "2026-09-29",
           "insider": "RUSCKOWSKI STEPHEN H",
@@ -14864,30 +14901,6 @@
         },
         {
           "date": "2026-09-18",
-          "insider": "SICILIA MICHAEL D",
-          "position": "Chief Executive Officer",
-          "shares": 109213.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-09-18",
-          "insider": "MAGOUYRK CLAYTON M",
-          "position": "Chief Executive Officer",
-          "shares": 129862.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-09-18",
-          "insider": "HURA MARK",
-          "position": "Officer",
-          "shares": 67110.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-09-18",
           "insider": "SMITH MARIA",
           "position": "Officer",
           "shares": 17440.0,
@@ -14901,14 +14914,6 @@
           "shares": 20885.0,
           "value": 0.0,
           "text": ""
-        },
-        {
-          "date": "2026-09-16",
-          "insider": "SICILIA MICHAEL D",
-          "position": "Chief Executive Officer",
-          "shares": 10882.0,
-          "value": 1522827.0,
-          "text": "Sale at price 139.94 per share."
         }
       ],
       "buybacks": [
@@ -14935,8 +14940,8 @@
       ]
     },
     "ADBE": {
-      "trend": "売り優勢",
-      "net_shares": -8462.0,
+      "trend": "買い優勢",
+      "net_shares": 66538.0,
       "transactions": [
         {
           "date": "2026-10-15",
@@ -15064,6 +15069,14 @@
         },
         {
           "date": "2026-03-09",
+          "insider": "LEMASNEY MARK",
+          "position": "Officer",
+          "shares": 3845.0,
+          "value": 347088.0,
+          "text": "Sale at price 90.27 per share."
+        },
+        {
+          "date": "2026-03-09",
           "insider": "CREWS TERRELL KIRK II",
           "position": "Officer",
           "shares": 19672.0,
@@ -15076,14 +15089,6 @@
           "position": "Officer and Treasurer",
           "shares": 7161.0,
           "value": 646423.0,
-          "text": "Sale at price 90.27 per share."
-        },
-        {
-          "date": "2026-03-09",
-          "insider": "LEMASNEY MARK",
-          "position": "Officer",
-          "shares": 3845.0,
-          "value": 347088.0,
           "text": "Sale at price 90.27 per share."
         },
         {
@@ -15167,7 +15172,7 @@
         },
         {
           "date": "2026-08-20",
-          "insider": "BROGGI JORDAN",
+          "insider": "BASTEK WILLIAM D",
           "position": "Officer",
           "shares": 1494.0,
           "value": 0.0,
@@ -15175,7 +15180,7 @@
         },
         {
           "date": "2026-08-20",
-          "insider": "BASTEK WILLIAM D",
+          "insider": "BROGGI JORDAN",
           "position": "Officer",
           "shares": 1494.0,
           "value": 0.0,
@@ -15216,10 +15221,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-01",
-          "amount": 0.0
-        },
-        {
           "period": "2025-04",
           "amount": 0.0
         },
@@ -15243,19 +15244,19 @@
       "transactions": [
         {
           "date": "2026-06-18",
-          "insider": "YEARLEY DOUGLAS C JR",
-          "position": "Officer and Director",
-          "shares": 77957.0,
-          "value": 12206375.0,
-          "text": "Sale at price 156.58 per share."
-        },
-        {
-          "date": "2026-06-18",
           "insider": "PARAHUS ROBERT",
           "position": "President",
           "shares": 7500.0,
           "value": 1122450.0,
           "text": "Sale at price 149.66 per share."
+        },
+        {
+          "date": "2026-06-18",
+          "insider": "YEARLEY DOUGLAS C JR",
+          "position": "Officer and Director",
+          "shares": 77957.0,
+          "value": 12206375.0,
+          "text": "Sale at price 156.58 per share."
         },
         {
           "date": "2026-06-18",
@@ -15478,16 +15479,16 @@
           "insider": "EDDY ROBERT W.",
           "position": "Chief Executive Officer",
           "shares": 4900.0,
-          "value": 490049.0,
-          "text": "Sale at price 100.01 per share."
+          "value": 83300.0,
+          "text": "Conversion of Exercise of derivative security at price 17.00 per share."
         },
         {
           "date": "2026-08-24",
           "insider": "EDDY ROBERT W.",
           "position": "Chief Executive Officer",
           "shares": 4900.0,
-          "value": 83300.0,
-          "text": "Conversion of Exercise of derivative security at price 17.00 per share."
+          "value": 490049.0,
+          "text": "Sale at price 100.01 per share."
         },
         {
           "date": "2026-08-14",
@@ -15502,16 +15503,16 @@
           "insider": "EDDY ROBERT W.",
           "position": "Chief Executive Officer",
           "shares": 73016.0,
-          "value": 7303060.0,
-          "text": "Sale at price 100.02 per share."
+          "value": 1241272.0,
+          "text": "Conversion of Exercise of derivative security at price 17.00 per share."
         },
         {
           "date": "2026-07-29",
           "insider": "EDDY ROBERT W.",
           "position": "Chief Executive Officer",
           "shares": 73016.0,
-          "value": 1241272.0,
-          "text": "Conversion of Exercise of derivative security at price 17.00 per share."
+          "value": 7303060.0,
+          "text": "Sale at price 100.02 per share."
         },
         {
           "date": "2026-07-15",
@@ -15583,6 +15584,22 @@
         },
         {
           "date": "2026-04-28",
+          "insider": "RICHARDSON JOHN M",
+          "position": "Director",
+          "shares": 556.0,
+          "value": 169975.0,
+          "text": "Stock Award(Grant) at price 305.71 per share."
+        },
+        {
+          "date": "2026-04-28",
+          "insider": "PATERSON EILEEN PATRICIA",
+          "position": "Director",
+          "shares": 556.0,
+          "value": 169975.0,
+          "text": "Stock Award(Grant) at price 305.71 per share."
+        },
+        {
+          "date": "2026-04-28",
           "insider": "LAWLESS ROBERT J",
           "position": "Director",
           "shares": 556.0,
@@ -15624,22 +15641,6 @@
         {
           "date": "2026-04-28",
           "insider": "HOLZRICHTER JULIE",
-          "position": "Director",
-          "shares": 556.0,
-          "value": 169975.0,
-          "text": "Stock Award(Grant) at price 305.71 per share."
-        },
-        {
-          "date": "2026-04-28",
-          "insider": "JAMIL DHIAA M",
-          "position": "Director",
-          "shares": 556.0,
-          "value": 169975.0,
-          "text": "Stock Award(Grant) at price 305.71 per share."
-        },
-        {
-          "date": "2026-04-28",
-          "insider": "HARRINGTON CHARLES L",
           "position": "Director",
           "shares": 556.0,
           "value": 169975.0,
@@ -15735,7 +15736,7 @@
         },
         {
           "date": "2026-05-21",
-          "insider": "STERIN STEVEN M",
+          "insider": "CURTIN TERRENCE R",
           "position": "Director",
           "shares": 1278.0,
           "value": 0.0,
@@ -15743,7 +15744,7 @@
         },
         {
           "date": "2026-05-21",
-          "insider": "CURTIN TERRENCE R",
+          "insider": "PAIK YI HYON",
           "position": "Director",
           "shares": 1278.0,
           "value": 0.0,
@@ -16263,6 +16264,10 @@
       ],
       "buybacks": [
         {
+          "period": "2025-03",
+          "amount": 615000000.0
+        },
+        {
           "period": "2025-06",
           "amount": 692000000.0
         },
@@ -16276,10 +16281,6 @@
         },
         {
           "period": "2026-03",
-          "amount": 0.0
-        },
-        {
-          "period": "2026-06",
           "amount": 0.0
         }
       ]
@@ -16372,17 +16373,9 @@
       "buybacks": []
     },
     "BROS": {
-      "trend": "買い優勢",
-      "net_shares": 13494020.0,
+      "trend": "売り優勢",
+      "net_shares": -6305980.0,
       "transactions": [
-        {
-          "date": "2026-10-20",
-          "insider": "DM INDIVIDUAL AGGREGATOR, LLC",
-          "position": "Beneficial Owner of more than 10% of a Class of Security",
-          "shares": 50709.0,
-          "value": 2231602.0,
-          "text": "Sale at price 44.01 per share."
-        },
         {
           "date": "2026-10-20",
           "insider": "DM TRUST AGGREGATOR, LLC",
@@ -16398,6 +16391,22 @@
           "shares": 145687.0,
           "value": 6411393.0,
           "text": "Sale at price 44.01 per share."
+        },
+        {
+          "date": "2026-10-20",
+          "insider": "DM INDIVIDUAL AGGREGATOR, LLC",
+          "position": "Beneficial Owner of more than 10% of a Class of Security",
+          "shares": 50709.0,
+          "value": 2231602.0,
+          "text": "Sale at price 44.01 per share."
+        },
+        {
+          "date": "2026-08-20",
+          "insider": "MILLER ANN M",
+          "position": "Director",
+          "shares": 775.0,
+          "value": 0.0,
+          "text": ""
         },
         {
           "date": "2026-08-20",
@@ -16442,14 +16451,6 @@
         {
           "date": "2026-08-20",
           "insider": "MARCHISOTTO KORY",
-          "position": "Director",
-          "shares": 775.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-08-20",
-          "insider": "MILLER ANN M",
           "position": "Director",
           "shares": 775.0,
           "value": 0.0,
@@ -16547,7 +16548,7 @@
     },
     "SBUX": {
       "trend": "売り優勢",
-      "net_shares": -16374.0,
+      "net_shares": -14374.0,
       "transactions": [
         {
           "date": "2026-10-20",
@@ -16651,17 +16652,17 @@
       "transactions": [
         {
           "date": "2026-09-29",
-          "insider": "LEVINE KYLE B",
+          "insider": "BIRKETT RAKOW DIANA",
           "position": "Officer",
-          "shares": 210.0,
+          "shares": 313.0,
           "value": 0.0,
           "text": ""
         },
         {
           "date": "2026-09-29",
-          "insider": "BIRKETT RAKOW DIANA",
+          "insider": "LEVINE KYLE B",
           "position": "Officer",
-          "shares": 313.0,
+          "shares": 210.0,
           "value": 0.0,
           "text": ""
         },
@@ -16831,18 +16832,14 @@
         },
         {
           "date": "2026-02-19",
-          "insider": "MITCHILL NEIL G JR",
-          "position": "Chief Financial Officer",
-          "shares": 19394.0,
-          "value": 1473944.0,
+          "insider": "CALIO CHRISTOPHER T",
+          "position": "Chief Executive Officer",
+          "shares": 31199.0,
+          "value": 2371124.0,
           "text": "Conversion of Exercise of derivative security at price 76.00 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 0.0
-        },
         {
           "period": "2025-09",
           "amount": 0.0
@@ -16858,13 +16855,49 @@
         {
           "period": "2026-06",
           "amount": 0.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 0.0
         }
       ]
     },
     "HON": {
       "trend": "買い優勢",
-      "net_shares": 2190932.0,
+      "net_shares": 2194247.0,
       "transactions": [
+        {
+          "date": "2026-10-26",
+          "insider": "LU SU PING",
+          "position": "General Counsel",
+          "shares": 4033.0,
+          "value": 461537.0,
+          "text": "Conversion of Exercise of derivative security at price 114.44 per share."
+        },
+        {
+          "date": "2026-10-26",
+          "insider": "KAPUR VIMAL M",
+          "position": "Chief Executive Officer",
+          "shares": 8684.0,
+          "value": 993797.0,
+          "text": "Conversion of Exercise of derivative security at price 114.44 per share."
+        },
+        {
+          "date": "2026-10-26",
+          "insider": "KAPUR VIMAL M",
+          "position": "Chief Executive Officer",
+          "shares": 6459.0,
+          "value": 1427374.0,
+          "text": "Sale at price 220.99 per share."
+        },
+        {
+          "date": "2026-10-26",
+          "insider": "LU SU PING",
+          "position": "General Counsel",
+          "shares": 2943.0,
+          "value": 650934.0,
+          "text": "Sale at price 221.18 per share."
+        },
         {
           "date": "2026-08-03",
           "insider": "WEST KENNETH J",
@@ -16872,14 +16905,6 @@
           "shares": 316.0,
           "value": 77569.0,
           "text": "Sale at price 245.47 per share."
-        },
-        {
-          "date": "2026-07-31",
-          "insider": "LU SU PING",
-          "position": "General Counsel",
-          "shares": 382.0,
-          "value": 0.0,
-          "text": ""
         },
         {
           "date": "2026-07-31",
@@ -16898,18 +16923,10 @@
           "text": ""
         },
         {
-          "date": "2026-07-30",
+          "date": "2026-07-31",
           "insider": "LU SU PING",
           "position": "General Counsel",
-          "shares": 471.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-07-30",
-          "insider": "STEPNIAK MICHAL",
-          "position": "Chief Financial Officer",
-          "shares": 604.0,
+          "shares": 382.0,
           "value": 0.0,
           "text": ""
         },
@@ -16922,35 +16939,15 @@
           "text": ""
         },
         {
-          "date": "2026-07-28",
-          "insider": "KAPUR VIMAL M",
-          "position": "Chief Executive Officer",
-          "shares": 300.0,
+          "date": "2026-07-30",
+          "insider": "STEPNIAK MICHAL",
+          "position": "Chief Financial Officer",
+          "shares": 604.0,
           "value": 0.0,
           "text": ""
-        },
-        {
-          "date": "2026-07-28",
-          "insider": "HAMMOUD BILLAL",
-          "position": "Officer",
-          "shares": 349.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-07-27",
-          "insider": "WEST KENNETH J",
-          "position": "Officer",
-          "shares": 17032.0,
-          "value": 3305215.0,
-          "text": "Conversion of Exercise of derivative security at price 181.39 - 200.61 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 1702000000.0
-        },
         {
           "period": "2025-09",
           "amount": 100000000.0
@@ -16966,6 +16963,10 @@
         {
           "period": "2026-06",
           "amount": 0.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 0.0
         }
       ]
     },
@@ -16973,6 +16974,14 @@
       "trend": "売り優勢",
       "net_shares": -74558.0,
       "transactions": [
+        {
+          "date": "2026-10-26",
+          "insider": "SCHRAMM JUDE",
+          "position": "Chief Technology Officer",
+          "shares": 20000.0,
+          "value": 1062847.0,
+          "text": "Sale at price 53.04 - 53.26 per share."
+        },
         {
           "date": "2026-08-04",
           "insider": "GIBSON KALA",
@@ -17044,17 +17053,13 @@
           "shares": 2838.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-04-21",
-          "insider": "FEIGER MITCHELL STUART",
-          "position": "Director",
-          "shares": 2838.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
         }
       ],
       "buybacks": [
+        {
+          "period": "2025-03",
+          "amount": 225000000.0
+        },
         {
           "period": "2025-06",
           "amount": 0.0
@@ -17069,10 +17074,6 @@
         },
         {
           "period": "2026-03",
-          "amount": 0.0
-        },
-        {
-          "period": "2026-06",
           "amount": 0.0
         }
       ]
@@ -17186,9 +17187,17 @@
       ]
     },
     "TFC": {
-      "trend": "売り優勢",
-      "net_shares": -12029.0,
+      "trend": "買い優勢",
+      "net_shares": 12971.0,
       "transactions": [
+        {
+          "date": "2026-10-28",
+          "insider": "LYONS MICHAEL P",
+          "position": "Chief Executive Officer",
+          "shares": 25000.0,
+          "value": 1209050.0,
+          "text": "Purchase at price 48.36 per share."
+        },
         {
           "date": "2026-07-31",
           "insider": "WILSON DONTA L",
@@ -17247,14 +17256,6 @@
         },
         {
           "date": "2026-02-24",
-          "insider": "STEIN LAURENCE",
-          "position": "Director",
-          "shares": 4027.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-02-24",
           "insider": "TANNER BRUCE L",
           "position": "Director",
           "shares": 4027.0,
@@ -17272,10 +17273,6 @@
       ],
       "buybacks": [
         {
-          "period": "2025-03",
-          "amount": 500000000.0
-        },
-        {
           "period": "2025-06",
           "amount": 750000000.0
         },
@@ -17290,12 +17287,16 @@
         {
           "period": "2026-03",
           "amount": 1134000000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 1200000000.0
         }
       ]
     },
     "STZ": {
       "trend": "買い優勢",
-      "net_shares": 36259.0,
+      "net_shares": 38259.0,
       "transactions": [
         {
           "date": "2026-07-10",
@@ -17511,7 +17512,7 @@
     },
     "FDX": {
       "trend": "買い優勢",
-      "net_shares": 123007.0,
+      "net_shares": 118280.0,
       "transactions": [
         {
           "date": "2026-08-28",
@@ -17620,7 +17621,88 @@
     "SIG": {
       "trend": "動きなし",
       "net_shares": 0.0,
-      "transactions": [],
+      "transactions": [
+        {
+          "date": "2026-09-17",
+          "insider": "PTAK STANLEY W",
+          "position": "Officer",
+          "shares": 1540.0,
+          "value": 0.0,
+          "text": "Stock Gift at price 0.00 per share."
+        },
+        {
+          "date": "2026-08-21",
+          "insider": "MCCOLLAM SHARON L",
+          "position": "Director",
+          "shares": 8.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-08-21",
+          "insider": "GRAF R. MARK",
+          "position": "Director",
+          "shares": 8.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-08-21",
+          "insider": "YOAKUM JULIE",
+          "position": "Officer",
+          "shares": 52.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-08-21",
+          "insider": "ULASEWICZ EUGENIA",
+          "position": "Director",
+          "shares": 8.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-08-21",
+          "insider": "WILSON DONTA L",
+          "position": "Director",
+          "shares": 8.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-08-21",
+          "insider": "TILZER BRIAN A.",
+          "position": "Director",
+          "shares": 8.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-08-21",
+          "insider": "HICKS ZACKERY ALLEN",
+          "position": "Director",
+          "shares": 8.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-08-21",
+          "insider": "SYMANCYK JAMES KEVIN",
+          "position": "Chief Executive Officer",
+          "shares": 384.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-08-21",
+          "insider": "CICCOLINI VINCENT",
+          "position": "Officer",
+          "shares": 21.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        }
+      ],
       "buybacks": [
         {
           "period": "2025-07",
@@ -17646,7 +17728,7 @@
     },
     "MDT": {
       "trend": "買い優勢",
-      "net_shares": 322615.0,
+      "net_shares": 299528.0,
       "transactions": [
         {
           "date": "2026-09-16",
@@ -17754,7 +17836,7 @@
     },
     "FIVE": {
       "trend": "売り優勢",
-      "net_shares": -2392.0,
+      "net_shares": -4623.0,
       "transactions": [
         {
           "date": "2026-09-21",
@@ -17838,10 +17920,6 @@
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-01",
-          "amount": 66000.0
-        },
         {
           "period": "2025-04",
           "amount": 0.0
@@ -17974,6 +18052,14 @@
       "transactions": [
         {
           "date": "2026-10-01",
+          "insider": "LUKIN JANDA K",
+          "position": "Officer",
+          "shares": 20322.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-10-01",
           "insider": "PALUMBO KELLY L.",
           "position": "Officer",
           "shares": 8619.0,
@@ -18033,14 +18119,6 @@
           "insider": "BRAWLEY CHARLES A. III",
           "position": "Officer",
           "shares": 40373.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-10-01",
-          "insider": "LUKIN JANDA K",
-          "position": "Officer",
-          "shares": 20322.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
@@ -18414,14 +18492,6 @@
         },
         {
           "date": "2026-09-30",
-          "insider": "HISEL DOUG",
-          "position": "Officer",
-          "shares": 154.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-09-30",
           "insider": "HOFFMEISTER BRUCE",
           "position": "Chief Technology Officer",
           "shares": 663.0,
@@ -18433,6 +18503,14 @@
           "insider": "ROBERTS DONNA L.",
           "position": "Officer",
           "shares": 788.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-09-30",
+          "insider": "HISEL DOUG",
+          "position": "Officer",
+          "shares": 154.0,
           "value": 0.0,
           "text": ""
         },
@@ -18704,8 +18782,8 @@
       ]
     },
     "KBH": {
-      "trend": "買い優勢",
-      "net_shares": 53139.0,
+      "trend": "売り優勢",
+      "net_shares": -26015.0,
       "transactions": [
         {
           "date": "2026-08-06",
@@ -18728,15 +18806,23 @@
           "insider": "MEZGER JEFFREY T",
           "position": "Officer and Director",
           "shares": 274952.0,
-          "value": 15211672.0,
-          "text": "Sale at price 54.87 - 56.70 per share."
+          "value": 4456972.0,
+          "text": "Conversion of Exercise of derivative security at price 16.21 per share."
         },
         {
           "date": "2026-07-15",
           "insider": "MEZGER JEFFREY T",
           "position": "Officer and Director",
           "shares": 274952.0,
-          "value": 4456972.0,
+          "value": 15211672.0,
+          "text": "Sale at price 54.87 - 56.70 per share."
+        },
+        {
+          "date": "2026-07-13",
+          "insider": "MCGIBNEY ROBERT V",
+          "position": "Chief Executive Officer",
+          "shares": 20621.0,
+          "value": 334266.0,
           "text": "Conversion of Exercise of derivative security at price 16.21 per share."
         },
         {
@@ -18746,14 +18832,6 @@
           "shares": 20621.0,
           "value": 1140548.0,
           "text": "Sale at price 55.31 per share."
-        },
-        {
-          "date": "2026-07-13",
-          "insider": "MCGIBNEY ROBERT V",
-          "position": "Chief Executive Officer",
-          "shares": 20621.0,
-          "value": 334266.0,
-          "text": "Conversion of Exercise of derivative security at price 16.21 per share."
         },
         {
           "date": "2026-04-23",
@@ -18949,19 +19027,19 @@
         },
         {
           "date": "2026-07-17",
-          "insider": "SIMMONS CHRISTOPHER C",
-          "position": "Officer and Treasurer",
-          "shares": 2615.0,
-          "value": 303131.0,
-          "text": "Sale at price 115.92 per share."
-        },
-        {
-          "date": "2026-07-17",
           "insider": "MUCCI MARTIN",
           "position": "Chairman of the Board",
           "shares": 9309.0,
           "value": 1061058.0,
           "text": "Stock Gift at price 113.98 per share."
+        },
+        {
+          "date": "2026-07-17",
+          "insider": "SIMMONS CHRISTOPHER C",
+          "position": "Officer and Treasurer",
+          "shares": 2615.0,
+          "value": 303131.0,
+          "text": "Sale at price 115.92 per share."
         },
         {
           "date": "2026-07-15",
@@ -19245,85 +19323,85 @@
     },
     "COST": {
       "trend": "買い優勢",
-      "net_shares": 30013.0,
+      "net_shares": 63166.0,
       "transactions": [
         {
-          "date": "2026-10-13",
-          "insider": "WILCOX WILLIAM RICHARD",
+          "date": "2026-10-22",
+          "insider": "MILLERCHIP GARY",
           "position": "Officer",
-          "shares": 1100.0,
-          "value": 1054026.0,
-          "text": "Sale at price 958.20 per share."
+          "shares": 6140.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
         },
         {
-          "date": "2026-09-29",
-          "insider": "ADAMO CLAUDINE",
-          "position": "Officer",
-          "shares": 2200.0,
-          "value": 2015046.0,
-          "text": "Sale at price 915.93 per share."
-        },
-        {
-          "date": "2026-09-29",
-          "insider": "FRATES CATON",
-          "position": "Officer",
-          "shares": 800.0,
-          "value": 733328.0,
-          "text": "Sale at price 915.93 per share."
-        },
-        {
-          "date": "2026-09-10",
-          "insider": "WILCOX WILLIAM RICHARD",
+          "date": "2026-10-22",
+          "insider": "POLIT JAVIER",
           "position": "Officer",
           "shares": 4129.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
         {
-          "date": "2026-09-10",
-          "insider": "ADAMO CLAUDINE",
-          "position": "Officer",
-          "shares": 4129.0,
+          "date": "2026-10-22",
+          "insider": "FOULKES HELENA BUONANNO",
+          "position": "Director",
+          "shares": 266.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
         {
-          "date": "2026-09-10",
-          "insider": "RIEL PIERRE",
+          "date": "2026-10-22",
+          "insider": "BARBRE TIFFANY MARIE",
+          "position": "Officer",
+          "shares": 1965.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-10-22",
+          "insider": "RAIMONDO GINA MARIE",
+          "position": "Director",
+          "shares": 266.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-10-22",
+          "insider": "VACHRIS ROLAND MICHAEL",
+          "position": "Chief Executive Officer",
+          "shares": 13973.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-10-22",
+          "insider": "SULLIVAN JOHN CHRISTOPHER",
           "position": "Officer",
           "shares": 4552.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
         {
-          "date": "2026-09-10",
-          "insider": "FRATES CATON",
-          "position": "Officer",
-          "shares": 4552.0,
+          "date": "2026-10-22",
+          "insider": "DENMAN KENNETH D",
+          "position": "Director",
+          "shares": 266.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
         {
-          "date": "2026-09-10",
-          "insider": "JONES TERESA A",
-          "position": "Officer",
-          "shares": 4129.0,
+          "date": "2026-10-22",
+          "insider": "STANTON JOHN W.",
+          "position": "Director",
+          "shares": 266.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         },
         {
-          "date": "2026-09-10",
-          "insider": "RUBANENKO YORAM B.",
-          "position": "Officer",
-          "shares": 4129.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-09-10",
-          "insider": "KLAUER JAMES C",
-          "position": "Officer",
-          "shares": 4129.0,
+          "date": "2026-10-22",
+          "insider": "DECKER SUSAN LYNNE",
+          "position": "Director",
+          "shares": 266.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         }
@@ -19354,7 +19432,88 @@
     "CCL": {
       "trend": "売り優勢",
       "net_shares": -4848091.0,
-      "transactions": [],
+      "transactions": [
+        {
+          "date": "2026-05-28",
+          "insider": "DEYNES BETTINA ALEJANDRA",
+          "position": "Officer",
+          "shares": 43058.0,
+          "value": 1210124.0,
+          "text": "Sale at price 28.10 per share."
+        },
+        {
+          "date": "2026-05-11",
+          "insider": "SUBOTNICK STUART A",
+          "position": "Director",
+          "shares": 0.0,
+          "value": 5.0,
+          "text": "Sale at price 25.22 per share."
+        },
+        {
+          "date": "2026-05-08",
+          "insider": "GEARHART JEFFREY J",
+          "position": "Director",
+          "shares": 7712.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-05-08",
+          "insider": "DEEBLE HELEN",
+          "position": "Director",
+          "shares": 7712.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-05-08",
+          "insider": "CAHILLY JASON GLEN",
+          "position": "Director",
+          "shares": 7712.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-05-08",
+          "insider": "LAHEY KATIE",
+          "position": "Director",
+          "shares": 7712.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-05-08",
+          "insider": "MIGUEZ ENRIQUE",
+          "position": "General Counsel",
+          "shares": 31399.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-05-08",
+          "insider": "BERNSTEIN DAVID",
+          "position": "Chief Financial Officer",
+          "shares": 49894.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-05-08",
+          "insider": "CONNORS NELDA J",
+          "position": "Director",
+          "shares": 7712.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-05-08",
+          "insider": "BAND SIR JONATHON",
+          "position": "Director",
+          "shares": 7712.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        }
+      ],
       "buybacks": [
         {
           "period": "2025-08",
@@ -19430,9 +19589,9 @@
           "date": "2026-06-30",
           "insider": "DUGLE LYNN A",
           "position": "Director",
-          "shares": 700.0,
-          "value": 0.0,
-          "text": "Stock Gift at price 0.00 per share."
+          "shares": 1300.0,
+          "value": 1495559.0,
+          "text": "Sale at price 1150.43 per share."
         },
         {
           "date": "2026-06-30",
@@ -19446,16 +19605,12 @@
           "date": "2026-06-30",
           "insider": "DUGLE LYNN A",
           "position": "Director",
-          "shares": 1300.0,
-          "value": 1495559.0,
-          "text": "Sale at price 1150.43 per share."
+          "shares": 700.0,
+          "value": 0.0,
+          "text": "Stock Gift at price 0.00 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-02",
-          "amount": 0.0
-        },
         {
           "period": "2025-05",
           "amount": 0.0
@@ -19470,6 +19625,10 @@
         },
         {
           "period": "2026-05",
+          "amount": 0.0
+        },
+        {
+          "period": "2026-08",
           "amount": 0.0
         }
       ]
@@ -19596,6 +19755,14 @@
         },
         {
           "date": "2026-09-09",
+          "insider": "ALAGIRISAMY VENKATESH",
+          "position": "Chief Operating Officer",
+          "shares": 3671.0,
+          "value": 137993.0,
+          "text": "Sale at price 37.59 per share."
+        },
+        {
+          "date": "2026-09-09",
           "insider": "LEINWAND ROBERT",
           "position": "Officer",
           "shares": 3646.0,
@@ -19608,14 +19775,6 @@
           "position": "Officer",
           "shares": 2559.0,
           "value": 96193.0,
-          "text": "Sale at price 37.59 per share."
-        },
-        {
-          "date": "2026-09-09",
-          "insider": "ALAGIRISAMY VENKATESH",
-          "position": "Chief Operating Officer",
-          "shares": 3671.0,
-          "value": 137993.0,
           "text": "Sale at price 37.59 per share."
         },
         {
@@ -19704,62 +19863,6 @@
         },
         {
           "date": "2026-06-29",
-          "insider": "MARTIN ROBERT BRAD",
-          "position": "Director",
-          "shares": 3340.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-06-29",
-          "insider": "GORMAN STEPHEN E",
-          "position": "Director",
-          "shares": 1169.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-06-29",
-          "insider": "SAUERLAND JOHN PETER",
-          "position": "Director",
-          "shares": 1903.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-06-29",
-          "insider": "RODGERS MICHAEL",
-          "position": "Chief Technology Officer",
-          "shares": 5177.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-06-29",
-          "insider": "WITT MARSHALL W",
-          "position": "Chief Financial Officer",
-          "shares": 3624.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-06-29",
-          "insider": "DAVIS JEFFREY A.",
-          "position": "Director",
-          "shares": 1169.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-06-29",
-          "insider": "FRIESON DONALD E.",
-          "position": "Director",
-          "shares": 1169.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-06-29",
           "insider": "SMITH JOHN ALAN",
           "position": "Chief Executive Officer",
           "shares": 14195.0,
@@ -19771,6 +19874,62 @@
           "insider": "MILLER CINDY J.",
           "position": "Director",
           "shares": 1169.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-06-29",
+          "insider": "ERWIN GUY M II",
+          "position": "Officer",
+          "shares": 7615.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-06-29",
+          "insider": "MCCOY CLINTON D",
+          "position": "Chief Operating Officer",
+          "shares": 3507.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-06-29",
+          "insider": "KING ROBERT A",
+          "position": "Director",
+          "shares": 1169.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-06-29",
+          "insider": "LYONS MICHAEL B",
+          "position": "Officer",
+          "shares": 3340.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-06-29",
+          "insider": "SMITH SAMANTHA M",
+          "position": "Director",
+          "shares": 1536.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-06-29",
+          "insider": "KLANK CLEMENT E III",
+          "position": "Officer",
+          "shares": 3507.0,
+          "value": 0.0,
+          "text": "Stock Award(Grant) at price 0.00 per share."
+        },
+        {
+          "date": "2026-06-29",
+          "insider": "SALCIDO AMY J",
+          "position": "Director",
+          "shares": 1536.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
         }
@@ -19835,15 +19994,23 @@
     },
     "COF": {
       "trend": "売り優勢",
-      "net_shares": -39125.0,
+      "net_shares": -89125.0,
       "transactions": [
         {
-          "date": "2026-10-15",
-          "insider": "DEAN LIA",
-          "position": "Officer",
-          "shares": 1887.0,
-          "value": 369588.0,
-          "text": "Sale at price 195.86 per share."
+          "date": "2026-10-27",
+          "insider": "FAIRBANK RICHARD D",
+          "position": "Chief Executive Officer",
+          "shares": 90743.0,
+          "value": 18407891.0,
+          "text": "Sale at price 202.32 - 204.19 per share."
+        },
+        {
+          "date": "2026-10-27",
+          "insider": "FAIRBANK RICHARD D",
+          "position": "Chief Executive Officer",
+          "shares": 40743.0,
+          "value": 3517751.0,
+          "text": "Conversion of Exercise of derivative security at price 86.34 per share."
         },
         {
           "date": "2026-10-15",
@@ -19851,6 +20018,14 @@
           "position": "Officer",
           "shares": 1927.0,
           "value": 377422.0,
+          "text": "Sale at price 195.86 per share."
+        },
+        {
+          "date": "2026-10-15",
+          "insider": "DEAN LIA",
+          "position": "Officer",
+          "shares": 1887.0,
+          "value": 369588.0,
           "text": "Sale at price 195.86 per share."
         },
         {
@@ -19900,22 +20075,6 @@
           "shares": 1888.0,
           "value": 425782.0,
           "text": "Sale at price 225.52 - 225.92 per share."
-        },
-        {
-          "date": "2026-08-13",
-          "insider": "MOUADEB MARK DANIEL",
-          "position": "Officer",
-          "shares": 1199.0,
-          "value": 269775.0,
-          "text": "Sale at price 225.00 per share."
-        },
-        {
-          "date": "2026-08-10",
-          "insider": "ZAMSKY MICHAEL",
-          "position": "Officer",
-          "shares": 5473.0,
-          "value": 1193223.0,
-          "text": "Sale at price 218.02 per share."
         }
       ],
       "buybacks": [
@@ -19943,8 +20102,16 @@
     },
     "MSCI": {
       "trend": "買い優勢",
-      "net_shares": 75027.0,
+      "net_shares": 82646.0,
       "transactions": [
+        {
+          "date": "2026-10-22",
+          "insider": "GUTOWSKI ROBERT J",
+          "position": "General Counsel",
+          "shares": 2381.0,
+          "value": 1484934.0,
+          "text": "Sale at price 623.66 per share."
+        },
         {
           "date": "2026-10-12",
           "insider": "WIECHMANN ANDREW CRAIG",
@@ -20016,24 +20183,12 @@
           "shares": 6.0,
           "value": 0.0,
           "text": "Stock Award(Grant) at price 0.00 per share."
-        },
-        {
-          "date": "2026-05-29",
-          "insider": "YANG JUNE",
-          "position": "Director",
-          "shares": 2.0,
-          "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
         }
       ],
       "buybacks": [
         {
-          "period": "2025-06",
-          "amount": 138500000.0
-        },
-        {
           "period": "2025-09",
-          "amount": 1225883000.0
+          "amount": 1225900000.0
         },
         {
           "period": "2025-12",
@@ -20046,13 +20201,33 @@
         {
           "period": "2026-06",
           "amount": 168400000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 552600000.0
         }
       ]
     },
     "NTRS": {
       "trend": "売り優勢",
-      "net_shares": -24494.0,
+      "net_shares": -1694.0,
       "transactions": [
+        {
+          "date": "2026-10-26",
+          "insider": "LEVY SUSAN COHEN",
+          "position": "General Counsel",
+          "shares": 20906.0,
+          "value": 3517462.0,
+          "text": "Sale at price 168.15 - 168.69 per share."
+        },
+        {
+          "date": "2026-10-26",
+          "insider": "LEVY SUSAN COHEN",
+          "position": "General Counsel",
+          "shares": 20906.0,
+          "value": 1840982.0,
+          "text": "Conversion of Exercise of derivative security at price 88.06 per share."
+        },
         {
           "date": "2026-10-20",
           "insider": "QURESHI RIMA",
@@ -20079,6 +20254,14 @@
         },
         {
           "date": "2026-07-01",
+          "insider": "KLEVORN MARCY S",
+          "position": "Director",
+          "shares": 57.0,
+          "value": 10011.0,
+          "text": "Stock Award(Grant) at price 175.60 per share."
+        },
+        {
+          "date": "2026-07-01",
           "insider": "PETRINO RICHARD",
           "position": "Director",
           "shares": 5.0,
@@ -20095,14 +20278,6 @@
         },
         {
           "date": "2026-07-01",
-          "insider": "KLEVORN MARCY S",
-          "position": "Director",
-          "shares": 57.0,
-          "value": 10011.0,
-          "text": "Stock Award(Grant) at price 175.60 per share."
-        },
-        {
-          "date": "2026-07-01",
           "insider": "HARRISON DEAN M",
           "position": "Director",
           "shares": 389.0,
@@ -20111,34 +20286,14 @@
         },
         {
           "date": "2026-07-01",
-          "insider": "TRIBBETT CHARLES A III",
-          "position": "Director",
-          "shares": 69.0,
-          "value": 12274.0,
-          "text": "Stock Award(Grant) at price 175.60 per share."
-        },
-        {
-          "date": "2026-07-01",
           "insider": "THOMPSON DONALD",
           "position": "Director",
           "shares": 341.0,
           "value": 59582.0,
           "text": "Stock Award(Grant) at price 173.84 - 175.60 per share."
-        },
-        {
-          "date": "2026-07-01",
-          "insider": "MEHTA SIDDHARTH N",
-          "position": "Director",
-          "shares": 26.0,
-          "value": 4720.0,
-          "text": "Stock Award(Grant) at price 175.60 per share."
         }
       ],
       "buybacks": [
-        {
-          "period": "2025-06",
-          "amount": 339400000.0
-        },
         {
           "period": "2025-09",
           "amount": 277000000.0
@@ -20154,6 +20309,10 @@
         {
           "period": "2026-06",
           "amount": 350600000.0
+        },
+        {
+          "period": "2026-09",
+          "amount": 352300000.0
         }
       ]
     },
@@ -20203,18 +20362,18 @@
         },
         {
           "date": "2026-08-10",
-          "insider": "GUARINI KATHRYN PH.D.",
-          "position": "Director",
-          "shares": 400.0,
-          "value": 320000.0,
-          "text": "Sale at price 800.00 per share."
-        },
-        {
-          "date": "2026-08-10",
           "insider": "ZOGHBI HUDA Y",
           "position": "Director",
           "shares": 800.0,
           "value": 640000.0,
+          "text": "Sale at price 800.00 per share."
+        },
+        {
+          "date": "2026-08-10",
+          "insider": "GUARINI KATHRYN PH.D.",
+          "position": "Director",
+          "shares": 400.0,
+          "value": 320000.0,
           "text": "Sale at price 800.00 per share."
         },
         {
