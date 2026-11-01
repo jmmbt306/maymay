@@ -774,14 +774,6 @@
         },
         {
           "date": "2026-03-05",
-          "insider": "VAN BEURDEN SAUL",
-          "position": "Officer",
-          "shares": 88175.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-03-05",
           "insider": "FERCHO KRISTY",
           "position": "Officer",
           "shares": 25823.0,
@@ -790,17 +782,25 @@
         },
         {
           "date": "2026-03-05",
-          "insider": "SOMMERS BARRY",
-          "position": "Officer",
-          "shares": 101035.0,
+          "insider": "SANTOMASSIMO MICHAEL P",
+          "position": "Chief Financial Officer",
+          "shares": 125481.0,
           "value": 0.0,
           "text": ""
         },
         {
           "date": "2026-03-05",
-          "insider": "SANTOMASSIMO MICHAEL P",
-          "position": "Chief Financial Officer",
-          "shares": 125481.0,
+          "insider": "VAN BEURDEN SAUL",
+          "position": "Officer",
+          "shares": 88175.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-03-05",
+          "insider": "SOMMERS BARRY",
+          "position": "Officer",
+          "shares": 101035.0,
           "value": 0.0,
           "text": ""
         },
@@ -3231,25 +3231,9 @@
         },
         {
           "date": "2026-08-17",
-          "insider": "FONTAINE DANIELLE",
-          "position": "Officer",
-          "shares": 485.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-08-17",
-          "insider": "CANNEY JACQUELINE P",
-          "position": "Officer",
-          "shares": 970.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-08-17",
-          "insider": "FIPPS PAUL G.",
-          "position": "Officer",
-          "shares": 640.0,
+          "insider": "MCDERMOTT WILLIAM R",
+          "position": "Chief Executive Officer",
+          "shares": 4160.0,
           "value": 0.0,
           "text": ""
         },
@@ -3263,25 +3247,41 @@
         },
         {
           "date": "2026-08-17",
-          "insider": "MCDERMOTT WILLIAM R",
-          "position": "Chief Executive Officer",
-          "shares": 4160.0,
+          "insider": "CANNEY JACQUELINE P",
+          "position": "Officer",
+          "shares": 970.0,
           "value": 0.0,
           "text": ""
         },
         {
-          "date": "2026-08-14",
-          "insider": "NOWBAR HOSSEIN",
-          "position": "President",
-          "shares": 5066.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-08-14",
+          "date": "2026-08-17",
           "insider": "FONTAINE DANIELLE",
           "position": "Officer",
-          "shares": 975.0,
+          "shares": 485.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-08-17",
+          "insider": "FIPPS PAUL G.",
+          "position": "Officer",
+          "shares": 640.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-08-14",
+          "insider": "MCDERMOTT WILLIAM R",
+          "position": "Chief Executive Officer",
+          "shares": 15152.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-08-14",
+          "insider": "ZAVERY AMIT",
+          "position": "President",
+          "shares": 10315.0,
           "value": 0.0,
           "text": ""
         }
@@ -4245,11 +4245,11 @@
       "transactions": [
         {
           "date": "2026-09-14",
-          "insider": "Soriot (Pascal)",
+          "insider": "Demare (Michel)",
           "position": "",
-          "shares": 60000.0,
-          "value": 9798900.0,
-          "text": "Bought at price 163.32 per share."
+          "shares": 2500.0,
+          "value": 408930.0,
+          "text": "Bought at price 163.57 per share."
         },
         {
           "date": "2026-09-14",
@@ -4261,11 +4261,11 @@
         },
         {
           "date": "2026-09-14",
-          "insider": "Demare (Michel)",
+          "insider": "Soriot (Pascal)",
           "position": "",
-          "shares": 2500.0,
-          "value": 408930.0,
-          "text": "Bought at price 163.57 per share."
+          "shares": 60000.0,
+          "value": 9798900.0,
+          "text": "Bought at price 163.32 per share."
         },
         {
           "date": "2026-08-17",
@@ -4293,17 +4293,17 @@
         },
         {
           "date": "2026-03-04",
-          "insider": "Soriot (Pascal)",
+          "insider": "Sarin (Aradhana M.D.)",
           "position": "",
-          "shares": 14967.0,
+          "shares": 4863.0,
           "value": 0.0,
           "text": ""
         },
         {
           "date": "2026-03-04",
-          "insider": "Sarin (Aradhana M.D.)",
+          "insider": "Soriot (Pascal)",
           "position": "",
-          "shares": 4863.0,
+          "shares": 14967.0,
           "value": 0.0,
           "text": ""
         },
@@ -5890,22 +5890,6 @@
         },
         {
           "date": "2026-09-14",
-          "insider": "LAVET ROBERT S",
-          "position": "General Counsel",
-          "shares": 36057.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-09-14",
-          "insider": "NOTO ANTHONY J.",
-          "position": "Chief Executive Officer",
-          "shares": 345554.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-09-14",
           "insider": "LAPOINTE CHRISTOPHER",
           "position": "Chief Financial Officer",
           "shares": 104152.0,
@@ -5941,6 +5925,22 @@
           "insider": "SCHUPPENHAUER ERIC",
           "position": "Officer",
           "shares": 6493.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-09-14",
+          "insider": "LAVET ROBERT S",
+          "position": "General Counsel",
+          "shares": 36057.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-09-14",
+          "insider": "NOTO ANTHONY J.",
+          "position": "Chief Executive Officer",
+          "shares": 345554.0,
           "value": 0.0,
           "text": ""
         }
@@ -9414,84 +9414,84 @@
       "net_shares": 0.0,
       "transactions": [
         {
-          "date": "2026-10-21",
+          "date": "2026-10-28",
           "insider": "Lutke (Tobias Albin)",
           "position": "Director of Issuer",
           "shares": 33750.0,
-          "value": 5944117.0,
-          "text": "Disposition under a purchase/ownership plan at price 176.12 per share."
+          "value": 5643067.0,
+          "text": "Disposition under a purchase/ownership plan at price 167.20 per share."
         },
         {
-          "date": "2026-10-21",
+          "date": "2026-10-28",
           "insider": "Lutke (Tobias Albin)",
           "position": "Director of Issuer",
           "shares": 6750.0,
-          "value": 1188823.0,
-          "text": "Disposition under a purchase/ownership plan at price 176.12 per share."
+          "value": 1128613.0,
+          "text": "Disposition under a purchase/ownership plan at price 167.20 per share."
         },
         {
-          "date": "2026-10-15",
+          "date": "2026-10-28",
+          "insider": "Niehaus (Jean)",
+          "position": "Senior Officer of Issuer",
+          "shares": 1096.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-28",
+          "insider": "Niehaus (Jean)",
+          "position": "Senior Officer of Issuer",
+          "shares": 492.0,
+          "value": 82592.0,
+          "text": "Disposition in the public market at price 167.87 per share."
+        },
+        {
+          "date": "2026-10-28",
           "insider": "Finkelstein (Harley Michael)",
           "position": "Senior Officer of Issuer",
-          "shares": 11000.0,
-          "value": 512160.0,
-          "text": "Exercise of options at price 46.56 per share."
+          "shares": 3377.0,
+          "value": 0.0,
+          "text": ""
         },
         {
-          "date": "2026-10-15",
+          "date": "2026-10-28",
           "insider": "Finkelstein (Harley Michael)",
           "position": "Senior Officer of Issuer",
-          "shares": 11000.0,
-          "value": 1811128.0,
-          "text": "Disposition under a purchase/ownership plan at price 164.65 per share."
+          "shares": 1697.0,
+          "value": 284875.0,
+          "text": "Disposition in the public market at price 167.87 per share."
         },
         {
-          "date": "2026-10-14",
-          "insider": "Lutke (Tobias Albin)",
-          "position": "Director of Issuer",
-          "shares": 33750.0,
-          "value": 5859101.0,
-          "text": "Disposition under a purchase/ownership plan at price 173.60 per share."
-        },
-        {
-          "date": "2026-10-14",
-          "insider": "Lutke (Tobias Albin)",
-          "position": "Director of Issuer",
-          "shares": 6750.0,
-          "value": 1171820.0,
-          "text": "Disposition under a purchase/ownership plan at price 173.60 per share."
-        },
-        {
-          "date": "2026-10-07",
-          "insider": "Lutke (Tobias Albin)",
-          "position": "Director of Issuer",
-          "shares": 33750.0,
-          "value": 5554372.0,
-          "text": "Disposition under a purchase/ownership plan at price 164.57 per share."
-        },
-        {
-          "date": "2026-10-07",
-          "insider": "Lutke (Tobias Albin)",
-          "position": "Director of Issuer",
-          "shares": 6750.0,
-          "value": 1110874.0,
-          "text": "Disposition under a purchase/ownership plan at price 164.57 per share."
-        },
-        {
-          "date": "2026-10-05",
-          "insider": "Finkelstein (Harley Michael)",
+          "date": "2026-10-28",
+          "insider": "Hertz (Jessica)",
           "position": "Senior Officer of Issuer",
-          "shares": 1350.0,
-          "value": 206257.0,
-          "text": "Disposition under a purchase/ownership plan at price 152.78 per share."
+          "shares": 5066.0,
+          "value": 0.0,
+          "text": ""
         },
         {
-          "date": "2026-09-30",
-          "insider": "Lutke (Tobias Albin)",
-          "position": "Director of Issuer",
-          "shares": 33750.0,
-          "value": 5053218.0,
-          "text": "Disposition under a purchase/ownership plan at price 149.72 per share."
+          "date": "2026-10-28",
+          "insider": "Hertz (Jessica)",
+          "position": "Senior Officer of Issuer",
+          "shares": 2781.0,
+          "value": 466846.0,
+          "text": "Disposition in the public market at price 167.87 per share."
+        },
+        {
+          "date": "2026-10-28",
+          "insider": "Hertz (Jessica)",
+          "position": "Senior Officer of Issuer",
+          "shares": 738.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-10-28",
+          "insider": "Hertz (Jessica)",
+          "position": "Senior Officer of Issuer",
+          "shares": 405.0,
+          "value": 67987.0,
+          "text": "Disposition in the public market at price 167.87 per share."
         }
       ],
       "buybacks": [
@@ -10149,17 +10149,17 @@
           "date": "2026-08-13",
           "insider": "CHEN HERALD Y",
           "position": "Director",
-          "shares": 100000.0,
+          "shares": 143791.0,
           "value": 0.0,
-          "text": "Stock Gift at price 0.00 per share."
+          "text": ""
         },
         {
           "date": "2026-08-13",
           "insider": "CHEN HERALD Y",
           "position": "Director",
-          "shares": 143791.0,
+          "shares": 100000.0,
           "value": 0.0,
-          "text": ""
+          "text": "Stock Gift at price 0.00 per share."
         },
         {
           "date": "2026-08-07",
@@ -10639,17 +10639,17 @@
           "date": "2026-10-26",
           "insider": "BLECHARCZYK NATHAN",
           "position": "Officer, Director and Beneficial Owner",
-          "shares": 4077.0,
-          "value": 0.0,
-          "text": "Stock Gift at price 0.00 per share."
+          "shares": 13615.0,
+          "value": 2325621.0,
+          "text": "Sale at price 169.70 - 172.00 per share."
         },
         {
           "date": "2026-10-26",
           "insider": "BLECHARCZYK NATHAN",
           "position": "Officer, Director and Beneficial Owner",
-          "shares": 13615.0,
-          "value": 2325621.0,
-          "text": "Sale at price 169.70 - 172.00 per share."
+          "shares": 4077.0,
+          "value": 0.0,
+          "text": "Stock Gift at price 0.00 per share."
         },
         {
           "date": "2026-10-15",
@@ -10671,17 +10671,17 @@
           "date": "2026-10-12",
           "insider": "BLECHARCZYK NATHAN",
           "position": "Officer, Director and Beneficial Owner",
-          "shares": 4077.0,
-          "value": 0.0,
-          "text": "Stock Gift at price 0.00 per share."
+          "shares": 13615.0,
+          "value": 2248980.0,
+          "text": "Sale at price 163.45 - 167.18 per share."
         },
         {
           "date": "2026-10-12",
           "insider": "BLECHARCZYK NATHAN",
           "position": "Officer, Director and Beneficial Owner",
-          "shares": 13615.0,
-          "value": 2248980.0,
-          "text": "Sale at price 163.45 - 167.18 per share."
+          "shares": 4077.0,
+          "value": 0.0,
+          "text": "Stock Gift at price 0.00 per share."
         },
         {
           "date": "2026-09-28",
@@ -10695,17 +10695,17 @@
           "date": "2026-09-28",
           "insider": "BLECHARCZYK NATHAN",
           "position": "Officer, Director and Beneficial Owner",
-          "shares": 4077.0,
-          "value": 0.0,
-          "text": "Stock Gift at price 0.00 per share."
+          "shares": 13615.0,
+          "value": 2135172.0,
+          "text": "Sale at price 154.45 - 158.31 per share."
         },
         {
           "date": "2026-09-28",
-          "insider": "MERTZ ELINOR",
-          "position": "Chief Financial Officer",
-          "shares": 11204.0,
+          "insider": "BLECHARCZYK NATHAN",
+          "position": "Officer, Director and Beneficial Owner",
+          "shares": 4077.0,
           "value": 0.0,
-          "text": "Stock Award(Grant) at price 0.00 per share."
+          "text": "Stock Gift at price 0.00 per share."
         }
       ],
       "buybacks": [
@@ -13538,17 +13538,9 @@
         },
         {
           "date": "2026-09-01",
-          "insider": "O'HARE ROBERT WARREN",
-          "position": "Chief Financial Officer",
-          "shares": 11987.0,
-          "value": 0.0,
-          "text": ""
-        },
-        {
-          "date": "2026-09-01",
-          "insider": "LINFORD MICHAEL ALAN",
+          "insider": "MICHALEK LIBOR",
           "position": "President",
-          "shares": 11719.0,
+          "shares": 11364.0,
           "value": 0.0,
           "text": ""
         },
@@ -13557,6 +13549,14 @@
           "insider": "JIYANE SIPHELELE N",
           "position": "Officer",
           "shares": 9038.0,
+          "value": 0.0,
+          "text": ""
+        },
+        {
+          "date": "2026-09-01",
+          "insider": "LINFORD MICHAEL ALAN",
+          "position": "President",
+          "shares": 11719.0,
           "value": 0.0,
           "text": ""
         }
@@ -13726,19 +13726,19 @@
         },
         {
           "date": "2026-10-06",
-          "insider": "KAZMAIER GERRIT S",
-          "position": "Officer",
-          "shares": 2729.0,
-          "value": 511080.0,
-          "text": "Sale at price 184.85 - 189.49 per share."
-        },
-        {
-          "date": "2026-10-06",
           "insider": "ROWE ZANE C",
           "position": "Chief Financial Officer",
           "shares": 6000.0,
           "value": 1123385.0,
           "text": "Sale at price 184.99 - 189.25 per share."
+        },
+        {
+          "date": "2026-10-06",
+          "insider": "KAZMAIER GERRIT S",
+          "position": "Officer",
+          "shares": 2729.0,
+          "value": 511080.0,
+          "text": "Sale at price 184.85 - 189.49 per share."
         },
         {
           "date": "2026-10-06",
@@ -14853,17 +14853,17 @@
         },
         {
           "date": "2026-10-23",
-          "insider": "SMITH MARIA",
+          "insider": "LEVEY STUART A",
           "position": "Officer",
-          "shares": 8926.0,
+          "shares": 12497.0,
           "value": 0.0,
           "text": ""
         },
         {
           "date": "2026-10-23",
-          "insider": "LEVEY STUART A",
+          "insider": "SMITH MARIA",
           "position": "Officer",
-          "shares": 12497.0,
+          "shares": 8926.0,
           "value": 0.0,
           "text": ""
         },
@@ -14901,17 +14901,17 @@
         },
         {
           "date": "2026-09-18",
-          "insider": "SMITH MARIA",
+          "insider": "LEVEY STUART A",
           "position": "Officer",
-          "shares": 17440.0,
+          "shares": 20885.0,
           "value": 0.0,
           "text": ""
         },
         {
           "date": "2026-09-18",
-          "insider": "LEVEY STUART A",
-          "position": "Officer",
-          "shares": 20885.0,
+          "insider": "SICILIA MICHAEL D",
+          "position": "Chief Executive Officer",
+          "shares": 109213.0,
           "value": 0.0,
           "text": ""
         }
@@ -17880,19 +17880,19 @@
         },
         {
           "date": "2026-09-04",
-          "insider": "DEVINE MICHAEL F III",
-          "position": "Director",
-          "shares": 4250.0,
-          "value": 1065084.0,
-          "text": "Sale at price 250.44 - 251.28 per share."
-        },
-        {
-          "date": "2026-09-04",
           "insider": "BULL KENNETH R",
           "position": "Chief Operating Officer",
           "shares": 10510.0,
           "value": 2607113.0,
           "text": "Sale at price 240.73 - 255.17 per share."
+        },
+        {
+          "date": "2026-09-04",
+          "insider": "DEVINE MICHAEL F III",
+          "position": "Director",
+          "shares": 4250.0,
+          "value": 1065084.0,
+          "text": "Sale at price 250.44 - 251.28 per share."
         },
         {
           "date": "2026-08-03",
