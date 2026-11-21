@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "dates": {
     "STZ": {
       "next": "2027-01-07",
@@ -410,8 +410,8 @@
       "prev": "2026-11-04"
     },
     "DIS": {
-      "next": "2026-11-17",
-      "prev": "2026-08-05"
+      "next": "2027-02-01",
+      "prev": "2026-11-17"
     },
     "CRCL": {
       "next": "2026-11-04",
@@ -519,19 +519,19 @@
     },
     "TGT": {
       "next": "2026-11-18",
-      "prev": "2026-08-19"
+      "prev": "2026-11-18"
     },
     "TJX": {
       "next": "2026-11-18",
-      "prev": "2026-08-19"
+      "prev": "2026-11-18"
     },
     "EL": {
       "next": "2027-02-03",
       "prev": "2026-11-02"
     },
     "WMT": {
-      "next": "2026-11-19",
-      "prev": "2026-08-20"
+      "next": "2027-02-18",
+      "prev": "2026-11-19"
     },
     "ZM": {
       "next": "2026-11-23",
@@ -539,7 +539,7 @@
     },
     "NVDA": {
       "next": "2026-11-17",
-      "prev": "2026-08-26"
+      "prev": "2026-11-17"
     },
     "CRM": {
       "next": "2026-12-02",
@@ -590,8 +590,8 @@
       "prev": "2026-09-01"
     },
     "PANW": {
-      "next": "2026-11-18",
-      "prev": "2026-09-01"
+      "next": "2027-02-16",
+      "prev": "2026-11-18"
     },
     "MDB": {
       "next": "2026-12-01",
@@ -635,7 +635,7 @@
     },
     "HD": {
       "next": "2026-11-17",
-      "prev": "2026-08-18"
+      "prev": "2026-11-17"
     },
     "TOL": {
       "next": "2026-12-07",
@@ -643,11 +643,11 @@
     },
     "LOW": {
       "next": "2026-11-18",
-      "prev": "2026-08-19"
+      "prev": "2026-11-18"
     },
     "BJ": {
       "next": "2026-11-20",
-      "prev": "2026-08-21"
+      "prev": "2026-11-20"
     },
     "CEG": {
       "next": "2026-11-09",
@@ -758,7 +758,7 @@
       "prev": "2026-09-08"
     },
     "CBRL": {
-      "next": "2026-12-09",
+      "next": "2026-12-02",
       "prev": "2026-09-23"
     },
     "CHWY": {
@@ -774,7 +774,7 @@
       "prev": "2026-09-22"
     },
     "GIS": {
-      "next": "2026-12-23",
+      "next": "2026-12-17",
       "prev": "2026-09-23"
     },
     "PAYX": {
@@ -798,7 +798,7 @@
       "prev": "2026-09-29"
     },
     "MU": {
-      "next": "2026-12-23",
+      "next": "2026-12-17",
       "prev": "2026-09-30"
     },
     "MKC": {
@@ -816,152 +816,152 @@
   },
   "per": {
     "STZ": {
-      "trailing": 13.0,
-      "forward": 12.0,
+      "trailing": 12.7,
+      "forward": 11.7,
       "analysts": 23,
-      "target_mean": 152.91
+      "target_mean": 153.43
     },
     "LEVI": {
-      "trailing": 16.0,
-      "forward": 14.5,
+      "trailing": 15.0,
+      "forward": 13.6,
       "analysts": 14,
       "target_mean": 26.79
     },
     "PEP": {
-      "trailing": 18.3,
-      "forward": 16.9,
+      "trailing": 17.7,
+      "forward": 16.4,
       "analysts": 22,
-      "target_mean": 141.59
+      "target_mean": 141.14
     },
     "DAL": {
-      "trailing": 17.2,
-      "forward": 11.8,
+      "trailing": 16.0,
+      "forward": 10.9,
       "analysts": 24,
-      "target_mean": 100.98
+      "target_mean": 101.65
     },
     "C": {
-      "trailing": 12.1,
-      "forward": 9.5,
+      "trailing": 10.8,
+      "forward": 8.5,
       "analysts": 21,
       "target_mean": 150.6
     },
     "GS": {
-      "trailing": 13.2,
-      "forward": 12.3,
+      "trailing": 11.4,
+      "forward": 10.6,
       "analysts": 21,
-      "target_mean": 1030.67
+      "target_mean": 1031.57
     },
     "JPM": {
-      "trailing": 14.5,
-      "forward": 13.5,
+      "trailing": 13.0,
+      "forward": 12.1,
       "analysts": 23,
       "target_mean": 373.48
     },
     "BAC": {
-      "trailing": 12.2,
-      "forward": 9.8,
+      "trailing": 11.2,
+      "forward": 9.1,
       "analysts": 22,
       "target_mean": 62.48
     },
     "WFC": {
-      "trailing": 12.1,
-      "forward": 10.8,
+      "trailing": 11.1,
+      "forward": 9.8,
       "analysts": 24,
       "target_mean": 97.38
     },
     "AEHR": {
       "trailing": null,
-      "forward": 33.9,
+      "forward": 23.7,
       "analysts": 5,
       "target_mean": 117.0
     },
     "ASML": {
-      "trailing": 36.8,
-      "forward": 23.6,
+      "trailing": 31.2,
+      "forward": 20.0,
       "analysts": 17,
-      "target_mean": 2115.1
+      "target_mean": 2107.51
     },
     "BLK": {
-      "trailing": 27.8,
-      "forward": 18.9,
-      "analysts": 17,
-      "target_mean": 1361.06
+      "trailing": 25.1,
+      "forward": 17.0,
+      "analysts": 18,
+      "target_mean": 1366.0
     },
     "MS": {
-      "trailing": 15.1,
-      "forward": 13.9,
+      "trailing": 13.1,
+      "forward": 12.1,
       "analysts": 22,
       "target_mean": 211.5
     },
     "JNJ": {
-      "trailing": 43.4,
-      "forward": 24.6,
+      "trailing": 41.0,
+      "forward": 23.3,
       "analysts": 22,
-      "target_mean": 279.41
+      "target_mean": 279.85
     },
     "UAL": {
-      "trailing": 10.0,
-      "forward": 9.3,
+      "trailing": 9.3,
+      "forward": 8.4,
       "analysts": 23,
-      "target_mean": 150.57
+      "target_mean": 151.3
     },
     "TSM": {
-      "trailing": 25.8,
-      "forward": 17.1,
+      "trailing": 20.7,
+      "forward": 13.6,
       "analysts": 20,
       "target_mean": 586.69
     },
     "JBHT": {
-      "trailing": 32.8,
-      "forward": 23.7,
+      "trailing": 30.8,
+      "forward": 22.2,
       "analysts": 23,
       "target_mean": 279.52
     },
     "KARO": {
-      "trailing": 30.6,
-      "forward": 22.4,
+      "trailing": 28.7,
+      "forward": 21.0,
       "analysts": 5,
-      "target_mean": 72.69
+      "target_mean": 69.95
     },
     "UNH": {
-      "trailing": 23.3,
-      "forward": 17.5,
+      "trailing": 19.4,
+      "forward": 14.5,
       "analysts": 25,
-      "target_mean": 476.16
+      "target_mean": 478.48
     },
     "GE": {
-      "trailing": 37.9,
-      "forward": 35.6,
+      "trailing": 35.4,
+      "forward": 33.2,
       "analysts": 21,
       "target_mean": 378.43
     },
     "COF": {
-      "trailing": 12.0,
-      "forward": 8.2,
+      "trailing": 10.9,
+      "forward": 7.5,
       "analysts": 21,
       "target_mean": 254.48
     },
     "ABT": {
-      "trailing": 40.5,
-      "forward": 18.3,
+      "trailing": 38.4,
+      "forward": 17.3,
       "analysts": 26,
-      "target_mean": 118.91
+      "target_mean": 119.6
     },
     "NFLX": {
-      "trailing": 18.0,
-      "forward": 16.5,
+      "trailing": 16.4,
+      "forward": 15.0,
       "analysts": 43,
       "target_mean": 84.76
     },
     "DPZ": {
-      "trailing": 18.8,
-      "forward": 16.6,
+      "trailing": 19.3,
+      "forward": 16.9,
       "analysts": 27,
-      "target_mean": 359.44
+      "target_mean": 359.37
     },
     "HAL": {
-      "trailing": 14.2,
-      "forward": 11.5,
+      "trailing": 12.8,
+      "forward": 10.4,
       "analysts": 25,
       "target_mean": 43.56
     },
@@ -972,532 +972,532 @@
       "target_mean": 146.5
     },
     "DHR": {
-      "trailing": 38.6,
-      "forward": 25.0,
+      "trailing": 36.5,
+      "forward": 23.6,
       "analysts": 21,
       "target_mean": 259.9
     },
     "SCHW": {
-      "trailing": 15.9,
-      "forward": 11.9,
+      "trailing": 15.4,
+      "forward": 11.6,
       "analysts": 22,
-      "target_mean": 116.86
+      "target_mean": 116.64
     },
     "GM": {
-      "trailing": 18.8,
-      "forward": 5.8,
+      "trailing": 17.2,
+      "forward": 5.3,
       "analysts": 23,
       "target_mean": 101.17
     },
     "MMM": {
-      "trailing": 27.4,
-      "forward": 18.5,
+      "trailing": 26.6,
+      "forward": 17.9,
       "analysts": 17,
-      "target_mean": 193.43
+      "target_mean": 194.01
     },
     "MSCI": {
-      "trailing": 34.8,
-      "forward": 29.3,
+      "trailing": 32.3,
+      "forward": 27.2,
       "analysts": 17,
       "target_mean": 689.94
     },
     "GEV": {
-      "trailing": 21.1,
-      "forward": 30.8,
-      "analysts": 32,
-      "target_mean": 1178.39
+      "trailing": 18.4,
+      "forward": 27.0,
+      "analysts": 33,
+      "target_mean": 1167.13
     },
     "T": {
       "trailing": 11.9,
-      "forward": 8.5,
+      "forward": 8.6,
       "analysts": 23,
       "target_mean": 27.59
     },
     "NTRS": {
-      "trailing": 14.0,
-      "forward": 13.7,
+      "trailing": 12.7,
+      "forward": 12.4,
       "analysts": 14,
       "target_mean": 180.75
     },
     "TSLA": {
-      "trailing": 428.8,
-      "forward": 180.7,
+      "trailing": 380.0,
+      "forward": 160.2,
       "analysts": 40,
-      "target_mean": 412.48
+      "target_mean": 417.53
     },
     "GOOGL": {
-      "trailing": 15.4,
-      "forward": 19.2,
+      "trailing": 13.9,
+      "forward": 17.3,
       "analysts": 53,
-      "target_mean": 400.37
+      "target_mean": 397.13
     },
     "NOW": {
-      "trailing": 73.6,
-      "forward": 21.3,
+      "trailing": 63.0,
+      "forward": 18.2,
       "analysts": 46,
-      "target_mean": 155.82
+      "target_mean": 155.75
     },
     "IBM": {
-      "trailing": 21.1,
-      "forward": 18.7,
+      "trailing": 19.2,
+      "forward": 17.0,
       "analysts": 23,
       "target_mean": 259.85
     },
     "TXN": {
-      "trailing": 39.4,
-      "forward": 26.1,
+      "trailing": 34.2,
+      "forward": 22.7,
       "analysts": 29,
       "target_mean": 338.79
     },
     "AAL": {
       "trailing": null,
-      "forward": 14.0,
+      "forward": 11.7,
       "analysts": 23,
-      "target_mean": 15.35
+      "target_mean": 15.57
     },
     "BX": {
-      "trailing": 26.8,
-      "forward": 16.3,
-      "analysts": 22,
-      "target_mean": 138.86
+      "trailing": 24.7,
+      "forward": 15.1,
+      "analysts": 23,
+      "target_mean": 139.04
     },
     "LMT": {
-      "trailing": 21.2,
-      "forward": 17.9,
+      "trailing": 20.1,
+      "forward": 17.0,
       "analysts": 22,
       "target_mean": 660.86
     },
     "INTC": {
       "trailing": null,
-      "forward": 33.3,
+      "forward": 28.6,
       "analysts": 43,
       "target_mean": 90.65
     },
     "NEM": {
-      "trailing": 13.1,
-      "forward": 11.2,
-      "analysts": 20,
-      "target_mean": 135.39
+      "trailing": 11.0,
+      "forward": 9.5,
+      "analysts": 19,
+      "target_mean": 134.57
     },
     "VZ": {
-      "trailing": 11.8,
-      "forward": 8.7,
+      "trailing": 11.9,
+      "forward": 8.8,
       "analysts": 22,
       "target_mean": 50.65
     },
     "AXP": {
-      "trailing": 18.1,
-      "forward": 15.9,
+      "trailing": 17.0,
+      "forward": 14.9,
       "analysts": 24,
       "target_mean": 364.79
     },
     "AZN": {
-      "trailing": 26.1,
-      "forward": 16.3,
+      "trailing": 24.7,
+      "forward": 15.4,
       "analysts": 12,
-      "target_mean": 208.07
+      "target_mean": 209.91
     },
     "CLS": {
-      "trailing": 22.7,
-      "forward": 10.8,
+      "trailing": 19.0,
+      "forward": 9.0,
       "analysts": 18,
       "target_mean": 456.17
     },
     "NUE": {
-      "trailing": 16.0,
-      "forward": 11.4,
+      "trailing": 15.3,
+      "forward": 10.4,
       "analysts": 16,
-      "target_mean": 298.38
+      "target_mean": 304.56
     },
     "PYPL": {
-      "trailing": 11.3,
-      "forward": 10.0,
+      "trailing": 10.2,
+      "forward": 9.0,
       "analysts": 33,
       "target_mean": 57.31
     },
     "BA": {
-      "trailing": 17.7,
-      "forward": 79.3,
+      "trailing": 16.1,
+      "forward": 71.6,
       "analysts": 26,
       "target_mean": 233.35
     },
     "KO": {
-      "trailing": 29.3,
-      "forward": 28.1,
-      "analysts": 23,
-      "target_mean": 98.43
+      "trailing": 28.6,
+      "forward": 27.4,
+      "analysts": 25,
+      "target_mean": 99.64
     },
     "UPS": {
-      "trailing": 21.7,
-      "forward": 13.9,
+      "trailing": 20.5,
+      "forward": 13.1,
       "analysts": 26,
       "target_mean": 115.46
     },
     "GLW": {
-      "trailing": 46.2,
-      "forward": 25.1,
+      "trailing": 38.2,
+      "forward": 20.7,
       "analysts": 18,
-      "target_mean": 174.94
+      "target_mean": 171.89
     },
     "RCL": {
-      "trailing": 19.1,
-      "forward": 15.8,
+      "trailing": 17.5,
+      "forward": 14.5,
       "analysts": 27,
       "target_mean": 357.7
     },
     "BE": {
-      "trailing": 116.4,
-      "forward": 36.1,
+      "trailing": 86.3,
+      "forward": 26.7,
       "analysts": 26,
-      "target_mean": 283.85
+      "target_mean": 282.69
     },
     "STX": {
-      "trailing": 27.7,
-      "forward": 8.1,
+      "trailing": 24.0,
+      "forward": 7.0,
       "analysts": 24,
       "target_mean": 1044.83
     },
     "ENPH": {
-      "trailing": 38.9,
-      "forward": 18.3,
+      "trailing": 29.3,
+      "forward": 14.8,
       "analysts": 25,
-      "target_mean": 40.26
+      "target_mean": 39.42
     },
     "V": {
-      "trailing": 34.6,
-      "forward": 24.8,
+      "trailing": 32.6,
+      "forward": 23.4,
       "analysts": 37,
-      "target_mean": 449.06
+      "target_mean": 450.96
     },
     "TER": {
-      "trailing": 28.7,
-      "forward": 20.7,
+      "trailing": 23.5,
+      "forward": 17.0,
       "analysts": 16,
       "target_mean": 415.88
     },
     "F": {
       "trailing": null,
-      "forward": 6.4,
+      "forward": 6.0,
       "analysts": 18,
       "target_mean": 15.02
     },
     "CAKE": {
-      "trailing": 25.9,
-      "forward": 20.8,
+      "trailing": 25.6,
+      "forward": 20.6,
       "analysts": 15,
-      "target_mean": 106.27
+      "target_mean": 106.93
     },
     "SOFI": {
-      "trailing": 28.0,
-      "forward": 17.1,
+      "trailing": 22.7,
+      "forward": 13.9,
       "analysts": 23,
-      "target_mean": 20.84
+      "target_mean": 20.67
     },
     "BSX": {
-      "trailing": 18.7,
-      "forward": 14.2,
+      "trailing": 17.7,
+      "forward": 13.4,
       "analysts": 28,
       "target_mean": 49.6
     },
     "VRT": {
-      "trailing": 37.8,
-      "forward": 20.4,
+      "trailing": 31.1,
+      "forward": 16.8,
       "analysts": 30,
       "target_mean": 334.29
     },
     "PG": {
-      "trailing": 25.6,
-      "forward": 23.0,
+      "trailing": 25.5,
+      "forward": 22.8,
       "analysts": 23,
-      "target_mean": 174.04
+      "target_mean": 175.83
     },
     "MSFT": {
-      "trailing": 27.3,
-      "forward": 21.7,
+      "trailing": 25.3,
+      "forward": 20.0,
       "analysts": 54,
       "target_mean": 636.12
     },
     "REGN": {
-      "trailing": 21.1,
-      "forward": 13.5,
+      "trailing": 20.4,
+      "forward": 12.9,
       "analysts": 27,
-      "target_mean": 977.93
+      "target_mean": 991.0
     },
     "META": {
-      "trailing": 21.9,
-      "forward": 18.0,
-      "analysts": 57,
-      "target_mean": 850.1
+      "trailing": 19.1,
+      "forward": 15.7,
+      "analysts": 58,
+      "target_mean": 848.23
     },
     "HOOD": {
-      "trailing": 35.9,
-      "forward": 22.8,
+      "trailing": 28.6,
+      "forward": 18.2,
       "analysts": 30,
-      "target_mean": 128.44
+      "target_mean": 125.97
     },
     "SKHY": {
-      "trailing": 8.4,
-      "forward": 3.2,
+      "trailing": 5.7,
+      "forward": 2.5,
       "analysts": 14,
       "target_mean": 259.5
     },
     "APH": {
-      "trailing": 34.0,
-      "forward": 21.6,
+      "trailing": 30.3,
+      "forward": 19.2,
       "analysts": 19,
       "target_mean": 106.97
     },
     "ARM": {
-      "trailing": 219.0,
-      "forward": 62.0,
+      "trailing": 174.9,
+      "forward": 49.3,
       "analysts": 40,
       "target_mean": 272.43
     },
     "QCOM": {
-      "trailing": 13.6,
-      "forward": 14.1,
+      "trailing": 11.8,
+      "forward": 12.3,
       "analysts": 28,
-      "target_mean": 185.96
+      "target_mean": 185.25
     },
     "LRCX": {
-      "trailing": 33.7,
-      "forward": 18.5,
+      "trailing": 27.3,
+      "forward": 14.9,
       "analysts": 30,
       "target_mean": 362.1
     },
     "CMG": {
-      "trailing": 33.0,
-      "forward": 26.6,
-      "analysts": 30,
-      "target_mean": 40.57
+      "trailing": 33.2,
+      "forward": 26.9,
+      "analysts": 31,
+      "target_mean": 40.55
     },
     "FTNT": {
-      "trailing": 41.6,
-      "forward": 32.6,
+      "trailing": 40.7,
+      "forward": 31.9,
       "analysts": 37,
-      "target_mean": 145.03
+      "target_mean": 144.68
     },
     "MA": {
-      "trailing": 34.6,
-      "forward": 28.5,
+      "trailing": 32.7,
+      "forward": 27.0,
       "analysts": 37,
       "target_mean": 720.69
     },
     "OWL": {
-      "trailing": 69.6,
-      "forward": 10.0,
-      "analysts": 18,
-      "target_mean": 12.64
+      "trailing": 62.9,
+      "forward": 9.0,
+      "analysts": 19,
+      "target_mean": 12.66
     },
     "AAPL": {
-      "trailing": 39.7,
-      "forward": 33.8,
-      "analysts": 40,
-      "target_mean": 344.62
+      "trailing": 38.1,
+      "forward": 32.4,
+      "analysts": 39,
+      "target_mean": 345.63
     },
     "AMZN": {
-      "trailing": 21.6,
-      "forward": 24.4,
+      "trailing": 20.0,
+      "forward": 22.6,
       "analysts": 60,
-      "target_mean": 326.72
+      "target_mean": 326.51
     },
     "RBLX": {
       "trailing": null,
-      "forward": -39.2,
+      "forward": -36.7,
       "analysts": 34,
-      "target_mean": 50.3
+      "target_mean": 50.39
     },
     "RDDT": {
-      "trailing": 20.1,
-      "forward": 10.6,
+      "trailing": 17.4,
+      "forward": 9.4,
       "analysts": 29,
       "target_mean": 148.46
     },
     "RIVN": {
       "trailing": null,
-      "forward": -6.9,
+      "forward": -5.9,
       "analysts": 25,
-      "target_mean": 18.08
+      "target_mean": 17.74
     },
     "XOM": {
-      "trailing": 17.6,
-      "forward": 13.6,
+      "trailing": 16.5,
+      "forward": 12.8,
       "analysts": 22,
-      "target_mean": 184.32
+      "target_mean": 184.18
     },
     "MRNA": {
       "trailing": null,
-      "forward": -54.8,
+      "forward": -46.6,
       "analysts": 19,
-      "target_mean": 158.47
+      "target_mean": 164.53
     },
     "CVX": {
-      "trailing": 16.1,
-      "forward": 13.3,
+      "trailing": 15.3,
+      "forward": 12.6,
       "analysts": 24,
-      "target_mean": 242.46
+      "target_mean": 242.54
     },
     "D": {
-      "trailing": 22.3,
-      "forward": 17.7,
+      "trailing": 21.9,
+      "forward": 17.4,
       "analysts": 12,
-      "target_mean": 70.17
+      "target_mean": 70.42
     },
     "MAR": {
-      "trailing": 42.2,
-      "forward": 31.5,
+      "trailing": 40.5,
+      "forward": 30.2,
       "analysts": 26,
-      "target_mean": 420.42
+      "target_mean": 422.81
     },
     "PLTR": {
-      "trailing": 118.3,
-      "forward": 66.2,
-      "analysts": 28,
-      "target_mean": 222.25
+      "trailing": 101.0,
+      "forward": 56.5,
+      "analysts": 29,
+      "target_mean": 222.9
     },
     "ON": {
-      "trailing": 41.6,
-      "forward": 15.0,
+      "trailing": 35.6,
+      "forward": 12.8,
       "analysts": 25,
       "target_mean": 96.16
     },
     "PFE": {
-      "trailing": 41.3,
-      "forward": 9.8,
+      "trailing": 39.1,
+      "forward": 9.3,
       "analysts": 26,
       "target_mean": 30.22
     },
     "CAT": {
-      "trailing": 23.6,
-      "forward": 18.7,
+      "trailing": 20.0,
+      "forward": 15.9,
       "analysts": 26,
-      "target_mean": 815.26
+      "target_mean": 807.26
     },
     "MCD": {
-      "trailing": 21.5,
-      "forward": 19.9,
+      "trailing": 21.6,
+      "forward": 20.0,
       "analysts": 29,
       "target_mean": 299.0
     },
     "ET": {
-      "trailing": 12.8,
-      "forward": 11.0,
+      "trailing": 12.3,
+      "forward": 10.5,
       "analysts": 23,
-      "target_mean": 24.74
+      "target_mean": 24.61
     },
     "AMD": {
-      "trailing": 114.1,
-      "forward": 30.2,
+      "trailing": 90.7,
+      "forward": 24.1,
       "analysts": 49,
       "target_mean": 657.74
     },
     "SPCX": {
-      "trailing": 604.8,
-      "forward": 50.7,
+      "trailing": 555.6,
+      "forward": 46.6,
       "analysts": 37,
-      "target_mean": 256.41
+      "target_mean": 257.5
     },
     "ANET": {
-      "trailing": 52.9,
-      "forward": 32.7,
+      "trailing": 44.9,
+      "forward": 27.8,
       "analysts": 29,
       "target_mean": 249.65
     },
     "ALAB": {
-      "trailing": 87.7,
-      "forward": 31.0,
+      "trailing": 71.3,
+      "forward": 25.2,
       "analysts": 22,
       "target_mean": 344.15
     },
     "LLY": {
-      "trailing": 46.9,
-      "forward": 28.5,
+      "trailing": 43.7,
+      "forward": 26.5,
       "analysts": 29,
-      "target_mean": 1463.4
+      "target_mean": 1470.06
     },
     "SHOP": {
-      "trailing": 90.2,
-      "forward": 59.8,
+      "trailing": 75.9,
+      "forward": 50.3,
       "analysts": 49,
-      "target_mean": 177.29
+      "target_mean": 177.18
     },
     "UBER": {
-      "trailing": 41.0,
-      "forward": 15.9,
+      "trailing": 37.3,
+      "forward": 14.4,
       "analysts": 46,
-      "target_mean": 98.88
+      "target_mean": 98.16
     },
     "DIS": {
-      "trailing": 24.5,
-      "forward": 15.9,
-      "analysts": 32,
-      "target_mean": 126.83
+      "trailing": 21.0,
+      "forward": 13.8,
+      "analysts": 31,
+      "target_mean": 131.34
     },
     "CRCL": {
-      "trailing": 37.5,
-      "forward": 43.7,
+      "trailing": 28.6,
+      "forward": 33.3,
       "analysts": 24,
       "target_mean": 102.37
     },
     "U": {
       "trailing": null,
-      "forward": 20.0,
-      "analysts": 24,
-      "target_mean": 61.54
+      "forward": 16.9,
+      "analysts": 25,
+      "target_mean": 62.04
     },
     "NVO": {
-      "trailing": 10.5,
-      "forward": 12.1,
+      "trailing": 9.6,
+      "forward": 10.8,
       "analysts": 12,
-      "target_mean": 45.5
+      "target_mean": 45.69
     },
     "SNDK": {
-      "trailing": 7.1,
-      "forward": 3.1,
+      "trailing": 5.1,
+      "forward": 2.2,
       "analysts": 24,
-      "target_mean": 2047.38
+      "target_mean": 248.16
     },
     "WDC": {
-      "trailing": 10.4,
-      "forward": 7.3,
+      "trailing": 9.2,
+      "forward": 6.5,
       "analysts": 24,
       "target_mean": 613.38
     },
     "APP": {
-      "trailing": 27.5,
-      "forward": 19.6,
-      "analysts": 30,
-      "target_mean": 449.61
+      "trailing": 23.5,
+      "forward": 16.7,
+      "analysts": 31,
+      "target_mean": 458.11
     },
     "ELF": {
-      "trailing": 83.1,
-      "forward": 28.1,
+      "trailing": 72.9,
+      "forward": 24.7,
       "analysts": 16,
       "target_mean": 131.0
     },
     "AXON": {
-      "trailing": 101.4,
-      "forward": 33.4,
+      "trailing": 93.6,
+      "forward": 30.8,
       "analysts": 19,
       "target_mean": 541.32
     },
     "DDOG": {
-      "trailing": 255.8,
-      "forward": 57.9,
+      "trailing": 218.6,
+      "forward": 49.4,
       "analysts": 48,
       "target_mean": 269.65
     },
     "DKNG": {
       "trailing": null,
-      "forward": 13.8,
+      "forward": 11.8,
       "analysts": 36,
       "target_mean": 26.4
     },
     "ABNB": {
-      "trailing": 35.0,
-      "forward": 29.6,
-      "analysts": 40,
-      "target_mean": 203.83
+      "trailing": 32.0,
+      "forward": 26.8,
+      "analysts": 39,
+      "target_mean": 205.88
     },
     "RGN": {
       "trailing": null,
@@ -1507,537 +1507,537 @@
     },
     "MP": {
       "trailing": null,
-      "forward": 83.1,
+      "forward": 85.8,
       "analysts": 16,
-      "target_mean": 67.5
+      "target_mean": 65.94
     },
     "OKLO": {
       "trailing": null,
-      "forward": -20.9,
+      "forward": -17.5,
       "analysts": 21,
-      "target_mean": 55.57
+      "target_mean": 55.43
     },
     "VST": {
-      "trailing": 18.0,
-      "forward": 13.9,
-      "analysts": 21,
-      "target_mean": 202.48
+      "trailing": 15.6,
+      "forward": 11.8,
+      "analysts": 23,
+      "target_mean": 197.18
     },
     "UAA": {
       "trailing": null,
-      "forward": 27.6,
+      "forward": 25.1,
       "analysts": 18,
       "target_mean": 6.24
     },
     "MNDY": {
-      "trailing": 26.8,
-      "forward": 10.4,
+      "trailing": 24.8,
+      "forward": 9.7,
       "analysts": 23,
       "target_mean": 100.93
     },
     "ONON": {
-      "trailing": 20.5,
-      "forward": 16.4,
+      "trailing": 18.3,
+      "forward": 14.5,
       "analysts": 31,
-      "target_mean": 43.8
+      "target_mean": 43.91
     },
     "SMCI": {
-      "trailing": 5.7,
-      "forward": 3.9,
+      "trailing": 4.6,
+      "forward": 3.1,
       "analysts": 15,
       "target_mean": 43.6
     },
     "CRWV": {
       "trailing": null,
-      "forward": -30.5,
+      "forward": -22.2,
       "analysts": 38,
-      "target_mean": 115.47
+      "target_mean": 115.08
     },
     "LITE": {
       "trailing": null,
-      "forward": 14.9,
+      "forward": 11.5,
       "analysts": 25,
-      "target_mean": 1069.19
+      "target_mean": 1064.75
     },
     "NBIS": {
       "trailing": null,
-      "forward": -40.7,
+      "forward": -26.7,
       "analysts": 20,
-      "target_mean": 257.2
+      "target_mean": 231.6
     },
     "CSCO": {
-      "trailing": 25.4,
-      "forward": 16.1,
+      "trailing": 24.1,
+      "forward": 15.0,
       "analysts": 24,
-      "target_mean": 132.17
+      "target_mean": 130.5
     },
     "COHR": {
-      "trailing": 45.2,
-      "forward": 13.8,
+      "trailing": 38.8,
+      "forward": 11.9,
       "analysts": 25,
       "target_mean": 371.92
     },
     "CBRS": {
       "trailing": null,
-      "forward": 66.9,
+      "forward": 44.5,
       "analysts": 11,
-      "target_mean": 225.64
+      "target_mean": 210.18
     },
     "AMAT": {
-      "trailing": 29.4,
-      "forward": 15.1,
+      "trailing": 24.0,
+      "forward": 12.3,
       "analysts": 36,
-      "target_mean": 588.61
+      "target_mean": 557.86
     },
     "ADI": {
-      "trailing": 47.3,
-      "forward": 24.1,
-      "analysts": 33,
-      "target_mean": 473.42
+      "trailing": 41.1,
+      "forward": 21.0,
+      "analysts": 32,
+      "target_mean": 474.47
     },
     "TGT": {
-      "trailing": 16.8,
-      "forward": 16.9,
-      "analysts": 34,
-      "target_mean": 165.94
+      "trailing": 15.4,
+      "forward": 17.0,
+      "analysts": 35,
+      "target_mean": 172.34
     },
     "TJX": {
-      "trailing": 24.9,
-      "forward": 23.4,
+      "trailing": 25.3,
+      "forward": 24.3,
       "analysts": 20,
-      "target_mean": 167.5
+      "target_mean": 165.55
     },
     "EL": {
-      "trailing": 111.8,
-      "forward": 27.5,
+      "trailing": 99.5,
+      "forward": 24.5,
       "analysts": 28,
-      "target_mean": 115.53
+      "target_mean": 116.49
     },
     "WMT": {
       "trailing": 46.4,
-      "forward": 39.8,
-      "analysts": 40,
-      "target_mean": 130.4
+      "forward": 39.6,
+      "analysts": 41,
+      "target_mean": 135.76
     },
     "ZM": {
-      "trailing": 9.3,
-      "forward": 15.7,
-      "analysts": 26,
-      "target_mean": 118.58
+      "trailing": 7.5,
+      "forward": 12.8,
+      "analysts": 25,
+      "target_mean": 118.52
     },
     "NVDA": {
-      "trailing": 20.6,
-      "forward": 10.3,
-      "analysts": 53,
-      "target_mean": 283.31
+      "trailing": 13.5,
+      "forward": 7.6,
+      "analysts": 56,
+      "target_mean": 244.18
     },
     "CRM": {
-      "trailing": 19.9,
-      "forward": 13.6,
+      "trailing": 16.5,
+      "forward": 11.3,
       "analysts": 53,
-      "target_mean": 287.08
+      "target_mean": 286.14
     },
     "CRWD": {
-      "trailing": 4532.2,
-      "forward": 140.7,
+      "trailing": 3824.0,
+      "forward": 142.4,
       "analysts": 50,
-      "target_mean": 249.68
+      "target_mean": 251.28
     },
     "OKTA": {
-      "trailing": 110.2,
-      "forward": 41.8,
+      "trailing": 115.3,
+      "forward": 43.7,
       "analysts": 43,
       "target_mean": 214.72
     },
     "BBY": {
-      "trailing": 17.3,
-      "forward": 14.4,
-      "analysts": 20,
-      "target_mean": 89.05
+      "trailing": 16.3,
+      "forward": 13.6,
+      "analysts": 21,
+      "target_mean": 91.29
     },
     "DG": {
-      "trailing": 17.4,
-      "forward": 16.2,
-      "analysts": 29,
-      "target_mean": 141.55
+      "trailing": 17.0,
+      "forward": 15.7,
+      "analysts": 30,
+      "target_mean": 142.0
     },
     "DLTR": {
       "trailing": 16.8,
       "forward": 17.5,
-      "analysts": 26,
-      "target_mean": 135.08
+      "analysts": 27,
+      "target_mean": 137.67
     },
     "MRVL": {
-      "trailing": 51.6,
-      "forward": 21.3,
+      "trailing": 40.2,
+      "forward": 16.6,
       "analysts": 40,
-      "target_mean": 310.32
+      "target_mean": 309.14
     },
     "AFRM": {
-      "trailing": 11.3,
-      "forward": 12.9,
+      "trailing": 9.4,
+      "forward": 10.7,
       "analysts": 34,
-      "target_mean": 95.81
+      "target_mean": 95.43
     },
     "ULTA": {
-      "trailing": 24.1,
-      "forward": 20.6,
+      "trailing": 22.4,
+      "forward": 19.2,
       "analysts": 25,
-      "target_mean": 642.12
+      "target_mean": 646.96
     },
     "WDAY": {
-      "trailing": 40.0,
-      "forward": 14.8,
+      "trailing": 35.5,
+      "forward": 13.2,
       "analysts": 37,
-      "target_mean": 209.25
+      "target_mean": 208.96
     },
     "S": {
       "trailing": null,
-      "forward": 48.2,
+      "forward": 49.7,
       "analysts": 30,
       "target_mean": 24.92
     },
     "DELL": {
-      "trailing": 20.0,
-      "forward": 11.3,
+      "trailing": 16.2,
+      "forward": 9.1,
       "analysts": 25,
-      "target_mean": 590.0
+      "target_mean": 578.88
     },
     "PANW": {
-      "trailing": 805.6,
-      "forward": 66.0,
+      "trailing": 602.3,
+      "forward": 69.9,
       "analysts": 51,
-      "target_mean": 398.63
+      "target_mean": 409.72
     },
     "MDB": {
-      "trailing": 464.2,
-      "forward": 42.3,
+      "trailing": 397.1,
+      "forward": 36.1,
       "analysts": 38,
-      "target_mean": 452.03
+      "target_mean": 451.63
     },
     "GTLB": {
       "trailing": null,
-      "forward": 46.0,
+      "forward": 41.6,
       "analysts": 24,
-      "target_mean": 56.12
+      "target_mean": 56.29
     },
     "AVGO": {
-      "trailing": 44.3,
-      "forward": 17.9,
+      "trailing": 38.9,
+      "forward": 15.7,
       "analysts": 47,
-      "target_mean": 529.24
+      "target_mean": 526.47
     },
     "HPE": {
-      "trailing": 24.9,
-      "forward": 10.2,
+      "trailing": 21.1,
+      "forward": 8.6,
       "analysts": 21,
-      "target_mean": 72.2
+      "target_mean": 70.58
     },
     "SNOW": {
       "trailing": null,
-      "forward": 95.6,
-      "analysts": 48,
-      "target_mean": 427.33
+      "forward": 82.9,
+      "analysts": 47,
+      "target_mean": 431.53
     },
     "ZS": {
       "trailing": null,
-      "forward": 34.2,
+      "forward": 34.6,
       "analysts": 45,
-      "target_mean": 235.19
+      "target_mean": 236.34
     },
     "LULU": {
-      "trailing": 8.7,
-      "forward": 12.3,
+      "trailing": 8.4,
+      "forward": 11.9,
       "analysts": 29,
       "target_mean": 104.4
     },
     "ORCL": {
-      "trailing": 19.6,
-      "forward": 11.3,
+      "trailing": 15.9,
+      "forward": 9.2,
       "analysts": 40,
       "target_mean": 236.18
     },
     "ADBE": {
-      "trailing": 13.6,
-      "forward": 8.9,
+      "trailing": 12.2,
+      "forward": 7.9,
       "analysts": 33,
       "target_mean": 266.91
     },
     "NEE": {
-      "trailing": 15.3,
-      "forward": 19.5,
+      "trailing": 15.0,
+      "forward": 19.1,
       "analysts": 19,
-      "target_mean": 94.0
+      "target_mean": 94.47
     },
     "HD": {
-      "trailing": 24.4,
-      "forward": 21.9,
+      "trailing": 23.5,
+      "forward": 21.5,
       "analysts": 32,
-      "target_mean": 377.81
+      "target_mean": 375.59
     },
     "TOL": {
-      "trailing": 11.9,
-      "forward": 10.8,
+      "trailing": 11.4,
+      "forward": 10.4,
       "analysts": 18,
       "target_mean": 169.11
     },
     "LOW": {
-      "trailing": 19.3,
-      "forward": 17.6,
+      "trailing": 18.5,
+      "forward": 17.3,
       "analysts": 33,
-      "target_mean": 251.0
+      "target_mean": 248.76
     },
     "BJ": {
-      "trailing": 24.1,
-      "forward": 21.9,
-      "analysts": 20,
-      "target_mean": 106.95
+      "trailing": 22.9,
+      "forward": 20.7,
+      "analysts": 21,
+      "target_mean": 109.19
     },
     "CEG": {
-      "trailing": 22.5,
-      "forward": 20.8,
+      "trailing": 19.1,
+      "forward": 17.7,
       "analysts": 23,
-      "target_mean": 338.25
+      "target_mean": 340.38
     },
     "Q": {
-      "trailing": 44.5,
-      "forward": 19.8,
+      "trailing": 38.9,
+      "forward": 17.3,
       "analysts": 10,
       "target_mean": 173.3
     },
     "VG": {
-      "trailing": 6.3,
-      "forward": 8.3,
+      "trailing": 5.8,
+      "forward": 7.1,
       "analysts": 18,
-      "target_mean": 17.56
+      "target_mean": 17.78
     },
     "UA": {
       "trailing": null,
-      "forward": 12.4,
+      "forward": 11.2,
       "analysts": null,
       "target_mean": null
     },
     "FIG": {
       "trailing": null,
-      "forward": 48.6,
+      "forward": 39.4,
       "analysts": 11,
       "target_mean": 27.41
     },
     "BRK-B": {
-      "trailing": 16.6,
-      "forward": 26.0,
+      "trailing": 16.0,
+      "forward": 25.0,
       "analysts": 3,
       "target_mean": 564.67
     },
     "ETN": {
-      "trailing": 35.3,
-      "forward": 21.5,
+      "trailing": 31.1,
+      "forward": 18.9,
       "analysts": 27,
-      "target_mean": 468.59
+      "target_mean": 469.0
     },
     "MSTR": {
       "trailing": null,
-      "forward": 6.5,
+      "forward": 4.5,
       "analysts": 15,
       "target_mean": 233.27
     },
     "BROS": {
-      "trailing": 46.6,
-      "forward": 30.1,
+      "trailing": 42.6,
+      "forward": 27.7,
       "analysts": 26,
-      "target_mean": 55.04
+      "target_mean": 54.5
     },
     "NET": {
       "trailing": null,
-      "forward": 165.4,
+      "forward": 147.6,
       "analysts": 32,
-      "target_mean": 341.09
+      "target_mean": 343.25
     },
     "SBUX": {
-      "trailing": 48.2,
-      "forward": 28.6,
+      "trailing": 46.7,
+      "forward": 27.7,
       "analysts": 30,
       "target_mean": 111.07
     },
     "ALK": {
       "trailing": null,
-      "forward": 18.6,
+      "forward": 14.0,
       "analysts": 16,
-      "target_mean": 51.69
+      "target_mean": 52.12
     },
     "RTX": {
-      "trailing": 32.3,
-      "forward": 24.5,
+      "trailing": 30.9,
+      "forward": 23.5,
       "analysts": 23,
-      "target_mean": 227.91
+      "target_mean": 228.13
     },
     "HON": {
-      "trailing": 11.0,
-      "forward": 22.5,
+      "trailing": 10.5,
+      "forward": 21.5,
       "analysts": 23,
-      "target_mean": 254.48
+      "target_mean": 253.87
     },
     "FITB": {
-      "trailing": 18.3,
-      "forward": 11.0,
+      "trailing": 16.6,
+      "forward": 9.9,
       "analysts": 21,
       "target_mean": 61.54
     },
     "RF": {
-      "trailing": 11.3,
-      "forward": 10.1,
+      "trailing": 10.4,
+      "forward": 9.3,
       "analysts": 21,
-      "target_mean": 31.22
+      "target_mean": 31.29
     },
     "TFC": {
-      "trailing": 12.9,
-      "forward": 10.2,
+      "trailing": 11.8,
+      "forward": 9.4,
       "analysts": 19,
       "target_mean": 53.3
     },
     "MRK": {
-      "trailing": 149.3,
-      "forward": 16.5,
+      "trailing": 135.1,
+      "forward": 14.9,
       "analysts": 26,
       "target_mean": 161.53
     },
     "FDX": {
-      "trailing": 17.5,
-      "forward": 15.5,
+      "trailing": 16.4,
+      "forward": 14.5,
       "analysts": 26,
-      "target_mean": 356.62
+      "target_mean": 356.81
     },
     "SIG": {
-      "trailing": 13.2,
-      "forward": 8.4,
+      "trailing": 11.4,
+      "forward": 7.2,
       "analysts": 9,
       "target_mean": 124.33
     },
     "MDT": {
-      "trailing": 25.3,
-      "forward": 16.1,
+      "trailing": 24.6,
+      "forward": 15.6,
       "analysts": 26,
-      "target_mean": 105.0
+      "target_mean": 106.96
     },
     "FIVE": {
-      "trailing": 22.1,
-      "forward": 22.2,
-      "analysts": 22,
-      "target_mean": 303.45
+      "trailing": 19.8,
+      "forward": 19.9,
+      "analysts": 23,
+      "target_mean": 301.0
     },
     "CIEN": {
-      "trailing": 62.8,
-      "forward": 23.6,
+      "trailing": 52.4,
+      "forward": 19.8,
       "analysts": 20,
-      "target_mean": 512.99
+      "target_mean": 511.74
     },
     "CPB": {
-      "trailing": 17.4,
-      "forward": 12.4,
+      "trailing": 18.2,
+      "forward": 12.9,
       "analysts": 17,
       "target_mean": 20.79
     },
     "MTN": {
-      "trailing": 37.0,
-      "forward": 23.0,
+      "trailing": 36.2,
+      "forward": 22.5,
       "analysts": 14,
       "target_mean": 148.36
     },
     "SJM": {
-      "trailing": 62.0,
-      "forward": 12.1,
+      "trailing": 62.5,
+      "forward": 12.2,
       "analysts": 16,
-      "target_mean": 141.81
+      "target_mean": 142.38
     },
     "CASY": {
-      "trailing": 34.3,
-      "forward": 30.3,
-      "analysts": 19,
-      "target_mean": 788.68
+      "trailing": 33.3,
+      "forward": 29.4,
+      "analysts": 20,
+      "target_mean": 789.25
     },
     "CBRL": {
-      "trailing": 47.8,
-      "forward": 30.4,
+      "trailing": 50.5,
+      "forward": 32.2,
       "analysts": 7,
       "target_mean": 50.71
     },
     "CHWY": {
-      "trailing": 34.6,
-      "forward": 12.0,
-      "analysts": 22,
-      "target_mean": 28.64
+      "trailing": 30.0,
+      "forward": 10.5,
+      "analysts": 23,
+      "target_mean": 28.35
     },
     "LEN": {
-      "trailing": 15.8,
-      "forward": 16.0,
+      "trailing": 15.3,
+      "forward": 15.9,
       "analysts": 15,
-      "target_mean": 77.6
+      "target_mean": 77.27
     },
     "KBH": {
-      "trailing": 13.5,
-      "forward": 13.4,
+      "trailing": 12.8,
+      "forward": 12.7,
       "analysts": 14,
       "target_mean": 51.0
     },
     "GIS": {
       "trailing": null,
-      "forward": 10.9,
+      "forward": 11.4,
       "analysts": 17,
       "target_mean": 36.53
     },
     "PAYX": {
-      "trailing": 23.0,
-      "forward": 18.1,
-      "analysts": 14,
-      "target_mean": 114.57
+      "trailing": 22.3,
+      "forward": 17.6,
+      "analysts": 15,
+      "target_mean": 114.93
     },
     "BB": {
-      "trailing": 68.5,
-      "forward": 37.8,
+      "trailing": 59.8,
+      "forward": 33.0,
       "analysts": 7,
-      "target_mean": 9.8
+      "target_mean": 9.94
     },
     "DRI": {
-      "trailing": 22.2,
-      "forward": 18.5,
+      "trailing": 21.9,
+      "forward": 18.2,
       "analysts": 25,
       "target_mean": 233.44
     },
     "COST": {
-      "trailing": 53.3,
-      "forward": 44.2,
+      "trailing": 53.1,
+      "forward": 44.0,
       "analysts": 37,
-      "target_mean": 1073.35
+      "target_mean": 1085.35
     },
     "CCL": {
-      "trailing": 12.9,
-      "forward": 11.3,
+      "trailing": 11.7,
+      "forward": 10.3,
       "analysts": 27,
       "target_mean": 33.56
     },
     "MU": {
-      "trailing": 10.5,
-      "forward": 3.7,
+      "trailing": 8.0,
+      "forward": 2.8,
       "analysts": 45,
       "target_mean": 1561.91
     },
     "MKC": {
-      "trailing": 8.5,
-      "forward": 14.6,
+      "trailing": 8.6,
+      "forward": 14.7,
       "analysts": 14,
       "target_mean": 54.1
     },
     "NKE": {
-      "trailing": 18.3,
-      "forward": 24.6,
+      "trailing": 15.8,
+      "forward": 23.7,
       "analysts": 38,
-      "target_mean": 36.46
+      "target_mean": 36.57
     },
     "FDXF": {
-      "trailing": 39.3,
-      "forward": 26.0,
+      "trailing": 34.8,
+      "forward": 23.0,
       "analysts": 14,
-      "target_mean": 143.93
+      "target_mean": 145.07
     }
   },
   "names": {
